@@ -39,9 +39,3 @@ Proyecto desarrollado por estudiantes de 2º DAW:
 > El contenido y estructura del repositorio se actualizarán a medida que avance el desarrollo.  
 
 ---
-
-## ⚙️ Cómo ejecutar el proyecto (pendiente de definir)
-
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/tuusuario/Runffee.git
