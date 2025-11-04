@@ -6,6 +6,7 @@ import { App } from './app';
 import { HttpClientModule } from '@angular/common/http';
 import { Footer } from '@shared/components/footer/footer';
 import {NologedModule} from '@nologed/nologed-module';
+import {LogedModule} from '@loged/loged-module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {NologedModule} from '@nologed/nologed-module';
     AppRoutingModule,
     HttpClientModule,
     NologedModule,
+    LogedModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
