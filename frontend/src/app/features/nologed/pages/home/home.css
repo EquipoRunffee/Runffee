@@ -1,50 +1,73 @@
-.img-background{
+.imagen_principal{
+  overflow: hidden;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen_principal img{
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: auto;
-  filter: brightness(0.3);
+  object-fit: cover;
+  width: 100%;
+  display: block;
   z-index: -1;
 }
 
-div{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: white;
-  width: 100%;
-  height: 100vh;
-  text-align: center;
-}
-
-span{
+.imagen_principal h1{
   font-family: "Bagel Fat One", system-ui;
   font-weight: 400;
   font-style: normal;
-  font-size: 30px;
+  font-size: 150px;
+  margin: 0;
+  color: #E3FF68;
 }
 
-h1{
+.reto_home{
+  background-color: #313132;
+  margin: 7.5rem 17.5rem;
+  padding: 2rem 3rem;
   font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-  font-size: x-large;
+
+  color: white;
 }
 
-h3{
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-  font-size: medium;
+.reto_home h3{
+  font-size: 25px;
+  text-align: center;
 }
 
-@media screen and (min-width: 800px) {
-  .img-background{
-    width: 100%;
-    height: auto;
-  }
+.contenidoDescripcion_home{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.descripcion_retoHome{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+}
+.descripcion_retoHome img{
+  width: 50px;
+}
+
+.descripcion_retoHome p{
+  font-weight: bold;
+  margin: 0;
+}
+
+.retoBoton_home{
+  background: #E3FF68;
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem 2rem;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
 }
