@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Apiprueba} from '../../core/services/apiprueba';
+import {Apiprueba} from '@core/services/apiprueba';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,6 @@ import {Apiprueba} from '../../core/services/apiprueba';
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
-
   constructor(private api: Apiprueba) {
   }
 
@@ -22,5 +21,4 @@ export class Home implements OnInit {
       }
     )
   }
-
 }

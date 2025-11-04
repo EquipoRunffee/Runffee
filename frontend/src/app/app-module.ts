@@ -3,18 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { Home } from './features/home/home';
 import { HttpClientModule } from '@angular/common/http';
+import { Footer } from '@shared/components/footer/footer';
+import {NologedModule} from '@nologed/nologed-module';
 
 @NgModule({
   declarations: [
     App,
-    Home
+    Footer
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NologedModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
