@@ -112,24 +112,73 @@
   width: 100%;
 }
 
-.productos_home{
+.productos_home {
   max-width: 1800px;
   margin: 7.5rem auto;
   width: 70vw;
-}
-
-.productos_home img{
-  width: 350px;
-}
-
-.producto1_home,
-.producto2_home,
-.producto3_home,
-.producto4_home,
-.producto5_home,
-.producto6_home{
   display: flex;
   justify-content: center;
-  gap: 25px;
   align-items: center;
+}
+
+.producto_home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.producto_home img {
+  width: auto;
+  height: 100%;
+}
+
+.producto_home h5 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: xx-large;
+}
+
+.contenerdorImg_home,
+.contenerdorTexto_home{
+  height: 400px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenerdorTexto_home{
+  height: 100px;
+  width: 200px;
+  align-content: center;
+}
+
+.texto_logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.texto_logo img{
+  width: 200px;
+  height: 200px;
+}
+
+.texto_logo h2 {
+  font-size: 80px;
+  font-weight: bold;
+  font-family: "Bagel Fat One", system-ui;
+  margin: 0;
+}
+
+.texto_logo p {
+  font-size: 25px;
+  color: gray;
+  font-family: "Montserrat", sans-serif;
 }

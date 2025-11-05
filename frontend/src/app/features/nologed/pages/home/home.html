@@ -36,36 +36,27 @@
   </div>
 
   <div class="productos_home">
-    <div class="producto1_home">
-      <img src="./assets/images/merch_cinturon.png" alt="cinturon">
-      <h5>Cinturon</h5>
-    </div>
-    <div class="producto2_home">
-      <img src="./assets/images/merch_coffee.png" alt="coffee">
-      <h5>Café</h5>
-    </div>
-    <div class="producto3_home">
-      <img src="./assets/images/merch_gorra.png" alt="gorra">
-      <h5>Gorra</h5>
-    </div>
-    <div class="producto4_home">
-      <img src="./assets/images/merch_termo.png" alt="termo">
-      <h5>Termo</h5>
-    </div>
-    <div class="producto5_home">
-      <img src="./assets/images/merch_tote.png" alt="tote">
-      <h5>Tote Bag</h5>
-    </div>
-    <div class="producto6_home">
-      <img src="./assets/images/merch_vaso.png" alt="vaso">
-      <h5>Vaso</h5>
-    </div>
-    <div class="producto7_home">
-      <img src="./assets/images/LOGO_OSCURO.png" alt="logo">
-      <h2>runffee</h2>
-      <p>próximamente</p>
+    <div class="producto_home">
+      <ng-container *ngIf="indiceActual < 6; else logoTemplate">
+        <div class="contenerdorImg_home">
+          <img [src]="productos[indiceActual].img" [alt]="productos[indiceActual].nombre" />
+        </div>
+        <div class="contenerdorTexto_home">
+          <h5>{{ productos[indiceActual].nombre }}</h5>
+        </div>
+      </ng-container>
+
+      <ng-template #logoTemplate>
+        <div class="texto_logo">
+          <img src="./assets/images/LOGO_OSCURO.png" alt="logo" />
+          <h2>runffee</h2>
+          <p>próximamente</p>
+        </div>
+      </ng-template>
+
     </div>
   </div>
+
 
 </div>
 <app-footer></app-footer>
