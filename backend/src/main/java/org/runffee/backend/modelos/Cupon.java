@@ -37,7 +37,7 @@ public class Cupon {
     @Column (name = "imagen")
     private String imagen;
 
-    @Column (name = "descripcion")
+    @Column (name = "porcentaje")
     private Integer porcentaje;
 
     @Column (name = "descripcion")

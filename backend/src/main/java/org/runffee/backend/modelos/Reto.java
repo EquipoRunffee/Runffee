@@ -38,5 +38,4 @@ public class Reto {
 
     @Column (name = "eliminado")
     private Boolean eliminado;
-
 }
