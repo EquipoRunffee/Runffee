@@ -3,6 +3,10 @@ body{
   padding: 0;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 :root {
   --color-fosforito: #E3FF68;
   --color-primario-marron: #734B59;

@@ -1,0 +1,119 @@
+.navbar {
+  background-color: white;
+  color: black;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+}
+
+.nav_container {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav_container1{
+  display: flex;
+  align-items: center;
+}
+
+.nav_logo{
+  margin-right: 10px;
+}
+
+.nav_logo img{
+  width: 65px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item, .nav-link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: block;
+  color: black;
+  font-size: 12.5px;
+}
+
+/* Botón Hamburguesa */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.5rem;
+  align-items: center;
+}
+
+.bar {
+  width: 20px;
+  height: 1px;
+  background-color: gray;
+  margin: 4px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav_container1{
+    flex-direction: row-reverse ;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 47.5px;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.85);
+    width: 100%;
+    transition: 0.5s;
+    gap: 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+  .nav-item .nav-link {
+    width: 100%;
+  }
+
+  .nav-item{
+    padding: 0;
+  }
+
+  .nav_logo img{
+    width: 45px;
+  }
+
+  .bar {
+    width: 20px;
+    height: 1px;
+    margin: 3px 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translateY(9px);
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translateY(-9px);
+  }
+}
