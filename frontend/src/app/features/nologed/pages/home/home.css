@@ -6,6 +6,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 .imagen_principal img{
@@ -14,6 +16,7 @@
   left: 0;
   object-fit: cover;
   width: 100%;
+  height: 100%;
   display: block;
   z-index: -1;
 }
@@ -29,11 +32,13 @@
 
 .reto_home{
   background-color: #313132;
-  margin: 7.5rem 17.5rem;
+  margin: 7.5rem auto;
   padding: 2rem 3rem;
   font-family: "Montserrat", sans-serif;
-
   color: white;
+  max-width: 1800px;
+  width: 70vw;
+  box-shadow: 1px 2px 3px black;
 }
 
 .reto_home h3{
@@ -70,4 +75,39 @@
   padding: 1rem 2rem;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
+  display: block;
+  margin: 2rem auto 0;
+  font-weight: bold;
+  margin-bottom: -55px;
+  box-shadow: 1px 2px 3px black;
+}
+
+.fondoBonito_home{
+  display: flex;
+  max-width: 1800px;
+  margin: 7.5rem auto;
+  max-height: 90vh;
+}
+
+.fondoBonitoLetras_home{
+  width: 50vw;
+  background-color: #E3FF68;
+  align-content: center;
+  text-align: end;
+}
+
+.fondoBonitoLetras_home h2{
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 75px;
+  margin-right: 25px;
+}
+
+.fondoBonitoImg_home{
+  width: 50vw;
+}
+
+.fondoBonitoImg_home img{
+  max-height: 90vh;
+  width: 100%;
 }

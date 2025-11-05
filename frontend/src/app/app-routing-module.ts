@@ -4,9 +4,10 @@ import {Home} from '@nologed/pages/home/home';
 import {Perfil} from '@loged/pages/perfil/perfil';
 
 const routes: Routes = [
-  {path: '', component: Home},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: Home },
   {path: 'perfil', component: Perfil},
-  {path: '**', redirectTo: '', pathMatch: 'full'},
+  { path: '**', redirectTo: '/home' },
 ]
 
 @NgModule({

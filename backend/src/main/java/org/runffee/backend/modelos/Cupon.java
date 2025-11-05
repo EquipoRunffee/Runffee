@@ -16,6 +16,8 @@ import java.util.Date;
 @Entity
 @Table(name = "cupon", catalog = "runffee", schema = "app")
 
+
+//TERMINADO
 public class Cupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +39,7 @@ public class Cupon {
     @Column (name = "imagen")
     private String imagen;
 
-    @Column (name = "descripcion")
+    @Column (name = "porcentaje")
     private Integer porcentaje;
 
     @Column (name = "descripcion")
@@ -45,4 +47,9 @@ public class Cupon {
 
     @Column (name = "eliminado")
     private Boolean eliminado;
+
+    @JoinColumn (name = "id_reto")
+    @ManyToOne
+    private Reto reto;
+
 }
