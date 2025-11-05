@@ -17,8 +17,8 @@ import java.util.Date;
 @Entity
 @Table(name = "reto", catalog = "runffee", schema = "app")
 
+//TERMINADO
 public class Reto {
-    //no fk
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -39,4 +39,7 @@ public class Reto {
     @Column (name = "eliminado")
     private Boolean eliminado;
 
+    @JoinColumn(name = "id_entrenamiento")
+    @OneToOne
+    private Entrenamiento entrenamiento;
 }
