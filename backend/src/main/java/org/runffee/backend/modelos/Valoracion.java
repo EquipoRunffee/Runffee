@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "valoracion", catalog = "runffee", schema = "app")
 
+//TERMINADO
 public class Valoracion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

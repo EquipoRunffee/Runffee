@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Primary;
 @Entity
 @Table(name = "usuario", catalog = "runffee", schema = "app")
 
+//TERMINADA
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -16,8 +16,9 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "producto", catalog = "runffee", schema = "app")
 
+
+//TERMINADO
 public class Producto {
-    //no fk
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -37,4 +38,9 @@ public class Producto {
 
     @Column (name = "eliminado")
     private Boolean eliminado;
+
+    @JoinColumn (name = "id_cafeteria")
+    @ManyToOne
+    private Cafeteria cafeteria;
+
 }

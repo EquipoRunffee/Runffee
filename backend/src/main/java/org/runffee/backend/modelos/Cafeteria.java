@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Primary;
 @Entity
 @Table(name = "cafeteria", catalog = "runffee", schema = "app")
 
+//TERMINADO
 public class Cafeteria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +36,10 @@ public class Cafeteria {
 
     @Column (name = "imagen")
     private String imagen;
+
+    @Column (name = "tipo")
+    @Enumerated(EnumType.ORDINAL)
+    private TipoCafeteria tipoCafeteria;
 
     @Column (name = "eliminado")
     private Boolean eliminado;
