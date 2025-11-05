@@ -6,8 +6,8 @@ import {Perfil} from '@loged/pages/perfil/perfil';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: Home },
-  { path: '**', redirectTo: '/home' },
   {path: 'perfil', component: Perfil},
+  { path: '**', redirectTo: '/home' },
 ]
 
 @NgModule({
