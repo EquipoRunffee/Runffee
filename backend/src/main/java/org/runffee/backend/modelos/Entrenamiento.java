@@ -17,8 +17,8 @@ import java.util.Date;
 @Entity
 @Table(name = "entrenamiento", catalog = "runffee", schema = "app")
 
+//TERMINADO
 public class Entrenamiento {
-    //terminar
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -39,6 +39,17 @@ public class Entrenamiento {
     @Column (name = "descripcion")
     private String descripcion;
 
+    @Column (name = "distancia")
+    private BigDecimal distancia;
+
     @Column (name = "eliminado")
     private Boolean eliminado;
+
+    @JoinColumn(name = "id_usuario")
+    @ManyToOne
+    private Usuario usuario;
+
+    @JoinColumn(name = "id_pedido")
+    @OneToOne
+    private Pedido pedido;
 }

@@ -1,5 +1,8 @@
 package org.runffee.backend.modelos;
 
+//TERMINADA
 public enum TipoCafeteria {
-    Cafeteria, Brunch, TeaShop
+    CAFETERIA,
+    BRUNCH,
+    TEASHOP
 }
