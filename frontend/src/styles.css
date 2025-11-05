@@ -1,8 +1,47 @@
 body{
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100dvh;
-  max-height: 100dvh;
-  overflow: hidden;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+:root {
+  --color-fosforito: #E3FF68;
+  --color-primario-marron: #734B59;
+  --color-primario-celeste: #C9E8F8;
+  --color-primario-rosa: #FDEAE3;
+
+  --color-secundario-negro: #2D2D2D;
+  --color-secundario-marron: #734B59;
+  --color-secundario-rosa: #FDEAE3;
+  --color-secundario-blanco: #ABABAB;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
+
+.all-center{
+  align-items: center;
+  justify-content: center;
+}
+
+.gap05{
+  gap: .5rem;
+}
+
+.gap1{
+  gap: 1rem;
+}
+
+.gap2{
+  gap: 2rem;
 }

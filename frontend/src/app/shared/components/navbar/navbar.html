@@ -1,0 +1,33 @@
+<nav class="navbar">
+  <div class="nav_container">
+    <div class="nav_container1">
+      <div class="nav_logo">
+        <img src="./assets/images/LOGO_VERDE.png" alt="logo">
+      </div>
+
+      <div class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+      <ul class="nav-menu" [class.active]="isMenuOpen">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Acerca de nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Retos</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Cafeterías</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Contacto</a>
+        </li>
+      </ul>
+    </div>
+
+    <p class="nav-item" style="cursor: pointer">Iniciar Sesión</p>
+
+  </div>
+</nav>

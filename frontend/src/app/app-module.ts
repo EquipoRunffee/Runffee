@@ -6,20 +6,29 @@ import { App } from './app';
 import { HttpClientModule } from '@angular/common/http';
 import { Footer } from '@shared/components/footer/footer';
 import {NologedModule} from '@nologed/nologed-module';
+import {LogedModule} from '@loged/loged-module';
+import { NavbarComponent } from '@shared/components/navbar/navbar';
+
 
 @NgModule({
   declarations: [
     App,
-    Footer
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NologedModule,
+    LogedModule,
+    Footer,
+    NavbarComponent,
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
+  ],
+  exports: [
+    Footer,
+    NavbarComponent,
   ],
   bootstrap: [App]
 })
