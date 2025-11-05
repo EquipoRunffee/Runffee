@@ -118,11 +118,18 @@
   width: 70vw;
 }
 
+.productos_home img{
+  width: 350px;
+}
+
 .producto1_home,
 .producto2_home,
 .producto3_home,
 .producto4_home,
 .producto5_home,
-.producto_home{
-
+.producto6_home{
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
 }
