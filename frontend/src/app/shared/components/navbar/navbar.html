@@ -1,9 +1,9 @@
 <nav class="navbar">
   <div class="nav_container">
     <div class="nav_container1">
-      <div class="nav_logo">
+      <a class="nav_logo" (click)="router.navigate(['/home'])">
         <img src="./assets/images/LOGO_VERDE.png" alt="logo">
-      </div>
+      </a>
 
       <div class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
         <span class="bar"></span>

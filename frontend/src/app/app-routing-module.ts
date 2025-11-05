@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import {Home} from '@nologed/pages/home/home';
 
 const routes: Routes = [
-  {path: '', component: Home},
-  {path: '**', redirectTo: '', pathMatch: 'full'},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: Home },
+  { path: '**', redirectTo: '/home' }
 ]
 
 @NgModule({

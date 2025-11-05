@@ -1,5 +1,5 @@
-// src/app/shared/components/navbar/navbar.component.ts
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +9,17 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   isMenuOpen = false;
 
+  constructor(public router: Router) {} // 👈 "public" para poder usar en template
+
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
   closeMenu(): void {
     this.isMenuOpen = false;
+  }
+
+  irHome(): void {
+    this.router.navigate(['/home']); // 👈 navegación manual
   }
 }

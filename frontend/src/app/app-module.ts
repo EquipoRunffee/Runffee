@@ -1,32 +1,20 @@
-import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { HttpClientModule } from '@angular/common/http';
-import { Footer } from '@shared/components/footer/footer';
-import {NologedModule} from '@nologed/nologed-module';
-import { NavbarComponent } from '@shared/components/navbar/navbar';
-
+import { NologedModule } from '@nologed/nologed-module';
 
 @NgModule({
   declarations: [
-    App,
+    App
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    NologedModule,
-    Footer,
-    NavbarComponent,
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners()
-  ],
-  exports: [
-    Footer,
-    NavbarComponent,
+    AppRoutingModule,
+    NologedModule
   ],
   bootstrap: [App]
 })
