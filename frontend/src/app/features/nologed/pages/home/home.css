@@ -111,3 +111,18 @@
   max-height: 90vh;
   width: 100%;
 }
+
+.productos_home{
+  max-width: 1800px;
+  margin: 7.5rem auto;
+  width: 70vw;
+}
+
+.producto1_home,
+.producto2_home,
+.producto3_home,
+.producto4_home,
+.producto5_home,
+.producto6_home{
+
+}
