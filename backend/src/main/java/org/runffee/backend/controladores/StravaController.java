@@ -2,6 +2,7 @@ package org.runffee.backend.controladores;
 
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -31,6 +32,7 @@ public class StravaController {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
+    @Autowired
     private IUsuarioRepository usuarioRepository;
 
     @PostMapping("/exchange")
@@ -56,13 +58,11 @@ public class StravaController {
         Map<String, Object> athleteMap = (Map<String, Object>) data.get("athlete");
 
         Usuario usuario = new Usuario();
-        usuario.setNombre((String) athleteMap.get("name"));
-        usuario.setCorreo((String) athleteMap.get("email"));
+        usuario.setNombre((String) athleteMap.get("firstname"));
         usuario.setCiudad((String) athleteMap.get("city"));
-        usuario.setPais((String) athleteMap.get("country"));
         usuario.setAthleteid((Integer) athleteMap.get("id"));
-        usuario.setAccesstoken((String) athleteMap.get("access_token"));
-        usuario.setRefreshtoken((String) athleteMap.get("refresh_token"));
+        usuario.setAccesstoken((String) data.get("access_token"));
+        usuario.setRefreshtoken((String) data.get("refresh_token"));
         usuario.setExpiresat(Instant.ofEpochSecond(((Number) data.get("expires_at")).longValue()));
         usuario.setEliminado(false);
 
