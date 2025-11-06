@@ -14,11 +14,11 @@ export class ConexionStrava {
   private scope = 'read,activity:read_all';
 
   connectWithStrava() {
-    const url = `https://www.strava.com/oauth/authorize?client_id=${this.clientId}
-    &redirect_uri=${this.redirectUri}
-    &response_type=code
-    &scope=${this.scope}
-    &approval_prompt=auto`;
+    const url = `https://www.strava.com/oauth/authorize?client_id=${this.clientId}` +
+      `&redirect_uri=${encodeURIComponent(this.redirectUri)}` +
+      `&response_type=code` +
+      `&scope=read,activity:read_all` +
+      `&approval_prompt=auto`;
     window.location.href = url;
   }
 }

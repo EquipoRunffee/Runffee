@@ -3,10 +3,7 @@ package org.runffee.backend.controladores;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,10 @@ public class UsuarioController {
     @GetMapping
     public List<Usuario> obtenerUsuarios() {
         return usuarioService.obtenerUsuarios();
+    }
+
+    @GetMapping("/{id}")
+    public Usuario obtenerUsuarioPorId(@PathVariable int id) {
+        return usuarioService.obtenerUsuario(id);
     }
 }

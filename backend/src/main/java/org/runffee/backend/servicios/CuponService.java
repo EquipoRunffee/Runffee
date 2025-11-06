@@ -19,14 +19,14 @@ public class CuponService {
         return cuponRepository.findAll().stream().filter(cupon -> !cupon.getEliminado()).toList();
     }
 
-    public Cafeteria obtenerCafeteria(int id) {
-        return cafeteriaRepository.findById(id).orElse(null);
-    }
-
-    public void eliminarCafeteria(int id) {
-        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
-        if (cafeteria != null) {
-            cafeteria.setEliminado(true);
-        }
-    }
+//    public Cafeteria obtenerCafeteria(int id) {
+//        return cafeteriaRepository.findById(id).orElse(null);
+//    }
+//
+//    public void eliminarCafeteria(int id) {
+//        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
+//        if (cafeteria != null) {
+//            cafeteria.setEliminado(true);
+//        }
+//    }
 }

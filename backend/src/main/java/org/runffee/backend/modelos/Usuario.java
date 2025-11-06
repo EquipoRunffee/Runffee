@@ -5,7 +5,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.context.annotation.Primary;
+
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -22,7 +23,7 @@ public class Usuario {
     private Integer id;
 
     @Column (name = "nombre")
-    private String nome;
+    private String nombre;
 
     @Column (name = "correo")
     private String correo;
@@ -44,4 +45,17 @@ public class Usuario {
 
     @Column (name = "eliminado")
     private Boolean eliminado;
+
+    @Column (name = "athleteid")
+    private Integer athleteid;
+
+    @Column (name = "accesstoken")
+    private String accesstoken;
+
+    @Column (name = "refreshtoken")
+    private String refreshtoken;
+
+    @Column (name = "expiresat")
+    private Instant expiresat;
+
 }
