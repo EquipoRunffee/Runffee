@@ -5,7 +5,43 @@
 </head>
 
 <body>
+<!-- Imagen fondo -->
+  <img src="/assets/images/login_background_desktop.jpg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
 
-  <img src="/assets/images/login_background_desktop.jpg">
+  <div class="contenedor-form">
+    <!-- Encabezado Formulario -->
+    <img class="logo" src="/assets/images/LOGO_OSCURO.png" style="height: 4rem;">
+    <h2>Inicio Sesión</h2>
+
+    <!-- Formulario Inicio Sesión -->
+    <form class="formulario" #loginForm="ngForm" (ngSubmit)="login()">
+
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="usuario.email"
+        placeholder="Correo electrónico"
+        required
+      >
+
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="usuario.password"
+        placeholder="Contraseña"
+        required
+      >
+
+      <button class="btn-inciar-sesion" type="submit" [disabled]="loginForm.invalid">
+        Iniciar
+      </button>
+
+      <button class="btn-strava" type="submit">
+        Regístrate con Strava
+      </button>
+
+    </form>
+  </div>
+
 </body>
 </html>
