@@ -1,5 +1,7 @@
 package org.runffee.backend.controladores;
 
+import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +12,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Instant;
 import java.util.Map;
 
 @RestController
@@ -27,6 +30,8 @@ public class StravaController {
     private String clientSecret;
 
     private final RestTemplate restTemplate = new RestTemplate();
+
+    private IUsuarioRepository usuarioRepository;
 
     @PostMapping("/exchange")
     public ResponseEntity<?> exchangeCode(@RequestBody Map<String, String> body) {
@@ -47,7 +52,23 @@ public class StravaController {
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
         ResponseEntity<Map> response = restTemplate.postForEntity(url, request, Map.class);
 
-        return ResponseEntity.ok(response.getBody());
+        Map<String, Object> data = response.getBody();
+        Map<String, Object> athleteMap = (Map<String, Object>) data.get("athlete");
+
+        Usuario usuario = new Usuario();
+        usuario.setNombre((String) athleteMap.get("name"));
+        usuario.setCorreo((String) athleteMap.get("email"));
+        usuario.setCiudad((String) athleteMap.get("city"));
+        usuario.setPais((String) athleteMap.get("country"));
+        usuario.setAthleteid((Integer) athleteMap.get("id"));
+        usuario.setAccesstoken((String) athleteMap.get("access_token"));
+        usuario.setRefreshtoken((String) athleteMap.get("refresh_token"));
+        usuario.setExpiresat(Instant.ofEpochSecond(((Number) data.get("expires_at")).longValue()));
+        usuario.setEliminado(false);
+
+        usuarioRepository.save(usuario);
+
+        return ResponseEntity.ok(usuario);
     }
 
 }
