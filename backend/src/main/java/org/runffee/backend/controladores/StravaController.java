@@ -3,6 +3,7 @@ package org.runffee.backend.controladores;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.runffee.backend.servicios.StravaService;
+import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -27,10 +28,17 @@ public class StravaController {
 
     @Autowired
     private StravaService stravaService;
+    @Autowired
+    private UsuarioService usuarioService;
 
     @PostMapping("/exchange")
     public ResponseEntity<?> exchangeCode(@RequestBody Map<String, String> body) {
         return stravaService.signIn(body);
     }
 
+    @PostMapping("/renovar/{id}")
+    public void renovar(@PathVariable Integer id) {
+        Usuario usuario = usuarioService.obtenerUsuario(id);
+        stravaService.validarRenovarToken(usuario);
+    }
 }

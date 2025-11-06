@@ -17,4 +17,8 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    public Usuario obtenerUsuario(Integer id) {
+        return usuarioRepository.findById(id).orElse(null);
+    }
+
 }
