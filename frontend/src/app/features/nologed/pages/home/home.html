@@ -9,15 +9,15 @@
     <h3>Reto de noviembre: El Vencedor del Sofá</h3>
     <div class="contenidoDescripcion_home">
       <div class="descripcion_retoHome" style="margin-top: 2.5rem">
-        <img src="./assets/images/calendarioHome.png" alt="calendario">
+        <img src="./assets/images/icon_calendarioHome.png" alt="calendario">
         <p>Desde el 1 nov 2025 hasta el 30 nov 2025 — 26 días restantes</p>
       </div>
       <div class="descripcion_retoHome">
-        <img src="./assets/images/dianaHome.png" alt="diana">
+        <img src="./assets/images/icon_dianaHome.png" alt="diana">
         <p>Desde el 1 nov 2025 hasta el 30 nov 2025 — 26 días restantes</p>
       </div>
       <div class="descripcion_retoHome">
-        <img src="./assets/images/trofeoHome.png" alt="trofeo">
+        <img src="./assets/images/icon_trofeoHome.png" alt="trofeo">
         <p>Celebra tu llegada a la meta con un 15% de descuento en tu proximo pedido en cualquiera de nuestras cafeterias asociadas.</p>
       </div>
     </div>
@@ -31,9 +31,32 @@
         repite</h2>
     </div>
     <div class="fondoBonitoImg_home">
-      <img src="./assets/images/people-running-home.png">
+      <img src="./assets/images/inicio_running.png">
     </div>
   </div>
+
+  <div class="productos_home">
+    <div class="producto_home">
+      <ng-container *ngIf="indiceActual < 6; else logoTemplate">
+        <div class="contenerdorImg_home">
+          <img [src]="productos[indiceActual].img" [alt]="productos[indiceActual].nombre" />
+        </div>
+        <div class="contenerdorTexto_home">
+          <h5>{{ productos[indiceActual].nombre }}</h5>
+        </div>
+      </ng-container>
+
+      <ng-template #logoTemplate>
+        <div class="texto_logo">
+          <img src="./assets/images/LOGO_OSCURO.png" alt="logo" />
+          <h2>runffee</h2>
+          <p>próximamente</p>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+
 
 </div>
 <app-footer></app-footer>
