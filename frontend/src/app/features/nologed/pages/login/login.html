@@ -32,11 +32,17 @@
         required
       >
 
-      <button class="btn-inciar-sesion" type="submit" [disabled]="loginForm.invalid">
+      <!-- Sección contraseña olvidada -->
+      <a href="/recuperar-contraseña" style="text-decoration: none; color: rgba(0,0,0,0.7); font-size: 0.75rem; margin: 0.75rem;">
+        ¿Has olvidado la contraseña?
+      </a>
+
+      <button class="btn-inciar-sesion" type="submit">
         Iniciar
       </button>
 
       <button class="btn-strava" type="submit">
+        <img src="/assets/images/icon_strava.png" style="height: 30px;">
         Regístrate con Strava
       </button>
 
