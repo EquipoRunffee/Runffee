@@ -64,7 +64,7 @@ public class StravaService {
 
         usuarioRepository.save(usuario);
 
-        return ResponseEntity.ok(usuario);
+        return ResponseEntity.ok(data);
     }
 
     public void validarRenovarToken(Usuario usuario){
