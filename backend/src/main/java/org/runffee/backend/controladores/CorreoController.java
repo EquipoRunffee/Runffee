@@ -4,6 +4,8 @@ import org.runffee.backend.servicios.CorreoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/mail")
 public class CorreoController {
@@ -11,8 +13,8 @@ public class CorreoController {
     private CorreoService correoService;
 
     @PostMapping("/enviar")
-    public String enviarCorreo(@RequestParam String to, @RequestParam String subject, @RequestParam String body) {
-        correoService.enviarCorreo(to, subject, body);
-        return "Correo enviado correctamente a " + to;
+    public String enviarCorreo() throws IOException {
+        correoService.pruebaCorreo();
+        return "Correo enviado correctamente";
     }
 }
