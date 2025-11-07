@@ -5,10 +5,12 @@ import { RouterModule } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Footer } from '@shared/components/footer/footer';
 import { NavbarComponent } from '@shared/components/navbar/navbar';
+import { ConexionStrava } from './pages/conexion-strava/conexion-strava';
 
 @NgModule({
   declarations: [
     Home,
+    ConexionStrava,
   ],
   exports: [
     Home,
