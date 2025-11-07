@@ -11,7 +11,7 @@
   <div class="contenedor-form">
     <!-- Encabezado Formulario -->
     <img class="logo" src="/assets/images/LOGO_OSCURO.png" style="height: 4rem;">
-    <h2>Inicio Sesión</h2>
+    <h2>Inicia Sesión</h2>
 
     <!-- Formulario Inicio Sesión -->
     <form class="formulario" #loginForm="ngForm" (ngSubmit)="login()">
@@ -25,11 +25,12 @@
       >
 
       <input
-        type="password"
+        type="text"
         name="password"
         [(ngModel)]="usuario.password"
         placeholder="Contraseña"
         required
+
       >
 
       <!-- Sección contraseña olvidada -->
@@ -37,10 +38,12 @@
         ¿Has olvidado la contraseña?
       </a>
 
+      <!-- Botón de incio de sesión -->
       <button class="btn-inciar-sesion" type="submit">
         Iniciar
       </button>
 
+      <!-- Botón de registro con Strava -->
       <button class="btn-strava" type="submit" style="display: grid; grid-template-columns: 1fr 9fr">
         <img src="/assets/images/icon_strava.png" style="height: 1.2rem;">
         Regístrate con Strava

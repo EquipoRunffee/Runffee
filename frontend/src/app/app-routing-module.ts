@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: 'strava/callback', component: Callback},
   {path: 'strava', component: ConexionStrava},
   {path: 'login', component: Login},
+  {path: 'perfil', component: Perfil},
   { path: '**', redirectTo: '/home' },
 ]
 
