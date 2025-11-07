@@ -8,6 +8,7 @@ import { Footer } from '@shared/components/footer/footer';
 import {NologedModule} from '@nologed/nologed-module';
 import {LogedModule} from '@loged/loged-module';
 import { NavbarComponent } from '@shared/components/navbar/navbar';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -22,13 +23,14 @@ import { NavbarComponent } from '@shared/components/navbar/navbar';
     LogedModule,
     Footer,
     NavbarComponent,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
   ],
   exports: [
     Footer,
-    NavbarComponent,
+    NavbarComponent
   ],
   bootstrap: [App]
 })

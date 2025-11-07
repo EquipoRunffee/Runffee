@@ -1,4 +1,80 @@
 *{
-  background-image: url('/assets/images/login_background_desktop.jpg');
-  background-repeat: no-repeat;
+  font-family: Inter, serif;
+  font-size: 0.9rem;
+}
+
+body{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-form{
+  max-width: 25rem;
+  border-radius: 1rem;
+  margin: auto;
+  padding: 2rem 4rem;
+  background: rgb(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contenedor-form h2{
+  font-family: Montserrat, serif;
+  font-weight: normal;
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.formulario{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.formulario input{
+  padding: 1rem;
+  width: 18rem;
+  border-radius: 0.8rem;
+  border: none;
+  background: rgb(255, 255, 255, 0.7);
+}
+
+.formulario input:focus{
+  border: 0.1rem solid #E3FF68;
+  outline: none;
+  background: white;
+}
+
+.btn-inciar-sesion{
+  border: none;
+  background-color: #E3FF68;
+  font-weight: bold;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  width: 18rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.btn-inciar-sesion:hover{
+  color: black;
+}
+
+.btn-strava{
+  border: 0.1rem solid #FC5200;
+  background-color: white;
+  font-weight: bold;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  width: 18rem;
+  color: rgba(252, 82, 0, 0.8);
+}
+
+.btn-strava:hover{
+  color: rgba(252, 82, 0);
 }
