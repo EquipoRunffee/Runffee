@@ -5,10 +5,12 @@ import {Perfil} from '@loged/pages/perfil/perfil';
 import {ConexionStrava} from '@nologed/pages/conexion-strava/conexion-strava';
 import {Login} from '@nologed/pages/login/login';
 import {Callback} from '@nologed/pages/callback/callback';
+import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: Home },
+  { path: 'cafeterias', component: Cafeterias },
   {path: 'perfil', component: Perfil},
   {path: 'strava/callback', component: Callback},
   {path: 'strava', component: ConexionStrava},
