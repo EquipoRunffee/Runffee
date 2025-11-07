@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
 import {CommonModule} from '@angular/common';
-import {GoogleMapsLoad} from '@shared/services/google-maps-load';
 
 @Component({
   selector: 'app-mapa-google',
@@ -15,15 +14,7 @@ import {GoogleMapsLoad} from '@shared/services/google-maps-load';
   ],
   standalone: true
 })
-export class MapaGoogle implements OnInit {
-  mapLoaded = false;
-
-  constructor(private googleMapsLoad: GoogleMapsLoad) {}
-
-  async ngOnInit() {
-    await this.googleMapsLoad.load();
-    this.mapLoaded = true;
-  }
+export class MapaGoogle {
 
   // Coordenadas de ejemplo: reemplaza por las tuyas
   center: google.maps.LatLngLiteral = { lat: 37.392271185986054, lng: -5.997439550816082 };
@@ -39,17 +30,17 @@ export class MapaGoogle implements OnInit {
     {
       position: { lat: 37.39228343926812, lng: -5.997434186398337 },
       title: 'Cafetería Central',
-      info: 'Calle Mayor 1<br>Horario: 8:00 - 20:00'
+      info: 'Calle Mayor 1Horario: 8:00 - 20:00'
     },
     {
       position: { lat: 37.39279163093468, lng: -5.993650803238308  },
       title: 'Cafetería Norte',
-      info: 'Avenida Norte 45<br>Horario: 7:30 - 19:30'
+      info: 'Avenida Norte 45Horario: 7:30 - 19:30'
     },
     {
       position: { lat: 37.39587433590697, lng: -5.995972354704065 },
       title: 'Cafetería Sur',
-      info: 'Plaza del Sol 12<br>Horario: 8:30 - 22:00'
+      info: 'Plaza del Sol 12Horario: 8:30 - 22:00'
     }
   ];
 

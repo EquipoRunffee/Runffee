@@ -25,4 +25,6 @@ public class CafeteriaController {
     public List<Cafeteria> obtenerCafeterias() {
         return cafeteriaService.obtenerCafeterias();
     }
+
+
 }
