@@ -7,6 +7,7 @@ import {Login} from '@nologed/pages/login/login';
 import {Callback} from '@nologed/pages/callback/callback';
 import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
 import {Cafeteria} from '@shared/components/cafeteria/cafeteria';
+import {Register} from '@nologed/pages/register/register';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'strava/callback', component: Callback},
   {path: 'strava', component: ConexionStrava},
   {path: 'login', component: Login},
+  {path: 'register', component: Register},
   { path: '**', redirectTo: '/home' },
 ]
 
