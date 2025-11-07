@@ -12,7 +12,7 @@ public class CorreoController {
     @Autowired
     private CorreoService correoService;
 
-    @PostMapping("/enviar")
+    @GetMapping("/enviar")
     public String enviarCorreo() throws IOException {
         correoService.pruebaCorreo();
         return "Correo enviado correctamente";
