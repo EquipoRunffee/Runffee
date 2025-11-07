@@ -1,12 +1,10 @@
 package org.runffee.backend.controladores;
 
+import org.runffee.backend.DTO.LineaPedidoCrearDTO;
 import org.runffee.backend.modelos.LineaPedido;
 import org.runffee.backend.servicios.LineaPedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,20 @@ public class LineaPedidoController {
     @GetMapping
     public List<LineaPedido> obtenerLineasPedidos() {
         return lineaPedidoService.obtenerLineasPedidos();
+    }
+
+    @GetMapping("/{id}")
+    public LineaPedido obtenerLineaPedido(@PathVariable int id){
+        return lineaPedidoService.obtenerLineaPedido(id);
+    }
+
+    @PostMapping("/crear")
+    public void crearLineaPedido(@RequestBody LineaPedidoCrearDTO cliente){
+        lineaPedidoService.crearLineaPedido(cliente);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public void eliminarLineaPedido(@PathVariable Integer id){
+        lineaPedidoService.eliminarLineasPedido(id);
     }
 }

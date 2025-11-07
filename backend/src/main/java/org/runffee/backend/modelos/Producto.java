@@ -25,7 +25,7 @@ public class Producto {
     private Integer id;
 
     @Column (name = "nombre")
-    private String nome;
+    private String nombre;
 
     @Column (name = "imagen")
     private String imagen;

@@ -57,5 +57,4 @@ public class Usuario {
 
     @Column (name = "expiresat")
     private Instant expiresat;
-
 }

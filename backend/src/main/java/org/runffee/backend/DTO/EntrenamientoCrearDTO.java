@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 public class EntrenamientoCrearDTO {
-    private String nome;
+    private String nombre;
     private Date fecha_inicio;
     private Date fecha_fin;
     private String url_mapa;
