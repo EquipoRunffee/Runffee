@@ -27,8 +27,4 @@ public class UsuarioController {
     public Usuario obtenerUsuarioPorId(@PathVariable int id) {
         return usuarioService.obtenerUsuario(id);
     }
-
-    @GetMapping("/perfil/datosusuario/{id}")
-
-    @PostMapping("/perfil/actualizarcontrasena/{id}")
 }
