@@ -3,12 +3,13 @@ import {LogedModule} from '@loged/loged-module';
 
 @Component({
   selector: 'app-perfil',
-  templateUrl: './perfil.html',
-  styleUrl: './perfil.css',
+  templateUrl: './perfil.component.html',
+  styleUrl: './perfil.component.css',
   imports: [
     LogedModule
-  ]
+  ],
+  standalone: true
 })
-export class Perfil {
+export class PerfilComponent {
 
 }

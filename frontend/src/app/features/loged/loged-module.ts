@@ -5,7 +5,7 @@ import { Header } from './components/perfil/header/header';
 
 @NgModule({
   declarations: [
-    Navbarperfil
+
   ],
   exports: [
     Header,
@@ -14,6 +14,7 @@ import { Header } from './components/perfil/header/header';
   imports: [
     CommonModule,
     Header,
+    Navbarperfil,
   ]
 })
 export class LogedModule { }
