@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/usuario")
 @CrossOrigin(origins = {
         "http://localhost:4200",
-        "https://anderolivos.com"
+        "https://www.anderolivos.com"
 })
 public class UsuarioController {
 
