@@ -25,7 +25,7 @@ public class CorreoService {
     private String apiKey;
 
     public void pruebaCorreo() throws IOException {
-        Email from = new Email("aolivosgamarra@safareyes.es");
+        Email from = new Email("runffee@gmail.com");
         String subject = "Sending with SendGrid is Fun";
         Email to = new Email("anderolivosg@gmail.com");
         Content content = new Content("text/plain", "and easy to do anywhere, even with Java");
@@ -47,7 +47,7 @@ public class CorreoService {
     }
 
     public void bienvenida(CorreoDTO correo) throws IOException {
-        Email from = new Email("aolivosgamarra@safareyes.es");
+        Email from = new Email("runffee@gmail.com");
         String subject = "¡Bienvenido a Runffee! Corre, disfruta, repite.";
         Email to = new Email(correo.getCorreo());
 
