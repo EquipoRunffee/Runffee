@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 public class RetoCrearDTO {
-    private String nome;
+    private String nombre;
     private Date fecha_inicio;
     private Date fecha_caducidad;
     private String descripcion;

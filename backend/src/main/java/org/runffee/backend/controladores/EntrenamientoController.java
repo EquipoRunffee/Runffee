@@ -1,12 +1,14 @@
 package org.runffee.backend.controladores;
 
+import org.runffee.backend.DTO.EntrenamientoCrearDTO;
+import org.runffee.backend.DTO.EntrenamientoDetalleCrearDTO;
+import org.runffee.backend.DTO.ProductoCrearDTO;
+import org.runffee.backend.DTO.ProductoDetalleCrearDTO;
 import org.runffee.backend.modelos.Entrenamiento;
+import org.runffee.backend.modelos.Producto;
 import org.runffee.backend.servicios.EntrenamientoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +26,25 @@ public class EntrenamientoController {
     @GetMapping
     public List<Entrenamiento> obtenerEntrenamientos() {
         return entrenamientoService.obtenerEntrenamientos();
+    }
+
+    @GetMapping("/{id}")
+    public Entrenamiento obtenerEntrenamiento(@PathVariable int id){
+        return entrenamientoService.obtenerEntrenamiento(id);
+    }
+
+    @GetMapping("/detalles")
+    public List<EntrenamientoDetalleCrearDTO> obtenerEntrenamientoDetalles() {
+        return entrenamientoService.obtenerEntrenamientoDetalles();
+    }
+
+    @PostMapping("/crear")
+    public void crearEntrenamiento(@RequestBody EntrenamientoCrearDTO entrenamiento){
+        entrenamientoService.crearEntrenamiento(entrenamiento);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public void eliminarEntrenamiento(@PathVariable Integer id){
+        entrenamientoService.eliminarEntrenamiento(id);
     }
 }

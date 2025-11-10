@@ -23,7 +23,7 @@ public class Cafeteria {
     private Integer id;
 
     @Column (name = "nombre")
-    private String nome;
+    private String nombre;
 
     @Column (name = "descripcion")
     private String descripcion;

@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/cafeteria")
 @CrossOrigin(origins = {
         "http://localhost:4200",
-        "https://www.anderolivos.com"
+        "https://anderolivos.com"
 })
 public class CafeteriaController {
 
@@ -25,6 +25,4 @@ public class CafeteriaController {
     public List<Cafeteria> obtenerCafeterias() {
         return cafeteriaService.obtenerCafeterias();
     }
-
-
 }
