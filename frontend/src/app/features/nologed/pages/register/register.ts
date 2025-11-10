@@ -22,23 +22,44 @@ export class Register {
 
   visible:boolean = false;
 
+  //Mensajes de error
+  emailError: string = '';
+  passwordError: string = '';
+  repeatPasswordError: string = '';
+
+
   ver(){
     this.visible=!this.visible;
   }
 
+  //metodo cuando compruebe que el correo ya está registrado
+  setEmailError(){
+    this.emailError = 'El correo ya está registrado.';
+  }
+
   register() {
 
-    /*if (this.usuario.password.length < 8) {
-      alert('La contraseña debe tener al menos 8 caracteres');
-      return;
+    // Limpiar mensajes previos (excepto si ya se mostró un error de correo)
+    this.passwordError = '';
+    this.repeatPasswordError = '';
+
+
+    let valid = true;
+
+    // Validación 1: Contraseña de mínimo 8 caracteres
+    if (this.usuario.password.length < 8) {
+      this.passwordError = 'La contraseña debe tener al menos 8 caracteres';
+      valid = false;
     }
 
+    // Validación 2: Contraseñas coinciden
     if (this.usuario.password !== this.usuario.repeatpassword) {
-      alert('Las contraseñas no coinciden');
-      return;
+      this.repeatPasswordError = 'Las contraseñas no coinciden';
+      valid = false;
     }
-    */
-    console.log('Credenciales: ', this.usuario);
+    if (valid){
+      console.log('Credenciales: ', this.usuario);
+    }
   }
 
 }

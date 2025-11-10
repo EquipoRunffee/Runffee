@@ -28,6 +28,9 @@
       required
     >
 
+    <!-- email not already in bbdd -->
+    <div id="emailError" class="error">{{emailError}}</div>
+
     <!-- Contraseña -->
     <div class="input-password">
 
@@ -47,12 +50,9 @@
       </span>
     </div>
 
-    <!--Condicion
-    <div *ngIf="passwordRef.invalid && passwordRef.touched" class="error">
-      <div *ngIf="passwordRef.errors?.['required']">La contraseña es obligatoria</div>
-      <div *ngIf="passwordRef.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres</div>
-    </div>
-    -->
+    <!-- contrasena >= 8caracteres -->
+    <div id="passwordError" class="error">{{passwordError}}</div>
+
     <!-- Repetir contraseña -->
 
     <input
@@ -62,6 +62,9 @@
       placeholder="Repetir contraseña"
       required
     >
+
+    <!-- contrasena == repeatcontrasena -->
+    <div id="repeatPasswordError" class="error">{{repeatPasswordError}}</div>
 
     <!-- Botón crear cuenta -->
 
