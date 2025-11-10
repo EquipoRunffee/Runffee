@@ -1,0 +1,76 @@
+<html lang="es">
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="register.css"/>
+</head>
+
+<body>
+<!--------------FONDO---------------->
+<img src="/assets/images/register_background_desktop.jpg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+
+<div class="contenedor-form">
+
+  <!-- Encabezado Formulario -->
+  <img class="logo" src="/assets/images/LOGO_OSCURO.png" style="height: 4rem;">
+  <h2>¡Genial!</h2>
+  <p>Ya tenemos tus datos de Strava. Indica el correo y la contraseña con la que accederas a tu cuenta de Runffee.</p>
+
+  <!-- Formulario Registro -->
+  <form class="formulario" #registerForm="ngForm" (ngSubmit)="register()">
+
+    <!-- Correo -->
+
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="usuario.email"
+      placeholder="Correo electrónico"
+      required
+    >
+
+    <!-- Contraseña -->
+    <div class="input-password">
+
+      <input
+        id="password"
+        name="password"
+        [(ngModel)]="usuario.password"
+        [type]="visible ? 'text' : 'password'"
+        placeholder="Contraseña"
+        required
+      >
+      <span class="eyeicon" (click)="ver()">
+        <img [src]="visible ? 'assets/images/icon_ver.png' : 'assets/images/icon_ver_no.png'"
+        alt="ver"
+        class="eye-img"
+        >
+      </span>
+    </div>
+
+    <!--Condicion
+    <div *ngIf="passwordRef.invalid && passwordRef.touched" class="error">
+      <div *ngIf="passwordRef.errors?.['required']">La contraseña es obligatoria</div>
+      <div *ngIf="passwordRef.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres</div>
+    </div>
+    -->
+    <!-- Repetir contraseña -->
+
+    <input
+      type="password"
+      name="repeatpassword"
+      [(ngModel)]="usuario.repeatpassword"
+      placeholder="Repetir contraseña"
+      required
+    >
+
+    <!-- Botón crear cuenta -->
+
+    <button class="btn-registro" type="submit">
+        Crear cuenta
+    </button>
+
+  <!--</form>-->
+  </form>
+</div>
+</body>
+</html>
