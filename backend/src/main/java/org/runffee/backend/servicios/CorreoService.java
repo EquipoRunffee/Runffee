@@ -9,9 +9,12 @@ import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
 import org.runffee.backend.DTO.CorreoDTO;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -48,10 +51,13 @@ public class CorreoService {
         String subject = "¡Bienvenido a Runffee! Corre, disfruta, repite.";
         Email to = new Email(correo.getCorreo());
 
-
-        String htmlContenido = Files.readString(Paths.get("src/main/resources/templates/bienvenida.html"));
-        htmlContenido = htmlContenido.replace("{{nombre}}", correo.getNombre());
-        Content content = new Content("text/html", htmlContenido);
+        ClassPathResource resource = new ClassPathResource("templates/bienvenida.html");
+        String html;
+        try (InputStream inputStream = resource.getInputStream()) {
+            html = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        }
+        html = html.replace("{{nombre}}", correo.getNombre());
+        Content content = new Content("text/html", html);
 
         Mail mail = new Mail(from, subject, to, content);
 

@@ -17,7 +17,7 @@ public class CorreoController {
     @Autowired
     private CorreoService correoService;
 
-    @PostMapping("/registro")
+    @PostMapping("/bienvenida")
     public void bienvenida(@RequestBody CorreoDTO correo) throws IOException {
         correoService.bienvenida(correo);
     }
