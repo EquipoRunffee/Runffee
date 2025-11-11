@@ -46,6 +46,12 @@ export const PERFIL_ROUTES: Routes = [
           import('@loged/components/perfil/ayuda/ayuda')
             .then(m => m.Ayuda)
       },
+      {
+        path: 'actividad',
+        loadComponent: () =>
+          import('@loged/components/actividad/actividad')
+            .then(m => m.Actividad)
+      },
 
       { path: '', redirectTo: 'datos', pathMatch: 'full' }
     ]
