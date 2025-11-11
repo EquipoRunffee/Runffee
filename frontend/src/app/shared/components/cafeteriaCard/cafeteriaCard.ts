@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Cafeteria } from '@core/services/cafeteria';
+import {CafeteriaService} from '@core/services/cafeteria';
 import { CommonModule } from '@angular/common';
+import {Cafeteria} from '@shared/class/cafeteria';
 
 @Component({
   selector: 'app-cafeteriaCard',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class CafeteriaCard implements OnInit{
   cafeterias: Cafeteria[] = [];
 
-  constructor(private cafeteriaService: Cafeteria) {}
+  constructor(private cafeteriaService: CafeteriaService) {}
 
   ngOnInit(): void {
     this.cargarCafeterias();

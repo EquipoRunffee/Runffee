@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Reto} from '@shared/class/reto';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Reto {
+export class RetoService {
   constructor(private http: HttpClient) { }
 
-  getReto(): Observable<any> {
+  getReto(): Observable<Reto[]> {
     let apiUrl= 'https://runffee.onrender.com/reto';
-    return this.http.get<any>(apiUrl);
+    return this.http.get<Reto[]>(apiUrl);
   }
 }

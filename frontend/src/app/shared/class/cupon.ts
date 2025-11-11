@@ -1,13 +1,15 @@
-import {Reto} from '@shared/class/reto';
+import { Reto } from '@shared/class/reto';
 
-export interface Cupon {
-  nombre: string;
-  fechaCaducidad: Date;
-  tipo: string;
-  usado: string;
-  imagen: string;
-  porcentaje: number;
-  descripcion: string;
-  eliminado: string;
-  idReto: Reto;
+export class Cupon {
+  constructor(
+    public nombre: string = '',
+    public fechaCaducidad: Date = new Date(),
+    public tipo: string = '',
+    public usado: string = 'no',
+    public imagen: string = '',
+    public porcentaje: number = 0,
+    public descripcion: string = '',
+    public eliminado: string = 'false',
+    public idReto: Reto = new Reto()
+  ) {}
 }

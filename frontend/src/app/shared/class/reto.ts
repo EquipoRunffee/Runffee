@@ -1,11 +1,11 @@
 import {Entrenamiento} from '@shared/class/entrenamiento';
 
-export interface Reto {
-
-  nombre: string;
-  fechaInicio: Date;
-  fechaCaducidad: Date;
-  descripcion: string;
-  eliminado: string;
-  idEntrenamineto: Entrenamiento;
+export class Reto {
+  constructor(
+    public nombre: string = '',
+    public descripcion: string = '',
+    public fechaInicio: Date = new Date(),
+    public fechaFin: Date = new Date(),
+    public eliminado: string = 'false'
+  ) {}
 }
