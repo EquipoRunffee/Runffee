@@ -1,0 +1,7 @@
+<ul *ngIf="cafeterias && cafeterias.length > 0">
+  <li *ngFor="let cafe of cafeterias">
+    {{ cafe.getCafeteria() }}
+  </li>
+</ul>
+
+<p *ngIf="cafeterias && cafeterias.length === 0">No hay cafeterías disponibles</p>

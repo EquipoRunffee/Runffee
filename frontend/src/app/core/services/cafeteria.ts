@@ -8,8 +8,8 @@ import {Observable} from 'rxjs';
 export class Cafeteria {
   constructor(private http: HttpClient) { }
 
-  getCafeteria(): Observable<any> {
+  getCafeteria(): Observable<any[]> {
     let apiUrl= 'https://runffee.onrender.com/cafeteria';
-    return this.http.get<any>(apiUrl);
-  }
+      return this.http.get<Cafeteria[]>(apiUrl);
+    }
 }

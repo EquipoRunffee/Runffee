@@ -7,33 +7,30 @@ import { Footer } from '@shared/components/footer/footer';
 import { NavbarComponent } from '@shared/components/navbar/navbar';
 import { ConexionStrava } from './pages/conexion-strava/conexion-strava';
 import { Callback } from './pages/callback/callback';
-import { Cafeterias } from './pages/cafeterias/cafeterias';
+import { CafeteriaCard } from '@shared/components/cafeteriaCard/cafeteriaCard';
 import {MapaGoogle} from '@shared/components/mapa-google/mapa-google';
-import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
-import {CafeteriaComponent} from "@shared/components/cafeteria/cafeteria/cafeteria";
 
 @NgModule({
   declarations: [
     Home,
     ConexionStrava,
     Callback,
-    Cafeterias,
-
-
   ],
+
   exports: [
     Home,
     Footer,
     NavbarComponent,
     MapaGoogle,
+    CafeteriaCard,
   ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        Footer,
-        NavbarComponent,
-        MapaGoogle,
-        CafeteriaComponent
-    ]
+  imports: [
+    CommonModule,
+    RouterModule,
+    Footer,
+    NavbarComponent,
+    MapaGoogle,
+    CafeteriaCard,
+  ]
 })
 export class NologedModule { }
