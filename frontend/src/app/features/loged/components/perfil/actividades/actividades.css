@@ -1,0 +1,51 @@
+.main-content{
+  margin:1.5rem;
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  gap: 1.5rem;
+  color: #313132;
+}
+
+.nav_false{
+  display: none;
+}
+
+.main-content div h3{
+  font-family: Montserrat, sans-serif;
+}
+
+.main-content div h1{
+  font-family: Montserrat, sans-serif;
+  text-align: end;
+}
+
+.main-content div p{
+  font-family: Inter, serif;
+
+}
+
+.entrenamiento_tipo1{
+  background-color: #C2B0B6;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.entrenamiento_tipo2{
+  background-color: #FEF4F1;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 500px){
+  .nav_false{
+    display: flex;
+    font-family: Montserrat, sans-serif;
+    color: #313132;
+    font-weight: normal;
+    justify-content: center;
+  }
+  .main-content{
+    display: grid;
+    grid-template-columns: 6fr;
+  }
+}
