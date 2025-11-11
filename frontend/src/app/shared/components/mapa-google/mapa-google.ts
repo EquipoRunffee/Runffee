@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
 import {CommonModule} from '@angular/common';
-import {GoogleMapsLoad} from '@shared/services/google-maps-load';
 
 @Component({
   selector: 'app-mapa-google',
@@ -15,16 +14,7 @@ import {GoogleMapsLoad} from '@shared/services/google-maps-load';
   ],
   standalone: true
 })
-export class MapaGoogle implements OnInit {
-  mapLoaded = false;
-
-  constructor(private googleMapsLoad: GoogleMapsLoad) {}
-
-  async ngOnInit() {
-    await this.googleMapsLoad.load();
-    this.mapLoaded = true;
-  }
-
+export class MapaGoogle {
   // Coordenadas de ejemplo: reemplaza por las tuyas
   center: google.maps.LatLngLiteral = { lat: 37.392271185986054, lng: -5.997439550816082 };
 

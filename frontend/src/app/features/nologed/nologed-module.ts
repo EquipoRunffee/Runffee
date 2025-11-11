@@ -10,6 +10,7 @@ import { Callback } from './pages/callback/callback';
 import { Cafeterias } from './pages/cafeterias/cafeterias';
 import {MapaGoogle} from '@shared/components/mapa-google/mapa-google';
 import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
+import {CafeteriaComponent} from "@shared/components/cafeteria/cafeteria/cafeteria";
 
 @NgModule({
   declarations: [
@@ -26,12 +27,13 @@ import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
     NavbarComponent,
     MapaGoogle,
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    Footer,
-    NavbarComponent,
-    MapaGoogle
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        Footer,
+        NavbarComponent,
+        MapaGoogle,
+        CafeteriaComponent
+    ]
 })
 export class NologedModule { }
