@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
   selector: 'app-contrasena',
   imports: [RouterModule],
   templateUrl: './contrasena.component.html',
-  styleUrl: './contrasena.component.css',
+  styleUrls: ['./contrasena.component.css'],
 })
 export class ContrasenaComponent {
 

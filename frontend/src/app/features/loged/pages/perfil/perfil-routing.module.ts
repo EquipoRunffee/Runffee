@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-
 import { PerfilComponent } from './perfil.component';
 import { DatosComponent } from '@loged/components/perfil/datos/datos.component';
 import { ActividadesComponent } from '@loged/components/perfil/actividades/actividades.component';

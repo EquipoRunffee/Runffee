@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
   selector: 'app-ayuda',
   imports: [RouterModule],
   templateUrl: './ayuda.component.html',
-  styleUrl: './ayuda.component.css',
+  styleUrls: ['./ayuda.component.css'],
 })
 export class AyudaComponent {
 

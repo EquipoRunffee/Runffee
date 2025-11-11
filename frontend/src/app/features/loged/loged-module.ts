@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Navbarperfil } from '@loged/components/perfil/navbarperfil/navbarperfil';
+import { NavbarperfilComponent } from '@loged/components/perfil/navbarperfil/navbarperfil.component';
 import { Header } from './components/perfil/header/header';
 
 @NgModule({
@@ -9,12 +9,12 @@ import { Header } from './components/perfil/header/header';
   ],
   exports: [
     Header,
-    Navbarperfil
+    NavbarperfilComponent
   ],
   imports: [
     CommonModule,
     Header,
-    Navbarperfil,
+    NavbarperfilComponent,
   ]
 })
 export class LogedModule { }

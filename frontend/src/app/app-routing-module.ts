@@ -6,14 +6,17 @@ import {ConexionStrava} from '@nologed/pages/conexion-strava/conexion-strava';
 import {Login} from '@nologed/pages/login/login';
 import {Callback} from '@nologed/pages/callback/callback';
 
+// @ts-ignore
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: Home },
-  {path: 'perfil', component: PerfilComponent},
+  { path: 'perfil',
+    loadComponent: () => import('@loged/pages/perfil/perfil.component').then(m => m.PerfilComponent),
+    loadChildren: () => import('@loged/pages/perfil/perfil.routes').then(m => m.PERFIL_ROUTES)
+  },
   {path: 'strava/callback', component: Callback},
   {path: 'strava', component: ConexionStrava},
   {path: 'login', component: Login},
-  {path: 'perfil', component: PerfilComponent},
   { path: '**', redirectTo: '/home' },
 ]
 

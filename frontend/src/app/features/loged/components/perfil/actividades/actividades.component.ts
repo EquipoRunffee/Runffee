@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
   selector: 'app-actividades',
   imports: [RouterModule],
   templateUrl: './actividades.component.html',
-  styleUrl: './actividades.component.css',
+  styleUrls: ['./actividades.component.css'],
 })
 export class ActividadesComponent {
 

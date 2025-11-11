@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
   selector: 'app-navbarperfil',
   standalone: true,
   imports: [RouterModule],
-  templateUrl: './navbarperfil.html',
-  styleUrl: './navbarperfil.css',
+  templateUrl: './navbarperfil.component.html',
+  styleUrls: ['./navbarperfil.component.css'],
 })
-export class Navbarperfil {}
+export class NavbarperfilComponent {}

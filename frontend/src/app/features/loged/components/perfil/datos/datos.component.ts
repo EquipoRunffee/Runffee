@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
   selector: 'app-datos',
   imports: [RouterModule],
   templateUrl: './datos.component.html',
-  styleUrl: './datos.component.css',
+  styleUrls: ['./datos.component.css'],
 })
 export class DatosComponent {
 

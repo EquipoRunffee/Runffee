@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
   selector: 'app-valoraciones',
   imports: [RouterModule],
   templateUrl: './valoraciones.component.html',
-  styleUrl: './valoraciones.component.css',
+  styleUrls: ['./valoraciones.component.css'],
 })
 export class ValoracionesComponent {
 
