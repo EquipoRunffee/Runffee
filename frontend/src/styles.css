@@ -45,3 +45,15 @@ body{
 .gap2{
   gap: 2rem;
 }
+
+.montserrat{
+  font-family: "Montserrat", sans-serif;
+}
+
+.bagel{
+  font-family: "Bagel Fat One", system-ui;
+}
+
+.inter{
+  font-family: "Inter", sans-serif;
+}
