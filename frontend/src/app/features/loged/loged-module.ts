@@ -7,19 +7,17 @@ import { Cupon } from './components/cupon/cupon';
 
 @NgModule({
   declarations: [
-
-  
-    Cupones,
-        Cupon
   ],
   exports: [
     Header,
-    Navbarperfil
+    Navbarperfil,
+    Cupon
   ],
   imports: [
     CommonModule,
     Header,
     Navbarperfil,
+    Cupon
   ]
 })
 export class LogedModule { }

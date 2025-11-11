@@ -14,7 +14,7 @@ body{
   --color-primario-rosa: #FDEAE3;
 
   --color-secundario-negro: #2D2D2D;
-  --color-secundario-marron: #734B59;
+  --color-secundario-marron: rgba(115, 75, 89, 0.44);
   --color-secundario-rosa: #FDEAE3;
   --color-secundario-blanco: #ABABAB;
 }

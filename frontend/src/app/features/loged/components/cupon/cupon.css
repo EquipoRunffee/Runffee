@@ -1,0 +1,10 @@
+:host{
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  color: #2D2D2D;
+  padding: 1rem 2rem;
+}
+
+.codigo{
+  font-weight: 900;
+}
