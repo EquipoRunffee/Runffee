@@ -8,6 +8,7 @@ import {Register} from '@nologed/pages/register/register';
 import {Callback} from '@nologed/pages/callback/callback';
 import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
 import {Cafeteria} from '@shared/components/cafeteria/cafeteria';
+import { Actividad } from "@loged/components/actividad/actividad";
 
 // @ts-ignore
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'strava', component: ConexionStrava},
   {path: 'login', component: Login},
   {path: 'register', component: Register},
+  { path: 'actividad', component: Actividad },
   { path: '**', redirectTo: '/home' },
 ]
 

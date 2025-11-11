@@ -4,11 +4,10 @@
 
 .sidebar{
   margin: 1.5rem;
-  width: 30%;
 }
 
 .sidebar h1{
-  font-family: Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif !important;
   margin: 0;
   font-weight: 550;
   font-size: 2.3rem;
@@ -35,10 +34,16 @@
 }
 
 .sidebar li.active {
-  background-color: rgba(63, 87, 100, 0.6);
+  background-color: rgba(201, 232, 248, 0.6);
 }
 
 .icono{
   height: 2rem;
   width: 2rem;
+}
+
+@media screen and (max-width: 500px){
+  .sidebar{
+    display: none;
+  }
 }
