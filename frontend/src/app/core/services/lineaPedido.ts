@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class LineaPedidoService {
+export class LineaPedido {
 
 
   constructor(private http: HttpClient) { }
@@ -16,7 +16,7 @@ export class LineaPedidoService {
   }
 
   getLineaPedidoEliminados(): Observable<any> {
-    let apiUrl= 'https://runffee.onrender.com/lineapedido\sdfsdf';
+    let apiUrl= 'https://runffee.onrender.com/lineapedido/eliminar{id}';
     return this.http.get<any>(apiUrl);
   }
 }
