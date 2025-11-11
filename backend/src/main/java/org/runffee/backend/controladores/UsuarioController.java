@@ -1,5 +1,6 @@
 package org.runffee.backend.controladores;
 
+import org.runffee.backend.DTO.UsuarioCrearDTO;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.List;
 @RequestMapping("/usuario")
 @CrossOrigin(origins = {
         "http://localhost:4200",
-        "https://anderolivos.com"
+        "https://www.anderolivos.com"
 })
 public class UsuarioController {
 
@@ -27,4 +28,16 @@ public class UsuarioController {
     public Usuario obtenerUsuarioPorId(@PathVariable int id) {
         return usuarioService.obtenerUsuario(id);
     }
+
+    @PostMapping("/crear")
+    public void crearUsuario(@RequestBody UsuarioCrearDTO usuario) {
+        usuarioService.crearUsario(usuario);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public void eliminarUsuario(@PathVariable Integer id){
+        usuarioService.eliminarUsuario(id);
+    }
+
+
 }

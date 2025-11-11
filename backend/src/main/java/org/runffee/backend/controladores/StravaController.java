@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestMapping("/strava")
 @CrossOrigin(origins = {
         "http://localhost:4200",
-        "https://anderolivos.com"
+        "https://www.anderolivos.com"
 })
 public class StravaController {
 

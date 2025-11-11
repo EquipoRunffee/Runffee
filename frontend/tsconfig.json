@@ -9,7 +9,8 @@
       "@shared/*": ["app/shared/*"],
       "@admin/*": ["app/features/admin/*"],
       "@loged/*": ["app/features/loged/*"],
-      "@nologed/*": ["app/features/nologed/*"]
+      "@nologed/*": ["app/features/nologed/*"],
+      "@enviroment/*": ["environments/*"]
     },
     "strict": true,
     "noImplicitOverride": true,

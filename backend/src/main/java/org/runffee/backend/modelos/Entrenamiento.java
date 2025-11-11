@@ -25,7 +25,7 @@ public class Entrenamiento {
     private Integer id;
 
     @Column (name = "nombre")
-    private String nome;
+    private String nombre;
 
     @Column (name = "fecha_inicio")
     private Date fecha_inicio;

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class UsuarioCrearDTO {
-    private String nome;
+    private String nombre;
     private String correo;
     private String contrasena;
     private String ciudad;

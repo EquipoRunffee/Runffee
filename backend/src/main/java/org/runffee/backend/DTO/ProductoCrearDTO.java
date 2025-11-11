@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Data
 public class ProductoCrearDTO {
-    private String nome;
+    private String nombre;
     private String imagen;
     private BigDecimal precio;
     private String descripcion;

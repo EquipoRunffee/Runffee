@@ -4,7 +4,10 @@ import {Home} from '@nologed/pages/home/home';
 import {Perfil} from '@loged/pages/perfil/perfil';
 import {ConexionStrava} from '@nologed/pages/conexion-strava/conexion-strava';
 import {Login} from '@nologed/pages/login/login';
+import {Register} from '@nologed/pages/register/register';
 import {Callback} from '@nologed/pages/callback/callback';
+import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
+import {Cafeteria} from '@shared/components/cafeteria/cafeteria';
 
 // @ts-ignore
 const routes: Routes = [
@@ -14,9 +17,12 @@ const routes: Routes = [
     loadComponent: () => import('@loged/pages/perfil/perfil').then(m => m.Perfil),
     loadChildren: () => import('@loged/pages/perfil/perfil.routes').then(m => m.PERFIL_ROUTES)
   },
+  { path: 'cafeterias', component: Cafeterias },
+  { path: 'cafeteria', component: Cafeteria },
   {path: 'strava/callback', component: Callback},
   {path: 'strava', component: ConexionStrava},
   {path: 'login', component: Login},
+  {path: 'register', component: Register},
   { path: '**', redirectTo: '/home' },
 ]
 

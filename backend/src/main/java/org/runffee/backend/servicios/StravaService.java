@@ -47,12 +47,29 @@ public class StravaService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
+        //Esto es la petición
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
         ResponseEntity<Map> response = restTemplate.postForEntity(url, request, Map.class);
 
+        //Esto es la respuesta con los datos del usuario
         Map<String, Object> data = response.getBody();
         Map<String, Object> athleteMap = (Map<String, Object>) data.get("athlete");
 
+
+        //PARTE DE VALENTIN
+        //CREAR FUNCIÓN QUE BUSQUE EN LA BBDD SI YA EXISTE UN USUARIO CON LA ID ATHLETE
+        //Si existe el usuario ya -> Devuelvo un valor que me diga si existe -> LOGIN
+        //Que no existe -> REGISTER
+//
+//        Boolean registrado = False;
+//
+//        return registrado
+
+        //Cuando ya está en el register, comprobar que el correo no existe en la bbdd
+
+
+        //Esto es la creación del usuario
+        //Hay que crear una función para esto
         Usuario usuario = new Usuario();
         usuario.setNombre((String) athleteMap.get("firstname"));
         usuario.setCiudad((String) athleteMap.get("city"));

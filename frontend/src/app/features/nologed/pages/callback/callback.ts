@@ -23,6 +23,7 @@ export class Callback implements OnInit {
 
       this.http.post(url, {code}).subscribe(
         {
+          //Esto es la respuesta de nuestro backend
           next: (res)=>{
             console.log("Tokens recibidos del backend: ", res);
           },
@@ -31,6 +32,9 @@ export class Callback implements OnInit {
           }
         }
       )
+
+      //Este console log se ejecuta antes de recibir la respuesta a la petición porque no está dentro del suscribe
+      console.log("Hola");
 
     }
 
