@@ -9,7 +9,9 @@ import {NologedModule} from '@nologed/nologed-module';
 import {LogedModule} from '@loged/loged-module';
 import { NavbarComponent } from '@shared/components/navbar/navbar';
 import {FormsModule} from '@angular/forms';
-import { Cafeteria } from '@shared/components/cafeteria/cafeteria/cafeteria';
+import { MapaCafeteria } from './shared/components/mapa-cafeteria/mapa-cafeteria';
+import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
+import { Cafeteria } from './shared/components/cafeteria/cafeteria';
 
 
 @NgModule({
@@ -25,7 +27,11 @@ import { Cafeteria } from '@shared/components/cafeteria/cafeteria/cafeteria';
     LogedModule,
     Footer,
     NavbarComponent,
-    FormsModule
+    FormsModule,
+    GoogleMap,
+    MapInfoWindow,
+    MapMarker,
+    MapaCafeteria
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

@@ -10,7 +10,7 @@ import {Component, Injectable} from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class ConexionStrava {
   private clientId = '182872';
-  private redirectUri = 'http://localhost:4200/strava/callback';
+  private redirectUri = 'https://www.anderolivos.com/runffee/strava/callback';
   private scope = 'read,activity:read_all';
 
   connectWithStrava() {

@@ -1,17 +1,16 @@
 <div class="map-wrapper">
   <google-map
-    height="600px"
+    height="400px"
     width="100%"
     [center]="center"
     [zoom]="zoom"
     [options]="options">
 
     <map-marker
-      *ngFor="let m of markers"
-      [position]="m.position"
-      [title]="m.title"
-      (mapClick)="openInfo(marker, m.info)"
-      #marker="mapMarker">
+      #cafeteriaMarker="mapMarker"
+      [position]="markerPosition"
+      [title]="markerTitle"
+      (mapClick)="openInfo(cafeteriaMarker)">
     </map-marker>
 
     <map-info-window>
