@@ -11,14 +11,15 @@ import { NavbarComponent } from '@shared/components/navbar/navbar';
 import {FormsModule} from '@angular/forms';
 import { MapaCafeteria } from './shared/components/mapa-cafeteria/mapa-cafeteria';
 import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
-import { Cafeteria } from './shared/components/cafeteria/cafeteria';
+import { CafeteriaCard } from './shared/components/cafeteriaCard/cafeteriaCard';
 
 
 @NgModule({
   declarations: [
     App,
-    Cafeteria,
+
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,14 +32,16 @@ import { Cafeteria } from './shared/components/cafeteria/cafeteria';
     GoogleMap,
     MapInfoWindow,
     MapMarker,
-    MapaCafeteria
+    MapaCafeteria,
+    CafeteriaCard,
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
   ],
   exports: [
     Footer,
-    NavbarComponent
+    NavbarComponent,
+    CafeteriaCard,
   ],
   bootstrap: [App]
 })
