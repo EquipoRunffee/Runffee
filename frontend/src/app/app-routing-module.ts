@@ -9,12 +9,16 @@ import {Callback} from '@nologed/pages/callback/callback';
 import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
 import {Cafeteria} from '@shared/components/cafeteria/cafeteria';
 
+// @ts-ignore
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: Home },
+  { path: 'perfil',
+    loadComponent: () => import('@loged/pages/perfil/perfil').then(m => m.Perfil),
+    loadChildren: () => import('@loged/pages/perfil/perfil.routes').then(m => m.PERFIL_ROUTES)
+  },
   { path: 'cafeterias', component: Cafeterias },
   { path: 'cafeteria', component: Cafeteria },
-  {path: 'perfil', component: Perfil},
   {path: 'strava/callback', component: Callback},
   {path: 'strava', component: ConexionStrava},
   {path: 'login', component: Login},

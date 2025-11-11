@@ -25,11 +25,12 @@
       >
 
       <input
-        type="password"
+        type="text"
         name="password"
         [(ngModel)]="usuario.password"
         placeholder="Contraseña"
         required
+
       >
 
       <!-- Sección contraseña olvidada -->
@@ -37,10 +38,12 @@
         ¿Has olvidado la contraseña?
       </a>
 
+      <!-- Botón de incio de sesión -->
       <button class="btn-inciar-sesion" type="submit">
         Iniciar
       </button>
 
+      <!-- Botón de registro con Strava -->
       <button class="btn-strava" type="submit" style="display: grid; grid-template-columns: 1fr 9fr">
         <img src="./assets/images/icon_strava.png" style="height: 1.2rem;">
         Regístrate con Strava
