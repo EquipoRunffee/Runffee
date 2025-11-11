@@ -1,0 +1,6 @@
+<ul *ngIf="cafeterias && cafeterias.length > 0">
+  <li *ngFor="let cafe of cafeterias">
+    {{ cafe.nombre }} - {{ cafe.descripcion }}
+  </li>
+</ul>
+
