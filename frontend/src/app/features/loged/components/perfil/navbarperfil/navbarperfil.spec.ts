@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContrasenaComponent } from './contrasena.component';
+import { Navbarperfil } from './navbarperfil';
 
-describe('Contrasena', () => {
-  let component: ContrasenaComponent;
-  let fixture: ComponentFixture<ContrasenaComponent>;
+describe('Navbarperfil', () => {
+  let component: Navbarperfil;
+  let fixture: ComponentFixture<Navbarperfil>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ContrasenaComponent]
+      declarations: [Navbarperfil]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ContrasenaComponent);
+    fixture = TestBed.createComponent(Navbarperfil);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

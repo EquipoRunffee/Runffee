@@ -4,9 +4,9 @@ import {RouterModule} from '@angular/router';
 @Component({
   selector: 'app-actividades',
   imports: [RouterModule],
-  templateUrl: './actividades.component.html',
-  styleUrls: ['./actividades.component.css'],
+  templateUrl: './actividades.html',
+  styleUrls: ['./actividades.css'],
 })
-export class ActividadesComponent {
+export class Actividades {
 
 }

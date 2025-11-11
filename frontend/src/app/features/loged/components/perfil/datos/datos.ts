@@ -4,9 +4,9 @@ import {RouterModule} from '@angular/router';
 @Component({
   selector: 'app-datos',
   imports: [RouterModule],
-  templateUrl: './datos.component.html',
-  styleUrls: ['./datos.component.css'],
+  templateUrl: './datos.html',
+  styleUrls: ['./datos.css'],
 })
-export class DatosComponent {
+export class Datos {
 
 }

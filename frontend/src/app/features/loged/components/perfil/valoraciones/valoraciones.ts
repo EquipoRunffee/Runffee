@@ -4,9 +4,9 @@ import {RouterModule} from '@angular/router';
 @Component({
   selector: 'app-valoraciones',
   imports: [RouterModule],
-  templateUrl: './valoraciones.component.html',
-  styleUrls: ['./valoraciones.component.css'],
+  templateUrl: './valoraciones.html',
+  styleUrls: ['./valoraciones.css'],
 })
-export class ValoracionesComponent {
+export class Valoraciones {
 
 }

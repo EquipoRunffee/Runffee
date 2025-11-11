@@ -1,0 +1,33 @@
+#navbarperfil{
+  color: #2D2D2D;
+}
+
+.sidebar{
+  margin: 1.5rem;
+  width: 30%;
+}
+
+.sidebar h1{
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  font-weight: 550;
+}
+
+.sidebar ul{
+  padding: 0;
+  margin-left: 1rem;
+}
+
+.sidebar ul li{
+  list-style: none;
+  font-family: Inter, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.icono{
+  height: 2rem;
+  width: 2rem;
+}

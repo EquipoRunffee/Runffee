@@ -4,9 +4,9 @@ import {RouterModule} from '@angular/router';
 @Component({
   selector: 'app-ayuda',
   imports: [RouterModule],
-  templateUrl: './ayuda.component.html',
-  styleUrls: ['./ayuda.component.css'],
+  templateUrl: './ayuda.html',
+  styleUrls: ['./ayuda.css'],
 })
-export class AyudaComponent {
+export class Ayuda {
 
 }

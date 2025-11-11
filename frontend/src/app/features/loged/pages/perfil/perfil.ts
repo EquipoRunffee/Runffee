@@ -4,14 +4,14 @@ import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
-  templateUrl: './perfil.component.html',
-  styleUrl: './perfil.component.css',
+  templateUrl: './perfil.html',
+  styleUrl: './perfil.css',
   imports: [
     LogedModule,
     RouterOutlet
   ],
   standalone: true
 })
-export class PerfilComponent {
+export class Perfil {
 
 }

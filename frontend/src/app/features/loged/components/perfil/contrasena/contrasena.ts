@@ -4,9 +4,9 @@ import {RouterModule} from '@angular/router';
 @Component({
   selector: 'app-contrasena',
   imports: [RouterModule],
-  templateUrl: './contrasena.component.html',
-  styleUrls: ['./contrasena.component.css'],
+  templateUrl: './contrasena.html',
+  styleUrls: ['./contrasena.css'],
 })
-export class ContrasenaComponent {
+export class Contrasena {
 
 }

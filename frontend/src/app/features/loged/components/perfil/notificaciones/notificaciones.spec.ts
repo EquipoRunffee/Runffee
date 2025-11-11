@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarperfilComponent } from './navbarperfil.component';
+import { Notificaciones } from './notificaciones';
 
-describe('NavbarperfilComponent', () => {
-  let component: NavbarperfilComponent;
-  let fixture: ComponentFixture<NavbarperfilComponent>;
+describe('Notificaciones', () => {
+  let component: Notificaciones;
+  let fixture: ComponentFixture<Notificaciones>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavbarperfilComponent]
+      imports: [Notificaciones]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NavbarperfilComponent);
+    fixture = TestBed.createComponent(Notificaciones);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

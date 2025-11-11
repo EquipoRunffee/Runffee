@@ -4,9 +4,9 @@ import {RouterModule} from '@angular/router';
 @Component({
   selector: 'app-notificaciones',
   imports: [RouterModule],
-  templateUrl: './notificaciones.component.html',
-  styleUrls: ['./notificaciones.component.css'],
+  templateUrl: './notificaciones.html',
+  styleUrls: ['./notificaciones.css'],
 })
-export class NotificacionesComponent {
+export class Notificaciones {
 
 }
