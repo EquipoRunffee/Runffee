@@ -1,151 +1,52 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="font-family: Inter, serif; color: #2D2D2D;">
 <head>
     <meta charset="UTF-8">
     <title></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-        body{
-            padding: 0;
-            margin: 0 auto;
-            max-width: 550px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
 
-        *{
-            font-family: Inter, serif;
-            color: #2D2D2D;
-        }
-
-        h1,h2,h3{
-            font-family: "Montserrat", sans-serif;
-            margin: 0;
-        }
-
-        span{
-            font-family: "Bagel Fat One";
-            font-size: 32px;
-        }
-
-        .column{
-            display: flex;
-            flex-direction: column;
-        }
-
-        .all-center{
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gap1{
-            gap: 1rem;
-        }
-
-        p{
-            margin: 0;
-        }
-
-        #img-welcome{
-            width: 100%;
-            border-radius: 10px;
-            align-self: center;
-            justify-self: center;
-            margin: 1rem;
-        }
-
-        #img-logo{
-            width: 60px;
-        }
-
-        ul{
-            list-style: none;
-            width: 65%;
-        }
-
-        li{
-            width: 100%;
-            text-align: left;
-        }
-
-        .cabezera{
-            width: 100%;
-            background-color: #E3FF68;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            gap: 0.5rem;
-        }
-
-        .footer{
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            background-color: #E3FF68;
-            border-radius: 5px;
-        }
-
-        #container{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .despedida{
-            margin-top: 1rem;
-            font-size: small;
-        }
-    </style>
 </head>
-<body>
-<div id="container">
+<body style="font-family: Inter, serif; color: #2D2D2D; padding: 0; margin: 0 auto; max-width: 550px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+<div id="container" style="font-family: Inter, serif; color: #2D2D2D; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; text-align: center;">
 
-    <div class="cabezera column all-center">
-        <h1>¡Hola {{nombre}}!</h1>
-        <h2>Bienvenido a <span>runffee</span></h2>
+    <div class="cabezera column all-center" style="font-family: Inter, serif; color: #2D2D2D; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background-color: #E3FF68; border-radius: 5px; margin-bottom: 1rem; padding: 1rem; gap: 0.5rem;">
+        <h1 style="color: #2D2D2D; font-family: 'Montserrat', sans-serif; margin: 0;">¡Hola {{nombre}}!</h1>
+        <h2 style="color: #2D2D2D; font-family: 'Montserrat', sans-serif; margin: 0;">Bienvenido a <span style="color: #2D2D2D; font-family: 'Bagel Fat One'; font-size: 32px;">runffee</span></h2>
     </div>
-    <div class="column all-center gap1">
-        <h3>La comunidad donde correr sabe mejor</h3>
-        <p>Aquí no solo se trata de hacer kilómetros, sino de disfrutar cada paso... y cada sorbo.</p>
+    <div class="column all-center gap1" style="font-family: Inter, serif; color: #2D2D2D; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;">
+        <h3 style="color: #2D2D2D; font-family: 'Montserrat', sans-serif; margin: 0;">La comunidad donde correr sabe mejor</h3>
+        <p style="font-family: Inter, serif; color: #2D2D2D; margin: 0;">Aquí no solo se trata de hacer kilómetros, sino de disfrutar cada paso... y cada sorbo.</p>
 
     </div>
 
-    <img id="img-welcome" src="https://anderolivos.com/runffee/assets/images/runffee_tarjeta_opt2.jpg" alt="Imagen bienvenida Runffee">
+    <img id="img-welcome" src="https://anderolivos.com/runffee/assets/images/runffee_tarjeta_opt2.jpg" alt="Imagen bienvenida Runffee" style="font-family: Inter, serif; color: #2D2D2D; width: 100%; border-radius: 10px; align-self: center; justify-self: center; margin: 1rem;">
 
-    <p><b>Con Runffee podrás:</b></p>
-    <div class="column all-center">
-        <ul class="column all-center gap1">
-            <li>- Planificar tus rutas y retos personales.</li>
-            <li>- Conectarte con otros runners cerca de ti.</li>
-            <li>- Y lo mejor… terminar en tu cafetería favorita para recargar energías</li>
+    <p style="font-family: Inter, serif; color: #2D2D2D; margin: 0;"><b style="font-family: Inter, serif; color: #2D2D2D;">Con Runffee podrás:</b></p>
+    <div class="column all-center" style="font-family: Inter, serif; color: #2D2D2D; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <ul class="column all-center gap1" style="font-family: Inter, serif; color: #2D2D2D; list-style: none; width: 65%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;">
+            <li style="font-family: Inter, serif; color: #2D2D2D; width: 100%; text-align: left;">- Planificar tus rutas y retos personales.</li>
+            <li style="font-family: Inter, serif; color: #2D2D2D; width: 100%; text-align: left;">- Conectarte con otros runners cerca de ti.</li>
+            <li style="font-family: Inter, serif; color: #2D2D2D; width: 100%; text-align: left;">- Y lo mejor… terminar en tu cafetería favorita para recargar energías</li>
         </ul>
     </div>
 
 
-    <div class="column all-center gap1">
-        <p>Prepárate para una experiencia que combina deporte, comunidad y buen rollo.
+    <div class="column all-center gap1" style="font-family: Inter, serif; color: #2D2D2D; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;">
+        <p style="font-family: Inter, serif; color: #2D2D2D; margin: 0;">Prepárate para una experiencia que combina deporte, comunidad y buen rollo.
             ¡Es hora de calzarte las zapatillas y darle sabor a tus entrenamientos!</p>
 
-        <p><b>Nos alegra tenerte en la familia Runffee</b></p>
-        <p>¡Nos vemos en la meta (o en la cafetería)!</p>
+        <p style="font-family: Inter, serif; color: #2D2D2D; margin: 0;"><b style="font-family: Inter, serif; color: #2D2D2D;">Nos alegra tenerte en la familia Runffee</b></p>
+        <p style="font-family: Inter, serif; color: #2D2D2D; margin: 0;">¡Nos vemos en la meta (o en la cafetería)!</p>
     </div>
-    <div class="despedida">
-        <p><i>– El equipo de Runffee</i></p>
-        <p><i>Corre, disfruta, repite</i></p>
+    <div class="despedida" style="font-family: Inter, serif; color: #2D2D2D; margin-top: 1rem; font-size: small;">
+        <p style="font-family: Inter, serif; color: #2D2D2D; margin: 0;"><i style="font-family: Inter, serif; color: #2D2D2D;">– El equipo de Runffee</i></p>
+        <p style="font-family: Inter, serif; color: #2D2D2D; margin: 0;"><i style="font-family: Inter, serif; color: #2D2D2D;">Corre, disfruta, repite</i></p>
     </div>
 </div>
-<div class="footer">
-    <img id="img-logo" src="https://anderolivos.com/runffee/assets/images/LOGO_OSCURO.png" alt="">
+<div class="footer" style="font-family: Inter, serif; color: #2D2D2D; margin-top: 1rem; display: flex; flex-direction: column; width: 100%; align-items: center; justify-content: center; background-color: #E3FF68; border-radius: 5px;">
+    <img id="img-logo" src="https://anderolivos.com/runffee/assets/images/LOGO_OSCURO.png" alt="" style="font-family: Inter, serif; color: #2D2D2D; width: 60px;" width="60">
 </div>
 </body>
 </html>
