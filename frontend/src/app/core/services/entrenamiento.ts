@@ -5,12 +5,12 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class CafeteriaService {
-  private apiUrl = 'https://runffee.onrender.com/cafeteria';
+export class Entrenamiento {
 
   constructor(private http: HttpClient) { }
 
-  getCafeteria(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getEntrenamiento(): Observable<any> {
+    let apiUrl= 'https://runffee.onrender.com/entrenamiento';
+    return this.http.get<any>(apiUrl);
   }
 }

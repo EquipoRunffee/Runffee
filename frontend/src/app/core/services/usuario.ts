@@ -5,12 +5,11 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class CuponService {
-  private apiUrl = 'https://runffee.onrender.com/cupon';
-
+export class Usuario {
   constructor(private http: HttpClient) { }
 
-  getCupon(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getUsuario(): Observable<any> {
+    let apiUrl= 'https://runffee.onrender.com/usuario';
+    return this.http.get<any>(apiUrl);
   }
 }
