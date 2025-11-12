@@ -38,7 +38,7 @@ public class Usuario {
     private String pais;
 
     @Column (name = "sexo")
-    private Integer sexo;
+    private UsuarioSexo sexo;
 
     @Column (name = "imagen")
     private String imagen;
@@ -57,5 +57,4 @@ public class Usuario {
 
     @Column (name = "expiresat")
     private Instant expiresat;
-
 }

@@ -1,12 +1,11 @@
 package org.runffee.backend.controladores;
 
+import org.runffee.backend.DTO.CafeteriaCrearDTO;
+import org.runffee.backend.DTO.CafeteriaDetalleCrearDTO;
 import org.runffee.backend.modelos.Cafeteria;
 import org.runffee.backend.servicios.CafeteriaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
 @RequestMapping("/cafeteria")
 @CrossOrigin(origins = {
         "http://localhost:4200",
-        "https://www.anderolivos.com"
+        "https://anderolivos.com"
 })
 public class CafeteriaController {
 
@@ -26,5 +25,24 @@ public class CafeteriaController {
         return cafeteriaService.obtenerCafeterias();
     }
 
+    @GetMapping("/{id}")
+    public Cafeteria obtenerCafeteria(@PathVariable int id){
+        return cafeteriaService.obtenerCafeteria(id);
+    }
+
+    @GetMapping("/detalles")
+    public List<CafeteriaDetalleCrearDTO> obtenerCafeteriaDetalles() {
+        return cafeteriaService.obtenerCafeteriaDetalles();
+    }
+
+    @PostMapping("/crear")
+    public void crearCafeteria(@RequestBody CafeteriaCrearDTO cafeteria){
+        cafeteriaService.crearCafeteria(cafeteria);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public void eliminarCafeteria(@PathVariable Integer id){
+        cafeteriaService.eliminarCafeteria(id);
+    }
 
 }

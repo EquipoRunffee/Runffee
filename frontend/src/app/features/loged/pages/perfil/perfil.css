@@ -1,0 +1,13 @@
+.container{
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 500px){
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

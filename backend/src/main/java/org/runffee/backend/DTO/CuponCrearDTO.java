@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Data
 public class CuponCrearDTO {
-    private String nome;
+    private String nombre;
     private Date fechaCaducidad;
     private Integer tipo;
     private Boolean usado;
@@ -13,7 +13,4 @@ public class CuponCrearDTO {
     private Integer porcentaje;
     private String descripcion;
     private Boolean eliminado;
-
-
-
 }

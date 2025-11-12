@@ -1,0 +1,55 @@
+.contenedor{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: "Inter", sans-serif;
+}
+
+.nav-falso{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.opciones{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+}
+
+.opciones>button{
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.disponible-activo{
+  background: #E3FF68;
+}
+
+.usados-activo{
+  background: var(--color-primario-marron);
+  color: white;
+}
+
+.contenedor-cupones{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.disponible{
+  background: #E3FF68;
+}
+
+.usado{
+  background-color: var(--color-secundario-marron);
+}

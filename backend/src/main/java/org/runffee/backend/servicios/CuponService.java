@@ -1,8 +1,10 @@
 package org.runffee.backend.servicios;
 
+import org.runffee.backend.DTO.CuponCrearDTO;
+import org.runffee.backend.DTO.ValoracionCrearDTO;
 import org.runffee.backend.modelos.Cafeteria;
 import org.runffee.backend.modelos.Cupon;
-import org.runffee.backend.repositorios.ICafeteriaRepository;
+import org.runffee.backend.modelos.Valoracion;
 import org.runffee.backend.repositorios.ICuponRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,14 +21,28 @@ public class CuponService {
         return cuponRepository.findAll().stream().filter(cupon -> !cupon.getEliminado()).toList();
     }
 
-//    public Cafeteria obtenerCafeteria(int id) {
-//        return cafeteriaRepository.findById(id).orElse(null);
-//    }
-//
-//    public void eliminarCafeteria(int id) {
-//        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
-//        if (cafeteria != null) {
-//            cafeteria.setEliminado(true);
-//        }
-//    }
+    public Cupon obtenerCupon(int id) {
+        return cuponRepository.findById(id).orElse(null);
+    }
+
+    public void crearCupon(CuponCrearDTO cupon) {
+        Cupon nuevoCupon = new Cupon();
+
+        nuevoCupon.setNombre(cupon.getNombre());
+        nuevoCupon.setFechaCaducidad(cupon.getFechaCaducidad());
+        nuevoCupon.setTipo(cupon.getTipo());
+        nuevoCupon.setUsado(cupon.getUsado());
+        nuevoCupon.setImagen(cupon.getImagen());
+        nuevoCupon.setPorcentaje(cupon.getPorcentaje());
+        nuevoCupon.setDescripcion(cupon.getDescripcion());
+
+        cuponRepository.save(nuevoCupon);
+    }
+
+    public void eliminarCupon(int id) {
+        Cupon cupon = cuponRepository.findById(id).orElse(null);
+        if (cupon != null) {
+            cupon.setEliminado(true);
+        }
+    }
 }
