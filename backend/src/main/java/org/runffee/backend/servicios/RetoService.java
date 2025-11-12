@@ -1,7 +1,6 @@
 package org.runffee.backend.servicios;
 
-import org.runffee.backend.DTO.RetoCrearDTO;
-import org.runffee.backend.modelos.Cafeteria;
+import org.runffee.backend.DTO.RetoDTO;
 import org.runffee.backend.modelos.Reto;
 import org.runffee.backend.repositorios.IRetoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,10 @@ public class RetoService {
     @Autowired
     private IRetoRepository retoRepository;
 
+    /**
+     * Función que devuelve todos los retos
+     * @return
+     */
     public List<Reto> obtenerRetos() {
         return retoRepository.findAll()
                 .stream()
@@ -22,11 +25,20 @@ public class RetoService {
                 .toList();
     }
 
+    /**
+     * Función que devuelve un reto por su id
+     * @param id
+     * @return
+     */
     public Reto obtenerReto(int id) {
         return retoRepository.findById(id).orElse(null);
     }
 
-    public void crearReto(RetoCrearDTO reto) {
+    /**
+     * Función para crear un reto
+     * @param reto
+     */
+    public void crearReto(RetoDTO reto) {
         Reto nuevoReto = new Reto();
 
         nuevoReto.setNombre(reto.getNombre());
@@ -36,6 +48,10 @@ public class RetoService {
         retoRepository.save(nuevoReto);
     }
 
+    /**
+     * Función para eliminar un reto por su id
+     * @param id
+     */
     public void eliminarReto(int id) {
         Reto reto = retoRepository.findById(id).orElse(null);
         if (reto != null) {

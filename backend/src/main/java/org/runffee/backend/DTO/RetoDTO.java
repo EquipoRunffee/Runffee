@@ -5,8 +5,11 @@ import org.runffee.backend.modelos.Entrenamiento;
 
 import java.util.Date;
 
+/**
+ * DTO con todos los datos del reto
+ */
 @Data
-public class RetoCrearDTO {
+public class RetoDTO {
     private String nombre;
     private Date fecha_inicio;
     private Date fecha_caducidad;

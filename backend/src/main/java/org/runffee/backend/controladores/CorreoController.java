@@ -17,6 +17,11 @@ public class CorreoController {
     @Autowired
     private CorreoService correoService;
 
+    /***
+     * API para enviar el correo de bienvenida al usuario
+     * @param correo
+     * @throws IOException
+     */
     @PostMapping("/bienvenida")
     public void bienvenida(@RequestBody CorreoDTO correo) throws IOException {
         correoService.bienvenida(correo);

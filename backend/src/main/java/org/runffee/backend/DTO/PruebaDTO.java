@@ -1,4 +1,4 @@
 package org.runffee.backend.DTO;
 
-public class PruebaCrearDTO {
+public class PruebaDTO {
 }

@@ -3,8 +3,11 @@ package org.runffee.backend.DTO;
 import lombok.Data;
 import java.util.Date;
 
+/**
+ * DTO con todos los datos del cupon
+ */
 @Data
-public class CuponCrearDTO {
+public class CuponDTO {
     private String nombre;
     private Date fechaCaducidad;
     private Integer tipo;

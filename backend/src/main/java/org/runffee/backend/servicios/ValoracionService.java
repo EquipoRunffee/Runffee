@@ -1,7 +1,6 @@
 package org.runffee.backend.servicios;
 
-import org.runffee.backend.DTO.ValoracionCrearDTO;
-import org.runffee.backend.modelos.Cafeteria;
+import org.runffee.backend.DTO.ValoracionDTO;
 import org.runffee.backend.modelos.Valoracion;
 import org.runffee.backend.repositorios.IValoracionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,10 @@ public class ValoracionService {
     @Autowired
     private IValoracionRepository valoracionRepository;
 
+    /**
+     * Función que devuelve todas las valoraciones
+     * @return
+     */
     public List<Valoracion> obtenerValoraciones() {
         return valoracionRepository.findAll()
                 .stream()
@@ -22,11 +25,20 @@ public class ValoracionService {
                 .toList();
     }
 
+    /**
+     * Función que devuelve la valoración por su id
+     * @param id
+     * @return
+     */
     public Valoracion obtenerValoracion(int id) {
         return valoracionRepository.findById(id).orElse(null);
     }
 
-    public void crearValoracion(ValoracionCrearDTO valoracion) {
+    /**
+     * Función para crear una valoración
+     * @param valoracion
+     */
+    public void crearValoracion(ValoracionDTO valoracion) {
         Valoracion nuevaValoracion = new Valoracion();
 
         nuevaValoracion.setTitulo(valoracion.getTitulo());
@@ -36,6 +48,10 @@ public class ValoracionService {
         valoracionRepository.save(nuevaValoracion);
     }
 
+    /**
+     * Función para elimminar una valoración por su id
+     * @param id
+     */
     public void eliminarValoracion(int id) {
         Valoracion valoracion = valoracionRepository.findById(id).orElse(null);
         if (valoracion != null) {

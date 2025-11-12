@@ -1,7 +1,7 @@
 package org.runffee.backend.servicios;
 
-import org.runffee.backend.DTO.EntrenamientoCrearDTO;
-import org.runffee.backend.DTO.EntrenamientoDetalleCrearDTO;
+import org.runffee.backend.DTO.EntrenamientoDTO;
+import org.runffee.backend.DTO.EntrenamientoDetalleDTO;
 import org.runffee.backend.modelos.Entrenamiento;
 import org.runffee.backend.repositorios.IEntrenamientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,10 @@ public class EntrenamientoService {
     @Autowired
     private IEntrenamientoRepository entrenamientoRepository;
 
+    /**
+     * Función que devuelve todos los entrenamientos
+     * @return
+     */
     public List<Entrenamiento> obtenerEntrenamientos() {
         return entrenamientoRepository.findAll()
                 .stream()
@@ -23,17 +27,30 @@ public class EntrenamientoService {
                 .toList();
     }
 
+    /**
+     * Función que devuelve el entrenamiento por id
+     * @param id
+     * @return
+     */
     public Entrenamiento obtenerEntrenamiento(int id) {
         return entrenamientoRepository.findById(id).orElse(null);
     }
 
-    public List<EntrenamientoDetalleCrearDTO> obtenerEntrenamientoDetalles() {
+    /**
+     * Función  que devuelve todos los Entrenamientos Detalle DTO
+     * @return
+     */
+    public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles() {
         return entrenamientoRepository.findAll().stream()
-                .map(entrenamiento -> new EntrenamientoDetalleCrearDTO(entrenamiento.getNombre(), entrenamiento.getDistancia(), entrenamiento.getFecha_fin()))
+                .map(entrenamiento -> new EntrenamientoDetalleDTO(entrenamiento.getNombre(), entrenamiento.getDistancia(), entrenamiento.getFecha_fin()))
                 .collect(Collectors.toList());
     }
 
-    public void crearEntrenamiento(EntrenamientoCrearDTO entrenamiento) {
+    /**
+     * Función para crear un entrenamiento
+     * @param entrenamiento
+     */
+    public void crearEntrenamiento(EntrenamientoDTO entrenamiento) {
         Entrenamiento nuevoEntrenamiento = new Entrenamiento();
 
         nuevoEntrenamiento.setNombre(entrenamiento.getNombre());
@@ -45,6 +62,11 @@ public class EntrenamientoService {
 
         entrenamientoRepository.save(nuevoEntrenamiento);
     }
+
+    /**
+     * Función para eliminar un entrenamiento
+     * @param id
+     */
     public void eliminarEntrenamiento(int id) {
         Entrenamiento entrenamiento = entrenamientoRepository.findById(id).orElse(null);
         if (entrenamiento != null) {
