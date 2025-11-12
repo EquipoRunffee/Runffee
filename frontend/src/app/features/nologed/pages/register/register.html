@@ -11,9 +11,9 @@
 <div class="contenedor-form">
 
   <!-- Encabezado Formulario -->
-  <img class="logo" src="/assets/images/LOGO_OSCURO.png" style="height: 4rem;">
+  <img class="logo" src="/assets/images/logo/LOGO_OSCURO.png" style="height: 4rem;">
   <h2>¡Genial!</h2>
-  <p>Ya tenemos tus datos de Strava. Indica el correo y la contraseña con la que accederas a tu cuenta de Runffee.</p>
+  <p>Ya tenemos tus datos de StravaService. Indica el correo y la contraseña con la que accederas a tu cuenta de Runffee.</p>
 
   <!-- Formulario Registro -->
   <form class="formulario" #registerForm="ngForm" (ngSubmit)="register()">
@@ -48,7 +48,7 @@
     </div>
 
     <!--Condicion
-    <div *ngIf="passwordRef.invalid && passwordRef.touched" class="error">
+    <div *ngIf="passwordRef.invalid && passwordRef.touched" models="error">
       <div *ngIf="passwordRef.errors?.['required']">La contraseña es obligatoria</div>
       <div *ngIf="passwordRef.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres</div>
     </div>
