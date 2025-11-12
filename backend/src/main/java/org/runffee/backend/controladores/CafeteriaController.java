@@ -20,16 +20,29 @@ public class CafeteriaController {
     @Autowired
     private CafeteriaService cafeteriaService;
 
+    /***
+     * API que devuelve todas las cafeterías (activas)
+     * @return
+     */
     @GetMapping
     public List<Cafeteria> obtenerCafeterias() {
         return cafeteriaService.obtenerCafeterias();
     }
 
+    /***
+     * API que devuelve la cafetería encontrada por id
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     public Cafeteria obtenerCafeteria(@PathVariable int id){
         return cafeteriaService.obtenerCafeteria(id);
     }
 
+    /***
+     * API que devuelve
+     * @return
+     */
     @GetMapping("/detalles")
     public List<CafeteriaDetalleCrearDTO> obtenerCafeteriaDetalles() {
         return cafeteriaService.obtenerCafeteriaDetalles();
