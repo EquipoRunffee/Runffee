@@ -67,6 +67,7 @@ public class StravaService {
 
         //Cuando ya está en el register, comprobar que el correo no existe en la bbdd
 
+        
 
         //Esto es la creación del usuario
         //Hay que crear una función para esto

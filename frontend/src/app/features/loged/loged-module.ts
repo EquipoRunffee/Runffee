@@ -13,7 +13,7 @@ import {Actividad} from '@loged/components/actividad/actividad';
   exports: [
     Header,
     Navbarperfil,
-    Cupon
+    Cupon,
     Navbarperfil,
     Actividad,
   ],
@@ -21,7 +21,7 @@ import {Actividad} from '@loged/components/actividad/actividad';
     CommonModule,
     Header,
     Navbarperfil,
-    Cupon
+    Cupon,
     Actividad,
   ]
 })

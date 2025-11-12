@@ -26,7 +26,15 @@
       [(ngModel)]="usuario.email"
       placeholder="Correo electrónico"
       required
+      email
+      #email="ngModel"
+      class="form-control"
     >
+
+    <div class="error" *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors?.['required']">El correo es obligatorio.</div>
+      <div *ngIf="email.errors?.['email']">Formato de correo inválido.</div>
+    </div>
 
     <!-- email not already in bbdd -->
     <div id="emailError" class="error">{{emailError}}</div>
@@ -55,6 +63,7 @@
 
     <!-- Repetir contraseña -->
 
+    <div class="input-password">
     <input
       type="password"
       name="repeatpassword"
@@ -63,10 +72,26 @@
       required
     >
 
+    </div>
+
     <!-- contrasena == repeatcontrasena -->
     <div id="repeatPasswordError" class="error">{{repeatPasswordError}}</div>
 
-    <!-- Botón crear cuenta -->
+  <!-- Lo que he visto en el video -->
+  <div class="form-group" [class.has-error]="email.invalid" && email.touched">
+  <label for="email" class="control-label">Email</label>
+  <input id="email" required [email]="employee.email!==''" name="email" #email="ngModel" [(ngModel)]="employee.email"
+         type="text" class="form-control">
+  <span class="help-block" *ngIf="email.errors?.required && email.touched">
+        Email is required
+      </span>
+  <span class="help-block" *ngIf="email.errors?.email && email.touched">
+        Email is invalid
+      </span>
+</div>
+<!-- hasta aqui lo que he visto en el video -->
+
+<!-- Botón crear cuenta -->
 
     <button class="btn-registro" type="submit">
         Crear cuenta
