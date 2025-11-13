@@ -1,7 +1,7 @@
 package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.CafeteriaDTO;
-import org.runffee.backend.DTO.CafeteriaDetalleCrearDTO;
+import org.runffee.backend.DTO.CafeteriaDetalleDTO;
 import org.runffee.backend.modelos.*;
 import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +32,9 @@ public class CafeteriaService {
         return cafeteriaRepository.findById(id).orElse(null);
     }
 
-    public List<CafeteriaDetalleCrearDTO> obtenerCafeteriaDetalles() {
+    public List<CafeteriaDetalleDTO> obtenerCafeteriaDetalles() {
         return cafeteriaRepository.findAll().stream()
-                .map(cafeteria -> new CafeteriaDetalleCrearDTO
+                .map(cafeteria -> new CafeteriaDetalleDTO
                         (cafeteria.getNombre(), cafeteria.getImagen(), cafeteria.getTipoCafeteria(),
                                 valoracionService.obtenerMediaValoracionCafeteria(cafeteria)))
                 .collect(Collectors.toList());

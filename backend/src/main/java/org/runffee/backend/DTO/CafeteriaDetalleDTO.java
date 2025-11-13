@@ -7,14 +7,14 @@ import org.runffee.backend.servicios.ValoracionService;
 import java.math.BigDecimal;
 
 @Data
-public class CafeteriaDetalleCrearDTO {
+public class CafeteriaDetalleDTO {
     private String nombre;
     private String imagen;
     private TipoCafeteria tipoCafeteria;
     private BigDecimal valoracionMedia;
 
 
-    public CafeteriaDetalleCrearDTO(String nombre, String imagen, TipoCafeteria tipoCafeteria,  BigDecimal valoracionMedia) {
+    public CafeteriaDetalleDTO(String nombre, String imagen, TipoCafeteria tipoCafeteria,  BigDecimal valoracionMedia) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.tipoCafeteria = tipoCafeteria;
