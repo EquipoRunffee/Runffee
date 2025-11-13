@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -10,7 +10,9 @@ import {HttpClient} from '@angular/common/http';
 })
 export class Callback implements OnInit {
   constructor(private route: ActivatedRoute,
-  private http: HttpClient) {}
+  private http: HttpClient,
+  private router: Router
+  ) {}
 
   ngOnInit() {
 
@@ -26,6 +28,13 @@ export class Callback implements OnInit {
           //Esto es la respuesta de nuestro backend
           next: (res)=>{
             console.log("Tokens recibidos del backend: ", res);
+          if (res.status === 'login'){
+            this.router.navigate(['/login']);
+          } else if (res.status === 'register'){
+            this.router.navigate(['/register']);
+          }
+         
+         
           },
           error: (err)=>{
             console.log(err);

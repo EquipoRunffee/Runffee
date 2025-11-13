@@ -26,15 +26,7 @@
       [(ngModel)]="usuario.email"
       placeholder="Correo electrónico"
       required
-      email
-      #email="ngModel"
-      class="form-control"
     >
-
-    <div class="error" *ngIf="email.touched && email.invalid">
-      <div *ngIf="email.errors?.['required']">El correo es obligatorio.</div>
-      <div *ngIf="email.errors?.['email']">Formato de correo inválido.</div>
-    </div>
 
     <!-- email not already in bbdd -->
     <div id="emailError" class="error">{{emailError}}</div>
@@ -78,7 +70,7 @@
     <div id="repeatPasswordError" class="error">{{repeatPasswordError}}</div>
 
   <!-- Lo que he visto en el video -->
-  <div class="form-group" [class.has-error]="email.invalid" && email.touched">
+  <!--<div class="form-group" [class.has-error]="email.invalid" && email.touched">
   <label for="email" class="control-label">Email</label>
   <input id="email" required [email]="employee.email!==''" name="email" #email="ngModel" [(ngModel)]="employee.email"
          type="text" class="form-control">
@@ -89,7 +81,7 @@
         Email is invalid
       </span>
 </div>
-<!-- hasta aqui lo que he visto en el video -->
+hasta aqui lo que he visto en el video -->
 
 <!-- Botón crear cuenta -->
 

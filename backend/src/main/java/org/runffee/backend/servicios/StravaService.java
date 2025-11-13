@@ -4,10 +4,7 @@ import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -30,6 +27,8 @@ public class StravaService {
 
     @Autowired
     private IUsuarioRepository usuarioRepository;
+    @Autowired
+    private UsuarioService usuarioService;
 
     public ResponseEntity<?> signIn(Map<String, String> body){
 
@@ -65,6 +64,13 @@ public class StravaService {
 //
 //        return registrado
 
+        Integer athleteid = (Integer) athleteMap.get("id");
+
+        if (usuarioService.existeAthleteId(athleteid)){
+            return ResponseEntity.ok(Map.of("status", "login")); //debe ir al login
+        }
+
+
         //Cuando ya está en el register, comprobar que el correo no existe en la bbdd
 
         
@@ -82,7 +88,7 @@ public class StravaService {
 
         usuarioRepository.save(usuario);
 
-        return ResponseEntity.ok(data);
+        return ResponseEntity.ok(Map.of("status","register")); //return.. ("usuarioNuevo")??(Map.of("status", "register") ???
     }
 
     public void validarRenovarToken(Usuario usuario){

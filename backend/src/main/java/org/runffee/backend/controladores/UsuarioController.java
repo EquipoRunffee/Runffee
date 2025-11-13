@@ -39,5 +39,10 @@ public class UsuarioController {
         usuarioService.eliminarUsuario(id);
     }
 
+    @GetMapping("/existeEmail")
+    public boolean existeEmail(@RequestParam String email) {
+        return usuarioService.existeEmail(email);
+    }
+
 
 }
