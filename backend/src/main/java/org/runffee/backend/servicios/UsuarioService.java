@@ -61,13 +61,13 @@ public class UsuarioService {
 
     //funcion para comprobar que el email que me introduce el usuario esta en mi bbdd
 
-    public boolean existeCorreo(String correo) {
-        return usuarioRepository.findByCorreo(correo) != null;
+    public Boolean existeCorreo(String correo) {
+        return usuarioRepository.existsByCorreo(correo);
         //mirar lode Optional para meter en vez del null isPresent (mas seguro)
     }
 
-    public boolean existeAthleteId (Integer athleteid) {
-        return usuarioRepository.findByAthleteid(athleteid) != null;
+    public boolean existeStravaAthleteId (Integer stravaAthleteid) {
+        return usuarioRepository.existsByStravaAthleteId(stravaAthleteid);
     }
 
 }
