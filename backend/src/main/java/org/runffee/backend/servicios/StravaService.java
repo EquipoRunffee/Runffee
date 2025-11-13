@@ -105,7 +105,6 @@ public class StravaService {
     }
 
 
-    private UsuarioService usuarioService;
 
 
     /**
