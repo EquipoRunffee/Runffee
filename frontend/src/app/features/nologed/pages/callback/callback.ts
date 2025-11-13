@@ -25,6 +25,7 @@ export class Callback implements OnInit {
         {
           //Esto es la respuesta de nuestro backend
           next: (res)=>{
+            alert("YA HAN CARGADO LOS DATOS");
             console.log("Tokens recibidos del backend: ", res);
           },
           error: (err)=>{
