@@ -27,6 +27,7 @@ export class Callback implements OnInit {
         {
           //Esto es la respuesta de nuestro backend
           next: (res)=>{
+            alert("YA HAN CARGADO LOS DATOS");
             console.log("Tokens recibidos del backend: ", res);
           if (res.status === 'login'){
             this.router.navigate(['/login']);
@@ -35,6 +36,11 @@ export class Callback implements OnInit {
           }
 
 
+            //PARTE DE VALENTIN
+            /**
+             * Aqui es donde tenemos que redirigir al usuario. Si la respuesta (res) es TRUE significa que el usuario
+             * existe por lo tanto lo redirigimos al login. Si es false lo llevamos al register.
+             */
           },
           error: (err)=>{
             console.log(err);
