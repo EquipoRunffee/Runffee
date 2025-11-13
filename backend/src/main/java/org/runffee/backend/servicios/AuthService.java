@@ -19,8 +19,12 @@ public class AuthService {
     private JwtService jwtService;
 
     public Map<String, Object> registrarUsuario(Usuario usuario) {
+        if (usuarioRepository.findByCorreo(usuario.getCorreo()).isPresent()) {
+            throw new RuntimeException("El correo ya está registrado");
+        }
 
         usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
+        usuarioRepository.save(usuario);
 
         String token = jwtService.genenrarToken(usuario.getId(), usuario.getCorreo());
 
