@@ -1,7 +1,6 @@
 package org.runffee.backend.servicios;
 
-import org.runffee.backend.DTO.LineaPedidoCrearDTO;
-import org.runffee.backend.modelos.Cafeteria;
+import org.runffee.backend.DTO.LineaPedidoDTO;
 import org.runffee.backend.modelos.LineaPedido;
 import org.runffee.backend.modelos.Producto;
 import org.runffee.backend.repositorios.ILineaPedidoRepository;
@@ -16,6 +15,10 @@ public class LineaPedidoService {
     @Autowired
     private ILineaPedidoRepository lineaPedidoRepository;
 
+    /**
+     * Función que devuelve todas las lineas de pedido
+     * @return
+     */
     public List<LineaPedido> obtenerLineasPedidos() {
         return lineaPedidoRepository.findAll()
                 .stream()
@@ -23,17 +26,31 @@ public class LineaPedidoService {
                 .toList();
     }
 
+    /**
+     * Función que devuelve la linea de pedido por id
+     * @param id
+     * @return
+     */
     public LineaPedido obtenerLineaPedido(int id) {
         return lineaPedidoRepository.findById(id).orElse(null);
     }
 
-    public void crearLineaPedido(LineaPedidoCrearDTO lineaPedido) {
+    /**
+     * Función para crear una linea de pedido
+     * @param lineaPedido
+     */
+    public void crearLineaPedido(LineaPedidoDTO lineaPedido) {
         LineaPedido nuevaLineaCliente = new LineaPedido();
 
         nuevaLineaCliente.setCantidadProducto(lineaPedido.getCantidadProducto());
 
         lineaPedidoRepository.save(nuevaLineaCliente);
     }
+
+    /**
+     * Función para eliminar una linea de pedido
+     * @param id
+     */
 
     public void eliminarLineasPedido(int id) {
         LineaPedido lineaPedido = lineaPedidoRepository.findById(id).orElse(null);

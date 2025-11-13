@@ -10,7 +10,7 @@
 
   <div class="contenedor-form">
     <!-- Encabezado Formulario -->
-    <img class="logo" src="./assets/images/LOGO_OSCURO.png" style="height: 4rem;">
+    <img class="logo" src="./assets/images/logo/LOGO_OSCURO.png" style="height: 4rem;">
     <h2>Inicio Sesión</h2>
 
     <!-- Formulario Inicio Sesión -->
@@ -43,9 +43,9 @@
         Iniciar
       </button>
 
-      <!-- Botón de registro con Strava -->
-      <button class="btn-strava" type="submit" style="display: grid; grid-template-columns: 1fr 9fr">
-        <img src="./assets/images/icon_strava.png" style="height: 1.2rem;">
+      <!-- Botón de registro con StravaService -->
+      <button (click)="conectarConStrava()" class="btn-strava" type="submit" style="display: grid; grid-template-columns: 1fr 9fr">
+        <img src="./assets/icon/icon_strava.png" style="height: 1.2rem;">
         Regístrate con Strava
       </button>
 

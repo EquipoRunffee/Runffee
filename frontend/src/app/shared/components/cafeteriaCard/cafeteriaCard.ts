@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CafeteriaService} from '@core/services/cafeteria';
+import {CafeteriaService} from '@core/services/cafeteria/cafeteriaService';
 import { CommonModule } from '@angular/common';
-import {Cafeteria} from '@shared/class/cafeteria';
+import {Cafeteria} from '@core/models/cafeteria';
 
 @Component({
   selector: 'app-cafeteriaCard',

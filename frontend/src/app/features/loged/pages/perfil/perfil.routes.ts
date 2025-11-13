@@ -17,6 +17,12 @@ export const PERFIL_ROUTES: Routes = [
             .then(m => m.Actividades)
       },
       {
+        path: 'cupones',
+        loadComponent: () =>
+          import('@loged/components/perfil/cupones/cupones')
+            .then(m => m.Cupones)
+      },
+      {
         path: 'contrasena',
         loadComponent: () =>
           import('@loged/components/perfil/contrasena/contrasena')
