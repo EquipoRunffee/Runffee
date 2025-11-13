@@ -17,4 +17,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     //Devuelve el Usuario con dicho athlete id
     Optional<Usuario> findByStravaAthleteId(Integer stravaAthleteid);
+
+    Optional<Usuario> findByCorreo(String correo);
+    Optional<Usuario> findByRefreshtoken(String refreshToken);
 }
