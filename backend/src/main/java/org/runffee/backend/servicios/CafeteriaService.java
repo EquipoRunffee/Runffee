@@ -1,6 +1,6 @@
 package org.runffee.backend.servicios;
 
-import org.runffee.backend.DTO.CafeteriaCrearDTO;
+import org.runffee.backend.DTO.CafeteriaDTO;
 import org.runffee.backend.DTO.CafeteriaDetalleCrearDTO;
 import org.runffee.backend.modelos.*;
 import org.runffee.backend.repositorios.*;
@@ -40,7 +40,7 @@ public class CafeteriaService {
                 .collect(Collectors.toList());
     }
 
-    public void crearCafeteria(CafeteriaCrearDTO cafeteria) {
+    public void crearCafeteria(CafeteriaDTO cafeteria) {
         Cafeteria nuevaCafeteria = new Cafeteria();
 
         nuevaCafeteria.setNombre(cafeteria.getNombre());

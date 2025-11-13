@@ -1,6 +1,7 @@
 package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.ValoracionDTO;
+import org.runffee.backend.modelos.Cafeteria;
 import org.runffee.backend.modelos.Valoracion;
 import org.runffee.backend.repositorios.ILineaPedidoRepository;
 import org.runffee.backend.repositorios.IPedidoRepository;
@@ -64,6 +65,11 @@ public class ValoracionService {
         }
     }
 
+    /*
+        Funcion para obtener media de valoraciones por cafeteria,
+        vamos obteniendo datos de la cafeteria seleccionada uno a uno con flatMap
+        hasta valoraciones donde optenemos todas estas para calcular la media
+     */
     private IProductoRepository productoRepository;
     private ILineaPedidoRepository lineaPedidoRepository;
     private IPedidoRepository pedidoRepository;
