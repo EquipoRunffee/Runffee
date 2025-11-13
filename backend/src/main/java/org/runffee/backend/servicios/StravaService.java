@@ -76,9 +76,16 @@ public class StravaService {
 //
 //        return registrado
 
-        //Integer athleteid = (Integer) athleteMap.get("id");
+        System.out.println(ResponseEntity.ok(data));
 
-        return ResponseEntity.ok(data);
+        Integer stravaAthleteid = (Integer) athleteMap.get("id");
+        System.out.println(stravaAthleteid);
+
+        if(usuarioService.existeStravaAthleteId(stravaAthleteid)){
+            return ResponseEntity.ok(Map.of("status", "login"));
+        } else {
+            return ResponseEntity.ok(Map.of("status", "register"));
+        }
 
 //        if (usuarioService.existeAthleteId(athleteid)){
 //            return ResponseEntity.ok(Map.of("status", "login")); //debe ir al login
