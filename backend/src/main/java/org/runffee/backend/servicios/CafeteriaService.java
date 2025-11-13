@@ -2,15 +2,13 @@ package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.CafeteriaCrearDTO;
 import org.runffee.backend.DTO.CafeteriaDetalleCrearDTO;
-import org.runffee.backend.DTO.ProductoCrearDTO;
-import org.runffee.backend.DTO.ProductoDetalleCrearDTO;
-import org.runffee.backend.modelos.Cafeteria;
-import org.runffee.backend.modelos.Producto;
-import org.runffee.backend.modelos.TipoCafeteria;
-import org.runffee.backend.repositorios.ICafeteriaRepository;
+import org.runffee.backend.modelos.*;
+import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +17,9 @@ public class CafeteriaService {
 
     @Autowired
     private ICafeteriaRepository cafeteriaRepository;
+
+    @Autowired
+    private ValoracionService valoracionService;
 
     public List<Cafeteria> obtenerCafeterias() {
         return cafeteriaRepository.findAll()
@@ -33,7 +34,9 @@ public class CafeteriaService {
 
     public List<CafeteriaDetalleCrearDTO> obtenerCafeteriaDetalles() {
         return cafeteriaRepository.findAll().stream()
-                .map(cafeteria -> new CafeteriaDetalleCrearDTO(cafeteria.getNombre(), cafeteria.getImagen(), cafeteria.getTipoCafeteria()))
+                .map(cafeteria -> new CafeteriaDetalleCrearDTO
+                        (cafeteria.getNombre(), cafeteria.getImagen(), cafeteria.getTipoCafeteria(),
+                                valoracionService.obtenerMediaValoracionCafeteria(cafeteria)))
                 .collect(Collectors.toList());
     }
 

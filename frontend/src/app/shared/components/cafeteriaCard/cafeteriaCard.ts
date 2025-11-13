@@ -31,4 +31,11 @@ export class CafeteriaCard implements OnInit{
       }
     });
   }
+
+  capitalizeTipo(tipoCafeteria?: string): string {
+    if (!tipoCafeteria) return '';
+    if (tipoCafeteria === 'CAFETERIA') tipoCafeteria = 'CAFETERÍAS';
+    return tipoCafeteria.charAt(0).toUpperCase() + tipoCafeteria.slice(1).toLowerCase();
+  }
+
 }
