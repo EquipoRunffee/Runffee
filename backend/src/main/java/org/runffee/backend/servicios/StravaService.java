@@ -61,7 +61,7 @@ public class StravaService {
         //Realizamos la petición
         ResponseEntity<Map> response = restTemplate.postForEntity(url, request, Map.class);
 
-        //Recibimos los datos recibidos y los guardamos en data
+        //Recibimos los datos y los guardamos en data
         Map<String, Object> data = response.getBody();
         //Dentro de data tenemos dentor el objeto athlete el cual nos interesa guardar en una variable
         Map<String, Object> athleteMap = (Map<String, Object>) data.get("athlete");
@@ -76,32 +76,34 @@ public class StravaService {
 //
 //        return registrado
 
-        Integer athleteid = (Integer) athleteMap.get("id");
+        //Integer athleteid = (Integer) athleteMap.get("id");
 
-        if (usuarioService.existeAthleteId(athleteid)){
-            return ResponseEntity.ok(Map.of("status", "login")); //debe ir al login
-        }
+        return ResponseEntity.ok(body);
 
-
-        //Cuando ya está en el register, comprobar que el correo no existe en la bbdd
-
-        
-
-        //En el caso de que el usuario no exista en nuestra bbdd y no exista ningún correo tampoco
-        //Creamos el usuario en la bbdd
-        //Hay que crear una función para esto
-        Usuario usuario = new Usuario();
-        usuario.setNombre((String) athleteMap.get("firstname"));
-        usuario.setCiudad((String) athleteMap.get("city"));
-        usuario.setAthleteid((Integer) athleteMap.get("id"));
-        usuario.setAccesstoken((String) data.get("access_token"));
-        usuario.setRefreshtoken((String) data.get("refresh_token"));
-        usuario.setExpiresat(Instant.ofEpochSecond(((Number) data.get("expires_at")).longValue()));
-        usuario.setEliminado(false);
-
-        usuarioRepository.save(usuario);
-
-        return ResponseEntity.ok(Map.of("status","register")); //return.. ("usuarioNuevo")??(Map.of("status", "register") ???
+//        if (usuarioService.existeAthleteId(athleteid)){
+//            return ResponseEntity.ok(Map.of("status", "login")); //debe ir al login
+//        }
+//
+//
+//        //Cuando ya está en el register, comprobar que el correo no existe en la bbdd
+//
+//
+//
+//        //En el caso de que el usuario no exista en nuestra bbdd y no exista ningún correo tampoco
+//        //Creamos el usuario en la bbdd
+//        //Hay que crear una función para esto
+//        Usuario usuario = new Usuario();
+//        usuario.setNombre((String) athleteMap.get("firstname"));
+//        usuario.setCiudad((String) athleteMap.get("city"));
+//        usuario.setAthleteid((Integer) athleteMap.get("id"));
+//        usuario.setAccesstoken((String) data.get("access_token"));
+//        usuario.setRefreshtoken((String) data.get("refresh_token"));
+//        usuario.setExpiresat(Instant.ofEpochSecond(((Number) data.get("expires_at")).longValue()));
+//        usuario.setEliminado(false);
+//
+//        usuarioRepository.save(usuario);
+//
+//        return ResponseEntity.ok(Map.of("status","register")); //return.. ("usuarioNuevo")??(Map.of("status", "register") ???
     }
 
 

@@ -23,17 +23,13 @@ export class Callback implements OnInit {
     if (code) {
       console.log('Codigo recibido de StravaService: ', code);
 
-      this.http.post<any>(url, {code}).subscribe( //el <any> es necesario
+      //el <any> es necesario
+      this.http.post(url, {code}).subscribe(
         {
           //Esto es la respuesta de nuestro backend
           next: (res)=>{
             alert("YA HAN CARGADO LOS DATOS");
             console.log("Tokens recibidos del backend: ", res);
-          if (res.status === 'login'){
-            this.router.navigate(['/login']);
-          } else if (res.status === 'register'){
-            this.router.navigate(['/register']);
-          }
 
 
             //PARTE DE VALENTIN
