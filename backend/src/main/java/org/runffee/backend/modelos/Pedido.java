@@ -41,6 +41,4 @@ public class Pedido {
 
     @Column (name = "eliminado")
     private Boolean eliminado;
-
-
 }

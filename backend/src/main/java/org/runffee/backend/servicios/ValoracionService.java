@@ -2,6 +2,7 @@ package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.ValoracionDTO;
 import org.runffee.backend.modelos.Cafeteria;
+import org.runffee.backend.modelos.LineaPedido;
 import org.runffee.backend.modelos.Pedido;
 import org.runffee.backend.modelos.Valoracion;
 import org.runffee.backend.repositorios.ILineaPedidoRepository;
@@ -78,7 +79,7 @@ public class ValoracionService {
     public BigDecimal obtenerMediaValoracionCafeteria(Cafeteria cafeteria) {
         List<Valoracion> valoraciones = productoRepository.findByCafeteria(cafeteria).stream()
                 .flatMap(producto -> lineaPedidoRepository.findByProducto(producto).stream())
-                .flatMap(lineaPedido -> pedidoRepository.findBylineaPedidos(lineaPedido).stream())
+                .map(LineaPedido::getPedido)
                 .map(Pedido::getValoracion)
                 .toList();
 
