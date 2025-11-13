@@ -63,7 +63,7 @@ public class UsuarioController {
         usuarioService.eliminarUsuario(id);
     }
 
-    @GetMapping("/existeCorreo")
+    @GetMapping("/existe_correo")
     public boolean existeCorreo(@RequestParam String correo) {
         return usuarioService.existeCorreo(correo);
     }
@@ -74,7 +74,7 @@ public class UsuarioController {
      *
      * Se recibe el ID del usuario como parámetro de la URL.
      */
-    @GetMapping("usuarioPerfil/{id}")
+    @GetMapping("/encabezado_perfil/{id}")
     public ResponseEntity<UsuarioEncabezadoPerfilDTO> obtenerEncabezadoPerfil(@PathVariable Integer id) {
         UsuarioEncabezadoPerfilDTO dto = usuarioEncabezadoPerfilService.obtenerEncabezadoPerfil(id);
         return ResponseEntity.ok(dto);
