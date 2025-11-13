@@ -5,8 +5,11 @@ import org.runffee.backend.modelos.Cafeteria;
 
 import java.math.BigDecimal;
 
+/**
+ * DTO con todos los datos del producto
+ */
 @Data
-public class ProductoCrearDTO {
+public class ProductoDTO {
     private String nombre;
     private String imagen;
     private BigDecimal precio;

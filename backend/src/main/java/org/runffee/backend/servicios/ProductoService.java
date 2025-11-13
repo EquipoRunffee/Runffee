@@ -1,10 +1,8 @@
 package org.runffee.backend.servicios;
 
-import org.runffee.backend.DTO.ProductoCrearDTO;
-import org.runffee.backend.DTO.ProductoDetalleCrearDTO;
-import org.runffee.backend.modelos.Cafeteria;
+import org.runffee.backend.DTO.ProductoDTO;
+import org.runffee.backend.DTO.ProductoDetalleDTO;
 import org.runffee.backend.modelos.Producto;
-import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +16,10 @@ public class ProductoService {
     @Autowired
     private IProductoRepository productoRepository;
 
+    /**
+     * Función que devuelve todos los productos
+     * @return
+     */
     public List<Producto> obtenerProductos() {
         return productoRepository.findAll()
                 .stream()
@@ -25,17 +27,30 @@ public class ProductoService {
                 .toList();
     }
 
+    /**
+     * Función que devuelve el producto por id
+     * @param id
+     * @return
+     */
     public Producto obtenerProducto(int id) {
         return productoRepository.findById(id).orElse(null);
     }
 
-    public List<ProductoDetalleCrearDTO> obtenerProductoDetalles() {
+    /**
+     * Función que devuelve todos los Productos Detalle
+     * @return
+     */
+    public List<ProductoDetalleDTO> obtenerProductoDetalles() {
         return productoRepository.findAll().stream()
-                .map(producto -> new ProductoDetalleCrearDTO(producto.getImagen(), producto.getNombre()))
+                .map(producto -> new ProductoDetalleDTO(producto.getImagen(), producto.getNombre()))
                 .collect(Collectors.toList());
     }
 
-    public void crearProducto(ProductoCrearDTO producto) {
+    /**
+     * Función para crear un producto
+     * @param producto
+     */
+    public void crearProducto(ProductoDTO producto) {
         Producto nuevoProducto = new Producto();
 
         nuevoProducto.setNombre(producto.getNombre());
@@ -46,6 +61,11 @@ public class ProductoService {
         productoRepository.save(nuevoProducto);
     }
 
+
+    /**
+     * Función para eliminar un producto por id
+     * @param id
+     */
     public void eliminarProducto(int id) {
         Producto producto = productoRepository.findById(id).orElse(null);
         if (producto != null) {

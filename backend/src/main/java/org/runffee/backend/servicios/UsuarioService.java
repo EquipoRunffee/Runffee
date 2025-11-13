@@ -1,7 +1,6 @@
 package org.runffee.backend.servicios;
 
-import org.runffee.backend.DTO.UsuarioCrearDTO;
-import org.runffee.backend.modelos.Cafeteria;
+import org.runffee.backend.DTO.UsuarioDTO;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,10 @@ public class UsuarioService {
     @Autowired
     private IUsuarioRepository usuarioRepository;
 
+    /**
+     * Función que devuelve todos los usuarios
+     * @return
+     */
     public List<Usuario> obtenerUsuarios() {
         return usuarioRepository.findAll()
                 .stream()
@@ -22,17 +25,20 @@ public class UsuarioService {
                 .toList();
     }
 
+    /**
+     * Función que devuelve el usuario por su id
+     * @param id
+     * @return
+     */
     public Usuario obtenerUsuario(Integer id) {
         return usuarioRepository.findById(id).orElse(null);
     }
 
-    /*
-    public Usuario obtenerContrasenaUsuario(Integer id) {
-
-    }
-    */
-
-    public void crearUsario(UsuarioCrearDTO usuario) {
+    /**
+     * Función para crear un usuario
+     * @param usuario
+     */
+    public void crearUsario(UsuarioDTO usuario) {
         Usuario nuevoUsuario = new Usuario();
 
         nuevoUsuario.setNombre(usuario.getNombre());
@@ -42,6 +48,10 @@ public class UsuarioService {
         usuarioRepository.save(nuevoUsuario);
     }
 
+    /**
+     * Función para eliminar un usuario
+     * @param id
+     */
     public void eliminarUsuario(int id) {
         Usuario usuario = usuarioRepository.findById(id).orElse(null);
         if (usuario != null) {

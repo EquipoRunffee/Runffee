@@ -2,8 +2,11 @@ package org.runffee.backend.DTO;
 
 import lombok.Data;
 
+/**
+ * DTO con todos los datos del usuario
+ */
 @Data
-public class UsuarioCrearDTO {
+public class UsuarioDTO {
     private String nombre;
     private String correo;
     private String contrasena;

@@ -1,21 +1,12 @@
 package org.runffee.backend.controladores;
 
 import org.runffee.backend.modelos.Usuario;
-import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.runffee.backend.servicios.StravaService;
 import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
-import java.time.Instant;
 import java.util.Map;
 
 @RestController
@@ -31,14 +22,22 @@ public class StravaController {
     @Autowired
     private UsuarioService usuarioService;
 
+    /***
+     * API para intercambia el code del usuario por los tokens
+     * @param body
+     * @return
+     */
     @PostMapping("/exchange")
     public ResponseEntity<?> exchangeCode(@RequestBody Map<String, String> body) {
-        return stravaService.signIn(body);
+        return stravaService.exchangeCode(body);
     }
 
+    /**
+     * API para actualizar el token del usuario
+     * @param id
+     */
     @PostMapping("/renovar/{id}")
     public void renovar(@PathVariable Integer id) {
-        Usuario usuario = usuarioService.obtenerUsuario(id);
-        stravaService.validarRenovarToken(usuario);
+        stravaService.validarRenovarToken(id);
     }
 }

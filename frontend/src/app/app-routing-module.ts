@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {Home} from '@nologed/pages/home/home';
-import {Perfil} from '@loged/pages/perfil/perfil';
-import {ConexionStrava} from '@nologed/pages/conexion-strava/conexion-strava';
 import {Login} from '@nologed/pages/login/login';
 import {Register} from '@nologed/pages/register/register';
 import {Callback} from '@nologed/pages/callback/callback';
@@ -20,8 +18,7 @@ const routes: Routes = [
   },
   { path: 'cafeterias', component: Cafeterias },
   { path: 'cafeteria', component: CafeteriaCard },
-  {path: 'strava/callback', component: Callback},
-  {path: 'strava', component: ConexionStrava},
+  {path: 'callback', component: Callback},
   {path: 'login', component: Login},
   {path: 'register', component: Register},
   { path: 'actividad', component: Actividad },

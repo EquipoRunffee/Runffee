@@ -1,7 +1,6 @@
 package org.runffee.backend.servicios;
 
-import org.runffee.backend.DTO.PedidoCrearDTO;
-import org.runffee.backend.modelos.Cafeteria;
+import org.runffee.backend.DTO.PedidoDTO;
 import org.runffee.backend.modelos.Pedido;
 import org.runffee.backend.repositorios.IPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,10 @@ public class PedidoService {
     @Autowired
     private IPedidoRepository pedidoRepository;
 
+    /**
+     * Función que devuelve todos los pedidos
+     * @return
+     */
     public List<Pedido> obtenerPedidos() {
         return pedidoRepository.findAll()
                 .stream()
@@ -22,11 +25,20 @@ public class PedidoService {
                 .toList();
     }
 
+    /**
+     * Función que devuelve el pedido por id
+     * @param id
+     * @return
+     */
     public Pedido obtenerPedido(int id) {
         return pedidoRepository.findById(id).orElse(null);
     }
 
-    public void crearPedido(PedidoCrearDTO pedido) {
+    /**
+     * Función para crear un nuevo pedido
+     * @param pedido
+     */
+    public void crearPedido(PedidoDTO pedido) {
         Pedido nuevoPedido = new Pedido();
 
         nuevoPedido.setCuponAplicado(pedido.getCuponAplicado());
@@ -37,6 +49,10 @@ public class PedidoService {
         pedidoRepository.save(nuevoPedido);
     }
 
+    /**
+     * Función para eliminar un pedido
+     * @param id
+     */
     public void eliminarPedido(int id) {
         Pedido pedido = pedidoRepository.findById(id).orElse(null);
         if (pedido != null) {

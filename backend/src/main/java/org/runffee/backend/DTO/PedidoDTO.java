@@ -6,8 +6,11 @@ import org.runffee.backend.modelos.Valoracion;
 
 import java.math.BigDecimal;
 
+/**
+ * DTO con todos los datos del pedido
+ */
 @Data
-public class PedidoCrearDTO {
+public class PedidoDTO {
     private Valoracion valoracion;
     private String cuponAplicado;
     private BigDecimal precioTotal;

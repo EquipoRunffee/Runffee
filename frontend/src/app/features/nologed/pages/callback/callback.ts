@@ -21,7 +21,7 @@ export class Callback implements OnInit {
     const url = "https://runffee.onrender.com/strava/exchange";
 
     if (code) {
-      console.log('Codigo recibido de Strava: ', code);
+      console.log('Codigo recibido de StravaService: ', code);
 
       this.http.post<any>(url, {code}).subscribe( //el <any> es necesario pa
         {
