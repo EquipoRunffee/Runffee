@@ -56,9 +56,9 @@ public class UsuarioController {
         usuarioService.eliminarUsuario(id);
     }
 
-    @GetMapping("/existeEmail")
-    public boolean existeEmail(@RequestParam String correo) {
-        return usuarioService.existeEmail(correo);
+    @GetMapping("/existeCorreo")
+    public boolean existeCorreo(@RequestParam String correo) {
+        return usuarioService.existeCorreo(correo);
     }
 
 
