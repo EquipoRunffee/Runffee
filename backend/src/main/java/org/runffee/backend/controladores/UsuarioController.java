@@ -1,9 +1,12 @@
 package org.runffee.backend.controladores;
 
 import org.runffee.backend.DTO.UsuarioDTO;
+import org.runffee.backend.DTO.UsuarioEncabezadoPerfilDTO;
 import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.servicios.UsuarioEncabezadoPerfilService;
 import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +21,10 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private UsuarioEncabezadoPerfilService usuarioEncabezadoPerfilService;
+
 
     /**
      * API que devuelve una lista con todos los usuarios
@@ -61,5 +68,15 @@ public class UsuarioController {
         return usuarioService.existeCorreo(correo);
     }
 
-
+    /**
+     * API que devuelve el encabezado de perfil de un usuario:
+     * nombre, correo y total de entrenamientos.
+     *
+     * Se recibe el ID del usuario como parámetro de la URL.
+     */
+    @GetMapping("usuarioPerfil/{id}")
+    public ResponseEntity<UsuarioEncabezadoPerfilDTO> obtenerEncabezadoPerfil(@PathVariable Integer id) {
+        UsuarioEncabezadoPerfilDTO dto = usuarioEncabezadoPerfilService.obtenerEncabezadoPerfil(id);
+        return ResponseEntity.ok(dto);
+    }
 }
