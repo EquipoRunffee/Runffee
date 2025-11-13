@@ -12,4 +12,9 @@ export class UsuarioService {
     let apiUrl= 'https://runffee.onrender.com/usuario';
     return this.http.get<any>(apiUrl);
   }
+
+  getEncabezadoPerfil(id: number): Observable<any>{
+    let apiUrl= 'https://runffee.onrender.com/encabezado_perfil/' + id.toString();
+    return this.http.get<any>(apiUrl);
+}
 }

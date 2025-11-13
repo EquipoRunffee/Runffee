@@ -72,7 +72,7 @@ public class UsuarioController {
      * API que devuelve el encabezado de perfil de un usuario:
      * nombre, correo y total de entrenamientos.
      *
-     * Se recibe el ID del usuario como parámetro de la URL.
+     * @param id
      */
     @GetMapping("/encabezado_perfil/{id}")
     public ResponseEntity<UsuarioEncabezadoPerfilDTO> obtenerEncabezadoPerfil(@PathVariable Integer id) {
