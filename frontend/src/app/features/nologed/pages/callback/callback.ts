@@ -27,6 +27,11 @@ export class Callback implements OnInit {
           next: (res)=>{
             alert("YA HAN CARGADO LOS DATOS");
             console.log("Tokens recibidos del backend: ", res);
+            //PARTE DE VALENTIN
+            /**
+             * Aqui es donde tenemos que redirigir al usuario. Si la respuesta (res) es TRUE significa que el usuario
+             * existe por lo tanto lo redirigimos al login. Si es false lo llevamos al register.
+             */
           },
           error: (err)=>{
             console.log(err);
