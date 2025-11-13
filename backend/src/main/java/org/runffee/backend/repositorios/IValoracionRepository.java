@@ -7,5 +7,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface IValoracionRepository extends JpaRepository<Valoracion, Integer> {
-    List<Valoracion> findByPedidos(Pedido pedido);
 }
