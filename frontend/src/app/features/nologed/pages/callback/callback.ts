@@ -23,7 +23,7 @@ export class Callback implements OnInit {
     if (code) {
       console.log('Codigo recibido de Strava: ', code);
 
-      this.http.post(url, {code}).subscribe(
+      this.http.post<any>(url, {code}).subscribe( //el <any> es necesario pa
         {
           //Esto es la respuesta de nuestro backend
           next: (res)=>{
@@ -33,8 +33,8 @@ export class Callback implements OnInit {
           } else if (res.status === 'register'){
             this.router.navigate(['/register']);
           }
-         
-         
+
+
           },
           error: (err)=>{
             console.log(err);
