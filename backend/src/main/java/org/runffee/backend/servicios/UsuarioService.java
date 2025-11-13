@@ -61,8 +61,8 @@ public class UsuarioService {
 
     //funcion para comprobar que el email que me introduce el usuario esta en mi bbdd
 
-    public boolean existeEmail(String email) {
-        return usuarioRepository.findByEmail(email) != null;
+    public boolean existeEmail(String correo) {
+        return usuarioRepository.findByEmail(correo) != null;
         //mirar lode Optional para meter en vez del null isPresent (mas seguro)
     }
 

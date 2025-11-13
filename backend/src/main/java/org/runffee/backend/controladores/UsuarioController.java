@@ -57,8 +57,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/existeEmail")
-    public boolean existeEmail(@RequestParam String email) {
-        return usuarioService.existeEmail(email);
+    public boolean existeEmail(@RequestParam String correo) {
+        return usuarioService.existeEmail(correo);
     }
 
 

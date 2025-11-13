@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     //busca por email (comprobar que no esta ya registrado en runffee)
-    Usuario findByEmail(String email);
+    Usuario findByEmail(String correo);
 
     //busca por id de Strava (para redirigir a login o register)
     Optional<Usuario> findByAthleteid(Integer athleteid);

@@ -23,7 +23,7 @@ export class Callback implements OnInit {
     if (code) {
       console.log('Codigo recibido de StravaService: ', code);
 
-      this.http.post<any>(url, {code}).subscribe( //el <any> es necesario pa
+      this.http.post<any>(url, {code}).subscribe( //el <any> es necesario
         {
           //Esto es la respuesta de nuestro backend
           next: (res)=>{
