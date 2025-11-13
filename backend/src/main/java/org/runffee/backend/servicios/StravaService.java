@@ -78,7 +78,7 @@ public class StravaService {
 
         //Integer athleteid = (Integer) athleteMap.get("id");
 
-        return ResponseEntity.ok(body);
+        return ResponseEntity.ok(data);
 
 //        if (usuarioService.existeAthleteId(athleteid)){
 //            return ResponseEntity.ok(Map.of("status", "login")); //debe ir al login
