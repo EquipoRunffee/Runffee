@@ -38,13 +38,33 @@ public class AuthService {
         usuarioRepository.save(usuario);
 
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("message", "Usuario registrado correctamente");
-        response.put("token", accessToken);
-        return response;
+        Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("message", "Usuario registrado correctamente");
+        respuesta.put("accessToken", accessToken);
+        respuesta.put("refreshToken", refreshToken);
+        respuesta.put("expiresAt", expiresAt);
+        return respuesta;
     }
 
-    public String login(String correo, String password) {
-        return "Usuario logueado";
+    public Map<String, Object> login(String correo, String password) {
+
+        Usuario usuario = usuarioRepository.findByCorreo(correo).orElseThrow(() -> new RuntimeException("Correo o contraseña incorrectos."));
+
+        if(!passwordEncoder.matches(password, usuario.getContrasena())) {
+            throw new RuntimeException("Correo o contraseña incorrectos.");
+        }
+
+        String accessToken = jwtService.genenrarToken(usuario.getId(), usuario.getCorreo());
+        String refreshToken = UUID.randomUUID().toString();
+
+        usuario.setAccesstoken(accessToken);
+        usuario.setRefreshtoken(refreshToken);
+
+        usuarioRepository.save(usuario);
+
+        Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("message", "Login exitoso");
+        respuesta.put("token", accessToken);
+        return respuesta;
     }
 }
