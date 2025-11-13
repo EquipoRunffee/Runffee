@@ -38,16 +38,27 @@ public class Usuario {
     private String pais;
 
     @Column (name = "sexo")
+    @Enumerated(EnumType.ORDINAL)
     private UsuarioSexo sexo;
+
+    @Column (name = "role")
+    @Enumerated(EnumType.ORDINAL)
+    private UsuarioRole role;
 
     @Column (name = "imagen")
     private String imagen;
 
     @Column (name = "eliminado")
-    private Boolean eliminado;
+    private Boolean eliminado = Boolean.FALSE;
 
-    @Column (name = "athleteid")
-    private Integer athleteid;
+    @Column(name = "strava_athleteid")
+    private Integer stravaAthleteId;
+
+    @Column(name = "strava_accesstoken")
+    private String stravaAccessToken;
+
+    @Column (name = "strava_expiresat")
+    private Instant stravaExpiresAt;
 
     @Column (name = "accesstoken")
     private String accesstoken;
