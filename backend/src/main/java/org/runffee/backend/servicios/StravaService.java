@@ -86,6 +86,8 @@ public class StravaService {
             nuevoUsuario.setStravaAccessToken((String) data.get("access_token"));
             nuevoUsuario.setStravaRefreshToken((String) data.get("refresh_token"));
 
+            usuarioRepository.save(nuevoUsuario);
+
             return ResponseEntity.ok(Map.of("status", "register", "strava_accesstoken", (String) data.get("access_token")));
         }
     }
