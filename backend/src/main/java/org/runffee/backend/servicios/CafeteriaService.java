@@ -2,11 +2,13 @@ package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.CafeteriaDTO;
 import org.runffee.backend.DTO.CafeteriaDetalleDTO;
-import org.runffee.backend.modelos.Cafeteria;
-import org.runffee.backend.repositorios.ICafeteriaRepository;
+import org.runffee.backend.modelos.*;
+import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,10 +18,9 @@ public class CafeteriaService {
     @Autowired
     private ICafeteriaRepository cafeteriaRepository;
 
-    /**
-     * Función que devuelve todas las cafeterías
-     * @return
-     */
+    @Autowired
+    private ValoracionService valoracionService;
+
     public List<Cafeteria> obtenerCafeterias() {
         return cafeteriaRepository.findAll()
                 .stream()
@@ -27,29 +28,18 @@ public class CafeteriaService {
                 .toList();
     }
 
-    /**
-     * Función que devuelve la cafetería por su id
-     * @param id
-     * @return
-     */
     public Cafeteria obtenerCafeteria(int id) {
         return cafeteriaRepository.findById(id).orElse(null);
     }
 
-    /**
-     * Función que devuelve una lista con todas las cafeterias Detalle DTO activas
-     * @return
-     */
     public List<CafeteriaDetalleDTO> obtenerCafeteriaDetalles() {
         return cafeteriaRepository.findAll().stream()
-                .map(cafeteria -> new CafeteriaDetalleDTO(cafeteria.getNombre(), cafeteria.getImagen(), cafeteria.getTipoCafeteria()))
+                .map(cafeteria -> new CafeteriaDetalleDTO
+                        (cafeteria.getNombre(), cafeteria.getImagen(), cafeteria.getTipoCafeteria(),
+                                valoracionService.obtenerMediaValoracionCafeteria(cafeteria.getId())))
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Función para crear una cafetería
-     * @param cafeteria
-     */
     public void crearCafeteria(CafeteriaDTO cafeteria) {
         Cafeteria nuevaCafeteria = new Cafeteria();
 
@@ -63,10 +53,6 @@ public class CafeteriaService {
         cafeteriaRepository.save(nuevaCafeteria);
     }
 
-    /**
-     * Función para eliminar una cafetería
-     * @param id
-     */
     public void eliminarCafeteria(int id) {
         Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
         if (cafeteria != null) {
@@ -74,9 +60,6 @@ public class CafeteriaService {
         }
     }
 
-    /**
-     * Función para editar una cafetería
-     */
 //    public void editarCafeteria(CafeteriaDTO cafeteriaDTO, int id) {
 //        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
 //

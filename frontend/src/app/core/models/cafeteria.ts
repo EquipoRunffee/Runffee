@@ -1,27 +1,13 @@
-export class Cafeteria {
-  nombre: string;
-  descripcion: string;
-  lat: number;
-  lng: number;
-  imagen: string;
-  tipo: string;
-  eliminado: string;
+// IMPORTANTE : Los nombres tienen que ser iguales que en el backend
 
+export class Cafeteria {
   constructor(
-    nombre: string = '',
-    descripcion: string = '',
-    lat: number = 0,
-    lng: number = 0,
-    imagen: string = '',
-    tipo: string = '',
-    eliminado: string = ''
-  ) {
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.lat = lat;
-    this.lng = lng;
-    this.imagen = imagen;
-    this.tipo = tipo;
-    this.eliminado = eliminado;
-  }
+    public nombre: string = '',
+    public descripcion: string = '',
+    public lat: string = '',
+    public lng: string = '',
+    public imagen: string = '',
+    public tipoCafeteria: string = '',
+    public eliminado: string = 'false',
+  ) {}
 }

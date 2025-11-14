@@ -5,4 +5,6 @@ import {Component} from '@angular/core';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {}
+export class Header {
+    usuario: any;
+}

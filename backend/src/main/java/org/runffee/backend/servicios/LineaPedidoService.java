@@ -2,6 +2,7 @@ package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.LineaPedidoDTO;
 import org.runffee.backend.modelos.LineaPedido;
+import org.runffee.backend.modelos.Producto;
 import org.runffee.backend.repositorios.ILineaPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,5 +58,4 @@ public class LineaPedidoService {
             lineaPedido.setEliminado(true);
         }
     }
-
 }
