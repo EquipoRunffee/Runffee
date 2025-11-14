@@ -28,8 +28,13 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/registrar")
-    public ResponseEntity<?> registrarUsuario(@RequestBody Usuario usuario) {
-        return ResponseEntity.ok(authService.registrarUsuario(usuario));
+    public ResponseEntity<?> registrarUsuario(@RequestBody Map<String, String> request) {
+
+        String correo = request.get("correo");
+        String contrasena = request.get("contrasena");
+        String stravaAccessToken = request.get("stravaAccessToken");
+
+        return ResponseEntity.ok(authService.registrarUsuario(correo, contrasena, stravaAccessToken));
     }
 
     @PostMapping("/login")

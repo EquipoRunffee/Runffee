@@ -20,4 +20,6 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     Optional<Usuario> findByCorreo(String correo);
     Optional<Usuario> findByRefreshtoken(String refreshToken);
+
+    Usuario findByStravaAccessToken(String stravaAccessToken);
 }
