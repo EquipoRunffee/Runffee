@@ -74,6 +74,7 @@ public class AuthService {
         Map atletaBody = atleta.getBody();
 
         //Guardamos los datos del usuario
+        usuario.setStravaAthleteId((Integer)atletaBody.get("id"));
         usuario.setNombre(atletaBody.get("firstname").toString()+" "+atletaBody.get("lastname").toString());
         usuario.setCiudad(atletaBody.get("city").toString());
         usuario.setPais(atletaBody.get("country").toString());
