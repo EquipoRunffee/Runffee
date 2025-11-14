@@ -66,55 +66,25 @@ public class StravaService {
         //Dentro de data tenemos dentor el objeto athlete el cual nos interesa guardar en una variable
         Map<String, Object> athleteMap = (Map<String, Object>) data.get("athlete");
 
-
-        //PARTE DE VALENTIN
-        //CREAR FUNCIÓN QUE BUSQUE EN LA BBDD SI YA EXISTE UN USUARIO CON LA ID ATHLETE
-        //Si existe el usuario ya -> Devuelvo un valor que me diga si existe -> Para redirigir al LOGIN
-        //Que no existe -> Lo redirijo a la pagina del REGISTER
-//
-//        Boolean registrado = False;
-//
-//        return registrado
-
-        System.out.println(ResponseEntity.ok(data));
-
+        //Obtenemos la id del atleta
         Integer stravaAthleteid = (Integer) athleteMap.get("id");
-        System.out.println(stravaAthleteid);
 
+        //Comprobamos si el usuario ya está registrado
         if(usuarioService.existeStravaAthleteId(stravaAthleteid)){
+            //Si ya está registrado pues lo llevamos al login
             return ResponseEntity.ok(Map.of("status", "login"));
         } else {
-            return ResponseEntity.ok(Map.of("status", "register"));
+
+            //Si no estaba registrado lo llevamos al registro
+
+            Usuario nuevoUsuario = new Usuario();
+            nuevoUsuario.setStravaExpiresAt((Instant) data.get("expires_at"));
+            nuevoUsuario.setStravaAccessToken((String) data.get("access_token"));
+            nuevoUsuario.setStravaRefreshToken((String) data.get("refresh_token"));
+
+            return ResponseEntity.ok(Map.of("status", "register", "strava_accesstoken", (String) data.get("access_token")));
         }
-
-//        if (usuarioService.existeAthleteId(athleteid)){
-//            return ResponseEntity.ok(Map.of("status", "login")); //debe ir al login
-//        }
-//
-//
-//        //Cuando ya está en el register, comprobar que el correo no existe en la bbdd
-//
-//
-//
-//        //En el caso de que el usuario no exista en nuestra bbdd y no exista ningún correo tampoco
-//        //Creamos el usuario en la bbdd
-//        //Hay que crear una función para esto
-//        Usuario usuario = new Usuario();
-//        usuario.setNombre((String) athleteMap.get("firstname"));
-//        usuario.setCiudad((String) athleteMap.get("city"));
-//        usuario.setAthleteid((Integer) athleteMap.get("id"));
-//        usuario.setAccesstoken((String) data.get("access_token"));
-//        usuario.setRefreshtoken((String) data.get("refresh_token"));
-//        usuario.setExpiresat(Instant.ofEpochSecond(((Number) data.get("expires_at")).longValue()));
-//        usuario.setEliminado(false);
-//
-//        usuarioRepository.save(usuario);
-//
-//        return ResponseEntity.ok(Map.of("status","register")); //return.. ("usuarioNuevo")??(Map.of("status", "register") ???
     }
-
-
-
 
     /**
      * Función para validar si el token está activo. Si no lo está, lo renueva automáticamente

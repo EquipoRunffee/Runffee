@@ -36,7 +36,7 @@ public class CafeteriaService {
         return cafeteriaRepository.findAll().stream()
                 .map(cafeteria -> new CafeteriaDetalleDTO
                         (cafeteria.getNombre(), cafeteria.getImagen(), cafeteria.getTipoCafeteria(),
-                                valoracionService.obtenerMediaValoracionCafeteria(cafeteria)))
+                                valoracionService.obtenerMediaValoracionCafeteria(cafeteria.getId())))
                 .collect(Collectors.toList());
     }
 

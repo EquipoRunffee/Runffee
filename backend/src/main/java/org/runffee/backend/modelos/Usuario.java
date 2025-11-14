@@ -57,6 +57,9 @@ public class Usuario {
     @Column(name = "strava_accesstoken")
     private String stravaAccessToken;
 
+    @Column(name = "strava_refreshtoken")
+    private String stravaRefreshToken;
+
     @Column (name = "strava_expiresat")
     private Instant stravaExpiresAt;
 
