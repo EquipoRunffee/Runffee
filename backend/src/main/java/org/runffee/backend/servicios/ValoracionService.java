@@ -76,21 +76,7 @@ public class ValoracionService {
     private ILineaPedidoRepository lineaPedidoRepository;
     private IPedidoRepository pedidoRepository;
 
-    public BigDecimal obtenerMediaValoracionCafeteria(Cafeteria cafeteria) {
-        List<Valoracion> valoraciones = productoRepository.findByCafeteria(cafeteria).stream()
-                .flatMap(producto -> lineaPedidoRepository.findByProducto(producto).stream())
-                .map(LineaPedido::getPedido)
-                .map(Pedido::getValoracion)
-                .toList();
-
-        BigDecimal suma = BigDecimal.ZERO;
-        int contador = 0;
-
-        for (Valoracion valoracion : valoraciones) {
-            suma = suma.add(valoracion.getCantidad());
-            contador++;
-        }
-
-        return suma.divide(BigDecimal.valueOf(contador), 2, RoundingMode.HALF_UP);
+    public BigDecimal obtenerMediaValoracionCafeteria(Integer idCafeteria) {
+        return valoracionRepository.obtenerMediaValoracionCafeteria(idCafeteria);
     }
 }
