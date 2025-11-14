@@ -35,7 +35,7 @@ public class JwtService {
         }
     }
 
-    public Integer obtenerUserId(String token){
+    public Integer obtenerIdUsuario(String token){
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(jwtSecretKey.getBytes())
                 .build()

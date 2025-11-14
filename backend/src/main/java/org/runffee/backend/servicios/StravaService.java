@@ -1,5 +1,6 @@
 package org.runffee.backend.servicios;
 
+import org.runffee.backend.modelos.Entrenamiento;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -131,5 +134,25 @@ public class StravaService {
         usuario.setExpiresat(Instant.ofEpochSecond(((Number) body.get("expires_at")).longValue()));
 
         usuarioRepository.save(usuario);
+    }
+
+
+    public Object obtenerEntrenamientosAtleta(String stravaAccessToken){
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        String url = "https://www.strava.com/api/v3/athlete/activities";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(stravaAccessToken);
+
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<Object> respuesta = restTemplate.exchange(
+                url, HttpMethod.GET,
+                entity, Object.class);
+
+        return respuesta.getBody();
+
     }
 }
