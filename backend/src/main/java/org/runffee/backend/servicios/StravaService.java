@@ -78,7 +78,11 @@ public class StravaService {
             //Si no estaba registrado lo llevamos al registro
 
             Usuario nuevoUsuario = new Usuario();
-            nuevoUsuario.setStravaExpiresAt((Instant) data.get("expires_at"));
+
+            Number expiresAtNum = (Number) data.get("expires_at");
+            Instant expiresAt = Instant.ofEpochSecond(expiresAtNum.longValue());
+
+            nuevoUsuario.setStravaExpiresAt(expiresAt);
             nuevoUsuario.setStravaAccessToken((String) data.get("access_token"));
             nuevoUsuario.setStravaRefreshToken((String) data.get("refresh_token"));
 
