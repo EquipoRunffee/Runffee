@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CafeteriaService} from '@core/services/cafeteria/cafeteriaService';
 import { CommonModule } from '@angular/common';
-import {Cafeteria} from '@core/models/cafeteria';
+import {CafeteriaDetalles} from '@core/models/cafeteria-detalles';
+import {CafeteriaDetallesService} from '@core/services/cafeteria/cafeteriaDetallesService';
 
 @Component({
   selector: 'app-cafeteriaCard',
@@ -12,16 +12,16 @@ import {Cafeteria} from '@core/models/cafeteria';
 })
 
 export class CafeteriaCard implements OnInit{
-  cafeterias: Cafeteria[] = [];
+  cafeterias: CafeteriaDetalles[] = [];
 
-  constructor(private cafeteriaService: CafeteriaService) {}
+  constructor(private cafeteriaDetalleService: CafeteriaDetallesService) {}
 
   ngOnInit(): void {
     this.cargarCafeterias();
   }
 
   cargarCafeterias(): void {
-    this.cafeteriaService.getCafeteria().subscribe({
+    this.cafeteriaDetalleService.getCafeteriaDetalle().subscribe({
       next: (data: any) => {
         this.cafeterias = data;
         console.log('Datos recibidos:', data);

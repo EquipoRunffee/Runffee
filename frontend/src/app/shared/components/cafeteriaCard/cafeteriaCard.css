@@ -1,8 +1,57 @@
+.cafeteriaCard{
+  font-family: "Montserrat", sans-serif;
+}
+
+.cafeteriaCard_titulo p{
+  font-family: "Inter", sans-serif;
+  font-size: 17.5px;
+}
+
+.CafeteriaCard_unica h3{
+  font-weight: 600;
+  font-size: 22.5px;
+}
+
 .CafeteriaCard_unica img{
-  width: 250px;
+  width: 350px;
   border-radius: 10px;
 }
 
+.CafeteriaCard_unica p{
+  font-size: 20px;
+}
+
+.CafeteriaCard_unicaSeleccion{
+  display: flex;
+  justify-content: start;
+  gap: 3rem;
+  align-items: center;
+}
+
+.CafeteriaCard_unicaValoracion{
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+  align-items: center;
+
+}
+
 .CafeteriaCard_unicaValoracion img{
-  width: 20px;
+  width: 25px;
+}
+
+.CafeteriaCard_unicaValoracion p{
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+}
+
+.CafeteriaCard_unicaBoton{
+  background: #E3FF68;
+  border-radius: 10px;
+  border: none;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  height: 40px;
+  font-size: 15px;
+  align-items: center;
 }

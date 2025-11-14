@@ -708,12 +708,11 @@
 
   .producto_home{
     flex-direction: column;
+    gap: 0;
   }
 
-  .contenerdorImg_home,
-  .texto_logo{
-    height: 200px;
-    width: 200px;
+  .contenerdorImg_home, .texto_logo{
+    height: 300px;
   }
 
   .contenerdorTexto_home{
