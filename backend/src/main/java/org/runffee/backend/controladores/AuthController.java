@@ -23,8 +23,6 @@ public class AuthController {
     @Autowired
     private IUsuarioRepository usuarioRepository;
     @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
     private AuthService authService;
 
     @PostMapping("/registrar")
