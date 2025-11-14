@@ -1,4 +1,4 @@
-export class CafeteriaDetalle {
+export class CafeteriaDetalles {
   constructor(
     public nombre: string = '',
     public imagen: string = '',

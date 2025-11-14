@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CafeteriaDetalle} from '@core/models/cafeteria-detalle';
-import {CafeteriaDetalleService} from '@core/services/cafeteria/cafeteriaDetalleService';
+import {CafeteriaDetalles} from '@core/models/cafeteria-detalles';
+import {CafeteriaDetallesService} from '@core/services/cafeteria/cafeteriaDetallesService';
 
 @Component({
   selector: 'app-cafeteriaCard',
@@ -12,9 +12,9 @@ import {CafeteriaDetalleService} from '@core/services/cafeteria/cafeteriaDetalle
 })
 
 export class CafeteriaCard implements OnInit{
-  cafeterias: CafeteriaDetalle[] = [];
+  cafeterias: CafeteriaDetalles[] = [];
 
-  constructor(private cafeteriaDetalleService: CafeteriaDetalleService) {}
+  constructor(private cafeteriaDetalleService: CafeteriaDetallesService) {}
 
   ngOnInit(): void {
     this.cargarCafeterias();
