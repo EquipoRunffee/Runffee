@@ -14,7 +14,7 @@ export class StravaService {
     const clientId = '182872';
 
     //URL donde queremos que se le redirige al usuario cuando haya iniciado sesión con Strava
-    const redirectUri = 'https://www.anderolivos.com/runffee/callback';
+    const redirectUri = 'http://localhost:4200/callback';
 
     //Construimos la url entera
     const url = `https://www.strava.com/oauth/authorize?client_id=${clientId}` +

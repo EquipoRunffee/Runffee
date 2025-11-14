@@ -28,12 +28,7 @@ export class Callback implements OnInit {
         {
           //Esto es la respuesta de nuestro backend
           next: (res)=>{
-            if(res.status == "login"){
-              this.router.navigate(['/login']);
-            }
-            if(res.status == "register"){
-              this.router.navigate(['/register']);
-            }
+            console.log(res);
           },
           error: (err)=>{
             console.log(err);
