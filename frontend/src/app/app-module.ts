@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import { MapaCafeteria } from './shared/components/mapa-cafeteria/mapa-cafeteria';
 import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
 import { CafeteriaCard } from './shared/components/cafeteriaCard/cafeteriaCard';
+import { Detallecafeteria } from './shared/pages/detallecafeteria/detallecafeteria';
 
 
 @NgModule({

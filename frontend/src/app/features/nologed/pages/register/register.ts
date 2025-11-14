@@ -45,3 +45,20 @@ export class Register {
   }
 }
 
+//apuntes jose
+//this.path.register(datos).suscribe({ (el suscribe es xq estamos esperando una respuesta)
+//  next: () => {
+//    this.mensaje = 'Registro completado correctamente';
+//    setTimeout
+//  }
+//})
+
+
+//login.ts
+
+//this.path.login(datos).suscribe({ (el suscribe es xq estamos esperando una respuesta)
+//  next: resp => {
+//    localStorage.seyItem('token', resp.token);
+//    localStorage.setItem('nombre',resp.nombre);
+//    this.router.navigate(['/cafeterias']);
+//  }
