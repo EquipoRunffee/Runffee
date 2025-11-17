@@ -9,6 +9,8 @@ import org.runffee.backend.servicios.EntrenamientoService;
 import org.runffee.backend.servicios.JwtService;
 import org.runffee.backend.servicios.StravaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -85,6 +87,11 @@ public class EntrenamientoController {
             String token = authHeader.substring(7);
             Integer idUsuario = jwtService.obtenerIdUsuario(token);
             Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
 
             return stravaService.obtenerEntrenamientosAtleta(usuario.getStravaAccessToken());
         }

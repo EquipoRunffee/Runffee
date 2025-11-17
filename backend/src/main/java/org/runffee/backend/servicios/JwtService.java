@@ -3,18 +3,26 @@ package org.runffee.backend.servicios;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class JwtService {
 
     @Value("${jwt.secret-key}")
     private String jwtSecretKey;
-    private final long jwtExpirationMs = 15 * 60 * 1000;
+    private final long jwtExpirationMs = 30 * 60 * 1000;
+    private IUsuarioRepository usuarioRepository;
+    private JwtService jwtService;
 
     public String genenrarToken(Integer id, String correo){
         return Jwts.builder()
@@ -42,5 +50,27 @@ public class JwtService {
                 .parseClaimsJws(token)
                 .getBody();
         return Integer.parseInt(claims.getSubject());
+    }
+
+    public ResponseEntity<?> renovarToken(String refreshToken){
+        // Buscar usuario con ese refresh token
+        Usuario usuario = usuarioRepository.findByRefreshtoken(refreshToken)
+                .orElseThrow(() -> new RuntimeException("Refresh token inválido"));
+
+        if(usuario.getExpiresat().isBefore(Instant.now())){
+            throw new RuntimeException("Refresh token caducado");
+        }
+
+        // Generar nuevo access token
+        String nuevoAccessToken = jwtService.genenrarToken(usuario.getId(), usuario.getCorreo());
+
+        // Guardar el nuevo token en la base de datos
+        usuario.setAccesstoken(nuevoAccessToken);
+        usuarioRepository.save(usuario);
+
+        Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", "Token actualizado");
+        respuesta.put("accessToken", nuevoAccessToken);
+        return ResponseEntity.ok(respuesta);
     }
 }
