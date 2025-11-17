@@ -1,3 +1,6 @@
+
+/*----HEADER----*/
+
 .imagen_principal{
   overflow: hidden;
   height: 90vh;
@@ -10,7 +13,40 @@
   margin: 0 auto;
 }
 
+/*----DETALLE CAFETERIA----*/
+.productos {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(1rem, 2rem));
 
+  max-width: 1000px;
+  margin: auto;
+}
+
+.producto {
+  text-align: center;
+}
+
+.producto img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.producto p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+/*----DESTACADOS----*/
+
+
+/*----VALORACIONES----*/
+
+
+/*----MAPA----*/
+
+/*----NEWSLETTER----*/
 
 .newsletter_home {
   display: flex;
