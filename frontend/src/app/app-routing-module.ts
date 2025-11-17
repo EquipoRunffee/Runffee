@@ -18,20 +18,21 @@ const routes: Routes = [
   {path: 'login', component: Login},
   {path: 'register', component: Register},
   { path: 'actividad', component: Actividad },
-  { path: '**', redirectTo: '/home' },
 
   //PAGINAS LOGED
   {
     path: 'app',
     loadChildren: () =>
-      import('@loged/loged-module').then(m => m.LogedModule),
-    canActivate: [authGuardGuard]
+      import('@loged/loged-module').then(m => m.LogedModule)
   },
   {
     path: 'app/perfil',
     loadChildren: () =>
       import('@loged/pages/perfil/perfil.routes').then(m => m.PERFIL_ROUTES)
   },
+
+  { path: '**', redirectTo: '/home' },
+
 ]
 
 @NgModule({

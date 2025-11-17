@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormBuilder, FormsModule} from '@angular/forms';
+import {AuthService} from '@core/services/auth/auth-service';
 
 
 @Component({
@@ -7,15 +8,21 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './register.html',
   styleUrl: './register.css',
   standalone: true,
-  imports: [FormsModule,]
+  imports: [FormsModule]
 })
 export class Register {
-  usuario = { email: '', password: '', repeatpassword: '' };
+  usuario = { correo: '', password: '', repeatpassword: '' };
   visible = false;
 
-  emailError = '';
+  correoError = '';
   passwordError = '';
   repeatPasswordError = '';
+
+
+  constructor(private authService: AuthService) {
+    this.authService = authService;
+}
+
 
   ver() {
     this.visible = !this.visible;
@@ -23,9 +30,12 @@ export class Register {
 
 
 //metodo cuando compruebe que el correo ya está registrado
- setEmailError()
- { this.emailError = 'El correo ya está registrado.';
+ setcorreoError() {
+   this.correoError = 'El correo ya está registrado.';
  }
+
+
+
  register() {
     // Limpiar mensajes previos (excepto si ya se mostró un error de correo)
    this.passwordError = ''; this.repeatPasswordError = '';
@@ -42,6 +52,14 @@ export class Register {
    }
    if (valid){ console.log('Credenciales: ', this.usuario);
    }
+  }
+
+  registrarUsuario(){
+    if(localStorage.getItem("stravaAccessToken")){
+      this.authService.registrar({correo: this.usuario.correo, contrasena: this.usuario.password, stravaAccessToken: localStorage.getItem("stravaAccessToken")});
+    } else {
+      console.log("No se encuentra el token de Strava...");
+    }
   }
 }
 

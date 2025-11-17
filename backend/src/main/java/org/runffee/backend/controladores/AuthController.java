@@ -28,6 +28,8 @@ public class AuthController {
     @PostMapping("/registrar")
     public ResponseEntity<?> registrarUsuario(@RequestBody Map<String, String> request) {
 
+        System.out.println(request);
+
         String correo = request.get("correo");
         String contrasena = request.get("contrasena");
         String stravaAccessToken = request.get("stravaAccessToken");

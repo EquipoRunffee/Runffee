@@ -9,9 +9,21 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials:{correo:string, contrasena:string}) {
+    console.log("Realizando login...")
     return this.http.post<any>("https://onrender.runffee.com/auth/login", credentials)
       .pipe(
         tap(respuesta=>{
+          localStorage.setItem("accessToken", respuesta.accessToken);
+        })
+      );
+  }
+
+  registrar(credentials:{correo:string, contrasena:string, stravaAccessToken: string|null}) {
+    console.log("Registrando usuario...")
+    return this.http.post<any>("https://onrender.runffee.com/auth/registrar", credentials)
+      .pipe(
+        tap(respuesta=>{
+          console.log(respuesta);
           localStorage.setItem("accessToken", respuesta.accessToken);
         })
       );
