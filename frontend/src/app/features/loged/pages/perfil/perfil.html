@@ -1,7 +1,20 @@
-<app-header />
+<app-header>
+  <!-- Botón hamburguesa solo en móvil -->
+  <button class="hamburger" *If="isMobile" (click)="toggleNavbar()">☰</button>
+</app-header>
+
+<!-- Overlay semitransparente -->
+<div
+  class="overlay"
+  *If="isMobile && isNavbarOpen"
+  (click)="closeNavbar()">
+</div>
 
 <div class="container">
-  <app-navbarperfil></app-navbarperfil>
+  <app-navbarperfil
+    [class.open]="isMobile && isNavbarOpen"
+    (itemSelected)="closeNavbar()">
+  </app-navbarperfil>
 
   <section class="content">
     <router-outlet></router-outlet>

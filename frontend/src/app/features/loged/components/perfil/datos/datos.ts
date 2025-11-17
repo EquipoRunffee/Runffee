@@ -7,6 +7,4 @@ import {RouterModule} from '@angular/router';
   templateUrl: './datos.html',
   styleUrls: ['./datos.css'],
 })
-export class Datos {
-
-}
+export class Datos {}

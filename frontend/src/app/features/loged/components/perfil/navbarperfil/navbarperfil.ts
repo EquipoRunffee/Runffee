@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {RouterModule} from '@angular/router';
+import { Component, EventEmitter, Output } from '@angular/core';
+import {Router, RouterModule} from '@angular/router';
 import {NgOptimizedImage} from '@angular/common';
 
 @Component({
@@ -9,4 +9,15 @@ import {NgOptimizedImage} from '@angular/common';
   templateUrl: './navbarperfil.html',
   styleUrls: ['./navbarperfil.css'],
 })
-export class Navbarperfil {}
+export class Navbarperfil {
+
+  @Output() itemSelected = new EventEmitter<void>();
+
+  constructor(private router: Router) {}
+
+  navigate(route: string) {
+    this.router.navigate([route]);
+    this.itemSelected.emit(); // cerrar menú en móvil
+  }
+
+}
