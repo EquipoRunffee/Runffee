@@ -10,27 +10,36 @@ export class AuthService {
 
   login(credentials:{correo:string, contrasena:string}) {
     console.log("Realizando login...")
-    return this.http.post<any>("https://onrender.runffee.com/auth/login", credentials)
+    return this.http.post<any>("https://runffee.onrender.com/auth/login", credentials)
       .pipe(
         tap(respuesta=>{
           localStorage.setItem("accessToken", respuesta.accessToken);
+          localStorage.setItem("refreshToken", respuesta.refreshToken);
         })
       );
   }
 
   registrar(credentials:{correo:string, contrasena:string, stravaAccessToken: string|null}) {
     console.log("Registrando usuario...")
-    return this.http.post<any>("https://onrender.runffee.com/auth/registrar", credentials)
+    return this.http.post<any>("https://runffee.onrender.com/auth/registrar", credentials)
       .pipe(
         tap(respuesta=>{
-          console.log(respuesta);
           localStorage.setItem("accessToken", respuesta.accessToken);
+          localStorage.setItem("refreshToken", respuesta.refreshToken);
         })
       );
   }
 
+  renovarToken(refreshToken: string) {
+    return this.http.post<{ accessToken: string }>(
+      'https://runffee.onrender.com/auth/refresh',
+      { refreshToken }
+    );
+  }
+
   logout(){
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
   }
 
   isLogged():boolean{
@@ -40,5 +49,17 @@ export class AuthService {
 
   getAccessToken(){
     return localStorage.getItem("accessToken");
+  }
+
+  setAccessToken(accessToken: string){
+    localStorage.setItem("accessToken", accessToken);
+  }
+
+  getRefreshToken(){
+    return localStorage.getItem("refreshToken");
+  }
+
+  setRefreshToken(refreshToken: string){
+    localStorage.setItem("refreshToken", refreshToken);
   }
 }

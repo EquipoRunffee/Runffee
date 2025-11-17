@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormsModule} from '@angular/forms';
 import {AuthService} from '@core/services/auth/auth-service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -19,9 +20,7 @@ export class Register {
   repeatPasswordError = '';
 
 
-  constructor(private authService: AuthService) {
-    this.authService = authService;
-}
+  constructor(private authService: AuthService, private router: Router) {}
 
 
   ver() {
@@ -56,7 +55,16 @@ export class Register {
 
   registrarUsuario(){
     if(localStorage.getItem("stravaAccessToken")){
-      this.authService.registrar({correo: this.usuario.correo, contrasena: this.usuario.password, stravaAccessToken: localStorage.getItem("stravaAccessToken")});
+      this.authService.registrar(
+        {correo: this.usuario.correo, contrasena: this.usuario.password, stravaAccessToken: localStorage.getItem("stravaAccessToken")})
+        .subscribe({
+          next: (res) => {
+            this.router.navigate(['/app/perfil']);
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
     } else {
       console.log("No se encuentra el token de Strava...");
     }

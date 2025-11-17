@@ -23,10 +23,12 @@ const routes: Routes = [
   {
     path: 'app',
     loadChildren: () =>
-      import('@loged/loged-module').then(m => m.LogedModule)
+      import('@loged/loged-module').then(m => m.LogedModule),
+    canLoad: [authGuardGuard]
   },
   {
     path: 'app/perfil',
+    loadComponent: () => import('@loged/pages/perfil/perfil').then(m => m.Perfil),
     loadChildren: () =>
       import('@loged/pages/perfil/perfil.routes').then(m => m.PERFIL_ROUTES)
   },
