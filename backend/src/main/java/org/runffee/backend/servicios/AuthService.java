@@ -110,7 +110,7 @@ public class AuthService {
 
         Map<String, Object> respuesta = new HashMap<>();
         respuesta.put("message", "Login exitoso");
-        respuesta.put("token", accessToken);
+        respuesta.put("accessToken", accessToken);
         return respuesta;
     }
 }
