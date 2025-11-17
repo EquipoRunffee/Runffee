@@ -1,5 +1,6 @@
 package org.runffee.backend.servicios;
 
+import org.runffee.backend.modelos.Entrenamiento;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -66,55 +69,31 @@ public class StravaService {
         //Dentro de data tenemos dentor el objeto athlete el cual nos interesa guardar en una variable
         Map<String, Object> athleteMap = (Map<String, Object>) data.get("athlete");
 
-
-        //PARTE DE VALENTIN
-        //CREAR FUNCIÓN QUE BUSQUE EN LA BBDD SI YA EXISTE UN USUARIO CON LA ID ATHLETE
-        //Si existe el usuario ya -> Devuelvo un valor que me diga si existe -> Para redirigir al LOGIN
-        //Que no existe -> Lo redirijo a la pagina del REGISTER
-//
-//        Boolean registrado = False;
-//
-//        return registrado
-
-        System.out.println(ResponseEntity.ok(data));
-
+        //Obtenemos la id del atleta
         Integer stravaAthleteid = (Integer) athleteMap.get("id");
-        System.out.println(stravaAthleteid);
 
+        //Comprobamos si el usuario ya está registrado
         if(usuarioService.existeStravaAthleteId(stravaAthleteid)){
+            //Si ya está registrado pues lo llevamos al login
             return ResponseEntity.ok(Map.of("status", "login"));
         } else {
-            return ResponseEntity.ok(Map.of("status", "register"));
+
+            //Si no estaba registrado lo llevamos al registro
+
+            Usuario nuevoUsuario = new Usuario();
+
+            Number expiresAtNum = (Number) data.get("expires_at");
+            Instant expiresAt = Instant.ofEpochSecond(expiresAtNum.longValue());
+
+            nuevoUsuario.setStravaExpiresAt(expiresAt);
+            nuevoUsuario.setStravaAccessToken((String) data.get("access_token"));
+            nuevoUsuario.setStravaRefreshToken((String) data.get("refresh_token"));
+
+            usuarioRepository.save(nuevoUsuario);
+
+            return ResponseEntity.ok(Map.of("status", "register", "strava_accesstoken", (String) data.get("access_token")));
         }
-
-//        if (usuarioService.existeAthleteId(athleteid)){
-//            return ResponseEntity.ok(Map.of("status", "login")); //debe ir al login
-//        }
-//
-//
-//        //Cuando ya está en el register, comprobar que el correo no existe en la bbdd
-//
-//
-//
-//        //En el caso de que el usuario no exista en nuestra bbdd y no exista ningún correo tampoco
-//        //Creamos el usuario en la bbdd
-//        //Hay que crear una función para esto
-//        Usuario usuario = new Usuario();
-//        usuario.setNombre((String) athleteMap.get("firstname"));
-//        usuario.setCiudad((String) athleteMap.get("city"));
-//        usuario.setAthleteid((Integer) athleteMap.get("id"));
-//        usuario.setAccesstoken((String) data.get("access_token"));
-//        usuario.setRefreshtoken((String) data.get("refresh_token"));
-//        usuario.setExpiresat(Instant.ofEpochSecond(((Number) data.get("expires_at")).longValue()));
-//        usuario.setEliminado(false);
-//
-//        usuarioRepository.save(usuario);
-//
-//        return ResponseEntity.ok(Map.of("status","register")); //return.. ("usuarioNuevo")??(Map.of("status", "register") ???
     }
-
-
-
 
     /**
      * Función para validar si el token está activo. Si no lo está, lo renueva automáticamente
@@ -155,5 +134,25 @@ public class StravaService {
         usuario.setExpiresat(Instant.ofEpochSecond(((Number) body.get("expires_at")).longValue()));
 
         usuarioRepository.save(usuario);
+    }
+
+
+    public Object obtenerEntrenamientosAtleta(String stravaAccessToken){
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        String url = "https://www.strava.com/api/v3/athlete/activities";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(stravaAccessToken);
+
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<Object> respuesta = restTemplate.exchange(
+                url, HttpMethod.GET,
+                entity, Object.class);
+
+        return respuesta.getBody();
+
     }
 }

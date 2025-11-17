@@ -3,11 +3,16 @@ package org.runffee.backend.controladores;
 import org.runffee.backend.DTO.EntrenamientoDTO;
 import org.runffee.backend.DTO.EntrenamientoDetalleDTO;
 import org.runffee.backend.modelos.Entrenamiento;
+import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.runffee.backend.servicios.EntrenamientoService;
+import org.runffee.backend.servicios.JwtService;
+import org.runffee.backend.servicios.StravaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/entrenamiento")
@@ -64,5 +69,26 @@ public class EntrenamientoController {
     @DeleteMapping("/eliminar/{id}")
     public void eliminarEntrenamiento(@PathVariable Integer id){
         entrenamientoService.eliminarEntrenamiento(id);
+    }
+
+    @Autowired
+    private JwtService  jwtService;
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
+    @Autowired
+    private StravaService stravaService;
+
+    @GetMapping("/atleta")
+    public Object obtenerEntrenamientosAtleta(@RequestHeader(value = "Authorization", required = false) String authHeader){
+
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            return stravaService.obtenerEntrenamientosAtleta(usuario.getStravaAccessToken());
+        }
+
+        return null;
     }
 }

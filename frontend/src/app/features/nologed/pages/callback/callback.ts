@@ -24,19 +24,11 @@ export class Callback implements OnInit {
       console.log('Codigo recibido de StravaService: ', code);
 
       //el <any> es necesario
-      this.http.post(url, {code}).subscribe(
+      this.http.post<any>(url, {code}).subscribe(
         {
           //Esto es la respuesta de nuestro backend
           next: (res)=>{
-            alert("YA HAN CARGADO LOS DATOS");
-            console.log("Tokens recibidos del backend: ", res);
-
-
-            //PARTE DE VALENTIN
-            /**
-             * Aqui es donde tenemos que redirigir al usuario. Si la respuesta (res) es TRUE significa que el usuario
-             * existe por lo tanto lo redirigimos al login. Si es false lo llevamos al register.
-             */
+            console.log(res);
           },
           error: (err)=>{
             console.log(err);
