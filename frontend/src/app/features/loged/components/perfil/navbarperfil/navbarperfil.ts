@@ -5,7 +5,7 @@ import {NgOptimizedImage} from '@angular/common';
 @Component({
   selector: 'app-navbarperfil',
   standalone: true,
-  imports: [RouterModule, NgOptimizedImage],
+  imports: [RouterModule],
   templateUrl: './navbarperfil.html',
   styleUrls: ['./navbarperfil.css'],
 })
@@ -25,7 +25,7 @@ export class Navbarperfil {
   checkScreenSize() {
     this.isMobile = window.innerWidth <= 500;
     if (!this.isMobile) {
-      this.isNavbarOpen = false; // en escritorio siempre abierto
+      this.isNavbarOpen = false;
     }
   }
 
@@ -42,7 +42,7 @@ export class Navbarperfil {
   // Navegación relativa a /perfil
   navigate(route: string) {
     this.router.navigate([route], { relativeTo: this.activatedRoute });
-    this.closeNavbar();       // cerrar menú en móvil
-    this.itemSelected.emit(); // notificar al padre si es necesario
+    this.closeNavbar();
+    this.itemSelected.emit();
   }
 }

@@ -18,7 +18,7 @@ export class Header implements OnInit {
   constructor(private usuarioService:UsuarioService) {}
 
   ngOnInit():void {
-    const usuarioId = 15;
+    const usuarioId = 37;
     this.usuarioService.getEncabezadoPerfil(usuarioId).subscribe(
       data=> {
         this.usuario = data;
