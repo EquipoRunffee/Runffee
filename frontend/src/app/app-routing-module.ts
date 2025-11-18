@@ -24,14 +24,14 @@ const routes: Routes = [
 
 
   //PAGINAS LOGED
+  { path: 'app', component: HomeApp },
+  { path: 'app/home', component: HomeApp },
   {
     path: 'app',
     loadChildren: () =>
       import('@loged/loged-module').then(m => m.LogedModule),
     //canLoad: [authGuardGuard]
   },
-  { path: 'app', component: HomeApp },
-  { path: 'app/home', component: HomeApp },
   {
     path: 'app/perfil',
     loadComponent: () => import('@loged/pages/perfil/perfil').then(m => m.Perfil),
