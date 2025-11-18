@@ -1,1 +1,15 @@
-<p>notificaciones works!</p>
+<div class="main-content">
+  <h1 class="nav_false">Mis actividades</h1>
+  <div *ngFor="let grupo of notificaciones">
+    <h2>{{ grupo.categoria }}</h2>
+    <ul>
+      <li *ngFor="let item of grupo.items">
+        {{ item.texto }}
+        <label class="toggle-switch">
+          <input type="checkbox" [(ngModel)]="item.activado">
+          <span class="slider"></span>
+        </label>
+      </li>
+    </ul>
+  </div>
+</div>
