@@ -1,19 +1,14 @@
 package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.ValoracionDTO;
-import org.runffee.backend.modelos.Cafeteria;
-import org.runffee.backend.modelos.LineaPedido;
-import org.runffee.backend.modelos.Pedido;
-import org.runffee.backend.modelos.Valoracion;
-import org.runffee.backend.repositorios.ILineaPedidoRepository;
-import org.runffee.backend.repositorios.IPedidoRepository;
-import org.runffee.backend.repositorios.IProductoRepository;
-import org.runffee.backend.repositorios.IValoracionRepository;
+import org.runffee.backend.modelos.*;
+import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,9 +16,12 @@ public class ValoracionService {
 
     @Autowired
     private IValoracionRepository valoracionRepository;
+    @Autowired
+    private EntrenamientoService entrenamientoService;
 
     /**
      * Función que devuelve todas las valoraciones
+     *
      * @return
      */
     public List<Valoracion> obtenerValoraciones() {
@@ -35,6 +33,7 @@ public class ValoracionService {
 
     /**
      * Función que devuelve la valoración por su id
+     *
      * @param id
      * @return
      */
@@ -44,6 +43,7 @@ public class ValoracionService {
 
     /**
      * Función para crear una valoración
+     *
      * @param valoracion
      */
     public void crearValoracion(ValoracionDTO valoracion) {
@@ -58,6 +58,7 @@ public class ValoracionService {
 
     /**
      * Función para elimminar una valoración por su id
+     *
      * @param id
      */
     public void eliminarValoracion(int id) {
@@ -79,4 +80,32 @@ public class ValoracionService {
     public BigDecimal obtenerMediaValoracionCafeteria(Integer idCafeteria) {
         return valoracionRepository.obtenerMediaValoracionCafeteria(idCafeteria);
     }
-}
+
+    @Autowired
+    private JwtService jwtService;
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
+    @Autowired
+    private IEntrenamientoRepository entrenamientoRepository;
+
+    public List<ValoracionDTO> obtenerValoracionEntrenamiento(Integer idUsuario) {
+
+            List<Entrenamiento> entrenamientos = entrenamientoRepository.findByUsuarioId(idUsuario);
+            List<ValoracionDTO> valoraciones = new ArrayList<>();
+            for (Entrenamiento entrenamiento : entrenamientos) {
+                Pedido pedido = entrenamiento.getPedido();
+                LineaPedido lineaPedido = lineaPedidoRepository.findByPedido(pedido);
+                String nombreCafeteria = lineaPedido.getProducto().getCafeteria().getNombre();
+                Valoracion valoracion = entrenamiento.getPedido().getValoracion();
+
+                ValoracionDTO valoracionDTO = new ValoracionDTO();
+                valoracionDTO.setNombreCafeteria(nombreCafeteria);
+                valoracionDTO.setDescripcion(valoracion.getDescripcion());
+                valoracionDTO.setCantidad(valoracion.getCantidad());
+                valoracionDTO.setTitulo(valoracion.getTitulo());
+
+                valoraciones.add(valoracionDTO);
+            }
+            return valoraciones;
+        }
+    }

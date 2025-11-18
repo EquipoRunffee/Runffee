@@ -1,10 +1,32 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UsuarioService} from '@core/services/usuario/usuarioService';
+import {usuarioEncabezadoPerfil} from '@core/models/usuarioEncabezadoPerfil';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {
-    usuario: any;
+export class Header implements OnInit {
+
+  usuario: usuarioEncabezadoPerfil = {
+    nombre: '',
+    correo: '',
+    totalEntrenamientos: 0
+  }
+
+  constructor(private usuarioService:UsuarioService) {}
+
+  ngOnInit():void {
+    const usuarioId = 37;
+    this.usuarioService.getEncabezadoPerfil(usuarioId).subscribe(
+      data=> {
+        this.usuario = data;
+        console.log("Usuario cargado: ", this.usuario);
+      },
+      err => {
+        console.log("Error: ", err);
+      }
+    );
+  }
 }

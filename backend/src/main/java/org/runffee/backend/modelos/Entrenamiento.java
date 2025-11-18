@@ -24,6 +24,9 @@ public class Entrenamiento {
     @Column(name = "id")
     private Integer id;
 
+    @Column (name = "id_strava")
+    private Integer idStrava;
+
     @Column (name = "nombre")
     private String nombre;
 
