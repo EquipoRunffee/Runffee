@@ -28,8 +28,9 @@ const routes: Routes = [
     path: 'app',
     loadChildren: () =>
       import('@loged/loged-module').then(m => m.LogedModule),
-    canLoad: [authGuardGuard]
+    //canLoad: [authGuardGuard]
   },
+  { path: 'app', component: HomeApp },
   { path: 'app/home', component: HomeApp },
   {
     path: 'app/perfil',

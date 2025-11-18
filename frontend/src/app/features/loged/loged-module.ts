@@ -8,15 +8,18 @@ import {Actividad} from '@loged/components/actividad/actividad';
 import { HomeApp } from './pages/home-app/home-app';
 import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
 import { CardReto } from './components/card-reto/card-reto';
+import { Navbar } from './components/navbar/navbar';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   exports: [
     Header,
     Navbarperfil,
     Cupon,
     Navbarperfil,
     Actividad,
+    Navbar,
   ],
   imports: [
     CommonModule,
@@ -26,6 +29,7 @@ import { CardReto } from './components/card-reto/card-reto';
     Actividad,
     CafeteriaCard,
     HomeApp,
+    Navbar,
   ]
 })
 export class LogedModule { }

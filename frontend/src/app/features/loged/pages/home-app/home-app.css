@@ -3,15 +3,47 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 1rem;
 }
 
+.cabecera-entrenamiento{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cabecera-entrenamiento img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.ultimo-entrenamiento{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: rgba(245, 245, 245, 0.78);
+  border-radius: 10px;
+  color: var(--color-secundario-negro);
+  max-width: 700px;
+  min-height: 150px;
+  cursor: pointer;
+}
 
 .contenedor-retos{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .cards-retos{

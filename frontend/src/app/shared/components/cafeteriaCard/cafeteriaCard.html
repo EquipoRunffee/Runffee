@@ -7,20 +7,24 @@
   <div *ngFor="let tipo of cafeteriaPorTipo | keyvalue">
     <h3>{{ capitalizeTipo(tipo.key) }}</h3>
 
+    <div class="contenedor-cafeterias">
+      <div>
     <!-- Segundo bucle para obtener los valores de la cafeteria -->
-    <div  *ngFor="let cafeteria of tipo.value">
-      <div class="CafeteriaCard_unica">
-        <img src="https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?cs=srgb&dl=pexels-igor-starkov-233202-1307698.jpg&fm=jpg">
-        <p>{{cafeteria.nombre}}</p>
-        <div class="CafeteriaCard_unicaSeleccion">
-          <div class="CafeteriaCard_unicaValoracion">
-            <img src="./assets/images/icon_estrellaNegra.png">
-            <p>{{cafeteria.valoracionMedia}}</p>
+        <div  *ngFor="let cafeteria of tipo.value">
+          <div class="CafeteriaCard_unica">
+            <img src="https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?cs=srgb&dl=pexels-igor-starkov-233202-1307698.jpg&fm=jpg">
+            <p>{{cafeteria.nombre}}</p>
+            <div class="CafeteriaCard_unicaSeleccion">
+              <div class="CafeteriaCard_unicaValoracion">
+                <img src="./assets/images/icon_estrellaNegra.png">
+                <p>{{cafeteria.valoracionMedia}}</p>
+              </div>
+              <button class="CafeteriaCard_unicaBoton">Seleccionar</button>
+            </div>
           </div>
-          <button class="CafeteriaCard_unicaBoton">Seleccionar</button>
         </div>
       </div>
-    </div >
+    </div>
   </div>
 </div>
 
