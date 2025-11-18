@@ -1,3 +1,5 @@
+import {Cafeteria} from '@core/models/cafeteria';
+
 export class CafeteriaDetalles {
   constructor(
     public nombre: string = '',
