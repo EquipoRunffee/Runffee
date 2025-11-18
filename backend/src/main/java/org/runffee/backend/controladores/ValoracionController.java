@@ -53,7 +53,7 @@ public class ValoracionController {
     @Autowired
     private JwtService jwtService;
 
-    @GetMapping("/valoracionesUsuario")
+    @GetMapping("/valoracionesusuario")
     public Object obtenerValoracionesUsuario(@RequestHeader(value = "Authorization", required = false) String authHeader){
 
         if(authHeader != null && authHeader.startsWith("Bearer ")){
