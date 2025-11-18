@@ -4,5 +4,5 @@ export interface usuarioDatosPerfil {
   correo: string;
   ciudad: string;
   pais: string;
-  sexo: string;
+  sexo: 'M' | 'F';
 }

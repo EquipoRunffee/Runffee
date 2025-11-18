@@ -38,10 +38,10 @@
 }
 
 input{
-  background-color: #e7e7e7;
+  background-color: #FDEAE3;
   border: none;
   padding: 0.5rem;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: large;
   width: 80%;
 }

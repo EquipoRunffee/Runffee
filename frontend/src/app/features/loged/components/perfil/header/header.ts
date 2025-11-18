@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UsuarioService} from '@core/services/usuario/usuarioService';
-import {UsuarioEncabezadoPerfil} from '@core/models/UsuarioEncabezadoPerfil';
+import {usuarioEncabezadoPerfil} from '@core/models/usuarioEncabezadoPerfil';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import {UsuarioEncabezadoPerfil} from '@core/models/UsuarioEncabezadoPerfil';
 })
 export class Header implements OnInit {
 
-  usuario: UsuarioEncabezadoPerfil = {
+  usuario: usuarioEncabezadoPerfil = {
     nombre: '',
     correo: '',
     totalEntrenamientos: 0
