@@ -6,7 +6,9 @@ import {Register} from '@nologed/pages/register/register';
 import {Callback} from '@nologed/pages/callback/callback';
 import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
 import { Actividad } from "@loged/components/actividad/actividad";
+import { HomeApp } from "@loged/pages/home-app/home-app";
 import {authGuardGuard} from '@core/guard/auth-guard-guard';
+import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
 
 const routes: Routes = [
 
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path: 'login', component: Login},
   {path: 'register', component: Register},
   { path: 'actividad', component: Actividad },
+  { path: 'cafeteria', component: CafeteriaCard },
+
 
   //PAGINAS LOGED
   {
@@ -26,6 +30,7 @@ const routes: Routes = [
       import('@loged/loged-module').then(m => m.LogedModule),
     canLoad: [authGuardGuard]
   },
+  { path: 'app/home', component: HomeApp },
   {
     path: 'app/perfil',
     loadComponent: () => import('@loged/pages/perfil/perfil').then(m => m.Perfil),

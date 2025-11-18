@@ -24,6 +24,10 @@ export class Login {
 
   login() {
     console.log('Credenciales: ', this.usuario);
+
+    document.getElementById("span-iniciar")!.style.display = 'none';
+    document.getElementById("div-iniciando-sesion")!.style.display = 'flex';
+
     this.authService.login({correo: this.usuario.correo, contrasena: this.usuario.contrasena}).subscribe({
       next: (res) => {
         this.router.navigate(['/app/perfil']);

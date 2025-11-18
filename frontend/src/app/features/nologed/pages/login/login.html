@@ -25,7 +25,7 @@
       >
 
       <input
-        type="text"
+        type="password"
         name="password"
         [(ngModel)]="usuario.contrasena"
         placeholder="Contraseña"
@@ -40,7 +40,11 @@
 
       <!-- Botón de incio de sesión -->
       <button class="btn-inciar-sesion" type="submit">
-        Iniciar
+        <span id="span-iniciar">Iniciar</span>
+        <div id="div-iniciando-sesion">
+          <span class="loader"></span>
+          Iniciando
+        </div>
       </button>
 
       <!-- Botón de registro con StravaService -->

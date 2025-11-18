@@ -51,6 +51,10 @@ body{
   background: white;
 }
 
+button{
+  cursor: pointer;
+}
+
 .btn-inciar-sesion{
   border: none;
   background-color: #E3FF68;
@@ -77,4 +81,31 @@ body{
 
 .btn-strava:hover{
   color: rgba(252, 82, 0);
+}
+
+.loader {
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--color-secundario-negro);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#div-iniciando-sesion{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
