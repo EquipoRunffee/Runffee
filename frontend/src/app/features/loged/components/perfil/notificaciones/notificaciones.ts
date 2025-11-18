@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-notificaciones',
-  imports: [RouterModule, FormsModule, NgForOf],
+  imports: [RouterModule, FormsModule],
   templateUrl: './notificaciones.html',
   styleUrls: ['./notificaciones.css'],
 })
