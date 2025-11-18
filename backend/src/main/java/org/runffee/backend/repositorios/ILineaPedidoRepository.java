@@ -10,5 +10,5 @@ import java.util.List;
 public interface ILineaPedidoRepository extends JpaRepository<LineaPedido, Integer> {
     List<LineaPedido> findByProducto(Producto producto);
 
-    LineaPedido findPedidoBy(Pedido pedido);
+    LineaPedido findByPedido(Pedido pedido);
 }

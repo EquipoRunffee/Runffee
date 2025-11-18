@@ -94,7 +94,7 @@ public class ValoracionService {
             List<ValoracionDTO> valoraciones = new ArrayList<>();
             for (Entrenamiento entrenamiento : entrenamientos) {
                 Pedido pedido = entrenamiento.getPedido();
-                LineaPedido lineaPedido = lineaPedidoRepository.findPedidoBy(pedido);
+                LineaPedido lineaPedido = lineaPedidoRepository.findByPedido(pedido);
                 String nombreCafeteria = lineaPedido.getProducto().getCafeteria().getNombre();
                 Valoracion valoracion = entrenamiento.getPedido().getValoracion();
 
