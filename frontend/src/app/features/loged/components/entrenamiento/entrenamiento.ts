@@ -33,6 +33,6 @@ export class Entrenamiento {
   constructor(private router: Router) {}
 
   mostrarActividad() {
-    this.router.navigate(['/perfil/actividad']);
+    this.router.navigate(['app/perfil/actividad']);
   }
 }
