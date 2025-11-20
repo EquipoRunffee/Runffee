@@ -24,8 +24,6 @@ public class JwtService {
     private final long jwtExpirationMs = 30 * 60 * 1000;
     @Autowired
     private IUsuarioRepository usuarioRepository;
-    @Autowired
-    private JwtService jwtService;
 
     public String genenrarToken(Integer id, String correo){
         return Jwts.builder()
@@ -65,7 +63,7 @@ public class JwtService {
         }
 
         // Generar nuevo access token
-        String nuevoAccessToken = jwtService.genenrarToken(usuario.getId(), usuario.getCorreo());
+        String nuevoAccessToken = genenrarToken(usuario.getId(), usuario.getCorreo());
 
         // Guardar el nuevo token en la base de datos
         usuario.setAccesstoken(nuevoAccessToken);
