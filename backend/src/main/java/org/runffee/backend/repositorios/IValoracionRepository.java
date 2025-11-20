@@ -33,7 +33,7 @@ public interface IValoracionRepository extends JpaRepository<Valoracion, Integer
        JOIN lineapedido l ON l.id_pedido = pe.id
        JOIN producto p ON p.id = l.id_producto
        JOIN cafeteria c ON c.id = p.id_cafeteria
-       WHERE u.id = :idUsuario;
+       WHERE u.id = idUsuario;
         """,
             nativeQuery = true)
     List<Object[]> obtenerValoracionEntrenamiento(@Param("idUsuario") Integer idUsuario);
