@@ -26,13 +26,13 @@ public interface IValoracionRepository extends JpaRepository<Valoracion, Integer
 
     @Query(value = """
        SELECT v.*, c.nombre
-       FROM valoracion v
-       JOIN pedido pe ON pe.id_valoracion = v.id
-       JOIN entrenamiento en ON en.id_pedido = pe.id
-       JOIN usuario u ON u.id = en.id_usuario
-       JOIN lineapedido l ON l.id_pedido = pe.id
-       JOIN producto p ON p.id = l.id_producto
-       JOIN cafeteria c ON c.id = p.id_cafeteria
+       FROM app.valoracion v
+       JOIN app.pedido pe ON pe.id_valoracion = v.id
+       JOIN app.entrenamiento en ON en.id_pedido = pe.id
+       JOIN app.usuario u ON u.id = en.id_usuario
+       JOIN app.lineapedido l ON l.id_pedido = pe.id
+       JOIN app.producto p ON p.id = l.id_producto
+       JOIN app.cafeteria c ON c.id = p.id_cafeteria
        WHERE u.id = :idUsuario;
         """,
             nativeQuery = true)
