@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,9 @@ public class JwtService {
     @Value("${jwt.secret-key}")
     private String jwtSecretKey;
     private final long jwtExpirationMs = 30 * 60 * 1000;
+    @Autowired
     private IUsuarioRepository usuarioRepository;
+    @Autowired
     private JwtService jwtService;
 
     public String genenrarToken(Integer id, String correo){
