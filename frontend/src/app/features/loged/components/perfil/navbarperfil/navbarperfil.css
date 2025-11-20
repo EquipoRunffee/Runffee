@@ -73,7 +73,7 @@
     width: 70%;
     max-width: 260px;
     height: 100%;
-    background: white; /* puedes cambiar a tu color original si no es blanco */
+    background: white;
     z-index: 999;
     transform: translateX(-100%);
     box-shadow: 2px 0 8px rgba(0,0,0,0.2);
