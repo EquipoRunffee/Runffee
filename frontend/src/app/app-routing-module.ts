@@ -7,7 +7,7 @@ import {Callback} from '@nologed/pages/callback/callback';
 import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
 import { Actividad } from "@loged/components/actividad/actividad";
 import { HomeApp } from "@loged/pages/home-app/home-app";
-import {authGuardGuard} from '@core/guard/auth-guard-guard';
+//import {authGuardGuard} from '@core/guard/auth-guard-guard';
 import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
 
 const routes: Routes = [
@@ -21,7 +21,6 @@ const routes: Routes = [
   {path: 'register', component: Register},
   { path: 'actividad', component: Actividad },
   { path: 'cafeteria', component: CafeteriaCard },
-
 
   //PAGINAS LOGED
   { path: 'app', component: HomeApp },
