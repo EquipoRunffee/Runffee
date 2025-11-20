@@ -45,7 +45,7 @@ public class AuthService {
         //Creamos el token interno
         String accessToken = jwtService.genenrarToken(usuario.getId(), usuario.getCorreo());
         String refreshToken = UUID.randomUUID().toString();
-        Instant expiresAt = Instant.now().plus(15, ChronoUnit.MINUTES);
+        Instant expiresAt = Instant.now().plus(15, ChronoUnit.DAYS);
 
         //Guardamos el token interno
         usuario.setAccesstoken(accessToken);
