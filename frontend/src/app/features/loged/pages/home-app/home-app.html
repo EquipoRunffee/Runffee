@@ -1,24 +1,41 @@
-<app-navbar></app-navbar>
-<div class="cabecera-entrenamiento">
-  <img src="./assets/images/fondoverde_repeat.png" alt="fondo verde logo runffee">
-  <div class="ultimo-entrenamiento">
-    <h3>Entrenamiento Monte Gord...</h3>
+<div id="contenedor-padre">
+  <app-navbar></app-navbar>
+  <div class="cabecera-entrenamiento">
+    <img src="./assets/images/fondoverde_repeat.png" alt="fondo verde logo runffee">
+    <div class="ultimo-entrenamiento">
+      <h3>Entrenamiento Monte Gord...</h3>
+    </div>
   </div>
+  <div class="contenedor-retos">
+    <h3>Nuestros retos de {{ mes }}</h3>
+    <div class="cards-retos">
+      <div class="contenedor-card-reto">
+        @for (card of cards; let i = $index; track i)  {
+          <app-card-reto [selected]="selectedIndex === i" (select)="onSelected(i)"></app-card-reto>
+        }
+      </div>
+    </div>
+  </div>
+  <app-cafeteriaCard #contenedorCafeterias></app-cafeteriaCard>
+  <app-footer></app-footer>
+  <button id="btn-crear-objetivo" title="Crear objetivo" (click)="actualizarPopUp()">+</button>
 </div>
-<div class="contenedor-retos">
-  <h3>Nuestros retos de {{ mes }}</h3>
-  <div class="cards-retos">
-    <div class="contenedor-card-reto">
-      <app-card-reto></app-card-reto>
-      <app-card-reto></app-card-reto>
-      <app-card-reto></app-card-reto>
-      <app-card-reto></app-card-reto>
-      <app-card-reto></app-card-reto>
-      <app-card-reto></app-card-reto>
-      <app-card-reto></app-card-reto>
+
+<div id="popup-objetivo">
+  <div class="contenedor-popup">
+    <button (click)="actualizarPopUp()" id="btn-cerrar-popup">x</button>
+    <div class="div-popup-img">
+      <img src="./assets/images/img_objetivo.png" alt="">
+    </div>
+    <div class="div-form-objetivo">
+      <h3>¿Cuál será tu objetivo?</h3>
+      <div class="inputs">
+        <p>KM.</p>
+        <input type="text" placeholder="10">
+        <p>TIEMPO MAX. (min)</p>
+        <input type="text" placeholder="20">
+      </div>
+      <button>Crear entrenamiento</button>
     </div>
   </div>
 </div>
-<app-cafeteriaCard></app-cafeteriaCard>
-<app-footer></app-footer>
-<button id="btn-crear-objetivo">+</button>

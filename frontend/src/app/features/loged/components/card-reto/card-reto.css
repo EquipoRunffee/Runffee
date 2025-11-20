@@ -22,6 +22,11 @@
   transform: translateY(-3px) ;
 }
 
+.card-reto.active{
+  background-color: var(--color-fosforito);
+  color: var(--color-secundario-negro);
+}
+
 .card-reto>div{
   width: 100%;
   display: flex;
@@ -58,4 +63,9 @@ h3{
 
 .btn-realizar:hover{
   background-color: #cbe364;
+}
+
+.btn-realizar.active{
+  background-color: var(--color-secundario-negro);
+  color: var(--color-fosforito);
 }

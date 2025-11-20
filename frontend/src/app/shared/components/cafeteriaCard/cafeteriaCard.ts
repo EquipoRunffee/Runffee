@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CafeteriaDetalles} from '@core/models/cafeteria-detalles';
 import {CafeteriaDetallesService} from '@core/services/cafeteria/cafeteriaDetallesService';
@@ -17,10 +17,17 @@ export class CafeteriaCard implements OnInit{
   // los valores pueden ser cualquiera)
   cafeteriaPorTipo: { [key: string]: any[] } = {};
 
+  @ViewChild('hostCard') hostCard!: ElementRef;
+
+
   constructor(private cafeteriaDetalleService: CafeteriaDetallesService) {}
 
   ngOnInit(): void {
     this.cargarCafeterias();
+  }
+
+  scrollTo() {
+    this.hostCard.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 
   cargarCafeterias(): void {

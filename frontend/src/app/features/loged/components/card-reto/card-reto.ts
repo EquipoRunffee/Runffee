@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-card-reto',
@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './card-reto.css',
 })
 export class CardReto {
+  @Input() data!: any;
+  @Input() selected: boolean = false;
+  @Output() select = new EventEmitter<void>();
 
+  onSelect() {
+    this.select.emit();
+  }
 }

@@ -18,7 +18,7 @@ import { ValoracionCard } from './shared/components/valoracion-card/valoracion-c
 
 
 @NgModule({
-  declarations: [App, ValoracionCard,],
+  declarations: [App],
   providers: [
     provideHttpClient(
       withInterceptors([authInterceptor])
@@ -39,7 +39,8 @@ import { ValoracionCard } from './shared/components/valoracion-card/valoracion-c
     MapMarker,
     MapaCafeteria,
     CafeteriaCard,
-    CardReto
+    CardReto,
+    ValoracionCard
   ],
   exports: [
     Footer,
