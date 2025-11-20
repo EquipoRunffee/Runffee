@@ -55,9 +55,10 @@ public class ValoracionController {
 
     @GetMapping("/valoracionesusuario")
     public Object obtenerValoracionesUsuario(@RequestHeader(value = "Authorization", required = false) String authHeader){
-
+        System.out.println("Realizando Petición");
         if(authHeader != null && authHeader.startsWith("Bearer ")){
             String token = authHeader.substring(7);
+            System.out.println("Token: " + token);
             Integer idUsuario = jwtService.obtenerIdUsuario(token);
 
             if(!jwtService.validarToken(token)){
