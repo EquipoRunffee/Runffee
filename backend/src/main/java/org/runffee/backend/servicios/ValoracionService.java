@@ -80,6 +80,7 @@ public class ValoracionService {
     }
 
     public List<Object[]> obtenerValoracionEntrenamiento(Integer idUsuario) {
+        System.out.println("Realizando Servicio");
             return valoracionRepository.obtenerValoracionEntrenamiento(idUsuario);
         }
     }
