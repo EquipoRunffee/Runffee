@@ -1,8 +1,8 @@
-    import { Component } from '@angular/core';
-    import {FormsModule} from '@angular/forms';
-    import {Router} from '@angular/router';
-    import {StravaService} from '@core/services/strava/stravaService';
-    import {AuthService} from '@core/services/auth/auth-service';
+import { Component } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
+import {StravaService} from '@core/services/strava/stravaService';
+import {AuthService} from '@core/services/auth/auth-service';
 
 @Component({
   selector: 'app-login',
