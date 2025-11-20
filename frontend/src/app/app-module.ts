@@ -14,10 +14,11 @@ import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
 import { CafeteriaCard } from './shared/components/cafeteriaCard/cafeteriaCard';
 import {authInterceptor} from '@core/interceptor/auth-interceptor';
 import {CardReto} from '@loged/components/card-reto/card-reto';
+import { ValoracionCard } from './shared/components/valoracion-card/valoracion-card';
 
 
 @NgModule({
-  declarations: [App,],
+  declarations: [App, ValoracionCard,],
   providers: [
     provideHttpClient(
       withInterceptors([authInterceptor])
