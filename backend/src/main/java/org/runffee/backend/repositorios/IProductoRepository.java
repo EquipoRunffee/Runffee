@@ -1,11 +1,29 @@
 package org.runffee.backend.repositorios;
 
+import org.runffee.backend.DTO.ProductoCafeteriaDTO;
 import org.runffee.backend.modelos.Cafeteria;
 import org.runffee.backend.modelos.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface IProductoRepository extends JpaRepository<Producto, Integer> {
     List<Producto> findByCafeteria(Cafeteria cafeteria);
+    @Query(value = """
+    select
+            p.id AS id_producto,
+        p.nombre AS nombre_producto,
+        p.img as imagen_producto,
+        COUNT(*) AS veces_aparece
+    from app.lineapedido lp
+    join app.producto p on lp.id_producto = p.id 
+    where p.id_cafeteria = : cafeteriaId
+    group by p.id, p.nombre order by veces_aparece desc
+    limit 4
+    """,
+            nativeQuery = true)
+    List<ProductoCafeteriaDTO> productosMasVendidos(@Param("cafeteriaId") Integer cafeteriaId);
 }

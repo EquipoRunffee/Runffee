@@ -12,10 +12,10 @@ public class PaginaCafeteriaDTO {
     private Double lat;
     private Double lng;
     private String imagen;
-    private List<Producto> productos;
+    private List<ProductoCafeteriaDTO> productos;
     private List<Valoracion> valoraciones;
 
-    public PaginaCafeteriaDTO(String nombre, String descripcion, Double lat, Double lng, String imagen, ArrayList<Producto> productos, ArrayList<Valoracion> valoraciones) {
+    public PaginaCafeteriaDTO(String nombre, String descripcion, Double lat, Double lng, String imagen, List<ProductoCafeteriaDTO> productos, List<Valoracion> valoraciones) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.lat = lat;
