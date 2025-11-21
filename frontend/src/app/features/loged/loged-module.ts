@@ -7,7 +7,7 @@ import { HomeApp } from './pages/home-app/home-app';
 import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
 import { CardReto } from './components/card-reto/card-reto';
 import { Navbar } from './components/navbar/navbar';
-import { Cupon } from '@loged/components/perfil/cupon/cupon';
+import { Cupon } from '@loged/components/cupon/cupon';
 import {Actividad} from '@loged/components/perfil/actividad/actividad';
 
 @NgModule({
