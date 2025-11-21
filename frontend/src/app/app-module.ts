@@ -16,17 +16,17 @@ import {authInterceptor} from '@core/interceptor/auth-interceptor';
 import {CardReto} from '@loged/components/card-reto/card-reto';
 import { ValoracionCard } from './shared/components/valoracion-card/valoracion-card';
 import { Detallecafeteria } from './shared/pages/detallecafeteria/detallecafeteria';
+import { EntrenamientoCard } from './shared/components/entrenamiento-card/entrenamiento-card';
 
 
 @NgModule({
-  declarations: [App],
+  declarations: [App,],
   providers: [
     provideHttpClient(
       withInterceptors([authInterceptor])
     ),
     provideBrowserGlobalErrorListeners()
   ],
-
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,12 +42,14 @@ import { Detallecafeteria } from './shared/pages/detallecafeteria/detallecafeter
     MapaCafeteria,
     CafeteriaCard,
     CardReto,
-    ValoracionCard
+    ValoracionCard,
+    EntrenamientoCard
   ],
   exports: [
     Footer,
     NavbarComponent,
     CafeteriaCard,
+    EntrenamientoCard,
   ],
   bootstrap: [App]
 })

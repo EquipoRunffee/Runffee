@@ -1,5 +1,6 @@
 package org.runffee.backend.repositorios;
 
+import org.runffee.backend.DTO.ValoracionDTO;
 import org.runffee.backend.modelos.Cafeteria;
 import org.runffee.backend.modelos.Pedido;
 import org.runffee.backend.modelos.Valoracion;
@@ -25,7 +26,7 @@ public interface IValoracionRepository extends JpaRepository<Valoracion, Integer
     BigDecimal obtenerMediaValoracionCafeteria(@Param("cafeteriaId") Integer cafeteriaId);
 
     @Query(value = """
-       SELECT v.*, c.nombre
+       SELECT v.*, c.nombre AS nombreCafeteria
        FROM app.valoracion v
        JOIN app.pedido pe ON pe.id_valoracion = v.id
        JOIN app.entrenamiento en ON en.id_pedido = pe.id
@@ -36,6 +37,6 @@ public interface IValoracionRepository extends JpaRepository<Valoracion, Integer
        WHERE u.id = :idUsuario;
         """,
             nativeQuery = true)
-    List<Object[]> obtenerValoracionEntrenamiento(@Param("idUsuario") Integer idUsuario);
+    List<ValoracionDTO> obtenerValoracionEntrenamiento(@Param("idUsuario") Integer idUsuario);
 
 }

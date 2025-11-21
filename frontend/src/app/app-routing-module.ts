@@ -5,8 +5,10 @@ import {Login} from '@nologed/pages/login/login';
 import {Register} from '@nologed/pages/register/register';
 import {Callback} from '@nologed/pages/callback/callback';
 import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
-import { Actividad } from "@loged/components/actividad/actividad";
-import {authGuardGuard} from '@core/guard/auth-guard-guard';
+import { HomeApp } from "@loged/pages/home-app/home-app";
+//import {authGuardGuard} from '@core/guard/auth-guard-guard';
+import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
+import { Actividad } from "@loged/components/perfil/actividad/actividad";
 import {Detallecafeteria} from '@shared/pages/detallecafeteria/detallecafeteria';
 
 const routes: Routes = [
