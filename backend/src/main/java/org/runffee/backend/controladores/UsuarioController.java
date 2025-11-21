@@ -1,13 +1,10 @@
 package org.runffee.backend.controladores;
 
 import org.runffee.backend.DTO.UsuarioDTO;
-import org.runffee.backend.DTO.UsuarioDatosPerfilDTO;
-import org.runffee.backend.DTO.UsuarioEncabezadoPerfilDTO;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.runffee.backend.servicios.JwtService;
 import org.runffee.backend.servicios.UsuarioDatosPerfilService;
-import org.runffee.backend.servicios.UsuarioEncabezadoPerfilService;
 import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -80,32 +77,6 @@ public class UsuarioController {
     }
 
     /**
-     * API que devuelve el encabezado de perfil de un usuario:
-     * nombre, correo y total de entrenamientos.
-     *
-     * @param - accesstoken
-     */
-
-    @GetMapping("/datos_perfil")
-    public Object obtenerEncabezadoPerfil(@RequestHeader(value = "Authorization", required = false) String authHeader){
-
-        if(authHeader != null && authHeader.startsWith("Bearer ")){
-            String token = authHeader.substring(7);
-            Integer idUsuario = jwtService.obtenerIdUsuario(token);
-            Usuario usuario = usuarioRepository.findById(idUsuario).get();
-
-            if(!jwtService.validarToken(token)){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                        .body(Map.of("error", "Token expirado"));
-            }
-
-            return usuarioEncabezadoPerfilService.obtenerEncabezadoPerfil(idUsuario);
-        }
-
-        return null;
-    }
-
-    /**
      * API que devuelve datos de perfil de un usuario:
      * nombre, apellidos, correo, ciudad, pais, sexo.
      *
@@ -113,7 +84,7 @@ public class UsuarioController {
      */
 
     @GetMapping("/datos_perfil")
-    public Object obtenerDatosPerfil(@RequestHeader(value = "Authorization", required = false) String authHeader){
+    public Object obtenerUsuarioDatosPerfil(@RequestHeader(value = "Authorization", required = false) String authHeader){
 
         if(authHeader != null && authHeader.startsWith("Bearer ")){
             String token = authHeader.substring(7);

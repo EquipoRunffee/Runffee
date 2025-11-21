@@ -5,4 +5,5 @@ export interface usuarioDatosPerfil {
   ciudad: string;
   pais: string;
   sexo: 'M' | 'F';
+  totalEntrenamientos: number;
 }
