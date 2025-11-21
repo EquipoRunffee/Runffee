@@ -60,6 +60,11 @@ public class CafeteriaService {
         }
     }
 
+    public ResponseEntity<> obtenerInformacionCafeteria(Integer id){
+        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
+
+    }
+
 //    public void editarCafeteria(CafeteriaDTO cafeteriaDTO, int id) {
 //        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
 //

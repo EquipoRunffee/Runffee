@@ -2,6 +2,7 @@
 
 export class Cafeteria {
   constructor(
+    public id: number,
     public nombre: string = '',
     public descripcion: string = '',
     public lat: string = '',
