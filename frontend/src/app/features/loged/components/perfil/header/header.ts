@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UsuarioService} from '@core/services/usuario/usuarioService';
 import {usuarioEncabezadoPerfil} from '@core/models/usuarioEncabezadoPerfil';
-import {AuthService} from '@core/services/auth/auth-service';
 
 @Component({
   selector: 'app-header',
@@ -16,15 +15,10 @@ export class Header implements OnInit {
     totalEntrenamientos: 0
   }
 
-  constructor(
-    private usuarioService:UsuarioService,
-    private authService: AuthService,
-  ) {}
+  constructor(private usuarioService:UsuarioService) {}
 
   ngOnInit():void {
-    const idUsuario = this.authService.getUserId();
-
-    this.usuarioService.getEncabezadoPerfil(idUsuario).subscribe({
+    this.usuarioService.getEncabezadoPerfil().subscribe({
       next: (data) => this.usuario = data,
       error: (err) => console.error('Error al cargar datos del usuario:', err)
     });

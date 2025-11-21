@@ -18,7 +18,7 @@ public class UsuarioDatosPerfilService {
      * Función que devuelve datos específicos del usuario
      */
 
-    public UsuarioDatosPerfilDTO obtenerDatosPerfil(int usuarioId) {
+    public UsuarioDatosPerfilDTO obtenerDatosPerfil(Integer usuarioId) {
         Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + usuarioId));
 
         UsuarioDatosPerfilDTO dto = new UsuarioDatosPerfilDTO();

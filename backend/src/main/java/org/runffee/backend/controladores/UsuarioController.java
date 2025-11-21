@@ -4,14 +4,18 @@ import org.runffee.backend.DTO.UsuarioDTO;
 import org.runffee.backend.DTO.UsuarioDatosPerfilDTO;
 import org.runffee.backend.DTO.UsuarioEncabezadoPerfilDTO;
 import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.repositorios.IUsuarioRepository;
+import org.runffee.backend.servicios.JwtService;
 import org.runffee.backend.servicios.UsuarioDatosPerfilService;
 import org.runffee.backend.servicios.UsuarioEncabezadoPerfilService;
 import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/usuario")
@@ -23,11 +27,14 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
-
     @Autowired
     private UsuarioEncabezadoPerfilService usuarioEncabezadoPerfilService;
     @Autowired
     private UsuarioDatosPerfilService usuarioDatosPerfilService;
+    @Autowired
+    private JwtService jwtService;
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
 
 
     /**
@@ -76,23 +83,51 @@ public class UsuarioController {
      * API que devuelve el encabezado de perfil de un usuario:
      * nombre, correo y total de entrenamientos.
      *
-     * @param id
+     * @param - accesstoken
      */
-    @GetMapping("/encabezado_perfil/{id}")
-    public ResponseEntity<UsuarioEncabezadoPerfilDTO> obtenerEncabezadoPerfil(@PathVariable Integer id) {
-        UsuarioEncabezadoPerfilDTO dto = usuarioEncabezadoPerfilService.obtenerEncabezadoPerfil(id);
-        return ResponseEntity.ok(dto);
+
+    @GetMapping("/datos_perfil")
+    public Object obtenerEncabezadoPerfil(@RequestHeader(value = "Authorization", required = false) String authHeader){
+
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+
+            return usuarioEncabezadoPerfilService.obtenerEncabezadoPerfil(idUsuario);
+        }
+
+        return null;
     }
 
     /**
      * API que devuelve datos de perfil de un usuario:
      * nombre, apellidos, correo, ciudad, pais, sexo.
      *
-     * @param id
+     * @param - accesstoken
      */
-    @GetMapping("/datos_perfil/{id}")
-    public ResponseEntity<UsuarioDatosPerfilDTO> obtenerDatosPerfil(@PathVariable Integer id) {
-        UsuarioDatosPerfilDTO dto = usuarioDatosPerfilService.obtenerDatosPerfil(id);
-        return ResponseEntity.ok(dto);
+
+    @GetMapping("/datos_perfil")
+    public Object obtenerDatosPerfil(@RequestHeader(value = "Authorization", required = false) String authHeader){
+
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+
+            return usuarioDatosPerfilService.obtenerDatosPerfil(idUsuario);
+        }
+
+        return null;
     }
 }

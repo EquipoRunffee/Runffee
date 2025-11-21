@@ -5,7 +5,7 @@ import {Login} from '@nologed/pages/login/login';
 import {Register} from '@nologed/pages/register/register';
 import {Callback} from '@nologed/pages/callback/callback';
 import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
-import { Actividad } from "@loged/components/actividad/actividad";
+import { Actividad } from "@loged/components/perfil/actividad/actividad";
 import {authGuardGuard} from '@core/guard/auth-guard-guard';
 
 const routes: Routes = [
