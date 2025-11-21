@@ -86,7 +86,7 @@ public class UsuarioController {
      * @param - accesstoken
      */
 
-    @GetMapping("/datos_perfil")
+    @GetMapping("/encabezado_perfil")
     public Object obtenerEncabezadoPerfil(@RequestHeader(value = "Authorization", required = false) String authHeader){
 
         if(authHeader != null && authHeader.startsWith("Bearer ")){
