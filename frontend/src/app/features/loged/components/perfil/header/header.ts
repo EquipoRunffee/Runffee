@@ -18,15 +18,9 @@ export class Header implements OnInit {
   constructor(private usuarioService:UsuarioService) {}
 
   ngOnInit():void {
-    const usuarioId = 37;
-    this.usuarioService.getEncabezadoPerfil(usuarioId).subscribe(
-      data=> {
-        this.usuario = data;
-        console.log("Usuario cargado: ", this.usuario);
-      },
-      err => {
-        console.log("Error: ", err);
-      }
-    );
+    this.usuarioService.getEncabezadoPerfil().subscribe({
+      next: (data) => this.usuario = data,
+      error: (err) => console.error('Error al cargar datos del usuario:', err)
+    });
   }
 }

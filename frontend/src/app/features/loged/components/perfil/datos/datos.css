@@ -38,12 +38,13 @@
 }
 
 input{
-  background-color: #FDEAE3;
+  background-color: rgb(253, 234, 227, 0.51);
   border: none;
-  padding: 0.5rem;
+  padding: 0.8rem;
   border-radius: 10px;
   font-size: large;
   width: 80%;
+  color: #8C8C8C;
 }
 
 .div-inputs{

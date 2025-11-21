@@ -15,13 +15,13 @@ export class UsuarioService {
     return this.http.get<any>(apiUrl);
   }
 
-  getEncabezadoPerfil(id: number): Observable<usuarioEncabezadoPerfil>{
-    let apiUrl= 'https://runffee.onrender.com/usuario/encabezado_perfil/' + id.toString();
+  getEncabezadoPerfil(): Observable<usuarioEncabezadoPerfil>{
+    let apiUrl= 'https://runffee.onrender.com/usuario/encabezado_perfil';
     return this.http.get<usuarioEncabezadoPerfil>(apiUrl);
   }
 
-  getDatosPerfil(id:number): Observable<usuarioDatosPerfil>{
-    let apiUrl= 'https://runffee.onrender.com/usuario/datos_perfil/' + id.toString();
+  getDatosPerfil(): Observable<usuarioDatosPerfil>{
+    let apiUrl= 'https://runffee.onrender.com/usuario/datos_perfil';
     return this.http.get<usuarioDatosPerfil>(apiUrl);
   }
 }

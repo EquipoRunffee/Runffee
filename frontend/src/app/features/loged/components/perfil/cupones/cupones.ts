@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {Cupon} from '@loged/components/cupon/cupon';
+import {Cupon} from '@loged/components/perfil/cupon/cupon';
 
 @Component({
   selector: 'app-cupones',

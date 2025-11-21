@@ -63,25 +63,5 @@ export class AuthService {
     localStorage.setItem("refreshToken", refreshToken);
   }
 
-  //Decodificar token para obtener el id del usuario registrado
-  decodeToken(token: string | null): any {
-    if (!token) return null;
-    try {
-      const payload = token.split('.')[1];
-      return JSON.parse(atob(payload));
-    } catch (error) {
-      console.error("Error decodificando token:", error);
-      return null;
-    }
-  }
 
-  //Obtenemos el id del usuario registrado
-  getUserId(): number | null {
-    const token = this.getAccessToken();
-    const decoded = this.decodeToken(token);
-
-    if (!decoded || !decoded.sub) return null;
-
-    return Number(decoded.sub);
-  }
 }
