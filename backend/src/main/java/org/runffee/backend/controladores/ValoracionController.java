@@ -54,7 +54,7 @@ public class ValoracionController {
     private JwtService jwtService;
 
     @GetMapping("/valoracionesusuario")
-    public Object obtenerValoracionesUsuario(@RequestHeader(value = "Authorization", required = false) String authHeader){
+    public ResponseEntity<?> obtenerValoracionesUsuario(@RequestHeader(value = "Authorization", required = false) String authHeader){
         System.out.println("Realizando Petición");
         if(authHeader != null && authHeader.startsWith("Bearer ")){
             String token = authHeader.substring(7);
@@ -65,7 +65,7 @@ public class ValoracionController {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                         .body(Map.of("error", "Token expirado"));
             }
-            return valoracionService.obtenerValoracionEntrenamiento(idUsuario);
+            return ResponseEntity.ok(valoracionService.obtenerValoracionEntrenamiento(idUsuario));
         }
         return null;
     }
