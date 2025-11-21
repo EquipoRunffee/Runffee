@@ -25,8 +25,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
     @Autowired
-    private UsuarioEncabezadoPerfilService usuarioEncabezadoPerfilService;
-    @Autowired
     private UsuarioDatosPerfilService usuarioDatosPerfilService;
     @Autowired
     private JwtService jwtService;
