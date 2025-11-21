@@ -15,7 +15,7 @@ import java.util.Map;
 @RequestMapping("/auth")
 @CrossOrigin(origins = {
         "http://localhost:4200",
-        "https://anderolivos.com"
+        "https://www.anderolivos.com"
 })
 public class AuthController {
     @Autowired
@@ -27,6 +27,8 @@ public class AuthController {
 
     @PostMapping("/registrar")
     public ResponseEntity<?> registrarUsuario(@RequestBody Map<String, String> request) {
+
+        System.out.println(request);
 
         String correo = request.get("correo");
         String contrasena = request.get("contrasena");
@@ -44,5 +46,8 @@ public class AuthController {
         return ResponseEntity.ok(authService.login(correo, contrasena));
     }
 
-
+    @PostMapping("/refresh")
+    public ResponseEntity<?> refresh(@RequestBody Map<String, String> request) {
+        return ResponseEntity.ok(jwtService.renovarToken(request.get("refreshToken")));
+    }
 }

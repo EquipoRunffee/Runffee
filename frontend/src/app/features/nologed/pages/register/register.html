@@ -23,13 +23,13 @@
     <input
       type="email"
       name="email"
-      [(ngModel)]="usuario.email"
+      [(ngModel)]="usuario.correo"
       placeholder="Correo electrónico"
       required
     >
 
     <!-- email not already in bbdd -->
-    <div id="emailError" class="error">{{emailError}}</div>
+    <div id="emailError" class="error">{{correoError}}</div>
 
     <!-- Contraseña -->
     <div class="input-password">
@@ -85,7 +85,7 @@ hasta aqui lo que he visto en el video -->
 
 <!-- Botón crear cuenta -->
 
-    <button class="btn-registro" type="submit">
+    <button class="btn-registro" (click)="registrarUsuario()">
         Crear cuenta
     </button>
 

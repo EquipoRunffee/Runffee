@@ -1,7 +1,9 @@
-export interface Valoracion {
-
-  titulo: string;
-  cantidad: number;
-  descripcion: string;
-  eliminado: string;
+export class Valoracion {
+  constructor(
+    public titulo: string = '',
+    public descripcion: string = '',
+    public eliminado: string = '',
+    public nombreCafeteria: string = '',
+    public cantidad: number = 0,
+  ) {}
 }

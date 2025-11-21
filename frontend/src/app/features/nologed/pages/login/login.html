@@ -19,15 +19,15 @@
       <input
         type="email"
         name="email"
-        [(ngModel)]="usuario.email"
+        [(ngModel)]="usuario.correo"
         placeholder="Correo electrónico"
         required
       >
 
       <input
-        type="text"
+        type="password"
         name="password"
-        [(ngModel)]="usuario.password"
+        [(ngModel)]="usuario.contrasena"
         placeholder="Contraseña"
         required
 
@@ -40,7 +40,11 @@
 
       <!-- Botón de incio de sesión -->
       <button class="btn-inciar-sesion" type="submit">
-        Iniciar
+        <span id="span-iniciar">Iniciar</span>
+        <div id="div-iniciando-sesion">
+          <span class="loader"></span>
+          Iniciando
+        </div>
       </button>
 
       <!-- Botón de registro con StravaService -->
@@ -48,9 +52,7 @@
         <img src="./assets/icon/icon_strava.png" style="height: 1.2rem;">
         Regístrate con Strava
       </button>
-
     </form>
   </div>
-
 </body>
 </html>

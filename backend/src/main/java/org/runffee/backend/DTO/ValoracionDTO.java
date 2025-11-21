@@ -13,4 +13,5 @@ public class ValoracionDTO {
     private BigDecimal cantidad;
     private String descripcion;
     private Boolean eliminado;
+    private String nombreCafeteria;
 }

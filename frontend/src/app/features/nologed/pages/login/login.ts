@@ -1,7 +1,8 @@
-    import { Component } from '@angular/core';
-    import {FormsModule} from '@angular/forms';
-    import {Router} from '@angular/router';
-    import {StravaService} from '@core/services/strava/stravaService';
+import { Component } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
+import {StravaService} from '@core/services/strava/stravaService';
+import {AuthService} from '@core/services/auth/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -14,15 +15,27 @@
 export class Login {
 
   usuario = {
-    email: '',
-    password: ''
+    correo: '',
+    contrasena: ''
   };
+
+  constructor(private router: Router, private stravaService: StravaService, private authService: AuthService) {
+  }
 
   login() {
     console.log('Credenciales: ', this.usuario);
-  }
 
-  constructor(private router: Router, private stravaService: StravaService) {
+    document.getElementById("span-iniciar")!.style.display = 'none';
+    document.getElementById("div-iniciando-sesion")!.style.display = 'flex';
+
+    this.authService.login({correo: this.usuario.correo, contrasena: this.usuario.contrasena}).subscribe({
+      next: (res) => {
+        this.router.navigate(['/app/perfil']);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   /*
@@ -35,6 +48,7 @@ export class Login {
   *   - Si el "athlete_id" no se encuentra en nuestra bbdd --> Lo redirigimos a "Crear correo y contraseña"
   *   - Si se encuentra en la bbdd --> Lo redirigimos al Login
   * */
+
   conectarConStrava() {
     this.stravaService.conexionStrava();
   }

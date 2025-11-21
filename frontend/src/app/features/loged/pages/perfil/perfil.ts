@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {LogedModule} from '@loged/loged-module';
 import {RouterOutlet} from '@angular/router';
 
@@ -12,6 +12,4 @@ import {RouterOutlet} from '@angular/router';
   ],
   standalone: true
 })
-export class Perfil {
-
-}
+export class Perfil {}

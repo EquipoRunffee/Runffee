@@ -28,7 +28,13 @@ export class Callback implements OnInit {
         {
           //Esto es la respuesta de nuestro backend
           next: (res)=>{
-            console.log(res);
+            if(res.status == "login"){
+              this.router.navigate(['/login']);
+            }
+            if(res.status == "register"){
+              localStorage.setItem("stravaAccessToken", res.strava_accesstoken);
+              this.router.navigate(['/register']);
+            }
           },
           error: (err)=>{
             console.log(err);

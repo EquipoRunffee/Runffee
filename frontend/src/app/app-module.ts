@@ -13,13 +13,18 @@ import { MapaCafeteria } from './shared/components/mapa-cafeteria/mapa-cafeteria
 import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
 import { CafeteriaCard } from './shared/components/cafeteriaCard/cafeteriaCard';
 import {authInterceptor} from '@core/interceptor/auth-interceptor';
+import {CardReto} from '@loged/components/card-reto/card-reto';
+import { ValoracionCard } from './shared/components/valoracion-card/valoracion-card';
 import { Detallecafeteria } from './shared/pages/detallecafeteria/detallecafeteria';
 
 
 @NgModule({
-  declarations: [
-    App,
-
+  declarations: [App],
+  providers: [
+    provideHttpClient(
+      withInterceptors([authInterceptor])
+    ),
+    provideBrowserGlobalErrorListeners()
   ],
 
   imports: [
@@ -36,12 +41,8 @@ import { Detallecafeteria } from './shared/pages/detallecafeteria/detallecafeter
     MapMarker,
     MapaCafeteria,
     CafeteriaCard,
-  ],
-  providers: [
-    provideHttpClient(
-      withInterceptors([authInterceptor])
-    ),
-    provideBrowserGlobalErrorListeners()
+    CardReto,
+    ValoracionCard
   ],
   exports: [
     Footer,

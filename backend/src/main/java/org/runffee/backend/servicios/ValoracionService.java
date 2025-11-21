@@ -1,19 +1,12 @@
 package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.ValoracionDTO;
-import org.runffee.backend.modelos.Cafeteria;
-import org.runffee.backend.modelos.LineaPedido;
-import org.runffee.backend.modelos.Pedido;
-import org.runffee.backend.modelos.Valoracion;
-import org.runffee.backend.repositorios.ILineaPedidoRepository;
-import org.runffee.backend.repositorios.IPedidoRepository;
-import org.runffee.backend.repositorios.IProductoRepository;
-import org.runffee.backend.repositorios.IValoracionRepository;
+import org.runffee.backend.modelos.*;
+import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 
 @Service
@@ -21,9 +14,12 @@ public class ValoracionService {
 
     @Autowired
     private IValoracionRepository valoracionRepository;
+    @Autowired
+    private EntrenamientoService entrenamientoService;
 
     /**
      * Función que devuelve todas las valoraciones
+     *
      * @return
      */
     public List<Valoracion> obtenerValoraciones() {
@@ -35,6 +31,7 @@ public class ValoracionService {
 
     /**
      * Función que devuelve la valoración por su id
+     *
      * @param id
      * @return
      */
@@ -44,6 +41,7 @@ public class ValoracionService {
 
     /**
      * Función para crear una valoración
+     *
      * @param valoracion
      */
     public void crearValoracion(ValoracionDTO valoracion) {
@@ -58,6 +56,7 @@ public class ValoracionService {
 
     /**
      * Función para elimminar una valoración por su id
+     *
      * @param id
      */
     public void eliminarValoracion(int id) {
@@ -79,4 +78,9 @@ public class ValoracionService {
     public BigDecimal obtenerMediaValoracionCafeteria(Integer idCafeteria) {
         return valoracionRepository.obtenerMediaValoracionCafeteria(idCafeteria);
     }
-}
+
+    public List<Object[]> obtenerValoracionEntrenamiento(Integer idUsuario) {
+        System.out.println("Realizando Servicio");
+            return valoracionRepository.obtenerValoracionEntrenamiento(idUsuario);
+        }
+    }

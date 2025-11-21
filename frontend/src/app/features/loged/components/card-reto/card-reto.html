@@ -1,0 +1,17 @@
+<div [class.active]="selected" class="card-reto">
+  <h3>Titulo del reto</h3>
+  <div>
+    <p>Descripcion del reto</p>
+    <div class="requisitos-reto">
+      <p>5km</p>
+      <p>20min</p>
+    </div>
+    <button (click)="onSelect()" [class.active]="selected" class="btn-realizar">
+      @if (selected){
+        SELECCIONADO
+      } @else {
+        SELECCIONAR
+      }
+    </button>
+  </div>
+</div>

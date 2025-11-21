@@ -1,14 +1,19 @@
 <div id="header">
+  <!-- Imagen de fondo -->
+  <div class="header-bg">
+    <img src="./assets/images/fondoazul_repeat.png" alt="fondo_header">
+    <div class="overlay"></div>
+  </div>
+
   <div class="main-content">
     <div class="div-img-perfil">
-      <img src="/assets/images/foto_perfil.png" alt="foto_perfil_usuario">
-      <!-- <img [src]="usuario.img" alt="foto_perfil_usuario"> -->
+      <img src="./assets/images/foto_perfil.png" alt="foto_perfil_usuario">
     </div>
     <div class="info_usuario">
       <h2>{{ usuario.nombre }}</h2>
-      <p>marteagaramos&#64;safareyes.es</p>
+      <p>{{ usuario.correo }}</p>
       <div class="objetivos">
-        <h4>Racha de objetivos: 5</h4>
+        <h4>Racha de objetivos: {{ usuario.totalEntrenamientos }}</h4>
         <img src="/assets/icon/icon_fire.png" alt="icono_fuego" style="height: 1.5rem;">
       </div>
     </div>

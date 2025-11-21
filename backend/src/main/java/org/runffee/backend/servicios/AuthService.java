@@ -45,7 +45,7 @@ public class AuthService {
         //Creamos el token interno
         String accessToken = jwtService.genenrarToken(usuario.getId(), usuario.getCorreo());
         String refreshToken = UUID.randomUUID().toString();
-        Instant expiresAt = Instant.now().plus(15, ChronoUnit.MINUTES);
+        Instant expiresAt = Instant.now().plus(15, ChronoUnit.DAYS);
 
         //Guardamos el token interno
         usuario.setAccesstoken(accessToken);
@@ -75,7 +75,8 @@ public class AuthService {
 
         //Guardamos los datos del usuario
         usuario.setStravaAthleteId((Integer)atletaBody.get("id"));
-        usuario.setNombre(atletaBody.get("firstname").toString()+" "+atletaBody.get("lastname").toString());
+        usuario.setNombre(atletaBody.get("firstname").toString());
+        usuario.setApellidos(atletaBody.get("lastname").toString());
         usuario.setCiudad(atletaBody.get("city").toString());
         usuario.setPais(atletaBody.get("country").toString());
         usuario.setSexo((UsuarioSexo) atletaBody.get("sex"));
@@ -110,7 +111,8 @@ public class AuthService {
 
         Map<String, Object> respuesta = new HashMap<>();
         respuesta.put("message", "Login exitoso");
-        respuesta.put("token", accessToken);
+        respuesta.put("accessToken", accessToken);
+        respuesta.put("refreshToken", refreshToken);
         return respuesta;
     }
 }

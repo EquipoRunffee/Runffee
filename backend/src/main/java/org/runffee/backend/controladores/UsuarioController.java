@@ -1,8 +1,10 @@
 package org.runffee.backend.controladores;
 
 import org.runffee.backend.DTO.UsuarioDTO;
+import org.runffee.backend.DTO.UsuarioDatosPerfilDTO;
 import org.runffee.backend.DTO.UsuarioEncabezadoPerfilDTO;
 import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.servicios.UsuarioDatosPerfilService;
 import org.runffee.backend.servicios.UsuarioEncabezadoPerfilService;
 import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioEncabezadoPerfilService usuarioEncabezadoPerfilService;
+    @Autowired
+    private UsuarioDatosPerfilService usuarioDatosPerfilService;
 
 
     /**
@@ -77,6 +81,18 @@ public class UsuarioController {
     @GetMapping("/encabezado_perfil/{id}")
     public ResponseEntity<UsuarioEncabezadoPerfilDTO> obtenerEncabezadoPerfil(@PathVariable Integer id) {
         UsuarioEncabezadoPerfilDTO dto = usuarioEncabezadoPerfilService.obtenerEncabezadoPerfil(id);
+        return ResponseEntity.ok(dto);
+    }
+
+    /**
+     * API que devuelve datos de perfil de un usuario:
+     * nombre, apellidos, correo, ciudad, pais, sexo.
+     *
+     * @param id
+     */
+    @GetMapping("/datos_perfil/{id}")
+    public ResponseEntity<UsuarioDatosPerfilDTO> obtenerDatosPerfil(@PathVariable Integer id) {
+        UsuarioDatosPerfilDTO dto = usuarioDatosPerfilService.obtenerDatosPerfil(id);
         return ResponseEntity.ok(dto);
     }
 }

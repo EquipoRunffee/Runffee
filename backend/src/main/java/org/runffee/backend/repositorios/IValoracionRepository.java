@@ -24,4 +24,18 @@ public interface IValoracionRepository extends JpaRepository<Valoracion, Integer
             nativeQuery = true)
     BigDecimal obtenerMediaValoracionCafeteria(@Param("cafeteriaId") Integer cafeteriaId);
 
+    @Query(value = """
+       SELECT v.*, c.nombre
+       FROM app.valoracion v
+       JOIN app.pedido pe ON pe.id_valoracion = v.id
+       JOIN app.entrenamiento en ON en.id_pedido = pe.id
+       JOIN app.usuario u ON u.id = en.id_usuario
+       JOIN app.lineapedido l ON l.id_pedido = pe.id
+       JOIN app.producto p ON p.id = l.id_producto
+       JOIN app.cafeteria c ON c.id = p.id_cafeteria
+       WHERE u.id = :idUsuario;
+        """,
+            nativeQuery = true)
+    List<Object[]> obtenerValoracionEntrenamiento(@Param("idUsuario") Integer idUsuario);
+
 }

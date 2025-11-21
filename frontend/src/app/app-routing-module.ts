@@ -19,21 +19,29 @@ const routes: Routes = [
   {path: 'login', component: Login},
   {path: 'register', component: Register},
   { path: 'actividad', component: Actividad },
+  { path: 'cafeteria', component: CafeteriaCard },
   {path: 'detallecafeteria', component: Detallecafeteria},
 
   //PAGINAS LOGED
+  { path: 'app', component: HomeApp },
+  { path: 'app/home', component: HomeApp },
   {
     path: 'app',
     loadChildren: () =>
       import('@loged/loged-module').then(m => m.LogedModule),
     //canActivate: [authGuardGuard]
+    //canLoad: [authGuardGuard]
   },
   {
     path: 'app/perfil',
+    loadComponent: () => import('@loged/pages/perfil/perfil').then(m => m.Perfil),
     loadChildren: () =>
       import('@loged/pages/perfil/perfil.routes').then(m => m.PERFIL_ROUTES)
   },
   { path: '**', redirectTo: '/home' },
+
+  { path: '**', redirectTo: '/home' },
+
 ]
 
 @NgModule({
