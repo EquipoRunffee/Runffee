@@ -1,4 +1,4 @@
-import {Valoracion} from '@core/models/valoracion';
+import {Valoraciones} from '@core/models/valoraciones';
 
 export interface Pedido {
 
@@ -7,5 +7,5 @@ export interface Pedido {
   qr: string;
   estado: string;
   eliminado: string;
-  idValoracion: Valoracion;
+  idValoracion: Valoraciones;
 }

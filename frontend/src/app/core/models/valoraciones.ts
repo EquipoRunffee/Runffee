@@ -1,4 +1,4 @@
-export class Valoracion {
+export class Valoraciones {
   constructor(
     public titulo: string = '',
     public descripcion: string = '',
