@@ -38,7 +38,7 @@ export const PERFIL_ROUTES: Routes = [
         path: 'valoraciones',
         loadComponent: () =>
           import('@loged/components/perfil/valoraciones/valoraciones')
-            .then(m => m.Valoraciones)
+            .then(m => m.ValoracionesComponent)
       },
       {
         path: 'ayuda',
@@ -49,7 +49,7 @@ export const PERFIL_ROUTES: Routes = [
       {
         path: 'actividad',
         loadComponent: () =>
-          import('@loged/components/actividad/actividad')
+          import('@loged/components/perfil/actividad/actividad')
             .then(m => m.Actividad)
       },
 

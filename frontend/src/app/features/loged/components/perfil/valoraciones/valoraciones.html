@@ -4,22 +4,14 @@
 </div>
 
 <div class="contenedor-valoraciones">
-  <div class="valoracion">
-    <p class="nombre-cafeteria">Café Santa Cruz de Tenerife</p>
-    <p class="titulo">Es espectacular....</p>
-    <p class="descripcion">Después de un largo recorrido, disfrutamos de los maravillosos cafés y sándwiches de esta cafetería. Sin duda alguna repetiremos.</p>
-    <div>
-      <img src="./assets/images/icon/icon_star.png" alt="estrella">
-      <p class="puntuacion">4.5</p>
-    </div>
-  </div>
-  <div class="valoracion">
-    <p class="nombre-cafeteria">Café Santa Cruz de Tenerife</p>
-    <p class="titulo">Es espectacular....</p>
-    <p class="descripcion">Después de un largo recorrido, disfrutamos de los maravillosos cafés y sándwiches de esta cafetería. Sin duda alguna repetiremos.</p>
-    <div>
-      <img src="./assets/images/Star.png" alt="estrella">
-      <p class="puntuacion">4.5</p>
-    </div>
+  <div class="contenedor-valoraciones">
+    <app-valoracion-card *ngFor="let valoracion of valoraciones"
+                         [nombreCafeteria]="valoracion.nombreCafeteria"
+                         [titulo]="valoracion.titulo"
+                         [descripcion]="valoracion.descripcion"
+                         [cantidad]="valoracion.cantidad">
+    </app-valoracion-card>
   </div>
 </div>
+
+

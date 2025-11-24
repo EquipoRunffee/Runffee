@@ -1,5 +1,7 @@
-export interface entrenamientoDetalles {
-  nombre: string;
-  fecha: Date;
-  distancia: number;
+export class EntrenamientoDetalles {
+  constructor(
+    public nombre: string = '',
+    public fecha: Date = new Date(),
+    public distancia: number = 1,
+  ) {}
 }

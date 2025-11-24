@@ -6,6 +6,7 @@
   gap: 1rem;
   color: #2D2D2D;
   font-family: "Inter", sans-serif;
+  width: 90%;
 }
 
 .nav-falso{
@@ -23,38 +24,4 @@
   flex-wrap: wrap;
   gap: 1rem;
   width: 100%;
-}
-
-.valoracion{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  background-color: var(--color-secundario-marron);
-  padding: 1rem;
-  border-radius: 10px;
-  margin: 1rem;
-  max-width: 500px;
-}
-
-.nombre-cafeteria{
-  font-weight: 600;
-  font-size: large;
-}
-
-.titulo{
-  font-weight: 700;
-  font-size: small;
-  color: var(--color-primario-marron);
-  margin: 0;
-}
-
-.valoracion>div{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  font-size: 20px;
-  font-weight: 900;
 }

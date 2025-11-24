@@ -79,7 +79,7 @@ public class ValoracionService {
         return valoracionRepository.obtenerMediaValoracionCafeteria(idCafeteria);
     }
 
-    public List<Object[]> obtenerValoracionEntrenamiento(Integer idUsuario) {
+    public List<ValoracionDTO> obtenerValoracionEntrenamiento(Integer idUsuario) {
         System.out.println("Realizando Servicio");
             return valoracionRepository.obtenerValoracionEntrenamiento(idUsuario);
         }

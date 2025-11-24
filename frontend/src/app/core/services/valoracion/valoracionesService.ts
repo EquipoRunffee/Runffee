@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Valoraciones} from '@core/models/valoraciones';
 import {environment} from '../../../../environments/environment';
 
 @Injectable({
@@ -10,8 +11,8 @@ export class ValoracionService {
   constructor(private http: HttpClient) { }
   api = environment.apiUrl;
 
-  getValoracion(): Observable<any> {
+  getValoracion(): Observable<Valoraciones[]> {
     let apiUrl= this.api + '/valoracion';
-    return this.http.get<any>(apiUrl);
+    return this.http.get<Valoraciones[]>(apiUrl);
   }
 }

@@ -14,20 +14,10 @@ export class Datos implements OnInit {
 
   datosUsuario!: usuarioDatosPerfil;
 
-  constructor(
-    private usuarioService: UsuarioService,
-    private authService: AuthService
-  ) {}
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
-    const idUsuario = this.authService.getUserId();
-
-    if (!idUsuario) {
-      console.error("No se encontró ID de usuario en el token");
-      return;
-    }
-
-    this.usuarioService.getDatosPerfil(idUsuario).subscribe({
+    this.usuarioService.getDatosPerfil().subscribe({
       next: (data) => this.datosUsuario = data,
       error: (err) => console.error('Error al cargar datos del usuario:', err)
     });

@@ -7,4 +7,5 @@ import org.runffee.backend.modelos.UsuarioSexo;
 public class UsuarioDatosPerfilDTO {
     String nombre, apellidos, correo, ciudad, pais;
     UsuarioSexo sexo;
+    private Integer totalEntrenamientos;
 }
