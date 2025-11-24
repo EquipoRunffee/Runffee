@@ -8,16 +8,18 @@ import java.math.BigDecimal;
 
 @Data
 public class CafeteriaDetalleDTO {
+    private Integer id;
     private String nombre;
     private String imagen;
     private TipoCafeteria tipoCafeteria;
     private BigDecimal valoracionMedia;
 
 
-    public CafeteriaDetalleDTO(String nombre, String imagen, TipoCafeteria tipoCafeteria,  BigDecimal valoracionMedia) {
+    public CafeteriaDetalleDTO(Integer id, String nombre, String imagen, TipoCafeteria tipoCafeteria, BigDecimal valoracionMedia) {
+        this.id = id;
         this.nombre = nombre;
         this.imagen = imagen;
         this.tipoCafeteria = tipoCafeteria;
-        this.valoracionMedia =  valoracionMedia;
+        this.valoracionMedia = valoracionMedia;
     }
 }

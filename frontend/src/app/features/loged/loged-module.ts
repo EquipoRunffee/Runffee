@@ -7,12 +7,12 @@ import { HomeApp } from './pages/home-app/home-app';
 import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
 import { CardReto } from './components/card-reto/card-reto';
 import { Navbar } from './components/navbar/navbar';
+import { SeleccionProductos } from './pages/seleccion-productos/seleccion-productos';
 import { Cupon } from '@loged/components/cupon/cupon';
 import {Actividad} from '@loged/components/perfil/actividad/actividad';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   exports: [
     Header,
     Navbarperfil,
@@ -20,6 +20,7 @@ import {Actividad} from '@loged/components/perfil/actividad/actividad';
     Navbarperfil,
     Actividad,
     Navbar,
+    SeleccionProductos
   ],
   imports: [
     CommonModule,
@@ -30,6 +31,7 @@ import {Actividad} from '@loged/components/perfil/actividad/actividad';
     CafeteriaCard,
     HomeApp,
     Navbar,
+    SeleccionProductos
   ]
 })
 export class LogedModule { }

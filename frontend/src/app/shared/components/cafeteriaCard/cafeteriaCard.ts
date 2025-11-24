@@ -2,13 +2,14 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CafeteriaDetalles} from '@core/models/cafeteria-detalles';
 import {CafeteriaDetallesService} from '@core/services/cafeteria/cafeteriaDetallesService';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-cafeteriaCard',
   templateUrl: './cafeteriaCard.html',
   styleUrl: './cafeteriaCard.css',
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, RouterLink]
 })
 
 export class CafeteriaCard implements OnInit{

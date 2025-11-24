@@ -10,6 +10,7 @@ import { HomeApp } from "@loged/pages/home-app/home-app";
 import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
 import { Actividad } from "@loged/components/perfil/actividad/actividad";
 import {Detallecafeteria} from '@shared/pages/detallecafeteria/detallecafeteria';
+import {SeleccionProductos} from '@loged/pages/seleccion-productos/seleccion-productos';
 
 const routes: Routes = [
 

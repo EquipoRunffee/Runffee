@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-callback',
@@ -14,11 +15,13 @@ export class Callback implements OnInit {
   private router: Router
   ) {}
 
+  api = environment.apiUrl;
+
   ngOnInit() {
 
     const code = this.route.snapshot.queryParamMap.get('code');
 
-    const url = "https://runffee.onrender.com/strava/exchange";
+    const url = this.api + "/strava/exchange";
 
     if (code) {
       console.log('Codigo recibido de StravaService: ', code);

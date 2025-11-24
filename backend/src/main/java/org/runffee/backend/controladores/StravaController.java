@@ -23,7 +23,7 @@ public class StravaController {
     private UsuarioService usuarioService;
 
     /***
-     * API para intercambia el code del usuario por los tokens
+     * API para intercambiar el code del usuario por los tokens
      * @param body
      * @return
      */
