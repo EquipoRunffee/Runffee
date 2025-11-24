@@ -66,4 +66,9 @@ public class CafeteriaController {
         cafeteriaService.eliminarCafeteria(id);
     }
 
+
+    /****
+     * @GetMapping {{id}}
+     * public void funciondecafeteriaSerrvice (traer datospag caf) (integer id)
+     */
 }

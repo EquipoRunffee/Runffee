@@ -60,22 +60,7 @@ public class CafeteriaService {
         }
     }
 
-    public ResponseEntity<> obtenerInformacionCafeteria(Integer id){
-        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
+    //crear cafdto vacia nueva
 
-    }
 
-//    public void editarCafeteria(CafeteriaDTO cafeteriaDTO, int id) {
-//        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
-//
-//        if(cliente != null){
-//            cliente.setNombre(dto.getNombre());
-//            cliente.setApellidos(dto.getApellidos());
-//            cliente.setCorreo(dto.getCorreo());
-//            cliente.setTelefono(dto.getTelefono());
-//            cliente.setContrasena(dto.getContrasena());
-//
-//            clienteRepository.save(cliente);
-//        }
-//    }
 }

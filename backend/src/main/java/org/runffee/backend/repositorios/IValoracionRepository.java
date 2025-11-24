@@ -39,4 +39,5 @@ public interface IValoracionRepository extends JpaRepository<Valoracion, Integer
             nativeQuery = true)
     List<ValoracionDTO> obtenerValoracionEntrenamiento(@Param("idUsuario") Integer idUsuario);
 
+
 }
