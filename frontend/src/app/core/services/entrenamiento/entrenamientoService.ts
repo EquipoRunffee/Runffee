@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {entrenamientoDetalles} from '@core/models/entrenamientoDetalles';
 import {environment} from '../../../../environments/environment';
+import {EntrenamientoDetalles} from '@core/models/entrenamientoDetalles';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +17,8 @@ export class EntrenamientoService {
     return this.http.get<any>(apiUrl);
   }
 
-  getEntrenamientoDetalles(id:number): Observable<entrenamientoDetalles> {
+  getEntrenamientoDetalles(id:number): Observable<EntrenamientoDetalles> {
     let apiUrl= this.api + '/entrenamiento/detalles/{id}';
-    return this.http.get<entrenamientoDetalles>(apiUrl);
+    return this.http.get<EntrenamientoDetalles>(apiUrl);
   }
 }
