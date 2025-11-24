@@ -3,11 +3,13 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: #E6E6E6;
+  background-color: rgb(253, 234, 227, 0.51);
   padding: 1rem;
   border-radius: 10px;
   margin: 1rem;
   width: 350px;
+  max-width: 500px;
+  max-height: 500px;
 }
 
 .nombre-cafeteria{
@@ -16,10 +18,14 @@
 }
 
 .titulo{
-  font-weight: 700;
-  font-size: small;
+  font-weight: 500;
+  font-size: 15px;
   color: var(--color-primario-marron);
   margin: 0;
+}
+
+.descripcion{
+  font-size: 12.5px;
 }
 
 .valoracion>div{
@@ -28,7 +34,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  font-size: 20px;
-  font-weight: 900;
+  font-size: 15px;
+  font-weight: 500;
 }
 

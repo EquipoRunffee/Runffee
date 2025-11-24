@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {ValoracionCard} from '@shared/components/valoracion-card/valoracion-card';
-import {ValoracionesService} from '@core/services/valoracion/valoracionesService';
+import {ValoracionService} from '@core/services/valoracion/valoracionesService';
 import {NgForOf} from '@angular/common';
 import {Valoraciones} from '@core/models/valoraciones';
 
@@ -16,7 +16,7 @@ import {Valoraciones} from '@core/models/valoraciones';
 export class ValoracionesComponent implements OnInit {
   valoraciones: Valoraciones[] = [];
 
-  constructor(private valoracionService: ValoracionesService) {}
+  constructor(private valoracionService: ValoracionService) {}
 
   ngOnInit(): void {
     this.cargarValoraciones();
