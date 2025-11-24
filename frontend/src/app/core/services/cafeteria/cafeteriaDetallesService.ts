@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map, Observable} from 'rxjs';
 import {CafeteriaDetalles} from '@core/models/cafeteria-detalles';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CafeteriaDetallesService {
   constructor(private http: HttpClient) { }
+  api = environment.apiUrl;
+
 
   getCafeteriaDetalle(): Observable<CafeteriaDetalles[]> {
-    let apiUrl= 'https://runffee.onrender.com/cafeteria/detalles';
+    let apiUrl= this.api + '/cafeteria/detalles';
     return this.http.get<CafeteriaDetalles[]>(apiUrl);
   }
 }

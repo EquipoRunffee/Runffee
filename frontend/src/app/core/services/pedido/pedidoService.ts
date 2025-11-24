@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PedidoService {
   constructor(private http: HttpClient) { }
+  api = environment.apiUrl;
 
   getPedido(): Observable<any> {
-    let apiUrl= 'https://runffee.onrender.com/pedido';
+    let apiUrl= this.api + '/pedido';
     return this.http.get<any>(apiUrl);
   }
 }

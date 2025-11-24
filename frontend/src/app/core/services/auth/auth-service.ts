@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
+  api = environment.apiUrl;
 
   login(credentials:{correo:string, contrasena:string}) {
     console.log("Realizando login...")
-    return this.http.post<any>("https://runffee.onrender.com/auth/login", credentials)
+    return this.http.post<any>( this.api + "/auth/login", credentials)
       .pipe(
         tap(respuesta=>{
           localStorage.setItem("accessToken", respuesta.accessToken);
@@ -21,7 +23,7 @@ export class AuthService {
 
   registrar(credentials:{correo:string, contrasena:string, stravaAccessToken: string|null}) {
     console.log("Registrando usuario...")
-    return this.http.post<any>("https://runffee.onrender.com/auth/registrar", credentials)
+    return this.http.post<any>(this.api + "/auth/registrar", credentials)
       .pipe(
         tap(respuesta=>{
           localStorage.setItem("accessToken", respuesta.accessToken);
@@ -32,7 +34,7 @@ export class AuthService {
 
   renovarToken(refreshToken: string) {
     return this.http.post<{ accessToken: string }>(
-      'https://runffee.onrender.com/auth/refresh',
+      this.api + "/auth/refresh",
       { refreshToken }
     );
   }

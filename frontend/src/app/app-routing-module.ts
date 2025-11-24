@@ -9,6 +9,7 @@ import { Actividad } from "@loged/components/actividad/actividad";
 import { HomeApp } from "@loged/pages/home-app/home-app";
 //import {authGuardGuard} from '@core/guard/auth-guard-guard';
 import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
+import {SeleccionProductos} from '@loged/pages/seleccion-productos/seleccion-productos';
 
 const routes: Routes = [
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   //PAGINAS LOGED
   { path: 'app', component: HomeApp },
   { path: 'app/home', component: HomeApp },
+  { path: 'app/seleccion-productos/:id', component: SeleccionProductos },
   {
     path: 'app',
     loadChildren: () =>

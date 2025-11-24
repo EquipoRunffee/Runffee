@@ -9,10 +9,10 @@ import { HomeApp } from './pages/home-app/home-app';
 import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
 import { CardReto } from './components/card-reto/card-reto';
 import { Navbar } from './components/navbar/navbar';
+import { SeleccionProductos } from './pages/seleccion-productos/seleccion-productos';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   exports: [
     Header,
     Navbarperfil,
@@ -20,6 +20,7 @@ import { Navbar } from './components/navbar/navbar';
     Navbarperfil,
     Actividad,
     Navbar,
+    SeleccionProductos
   ],
   imports: [
     CommonModule,
@@ -30,6 +31,7 @@ import { Navbar } from './components/navbar/navbar';
     CafeteriaCard,
     HomeApp,
     Navbar,
+    SeleccionProductos
   ]
 })
 export class LogedModule { }
