@@ -31,6 +31,7 @@ import {Actividad} from '@loged/components/perfil/actividad/actividad';
     CafeteriaCard,
     HomeApp,
     Navbar,
+    SeleccionProductos
   ]
 })
 export class LogedModule { }
