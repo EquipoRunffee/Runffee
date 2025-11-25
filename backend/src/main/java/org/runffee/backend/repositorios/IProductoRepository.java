@@ -12,7 +12,7 @@ import java.util.List;
 public interface IProductoRepository extends JpaRepository<Producto, Integer> {
     List<Producto> findByCafeteria(Cafeteria cafeteria);
 
-    @Query(value = "SELECT pr FROM Producto pr WHERE pr.cafeteria.id = :idCafeteria AND pr.eliminado=true ")
-    List<ListaProductoDTO> obtenerListaProductosCafeteria(@Param("idCafeteria") Integer idCafeteria);
+    @Query("SELECT pr FROM Producto pr WHERE pr.cafeteria.id = :idCafeteria AND pr.eliminado=false")
+    List<Producto> obtenerListaProductosCafeteria(@Param("idCafeteria") Integer idCafeteria);
 
 }

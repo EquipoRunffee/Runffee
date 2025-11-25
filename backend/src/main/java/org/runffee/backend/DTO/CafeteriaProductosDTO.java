@@ -14,4 +14,10 @@ public class CafeteriaProductosDTO {
     private String nombre;
     private String imagen;
     private List<ListaProductoDTO> productos;
+
+    public CafeteriaProductosDTO(Integer id, String nombre, String imagen) {
+        this.id = id;
+        this.nombre = nombre;
+        this.imagen = imagen;
+    }
 }

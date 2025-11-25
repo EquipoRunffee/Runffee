@@ -10,9 +10,11 @@ import { Navbar } from './components/navbar/navbar';
 import { SeleccionProductos } from './pages/seleccion-productos/seleccion-productos';
 import { Cupon } from '@loged/components/cupon/cupon';
 import {Actividad} from '@loged/components/perfil/actividad/actividad';
+import { CardProducto } from './components/card-producto/card-producto';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   exports: [
     Header,
     Navbarperfil,
@@ -20,7 +22,8 @@ import {Actividad} from '@loged/components/perfil/actividad/actividad';
     Navbarperfil,
     Actividad,
     Navbar,
-    SeleccionProductos
+    SeleccionProductos,
+    CardProducto,
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import {Actividad} from '@loged/components/perfil/actividad/actividad';
     CafeteriaCard,
     HomeApp,
     Navbar,
-    SeleccionProductos
+    SeleccionProductos,
+    CardProducto,
   ]
 })
 export class LogedModule { }

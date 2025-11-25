@@ -1,0 +1,100 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.card-producto{
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.card-producto:hover{
+  border-radius: 10px;
+}
+
+.div-imagen-producto{
+  width: 140px;
+  min-width: 140px;
+  height: 140px;
+  min-height: 140px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.imagen-producto{
+  width: 100%;
+}
+
+.datos-producto{
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.nombre-producto{
+  color: var(--color-secundario-marron);
+  font-weight: 600;
+  font-size: x-large;
+  font-family: "Montserrat", sans-serif;
+}
+
+.div-nombre-precio{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.descripcion-producto{
+  width: 100%;
+}
+
+.precio-producto{
+}
+
+.div-btn-cantidad{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaeaea;
+  border-radius: 20px;
+}
+
+.cantidad-producto{
+  padding: 5px;
+  font-weight: bold;
+}
+
+.btn-cantidad{
+  color: var(--color-secundario-negro);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaeaea;
+  border: none;
+  font-size: x-large;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.btn-cantidad:hover{
+  background-color: #e1e1e1;
+}

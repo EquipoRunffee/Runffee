@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Navbar} from '@loged/components/navbar/navbar';
 import {Footer} from '@shared/components/footer/footer';
 import {NgClass, NgForOf} from '@angular/common';
+import {CardProducto} from '@loged/components/card-producto/card-producto';
 
 @Component({
   selector: 'app-seleccion-productos',
@@ -15,7 +16,8 @@ import {NgClass, NgForOf} from '@angular/common';
     Footer,
     RouterLink,
     NgClass,
-    NgForOf
+    NgForOf,
+    CardProducto
   ]
 })
 export class SeleccionProductos implements OnInit {
