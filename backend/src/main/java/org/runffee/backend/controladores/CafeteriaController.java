@@ -2,6 +2,8 @@ package org.runffee.backend.controladores;
 
 import org.runffee.backend.DTO.CafeteriaDTO;
 import org.runffee.backend.DTO.CafeteriaDetalleDTO;
+import org.runffee.backend.DTO.CafeteriaProductosDTO;
+import org.runffee.backend.DTO.ListaProductoDTO;
 import org.runffee.backend.modelos.Cafeteria;
 import org.runffee.backend.servicios.CafeteriaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,4 +68,8 @@ public class CafeteriaController {
         cafeteriaService.eliminarCafeteria(id);
     }
 
+    @GetMapping("/{id}/productos")
+    public CafeteriaProductosDTO obtenerCafeteriaProductos(@PathVariable int id){
+        return cafeteriaService.obtenerListaProductosCafeteria(id);
+    }
 }
