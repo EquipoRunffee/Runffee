@@ -1,8 +1,10 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {Component, ViewChild, ElementRef, OnInit} from '@angular/core';
 import { CafeteriaCard } from '@shared/components/cafeteriaCard/cafeteriaCard';
 import {CardReto} from '@loged/components/card-reto/card-reto';
 import {Footer} from '@shared/components/footer/footer';
 import {Navbar} from '@loged/components/navbar/navbar';
+import {RetoService} from '@core/services/reto/retoService';
+import {Reto} from '@core/models/reto';
 
 @Component({
   selector: 'app-home-app',
@@ -11,12 +13,25 @@ import {Navbar} from '@loged/components/navbar/navbar';
   styleUrls: ['./home-app.css'],
   imports: [CafeteriaCard, CardReto, Footer, Navbar]
 })
-export class HomeApp{
+export class HomeApp implements OnInit {
   mes = new Date().toLocaleString('es-ES', { month: 'long' });
-  cards = [1,2,3,4,5]
   selectedIndex: number | null = null;
   popUp: HTMLElement | null = null;
   @ViewChild(CafeteriaCard) contenedor!: CafeteriaCard;
+  retos: Reto[] | null = null;
+
+  constructor(private retoService: RetoService ) {}
+
+  ngOnInit() {
+    this.retoService.getReto().subscribe({
+      next: data => {
+        this.retos = data;
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
+  }
 
   onSelected(i: number) {
     if (this.selectedIndex === i) {

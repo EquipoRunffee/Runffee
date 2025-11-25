@@ -4,6 +4,8 @@ import org.runffee.backend.DTO.CafeteriaDTO;
 import org.runffee.backend.DTO.CafeteriaDetalleDTO;
 import org.runffee.backend.DTO.PaginaCafeteriaDTO;
 import org.runffee.backend.DTO.ProductoCafeteriaDTO;
+import org.runffee.backend.DTO.CafeteriaProductosDTO;
+import org.runffee.backend.DTO.ListaProductoDTO;
 import org.runffee.backend.modelos.*;
 import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,10 @@ public class CafeteriaService {
     private ICafeteriaRepository cafeteriaRepository;
 
     @Autowired
-    private ValoracionService valoracionService;
-
-    @Autowired
     private IProductoRepository productoRepository;
 
+    @Autowired
+    private ValoracionService valoracionService;
 
     public List<Cafeteria> obtenerCafeterias() {
         return cafeteriaRepository.findAll()
@@ -75,4 +76,9 @@ public class CafeteriaService {
     }
 
 
+    public CafeteriaProductosDTO obtenerListaProductosCafeteria(int idCafeteria) {
+        CafeteriaProductosDTO cafeteria =  cafeteriaRepository.obtenerCafeteriaProductos(idCafeteria);
+        cafeteria.setProductos(productoRepository.obtenerListaProductosCafeteria(idCafeteria));
+        return cafeteria;
+    }
 }

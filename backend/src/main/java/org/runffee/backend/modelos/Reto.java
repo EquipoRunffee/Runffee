@@ -30,16 +30,18 @@ public class Reto {
     @Column (name = "fecha_inicio")
     private Date fecha_inicio;
 
-    @Column (name = "fecha_caducidad")
-    private Date fecha_caducidad;
+    @Column (name = "fecha_fin")
+    private Date fecha_fin;
 
     @Column (name = "descripcion")
     private String descripcion;
 
+    @Column (name = "km")
+    private BigDecimal km;
+
+    @Column (name = "tiempo")
+    private Integer tiempo;
+
     @Column (name = "eliminado")
     private Boolean eliminado;
-
-    @JoinColumn(name = "id_entrenamiento")
-    @OneToOne
-    private Entrenamiento entrenamiento;
 }

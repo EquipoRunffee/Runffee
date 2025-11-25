@@ -45,7 +45,7 @@
 }
 
 .contenedor-retos{
-  margin-top: 1rem;
+  margin: 2rem 0 1rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,7 +67,7 @@
   gap: 1rem;
   overflow: scroll;
   overflow-y: hidden;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 h3{
@@ -187,4 +187,24 @@ h3{
   outline: none;
   border: none;
   width: 100%;
+}
+
+.skeleton {
+  width: 300px;
+  min-width: 300px;
+  height: 200px;
+  min-height: 200px ;
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 25%,
+    #f0f0f0 50%,
+    #e0e0e0 75%
+  );
+  animation: shimmer 1.5s infinite;
+  border-radius: 10px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
 }
