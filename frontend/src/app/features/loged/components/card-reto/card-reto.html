@@ -1,10 +1,10 @@
 <div [class.active]="selected" class="card-reto">
-  <h3>Titulo del reto</h3>
+  <h3>{{ data.nombre }}</h3>
   <div>
-    <p>Descripcion del reto</p>
+    <p>{{ data.descripcion }}</p>
     <div class="requisitos-reto">
-      <p>5km</p>
-      <p>20min</p>
+      <p>{{ data.km }} km</p>
+      <p>{{ data.tiempo }} min</p>
     </div>
     <button (click)="onSelect()" [class.active]="selected" class="btn-realizar">
       @if (selected){

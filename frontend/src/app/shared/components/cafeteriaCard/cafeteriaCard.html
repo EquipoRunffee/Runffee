@@ -1,18 +1,20 @@
 <div class="cafeteriaCard" #hostCard>
   <div class="cafeteriaCard_titulo">
-    <p>Elige donde acabar tu entrenamiento.</p>
+    <h3>Elige tu cafetería</h3>
   </div>
 
   <!-- Primer bucle para encontrar los diferentes tipos de cafeterias, accedemos a la key del objeto -->
   <div *ngFor="let tipo of cafeteriaPorTipo | keyvalue">
-    <h3>{{ capitalizeTipo(tipo.key) }}</h3>
+    <p class="tipoCafeteria">{{tipo.key}}</p>
 
     <div class="contenedor-cafeterias">
       <div>
     <!-- Segundo bucle para obtener los valores de la cafeteria -->
         <div  *ngFor="let cafeteria of tipo.value">
           <div class="CafeteriaCard_unica" [routerLink] = "['/app/seleccion-productos/', cafeteria.id]">
-            <img src="https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?cs=srgb&dl=pexels-igor-starkov-233202-1307698.jpg&fm=jpg">
+            <div class="div-imagen-CafeteriaCard">
+              <img [src]="cafeteria.imagen">
+            </div>
             <p>{{cafeteria.nombre}}</p>
             <div class="CafeteriaCard_unicaSeleccion">
               <div class="CafeteriaCard_unicaValoracion">

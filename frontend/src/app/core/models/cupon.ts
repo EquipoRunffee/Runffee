@@ -9,7 +9,6 @@ export class Cupon {
     public imagen: string = '',
     public porcentaje: number = 0,
     public descripcion: string = '',
-    public eliminado: string = 'false',
-    public idReto: Reto = new Reto()
+    public eliminado: string = 'false'
   ) {}
 }

@@ -27,7 +27,10 @@ public class Producto {
     @Column (name = "nombre")
     private String nombre;
 
-    @Column (name = "imagen")
+    @Column (name = "tipo")
+    private TipoProducto tipoProducto;
+
+    @Column (name = "img")
     private String imagen;
 
     @Column (name = "precio")

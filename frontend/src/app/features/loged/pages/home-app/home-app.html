@@ -10,8 +10,8 @@
     <h3>Nuestros retos de {{ mes }}</h3>
     <div class="cards-retos">
       <div class="contenedor-card-reto">
-        @for (card of cards; let i = $index; track i)  {
-          <app-card-reto [selected]="selectedIndex === i" (select)="onSelected(i)"></app-card-reto>
+        @for (reto of retos; track reto.id)  {
+          <app-card-reto [selected]="selectedIndex === reto.id" (select)="onSelected(reto.id)" [data]="reto"></app-card-reto>
         }
       </div>
     </div>
