@@ -2,6 +2,8 @@ package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.CafeteriaDTO;
 import org.runffee.backend.DTO.CafeteriaDetalleDTO;
+import org.runffee.backend.DTO.PaginaCafeteriaDTO;
+import org.runffee.backend.DTO.ProductoCafeteriaDTO;
 import org.runffee.backend.modelos.*;
 import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ public class CafeteriaService {
 
     @Autowired
     private ValoracionService valoracionService;
+
+    @Autowired
+    private IProductoRepository productoRepository;
+
 
     public List<Cafeteria> obtenerCafeterias() {
         return cafeteriaRepository.findAll()
@@ -61,6 +67,12 @@ public class CafeteriaService {
     }
 
     //crear cafdto vacia nueva
+    public void datosPaginaCafeteria(int id) {
+
+
+
+
+    }
 
 
 }

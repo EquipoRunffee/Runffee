@@ -71,4 +71,9 @@ public class CafeteriaController {
      * @GetMapping {{id}}
      * public void funciondecafeteriaSerrvice (traer datospag caf) (integer id)
      */
+
+    @GetMapping ("/traer/{id}")
+    public void traerCafeteria(@PathVariable Integer id){
+        cafeteriaService.datosPaginaCafeteria(id);
+    }
 }
