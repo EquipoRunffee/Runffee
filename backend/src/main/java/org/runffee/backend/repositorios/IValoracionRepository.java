@@ -1,6 +1,7 @@
 package org.runffee.backend.repositorios;
 
 import org.runffee.backend.DTO.PaginaCafeteriaDTO;
+import org.runffee.backend.DTO.ValoracionCafeteriaDTO;
 import org.runffee.backend.DTO.ValoracionDTO;
 import org.runffee.backend.modelos.Cafeteria;
 import org.runffee.backend.modelos.Pedido;
@@ -40,20 +41,17 @@ public interface IValoracionRepository extends JpaRepository<Valoracion, Integer
             nativeQuery = true)
     List<ValoracionDTO> obtenerValoracionEntrenamiento(@Param("idUsuario") Integer idUsuario);
 
+    //añadir un limit 6 o 10 para que me salgan solo las ultimas valoraciones
     @Query(value = """
-        SELECT DISTINCT 
-                    v.id,
-                    v.titulo,
-                    v.cantidad,
-                    v.descripcion
+        SELECT DISTINCT v.titulo, v.cantidad, v.descripcion
         FROM app.valoracion v
         JOIN app.pedido p ON p.id_valoracion = v.id
         JOIN app.lineapedido lp ON lp.id_pedido = p.id
         JOIN app.producto pr ON pr.id = lp.id_producto
-        WHERE p.id_cafeteria = :cafeteriaId
-        
+        WHERE pr.id_cafeteria = :cafeteriaId
+    
     """,
             nativeQuery = true)
-    List<ValoracionDTO> obtenerTodasValoracionesCafeteria(@Param("cafeteriaId") Integer cafeteriaId);
+    List<ValoracionCafeteriaDTO> obtenerTodasValoracionesCafeteria(@Param("cafeteriaId") Integer cafeteriaId);
 
 }

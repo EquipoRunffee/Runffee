@@ -22,11 +22,11 @@ public interface IProductoRepository extends JpaRepository<Producto, Integer> {
             p.id AS id_producto,
         p.nombre AS nombre_producto,
         p.img as imagen_producto,
-        COUNT(*) AS veces_aparece
+        COUNT(*) AS vendido
     from app.lineapedido lp
     join app.producto p on lp.id_producto = p.id 
-    where p.id_cafeteria = : cafeteriaId
-    group by p.id, p.nombre, p.img order by veces_aparece desc
+    where p.id_cafeteria = :cafeteriaId
+    group by p.id, p.nombre, p.img order by vendido desc
     limit 4
     """,
             nativeQuery = true)

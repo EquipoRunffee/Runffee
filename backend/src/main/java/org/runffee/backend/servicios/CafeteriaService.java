@@ -26,6 +26,9 @@ public class CafeteriaService {
     private IProductoRepository productoRepository;
 
     @Autowired
+    private IValoracionRepository valoracionRepository;
+
+    @Autowired
     private ValoracionService valoracionService;
 
     public List<Cafeteria> obtenerCafeterias() {
@@ -67,11 +70,18 @@ public class CafeteriaService {
         }
     }
 
-    //crear cafdto vacia nueva
-    public void datosPaginaCafeteria(int id) {
 
+    public PaginaCafeteriaDTO datosPaginaCafeteria(int id) {
+        PaginaCafeteriaDTO paginaCafeteriaDTO = new PaginaCafeteriaDTO();
 
-
+        paginaCafeteriaDTO.setNombre(obtenerCafeteria(id).getNombre());
+        paginaCafeteriaDTO.setDescripcion(obtenerCafeteria(id).getDescripcion());
+        paginaCafeteriaDTO.setLat(obtenerCafeteria(id).getLat());
+        paginaCafeteriaDTO.setLng(obtenerCafeteria(id).getLng());
+        paginaCafeteriaDTO.setImagen(obtenerCafeteria(id).getImagen());
+        paginaCafeteriaDTO.setProductos(productoRepository.productosMasVendidos(id));
+        paginaCafeteriaDTO.setValoraciones(valoracionRepository.obtenerTodasValoracionesCafeteria(id));
+        return paginaCafeteriaDTO;
 
     }
 
