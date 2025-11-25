@@ -3,6 +3,24 @@
     <h3>Elige tu cafetería</h3>
   </div>
 
+  @if (!isCafeteriasLoaded) {
+    <div class="contenedor-skeletons">
+      <div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+      <div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+      <div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+    </div>
+  }
   <!-- Primer bucle para encontrar los diferentes tipos de cafeterias, accedemos a la key del objeto -->
   <div *ngFor="let tipo of cafeteriaPorTipo | keyvalue">
     <p class="tipoCafeteria">{{tipo.key}}</p>

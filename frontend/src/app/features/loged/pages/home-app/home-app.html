@@ -10,12 +10,21 @@
     <h3>Nuestros retos de {{ mes }}</h3>
     <div class="cards-retos">
       <div class="contenedor-card-reto">
-        @for (reto of retos; track reto.id)  {
-          <app-card-reto [selected]="selectedIndex === reto.id" (select)="onSelected(reto.id)" [data]="reto"></app-card-reto>
+        @if (!retos){
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
         }
+        @if(retos){
+          @for (reto of retos; track reto.id)  {
+          <app-card-reto [selected]="selectedIndex === reto.id" (select)="onSelected(reto.id)" [data]="reto"></app-card-reto>
+          }
+        }
+
       </div>
     </div>
   </div>
+
   <app-cafeteriaCard #contenedorCafeterias></app-cafeteriaCard>
   <app-footer></app-footer>
   <button id="btn-crear-objetivo" title="Crear objetivo" (click)="actualizarPopUp()">+</button>
