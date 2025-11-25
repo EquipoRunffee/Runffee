@@ -4,6 +4,7 @@
 }
 
 :host{
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
@@ -11,13 +12,13 @@
 }
 
 .navbar-loged{
-  width: 99vw;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between !important;
   background-color: white;
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .btn-nav{
@@ -36,6 +37,38 @@
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
+}
+
+#a-perfil{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#a-perfil>img{
+  width: 100%;
+}
+
+.skeleton-circular{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 25%,
+    #f0f0f0 50%,
+    #e0e0e0 75%
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -50px 0; }
+  100% { background-position: 50px 0; }
 }
 
 .carritoContent{

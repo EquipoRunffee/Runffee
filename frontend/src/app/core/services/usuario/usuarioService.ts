@@ -21,4 +21,9 @@ export class UsuarioService {
     let apiUrl= this.api + '/usuario/datos_perfil';
     return this.http.get<usuarioDatosPerfil>(apiUrl);
   }
+
+  getFotoUsuario(): Observable<any>{
+    let apiUrl= this.api + '/usuario/foto';
+    return this.http.get<any>(apiUrl);
+  }
 }

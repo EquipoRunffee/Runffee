@@ -1,9 +1,12 @@
 <div class="navbar-loged">
-  <div>
-    <button class="btn-nav">
-      <img src="./assets/icon/icon_menu.png" alt="Menu">
-    </button>
-  </div>
+    @if (!urlFotoUsuario){
+      <div class="skeleton-circular"></div>
+    } @else {
+      <a [routerLink]="['/app/perfil']" id="a-perfil">
+        <img [src] = [urlFotoUsuario] alt="Perfil usuario">
+      </a>
+    }
+  <a title="Perfil" class="btn-nav" [routerLink]="['/app']"><img src="./assets/images/logo/LOGO_VERDE.png" alt=""></a>
   <div>
     <button class="btn-nav"  id="btn-carrito">
       <img src="./assets/icon/icon_carrito.png" alt="Carrito" (click)="mostrarCarrito()">
