@@ -2,6 +2,8 @@ package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.CafeteriaDTO;
 import org.runffee.backend.DTO.CafeteriaDetalleDTO;
+import org.runffee.backend.DTO.CafeteriaProductosDTO;
+import org.runffee.backend.DTO.ListaProductoDTO;
 import org.runffee.backend.modelos.*;
 import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,11 @@ public class CafeteriaService {
     private ICafeteriaRepository cafeteriaRepository;
 
     @Autowired
+    private IProductoRepository productoRepository;
+
+    @Autowired
     private ValoracionService valoracionService;
+
 
     public List<Cafeteria> obtenerCafeterias() {
         return cafeteriaRepository.findAll()
@@ -60,17 +66,9 @@ public class CafeteriaService {
         }
     }
 
-//    public void editarCafeteria(CafeteriaDTO cafeteriaDTO, int id) {
-//        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
-//
-//        if(cliente != null){
-//            cliente.setNombre(dto.getNombre());
-//            cliente.setApellidos(dto.getApellidos());
-//            cliente.setCorreo(dto.getCorreo());
-//            cliente.setTelefono(dto.getTelefono());
-//            cliente.setContrasena(dto.getContrasena());
-//
-//            clienteRepository.save(cliente);
-//        }
-//    }
+    public CafeteriaProductosDTO obtenerListaProductosCafeteria(int idCafeteria) {
+        CafeteriaProductosDTO cafeteria =  cafeteriaRepository.obtenerCafeteriaProductos(idCafeteria);
+        cafeteria.setProductos(productoRepository.obtenerListaProductosCafeteria(idCafeteria));
+        return cafeteria;
+    }
 }

@@ -41,14 +41,13 @@ public class Usuario {
     private String pais;
 
     @Column (name = "sexo")
-    @Enumerated(EnumType.ORDINAL)
-    private UsuarioSexo sexo;
+    private String sexo;
 
     @Column (name = "role")
     @Enumerated(EnumType.ORDINAL)
     private UsuarioRole role;
 
-    @Column (name = "imagen")
+    @Column (name = "img")
     private String imagen;
 
     @Column (name = "eliminado")
