@@ -26,6 +26,7 @@ const routes: Routes = [
   //PAGINAS LOGED
   { path: 'app', component: HomeApp },
   { path: 'app/home', component: HomeApp },
+  { path: 'app/seleccion-productos/:id', component: SeleccionProductos },
   {
     path: 'app',
     loadChildren: () =>

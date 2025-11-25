@@ -43,7 +43,7 @@ public class RetoService {
 
         nuevoReto.setNombre(reto.getNombre());
         nuevoReto.setFecha_inicio(reto.getFecha_inicio());
-        nuevoReto.setFecha_caducidad(reto.getFecha_caducidad());
+        nuevoReto.setFecha_fin(reto.getFecha_caducidad());
 
         retoRepository.save(nuevoReto);
     }
