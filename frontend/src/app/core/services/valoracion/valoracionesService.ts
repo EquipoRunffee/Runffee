@@ -12,7 +12,7 @@ export class ValoracionService {
   api = environment.apiUrl;
 
   getValoracion(): Observable<Valoraciones[]> {
-    let apiUrl= this.api + '/valoracion';
+    let apiUrl= this.api + '/valoracion/valoracionesusuario';
     return this.http.get<Valoraciones[]>(apiUrl);
   }
 }

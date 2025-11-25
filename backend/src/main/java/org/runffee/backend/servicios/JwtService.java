@@ -55,8 +55,7 @@ public class JwtService {
 
     public ResponseEntity<?> renovarToken(String refreshToken){
         // Buscar usuario con ese refresh token
-        Usuario usuario = usuarioRepository.findByRefreshtoken(refreshToken)
-                .orElseThrow(() -> new RuntimeException("Refresh token inválido"));
+        Usuario usuario = usuarioRepository.obtenerUsuarioByRefreshToken(refreshToken);
 
         if(usuario.getExpiresat().isBefore(Instant.now())){
             throw new RuntimeException("Refresh token caducado");
