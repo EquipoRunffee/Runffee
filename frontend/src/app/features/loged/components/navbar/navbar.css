@@ -70,7 +70,6 @@
   background-color: #969696;
 }
 
-
 .carritoContent img,
 .carritoContent h3,
 .carritoContent p,
@@ -97,7 +96,7 @@
   display: flex;
   background-color: #E3FF68;
   border-radius: 10px;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1.5rem;
   align-items: center;
   justify-content: space-between;
 }
@@ -115,5 +114,36 @@
 }
 
 @media(max-width: 450px){
+  .carritoContent{
+    max-width: 300px;
+  }
 
+  .cerrarCarrito img{
+    width: 15px !important;
+  }
+
+  .carritoContent img{
+    width: 60px;
+  }
+
+  .carritoContent h3{
+    font-size: 25px;
+  }
+
+  .carritoContent p{
+    font-size: 12.5px;
+  }
+
+  .contenedorDescuento {
+    padding: 0.75rem;
+  }
+
+  .contenedorDescuento img{
+    width: 20px;
+  }
+
+  .contenedorDescuento p {
+    font-size: 10px;
+    max-width: 200px;
+  }
 }
