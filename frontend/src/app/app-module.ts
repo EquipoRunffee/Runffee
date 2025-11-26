@@ -16,10 +16,11 @@ import {authInterceptor} from '@core/interceptor/auth-interceptor';
 import {CardReto} from '@loged/components/card-reto/card-reto';
 import { ValoracionCard } from './shared/components/valoracion-card/valoracion-card';
 import { EntrenamientoCard } from './shared/components/entrenamiento-card/entrenamiento-card';
+import { ProductoSeleccion } from './core/models/producto-seleccion/producto-seleccion';
 
 
 @NgModule({
-  declarations: [App,],
+  declarations: [App, ProductoSeleccion,],
   providers: [
     provideHttpClient(
       withInterceptors([authInterceptor])

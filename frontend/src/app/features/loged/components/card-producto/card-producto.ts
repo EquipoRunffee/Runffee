@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ProductoCarrito} from '@core/models/producto-carrito';
 import {DecimalPipe} from '@angular/common';
+import {ProductoSeleccion} from '@core/models/producto-seleccion';
 
 @Component({
   selector: 'app-card-producto',
@@ -12,5 +13,5 @@ import {DecimalPipe} from '@angular/common';
   ]
 })
 export class CardProducto {
-  @Input() producto!: ProductoCarrito;
+  @Input() producto!: ProductoSeleccion;
 }
