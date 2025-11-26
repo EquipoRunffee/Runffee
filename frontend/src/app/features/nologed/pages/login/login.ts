@@ -30,7 +30,7 @@ export class Login {
 
     this.authService.login({correo: this.usuario.correo, contrasena: this.usuario.contrasena}).subscribe({
       next: (res) => {
-        this.router.navigate(['/app/perfil']);
+        this.router.navigate(['/app']);
       },
       error: (err) => {
         console.log(err);

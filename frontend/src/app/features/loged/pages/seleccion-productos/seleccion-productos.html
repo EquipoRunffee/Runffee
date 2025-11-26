@@ -1,10 +1,13 @@
 <app-navbar></app-navbar>
 <div id="contenedor-cafeteria-productos">
   <a id="volver" routerLink='/app'><img class="flecha" src="./assets/icon/icon-flecha-izquierda.png" alt=""> Volver</a>
-  <div class="div-imagen-cafeteria"><img src="https://images.pexels.com/photos/683039/pexels-photo-683039.jpeg?cs=srgb&dl=pexels-apgpotr-683039.jpg&fm=jpg"
-                                         alt="Imagen de Cafeteria"></div>
+  <div class="div-imagen-cafeteria">
+    @if (datos){
+      <img [src] = [datos.imagen] alt="Imagen de Cafeteria">
+    }
+  </div>
   <div class="main">
-    <h3 id="h3-nombre-cafeteria">Plácido y Grata</h3>
+    <h3 id="h3-nombre-cafeteria">{{datos?.nombre}}</h3>
     <div class="div-buscador-filtro">
       <div id="buscador">
         <img src="./assets/icon/icon-lupa.png" alt="Lupa">
@@ -15,16 +18,9 @@
       </div>
     </div>
     <div class="contenedor-productos">
-      <app-card-producto></app-card-producto>
-      <app-card-producto></app-card-producto>
-      <app-card-producto></app-card-producto>
-      <app-card-producto></app-card-producto>
-      <app-card-producto></app-card-producto>
-      <app-card-producto></app-card-producto>
-      <app-card-producto></app-card-producto>
-      <app-card-producto></app-card-producto>
-      <app-card-producto></app-card-producto>
-      <app-card-producto></app-card-producto>
+      @for (producto of datos?.productos; track producto.id) {
+        <app-card-producto [producto]="producto"></app-card-producto>
+      }
     </div>
   </div>
 </div>
