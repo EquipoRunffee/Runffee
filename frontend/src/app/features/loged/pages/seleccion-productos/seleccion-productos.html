@@ -1,10 +1,13 @@
 <app-navbar></app-navbar>
 <div id="contenedor-cafeteria-productos">
   <a id="volver" routerLink='/app'><img class="flecha" src="./assets/icon/icon-flecha-izquierda.png" alt=""> Volver</a>
-  <div class="div-imagen-cafeteria"><img src="./assets/images/cafeterias/cafeteria1_placidoygrata.jpg"
-                                         alt="Imagen de Cafeteria"></div>
+  <div class="div-imagen-cafeteria">
+    @if (datos){
+      <img [src] = [datos.imagen] alt="Imagen de Cafeteria">
+    }
+  </div>
   <div class="main">
-    <h3 id="h3-nombre-cafeteria">Plácido y Grata</h3>
+    <h3 id="h3-nombre-cafeteria">{{datos?.nombre}}</h3>
     <div class="div-buscador-filtro">
       <div id="buscador">
         <img src="./assets/icon/icon-lupa.png" alt="Lupa">
@@ -14,151 +17,11 @@
         Filtros
       </div>
     </div>
-    <div id="contenedor-categorias">
-      <div id="categoria-1" class="categoria">
-        <div class="categoria-encabezado"><p class="nombre-categoria">Bebidas Frías</p> <img (click)="abrirCategoria(1)"
-                                                                                             class="flecha"
-                                                                                             src="./assets/icon/icon-flecha-derecha.png"
-                                                                                             alt="flecha derecha"></div>
-        <div class="categoria-cuerpo">
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="categoria-2" class="categoria">
-        <div class="categoria-encabezado"><p class="nombre-categoria">Bebidas Frías</p> <img class="flecha"
-                                                                                             src="./assets/icon/icon-flecha-derecha.png"
-                                                                                             alt="flecha derecha"></div>
-        <div class="categoria-cuerpo">
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="categoria-3" class="categoria">
-        <div class="categoria-encabezado"><p class="nombre-categoria">Bebidas Frías</p> <img class="flecha"
-                                                                                             src="./assets/icon/icon-flecha-derecha.png"
-                                                                                             alt="flecha derecha"></div>
-        <div class="categoria-cuerpo">
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-          <div class="card-producto">
-            <div class="div-imagen-producto"><img class="imagen-producto"
-                                                  src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg"
-                                                  alt=""></div>
-            <div class="datos-producto"><p class="nombre-producto">Zumo naranja</p>
-              <div class="div-descripcion-precio"><p class="descripcion-producto">Zumo de frutas ecológica 100%
-                naturales sin azucares añadidos</p>
-                <p class="precio-producto">2,20€</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="contenedor-productos">
+      @for (producto of datos?.productos; track producto.id) {
+        <app-card-producto [producto]="producto"></app-card-producto>
+      }
     </div>
   </div>
 </div>
-<h1>{{ idCafeteria }}</h1>
 <app-footer></app-footer>

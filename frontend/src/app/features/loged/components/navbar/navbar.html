@@ -1,10 +1,32 @@
-<div>
-  <button class="btn-nav">
-    <img src="./assets/icon/icon_menu.png" alt="Menu">
-  </button>
+<div class="navbar-loged">
+    @if (!urlFotoUsuario){
+      <div class="skeleton-circular"></div>
+    } @else {
+      <a [routerLink]="['/app/perfil']" id="a-perfil">
+        <img [src] = [urlFotoUsuario] alt="Perfil usuario">
+      </a>
+    }
+  <a title="Perfil" class="btn-nav" [routerLink]="['/app']"><img src="./assets/images/logo/LOGO_VERDE.png" alt=""></a>
+  <div>
+    <button class="btn-nav"  id="btn-carrito">
+      <img src="./assets/icon/icon_carrito.png" alt="Carrito" (click)="mostrarCarrito()">
+    </button>
+  </div>
 </div>
-<div>
-  <button class="btn-nav"  id="btn-carrito">
-    <img src="./assets/icon/icon_carrito.png" alt="Carrito">
-  </button>
+
+<div class="carrito">
+  <div class="carritoContent" *ngIf="muestraCarrito">
+    <div class="cerrarCarrito">
+      <img src="./assets/icon/icon_x.png" (click)="mostrarCarrito()">
+    </div>
+    <img src="./assets/icon/icon_carrito.png">
+    <h3>Tu Pedido</h3>
+    <p>Cuando añadas productos de un establecimiento, aparecerán aquí.</p>
+    <div class="contenedorDescuento">
+      <img src="/assets/icon/icon_ayuda.png" alt="">
+      <p>Con ejercicio en nuestra seleccion de retos podras obtener cupones con grandes descuentos</p>
+    </div>
+
+  </div>
 </div>
+

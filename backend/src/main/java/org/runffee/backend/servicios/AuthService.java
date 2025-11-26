@@ -1,7 +1,6 @@
 package org.runffee.backend.servicios;
 
 import org.runffee.backend.modelos.Usuario;
-import org.runffee.backend.modelos.UsuarioSexo;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -79,7 +78,7 @@ public class AuthService {
         usuario.setApellidos(atletaBody.get("lastname").toString());
         usuario.setCiudad(atletaBody.get("city").toString());
         usuario.setPais(atletaBody.get("country").toString());
-        usuario.setSexo((UsuarioSexo) atletaBody.get("sex"));
+        usuario.setSexo(atletaBody.get("sex").toString());
         usuario.setImagen(atletaBody.get("profile").toString());
 
         //Guardamos el usuario creado

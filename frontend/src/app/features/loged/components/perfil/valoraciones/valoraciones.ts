@@ -5,8 +5,6 @@ import {ValoracionService} from '@core/services/valoracion/valoracionesService';
 import {NgForOf} from '@angular/common';
 import {Valoraciones} from '@core/models/valoraciones';
 
-
-
 @Component({
   selector: 'app-valoraciones',
   imports: [RouterModule, ValoracionCard, NgForOf],

@@ -17,9 +17,8 @@ import {CardReto} from '@loged/components/card-reto/card-reto';
 import { ValoracionCard } from './shared/components/valoracion-card/valoracion-card';
 import { EntrenamientoCard } from './shared/components/entrenamiento-card/entrenamiento-card';
 
-
 @NgModule({
-  declarations: [App,],
+  declarations: [App],
   providers: [
     provideHttpClient(
       withInterceptors([authInterceptor])

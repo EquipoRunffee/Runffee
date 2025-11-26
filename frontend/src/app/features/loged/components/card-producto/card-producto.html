@@ -1,0 +1,20 @@
+<div class="card-producto">
+  <div class="div-imagen-producto"><img class="imagen-producto" src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg" alt="Imagen producto"></div>
+  <div class="datos-producto">
+    <div class="div-nombre-precio">
+      <p class="nombre-producto">{{producto.nombre}}</p>
+      <p class="precio-producto">{{producto.precio | number:'1.2-2'}}€</p>
+    </div>
+
+      <p class="descripcion-producto">{{producto.descripcion}}</p>
+
+      <div class="div-btn-cantidad">
+        @if (cantidad > 0) {
+        <button class="btn-cantidad" (click)="eliminarCantidadProducto()">-</button>
+        <p class="cantidad-producto">{{cantidad}}</p>
+        }
+        <button class="btn-cantidad" (click) = "anadirCantidadProducto()">+</button>
+      </div>
+
+  </div>
+</div>

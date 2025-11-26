@@ -60,7 +60,6 @@ public class ValoracionController {
             String token = authHeader.substring(7);
             System.out.println("Token: " + token);
             Integer idUsuario = jwtService.obtenerIdUsuario(token);
-
             if(!jwtService.validarToken(token)){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                         .body(Map.of("error", "Token expirado"));

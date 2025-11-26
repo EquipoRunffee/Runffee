@@ -34,7 +34,7 @@ public class Cafeteria {
     @Column (name = "lng")
     private Double lng;
 
-    @Column (name = "imagen")
+    @Column (name = "img")
     private String imagen;
 
     @Column (name = "tipo")
