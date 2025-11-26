@@ -51,8 +51,19 @@ public class EntrenamientoController {
      * @return
      */
     @GetMapping("/detalles")
-    public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles() {
-        return entrenamientoService.obtenerEntrenamientoDetalles();
+    public ResponseEntity<?> obtenerEntrenamientoDetalles(@RequestHeader(value = "Authorization", required = false) String authHeader){
+        System.out.println("Realizando Petición");
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            System.out.println("Token: " + token);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+            return ResponseEntity.ok(entrenamientoService.obtenerEntrenamientoDetalles(idUsuario));
+        }
+        return null;
     }
 
     /***

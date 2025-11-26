@@ -37,13 +37,20 @@ public class EntrenamientoService {
     }
 
     /**
-     * Función  que devuelve todos los Entrenamientos Detalle DTO
+     * Función que devuelve todos los Entrenamientos Detalle DTO
      * @return
      */
-    public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles() {
-        return entrenamientoRepository.findAll().stream()
-                .map(entrenamiento -> new EntrenamientoDetalleDTO(entrenamiento.getNombre(), entrenamiento.getDistancia(), entrenamiento.getFecha_fin()))
-                .collect(Collectors.toList());
+    public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles(Integer idUsuario) {
+
+        return entrenamientoRepository.findByUsuarioId(idUsuario)
+                .stream()
+                .filter(ent -> !ent.getEliminado())  // evita mostrar los eliminados
+                .map(ent -> new EntrenamientoDetalleDTO(
+                        ent.getNombre(),
+                        ent.getDistancia(),
+                        ent.getFecha_fin()
+                ))
+                .toList();
     }
 
     /**

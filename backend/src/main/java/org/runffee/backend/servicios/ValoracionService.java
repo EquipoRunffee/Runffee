@@ -14,8 +14,6 @@ public class ValoracionService {
 
     @Autowired
     private IValoracionRepository valoracionRepository;
-    @Autowired
-    private EntrenamientoService entrenamientoService;
 
     /**
      * Función que devuelve todas las valoraciones
