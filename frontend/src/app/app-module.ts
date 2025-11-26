@@ -17,10 +17,12 @@ import {CardReto} from '@loged/components/card-reto/card-reto';
 import { ValoracionCard } from './shared/components/valoracion-card/valoracion-card';
 import { Detallecafeteria } from './shared/pages/detallecafeteria/detallecafeteria';
 import { EntrenamientoCard } from './shared/components/entrenamiento-card/entrenamiento-card';
+import { ValoracionPaginaCafeteriasCard } from './shared/components/valoracion-pagina-cafeterias-card/valoracion-pagina-cafeterias-card';
+import { ProductosMasVendidosCard } from './shared/components/productos-mas-vendidos-card/productos-mas-vendidos-card';
 
 
 @NgModule({
-  declarations: [App,],
+  declarations: [App, ValoracionPaginaCafeteriasCard, ProductosMasVendidosCard,],
   providers: [
     provideHttpClient(
       withInterceptors([authInterceptor])
@@ -50,6 +52,7 @@ import { EntrenamientoCard } from './shared/components/entrenamiento-card/entren
     NavbarComponent,
     CafeteriaCard,
     EntrenamientoCard,
+    ValoracionPaginaCafeteriasCard,
   ],
   bootstrap: [App]
 })

@@ -1,13 +1,13 @@
 <div class="detallecafeteria">
   <div class="imagen_principal">
-    <img src="./assets/images/cafeterias/cafeteria1_placidoygrata.jpg">
+    <img src="detallecafeteria?.imagen" >
   </div>
 
   <!-----------------DETALLE CAFETERIA----------------->
 <div class="detalle-cafeteria">
-  <h1 class="nombre-cafeteria">{{ detallecafeteria?.nombre }}</h1>
+  <h1 class="nombre-cafeteria">{{ datos!.nombre }}</h1>
   <div class="descripcion-cafeteria">
-    <p>
+    <!--<p>
       En el corazón de Sevilla, Plácido y Grata
       es el lugar perfecto para recuperar fuerzas
       después de un entrenamiento.
@@ -26,6 +26,8 @@
       Un punto de encuentro donde el esfuerzo se
       transforma en recompensa.
     </p>
+    -->
+    <p>{{datos!.descripcion }}</p>
 
   </div>
 </div>
@@ -33,13 +35,12 @@
 
   <!-----------------PRODUCTOS DESTACADOS----------------->
 
-
   <div class="destacados">
     <h3>Los más pedidos</h3>
+
     <div class="productos-destacados">
       <div class="producto">
         <img src="./assets/images/cafeterias/productos/producto_matcha.jpg" alt="Producto 1">
-        <p>Producto 1</p>
       </div>
       <div class="producto">
         <img src="./assets/images/cafeterias/productos/producto_matcha.jpg" alt="Producto 2">
@@ -52,17 +53,15 @@
       <div class="producto">
         <img src="./assets/images/cafeterias/productos/producto_matcha.jpg" alt="Producto 4">
         <p>Producto 4</p>
-    </div>
+        -->
   </div>
 
 
-    <!-----------------VALORACIONES----------------->
 
-    <div class="valoraciones">
-    <h3>Valoraciones</h3>
-    <div class="detalles-valoraciones">
+  <!-----------------VALORACIONES----------------->
 
-    </div>
+  <div class="contenedor-valoraciones">
+    <h3>Últimas valoraciones</h3>
   </div>
 
     <!-----------------MAPA----------------->
@@ -82,6 +81,6 @@
   </div>
 
 
-
-</div>
+    </div>
+  </div>
 </div>

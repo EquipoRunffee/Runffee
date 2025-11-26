@@ -18,7 +18,12 @@ export class CafeteriaService {
     }
 
     getCafeteriaPorId(id: number): Observable<Cafeteria> {
-      let apiUrl= `https://runffee.onrender.com/cafeteria/${id}`;
+      let apiUrl= this.api + '/cafeteria/' + id;
       return this.http.get<Cafeteria>(apiUrl);
     }
+
+  traerCafeteriaPorId(id: number): Observable<any> {
+    let apiUrl= this.api + '/cafeteria/traer/' + id ;
+    return this.http.get<any>(apiUrl);
+  }
 }
