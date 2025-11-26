@@ -14,4 +14,15 @@ import {ProductoSeleccion} from '@core/models/producto-seleccion';
 })
 export class CardProducto {
   @Input() producto!: ProductoSeleccion;
+  cantidad: number = 0;
+
+  anadirCantidadProducto(){
+    this.cantidad = ++this.cantidad;
+  }
+
+  eliminarCantidadProducto(){
+    if(this.cantidad > 0){
+      this.cantidad = --this.cantidad;
+    }
+  }
 }

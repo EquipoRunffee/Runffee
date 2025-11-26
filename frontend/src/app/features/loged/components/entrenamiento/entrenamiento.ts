@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
 import {AppModule} from '../../../../app-module';
+import {EntrenamientoCard} from '@shared/components/entrenamiento-card/entrenamiento-card';
 
 @Component({
   selector: 'app-entrenamiento',
-  imports: [RouterModule, AppModule],
+  imports: [RouterModule, EntrenamientoCard],
   templateUrl: './entrenamiento.html',
   styleUrl: './entrenamiento.css',
 })
