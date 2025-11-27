@@ -59,10 +59,10 @@ public class EntrenamientoService {
         nuevoEntrenamiento.setFecha_fin(entrenamiento.getFecha_fin());
         nuevoEntrenamiento.setUrl_mapa(entrenamiento.getUrl_mapa());
         nuevoEntrenamiento.setDescripcion(entrenamiento.getDescripcion());
-        nuevoEntrenamiento.setStrava_km(entrenamiento.getStrava_km());
-        nuevoEntrenamiento.setStrava_tiempo(entrenamiento.getStrava_tiempo());
-        nuevoEntrenamiento.setKm_objetivo(entrenamiento.getKm_objetivo());
-        nuevoEntrenamiento.setTiempo_objetivo(entrenamiento.getTiempo_objetivo());
+        nuevoEntrenamiento.setStravaKm(entrenamiento.getStrava_km());
+        nuevoEntrenamiento.setStravaTiempo(entrenamiento.getStrava_tiempo());
+        nuevoEntrenamiento.setKmObjetivo(entrenamiento.getKm_objetivo());
+        nuevoEntrenamiento.setTiempoObjetivo(entrenamiento.getTiempo_objetivo());
 
         entrenamientoRepository.save(nuevoEntrenamiento);
     }
