@@ -21,5 +21,6 @@ export class EntrenamientoCard{
 
   @Input() nombre: string = '';
   @Input() fecha_fin: string = '';
-  @Input() distancia: number = 1;
+  @Input() strava_km: number = 1;
+  @Input() objetivo_km: number = 1;
 }

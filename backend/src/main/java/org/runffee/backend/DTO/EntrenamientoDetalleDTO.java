@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -15,9 +16,9 @@ public class EntrenamientoDetalleDTO {
     private Double strava_km;
     private Double objetivo_km;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date fecha_fin;
+    private LocalDate fecha_fin;
 
-    public EntrenamientoDetalleDTO(String nombre, Double strava_km, Double objetivo_km,Date fecha_fin) {
+    public EntrenamientoDetalleDTO(String nombre, Double strava_km, Double objetivo_km,LocalDate fecha_fin) {
         this.nombre = nombre;
         this.strava_km = strava_km;
         this.objetivo_km = objetivo_km;

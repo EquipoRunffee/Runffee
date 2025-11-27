@@ -4,7 +4,8 @@
     <app-entrenamiento-card *ngFor="let entrenamiento of entrenamientos"
                             [nombre]="entrenamiento.nombre"
                             [fecha_fin]="entrenamiento.fecha_fin"
-                            [distancia]="entrenamiento.distancia">
+                            [strava_km]="entrenamiento.strava_km">
+                            [objetivo_km]="entrenamiento.objetivo_km">
     </app-entrenamiento-card>
   </div>
 </div>
