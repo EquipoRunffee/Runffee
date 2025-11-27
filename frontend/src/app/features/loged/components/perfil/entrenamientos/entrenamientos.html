@@ -1,0 +1,11 @@
+<div id="entrenamiento">
+  <h1 class="nav_false">Mis entrenamientos</h1>
+  <div class="main-content">
+    <app-entrenamiento-card *ngFor="let entrenamiento of entrenamientos"
+                            [nombre]="entrenamiento.nombre"
+                            [fecha_fin]="entrenamiento.fecha_fin"
+                            [strava_km]="entrenamiento.strava_km">
+                            [objetivo_km]="entrenamiento.objetivo_km">
+    </app-entrenamiento-card>
+  </div>
+</div>

@@ -3,10 +3,14 @@ package org.runffee.backend.controladores;
 import org.runffee.backend.DTO.CuponDTO;
 import org.runffee.backend.modelos.Cupon;
 import org.runffee.backend.servicios.CuponService;
+import org.runffee.backend.servicios.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/cupon")
@@ -54,5 +58,24 @@ public class CuponController {
     @DeleteMapping("/eliminar/{id}")
     public void eliminarCupon(@PathVariable Integer id){
         cuponService.eliminarCupon(id);
+    }
+
+    @Autowired
+    private JwtService jwtService;
+
+    @GetMapping("/cuponesusuario")
+    public ResponseEntity<?> obtenerCuponPorUsuario(@RequestHeader(value = "Authorization", required = false) String authHeader){
+        System.out.println("Realizando Petición");
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            System.out.println("Token: " + token);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+            return ResponseEntity.ok(cuponService.obtenerCuponPorUsuario(idUsuario));
+        }
+        return null;
     }
 }

@@ -59,4 +59,9 @@ public class CuponService {
             cupon.setEliminado(true);
         }
     }
+
+    public List<Object[]> obtenerCuponPorUsuario(Integer idUsuario) {
+        System.out.println("Realizando Servicio");
+        return cuponRepository.obtenerCuponPorUsuario(idUsuario);
+    }
 }

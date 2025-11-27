@@ -28,7 +28,7 @@ export class ValoracionesComponent implements OnInit {
         console.log('Datos Recibidos:', data);
       },
       error: (err) => {
-        console.error('Error al obtener cafeterías:', err);
+        console.error('Error al obtener valoraciones:', err);
       }
     });
   }
