@@ -42,8 +42,17 @@ public class Entrenamiento {
     @Column (name = "descripcion")
     private String descripcion;
 
-    @Column (name = "distancia")
-    private BigDecimal distancia;
+    @Column (name = "strava_km")
+    private Double strava_km;
+
+    @Column (name = "km_objetivo")
+    private Double km_objetivo;
+
+    @Column (name = "strava_tiempo")
+    private Integer strava_tiempo;
+
+    @Column (name = "tiempo_objetivo")
+    private Integer tiempo_objetivo;
 
     @Column (name = "eliminado")
     private Boolean eliminado;
