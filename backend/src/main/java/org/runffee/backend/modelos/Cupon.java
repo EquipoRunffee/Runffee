@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.context.annotation.Primary;
 
 import java.util.Date;
 
@@ -31,12 +30,13 @@ public class Cupon {
     private Date fechaCaducidad;
 
     @Column (name = "tipo")
-    private Integer tipo;
+    @Enumerated(EnumType.ORDINAL)
+    private TipoCupon tipo;
 
     @Column (name = "usado")
     private Boolean usado;
 
-    @Column (name = "imagen")
+    @Column (name = "img")
     private String imagen;
 
     @Column (name = "porcentaje")
@@ -47,9 +47,4 @@ public class Cupon {
 
     @Column (name = "eliminado")
     private Boolean eliminado;
-
-    @JoinColumn (name = "id_reto")
-    @ManyToOne
-    private Reto reto;
-
 }

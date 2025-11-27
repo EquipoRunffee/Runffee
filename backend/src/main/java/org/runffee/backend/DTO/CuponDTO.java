@@ -1,6 +1,8 @@
 package org.runffee.backend.DTO;
 
 import lombok.Data;
+import org.runffee.backend.modelos.TipoCupon;
+
 import java.util.Date;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Date;
 public class CuponDTO {
     private String nombre;
     private Date fechaCaducidad;
-    private Integer tipo;
+    private TipoCupon tipo;
     private Boolean usado;
     private String imagen;
     private Integer porcentaje;
