@@ -28,6 +28,14 @@
   border-radius: 10px;
 }
 
+.card-producto.productos {
+
+}
+
+.card-producto.carrito {
+  height: auto;
+}
+
 .div-imagen-producto{
   width: 120px;
   min-width: 120px;

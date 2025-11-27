@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class PedidoDTO {
     private Valoracion valoracion;
     private String cuponAplicado;
-    private BigDecimal precioTotal;
+    private Double precioTotal;
     private String qr;
     private EstadoPedido estado;
     private Boolean eliminado;

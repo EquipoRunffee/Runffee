@@ -27,6 +27,12 @@ public class Entrenamiento {
     @Column (name = "id_strava")
     private Integer idStrava;
 
+    @Column (name = "strava_km")
+    private Double stravaKm;
+
+    @Column (name = "strava_tiempo")
+    private Integer stravaTiempo;
+
     @Column (name = "nombre")
     private String nombre;
 
@@ -42,8 +48,14 @@ public class Entrenamiento {
     @Column (name = "descripcion")
     private String descripcion;
 
-    @Column (name = "distancia")
-    private BigDecimal distancia;
+    @Column (name = "km_objetivo")
+    private Double kmObjetivo;
+
+    @Column (name = "tiempo_objetivo")
+    private Integer tiempoObjetivo;
+
+    @Column(name = "completado")
+    private Boolean completado;
 
     @Column (name = "eliminado")
     private Boolean eliminado;
@@ -55,4 +67,12 @@ public class Entrenamiento {
     @JoinColumn(name = "id_pedido")
     @OneToOne
     private Pedido pedido;
+
+    @JoinColumn(name = "id_reto")
+    @OneToOne
+    private Reto reto;
+
+    @JoinColumn(name = "id_cupon")
+    @OneToOne
+    private Cupon cupon;
 }

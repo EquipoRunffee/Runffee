@@ -50,19 +50,19 @@ public class EntrenamientoController {
      * API que devuelve una lista con todos los Entrenamiento Detalle DTO
      * @return
      */
-    @GetMapping("/detalles")
-    public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles() {
-        return entrenamientoService.obtenerEntrenamientoDetalles();
-    }
+//    @GetMapping("/detalles")
+//    public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles() {
+//        return entrenamientoService.obtenerEntrenamientoDetalles();
+//    }
 
     /***
      * API para crear un entrenamiento nuevo
      * @param entrenamiento
      */
-    @PostMapping("/crear")
-    public void crearEntrenamiento(@RequestBody EntrenamientoDTO entrenamiento){
-        entrenamientoService.crearEntrenamiento(entrenamiento);
-    }
+//    @PostMapping("/crear")
+//    public void crearEntrenamiento(@RequestBody EntrenamientoDTO entrenamiento){
+//        entrenamientoService.crearEntrenamiento(entrenamiento);
+//    }
 
     /***
      * API para eliminar un entrenamiento

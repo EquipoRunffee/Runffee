@@ -40,28 +40,28 @@ public class EntrenamientoService {
      * Función  que devuelve todos los Entrenamientos Detalle DTO
      * @return
      */
-    public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles() {
-        return entrenamientoRepository.findAll().stream()
-                .map(entrenamiento -> new EntrenamientoDetalleDTO(entrenamiento.getNombre(), entrenamiento.getDistancia(), entrenamiento.getFecha_fin()))
-                .collect(Collectors.toList());
-    }
+//    public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles() {
+//        return entrenamientoRepository.findAll().stream()
+//                .map(entrenamiento -> new EntrenamientoDetalleDTO(entrenamiento.getNombre(), entrenamiento.getDistancia(), entrenamiento.getFecha_fin()))
+//                .collect(Collectors.toList());
+//    }
 
     /**
      * Función para crear un entrenamiento
      * @param entrenamiento
      */
-    public void crearEntrenamiento(EntrenamientoDTO entrenamiento) {
-        Entrenamiento nuevoEntrenamiento = new Entrenamiento();
-
-        nuevoEntrenamiento.setNombre(entrenamiento.getNombre());
-        nuevoEntrenamiento.setFecha_inicio(entrenamiento.getFecha_inicio());
-        nuevoEntrenamiento.setFecha_fin(entrenamiento.getFecha_fin());
-        nuevoEntrenamiento.setUrl_mapa(entrenamiento.getUrl_mapa());
-        nuevoEntrenamiento.setDescripcion(entrenamiento.getDescripcion());
-        nuevoEntrenamiento.setDistancia(entrenamiento.getDistancia());
-
-        entrenamientoRepository.save(nuevoEntrenamiento);
-    }
+//    public void crearEntrenamiento(EntrenamientoDTO entrenamiento) {
+//        Entrenamiento nuevoEntrenamiento = new Entrenamiento();
+//
+//        nuevoEntrenamiento.setNombre(entrenamiento.getNombre());
+//        nuevoEntrenamiento.setFecha_inicio(entrenamiento.getFecha_inicio());
+//        nuevoEntrenamiento.setFecha_fin(entrenamiento.getFecha_fin());
+//        nuevoEntrenamiento.setUrl_mapa(entrenamiento.getUrl_mapa());
+//        nuevoEntrenamiento.setDescripcion(entrenamiento.getDescripcion());
+//        nuevoEntrenamiento.setDistancia(entrenamiento.getDistancia());
+//
+//        entrenamientoRepository.save(nuevoEntrenamiento);
+//    }
 
     /**
      * Función para eliminar un entrenamiento

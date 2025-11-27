@@ -17,7 +17,7 @@ public class EntrenamientoDTO {
     private Date fecha_fin;
     private String url_mapa;
     private String descripcion;
-    private BigDecimal distancia;
+    private Double distancia;
     private Boolean eliminado;
     private Usuario usuario;
     private Pedido pedido;
