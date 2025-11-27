@@ -2,6 +2,8 @@ package org.runffee.backend.repositorios;
 
 import org.runffee.backend.modelos.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -19,7 +21,8 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     Optional<Usuario> findByStravaAthleteId(Integer stravaAthleteid);
 
     Optional<Usuario> findByCorreo(String correo);
-    Optional<Usuario> findByRefreshtoken(String refreshToken);
-
     Usuario findByStravaAccessToken(String stravaAccessToken);
+
+    @Query(value = "select u from Usuario u where u.refreshtoken = :refreshToken")
+    Usuario obtenerUsuarioByRefreshToken(@Param("refreshToken") String refreshToken);
 }

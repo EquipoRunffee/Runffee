@@ -59,7 +59,7 @@ export class Register {
         {correo: this.usuario.correo, contrasena: this.usuario.password, stravaAccessToken: localStorage.getItem("stravaAccessToken")})
         .subscribe({
           next: (res) => {
-            this.router.navigate(['/app/perfil']);
+            this.router.navigate(['/app']);
           },
           error: (err) => {
             console.log(err);

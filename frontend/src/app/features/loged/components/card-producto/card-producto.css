@@ -1,0 +1,121 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+:host{
+  width: 100%;
+  max-width: 600px;
+  height: 180px;
+  max-height: 180px;
+}
+
+.card-producto{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid whitesmoke;
+  overflow: hidden;
+}
+
+.card-producto:hover{
+  border-radius: 10px;
+}
+
+.div-imagen-producto{
+  width: 120px;
+  min-width: 120px;
+  height: 120px;
+  min-height: 120px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.imagen-producto{
+  width: 100%;
+}
+
+.datos-producto{
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.nombre-producto{
+  color: var(--color-secundario-marron);
+  font-weight: 600;
+  font-size: x-large;
+  font-family: "Montserrat", sans-serif;
+  width: 180px;
+  max-width: 180px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.div-nombre-precio{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.descripcion-producto{
+  width: 100%;
+  max-width: 180px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.precio-producto{
+}
+
+.div-btn-cantidad{
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaeaea;
+  border-radius: 20px;
+}
+
+.cantidad-producto{
+  padding: 5px;
+  font-weight: bold;
+}
+
+.btn-cantidad{
+  color: var(--color-secundario-negro);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaeaea;
+  border: none;
+  font-size: x-large;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.btn-cantidad:hover{
+  background-color: #e1e1e1;
+}

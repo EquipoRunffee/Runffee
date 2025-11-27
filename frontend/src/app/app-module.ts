@@ -22,7 +22,7 @@ import { ProductosMasVendidosCard } from './shared/components/productos-mas-vend
 
 
 @NgModule({
-  declarations: [App, ValoracionPaginaCafeteriasCard, ProductosMasVendidosCard,],
+  declarations: [App],
   providers: [
     provideHttpClient(
       withInterceptors([authInterceptor])
@@ -52,7 +52,6 @@ import { ProductosMasVendidosCard } from './shared/components/productos-mas-vend
     NavbarComponent,
     CafeteriaCard,
     EntrenamientoCard,
-    ValoracionPaginaCafeteriasCard,
   ],
   bootstrap: [App]
 })

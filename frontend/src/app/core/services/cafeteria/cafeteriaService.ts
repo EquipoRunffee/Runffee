@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Cafeteria} from '@core/models/cafeteria';
 import {environment} from '../../../../environments/environment';
+import {CafeteriaProductos} from '@core/models/cafeteria-productos';
 
 
 @Injectable({
@@ -25,5 +26,10 @@ export class CafeteriaService {
   traerCafeteriaPorId(id: number): Observable<any> {
     let apiUrl= this.api + '/cafeteria/traer/' + id ;
     return this.http.get<any>(apiUrl);
+  }
+
+  getProductosCafeteria(idCafeteria: number): Observable<CafeteriaProductos> {
+    let apiUrl= this.api + '/cafeteria/' + idCafeteria.toString() + '/productos';
+    return this.http.get<CafeteriaProductos>(apiUrl);
   }
 }

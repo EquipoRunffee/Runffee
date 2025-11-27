@@ -9,8 +9,10 @@ import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -95,6 +97,26 @@ public class UsuarioController {
             }
 
             return usuarioDatosPerfilService.obtenerDatosPerfil(idUsuario);
+        }
+
+        return null;
+    }
+
+    @GetMapping("/foto")
+    public ResponseEntity<?> obtenerUsuarioFoto(@RequestHeader(value = "Authorization", required = false) String authHeader){
+
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+            return ResponseEntity.ok(Map.of("url", usuario.getImagen()));
+
         }
 
         return null;
