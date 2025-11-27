@@ -47,7 +47,7 @@ public class EntrenamientoController {
     }
 
     /***
-     * API que devuelve una lista con todos los Entrenamiento Detalle DTO
+     * API que devuelve una lista con todos los Entrenamientos Detalle DTO
      * @return
      */
     @GetMapping("/detalles")

@@ -2,6 +2,7 @@ package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.EntrenamientoDTO;
 import org.runffee.backend.DTO.EntrenamientoDetalleDTO;
+import org.runffee.backend.DTO.ValoracionDTO;
 import org.runffee.backend.modelos.Entrenamiento;
 import org.runffee.backend.repositorios.IEntrenamientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,17 +42,10 @@ public class EntrenamientoService {
      * @return
      */
     public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles(Integer idUsuario) {
-
-        return entrenamientoRepository.findByUsuarioId(idUsuario)
-                .stream()
-                .filter(ent -> !ent.getEliminado())  // evita mostrar los eliminados
-                .map(ent -> new EntrenamientoDetalleDTO(
-                        ent.getNombre(),
-                        ent.getDistancia(),
-                        ent.getFecha_fin()
-                ))
-                .toList();
+        System.out.println("Realizando Servicio");
+        return entrenamientoRepository.obtenerEntrenamientoDetalles(idUsuario);
     }
+
 
     /**
      * Función para crear un entrenamiento

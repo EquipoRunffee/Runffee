@@ -20,6 +20,6 @@ export class EntrenamientoCard{
   }
 
   @Input() nombre: string = '';
-  @Input() fecha_fin!: Date;
+  @Input() fecha_fin: Date = new Date();
   @Input() distancia: number = 1;
 }
