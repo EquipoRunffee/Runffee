@@ -1,37 +1,17 @@
 <div class="detallecafeteria">
+  <app-navbar></app-navbar>
   <div class="imagen_principal">
-    <img src="detallecafeteria?.imagen" >
+    <img [src]="datos!.imagen" >
   </div>
 
   <!-----------------DETALLE CAFETERIA----------------->
 <div class="detalle-cafeteria">
-  <h1 class="nombre-cafeteria">{{ datos!.nombre }}</h1>
+  <h1 class="nombre-cafeteria">{{ datos!.nombre}}</h1>
   <div class="descripcion-cafeteria">
-    <!--<p>
-      En el corazón de Sevilla, Plácido y Grata
-      es el lugar perfecto para recuperar fuerzas
-      después de un entrenamiento.
-      Cada visita ofrece café de calidad, sabores
-      auténticos y un ambiente cálido pensado para
-      disfrutar de un momento de descanso.
-    </p>
-    <p>
-      Esta cafetería combina lo mejor del running y
-      del placer de un buen café: desde dulces caseros
-      hasta desayunos equilibrados, cada detalle está
-      cuidado para que los corredores puedan celebrar
-      sus logros con sabor y tranquilidad.
-    </p>
-    <p>
-      Un punto de encuentro donde el esfuerzo se
-      transforma en recompensa.
-    </p>
-    -->
     <p>{{datos!.descripcion }}</p>
 
   </div>
 </div>
-
 
   <!-----------------PRODUCTOS DESTACADOS----------------->
 
@@ -39,48 +19,56 @@
     <h3>Los más pedidos</h3>
 
     <div class="productos-destacados">
-      <div class="producto">
-        <img src="./assets/images/cafeterias/productos/producto_matcha.jpg" alt="Producto 1">
+
+      <div class="producto" *ngFor="let p of datos!.productos">
+        <!-----------------con el || se mete una imagen por defecto en caso de que no tenga imagen dicho producto----------------->
+        <img [src]="p.imagen || './assets/images/cafeterias/productos/producto_matcha.jpg'">
+
+        <p>{{p.nombre_producto}}</p>
       </div>
-      <div class="producto">
-        <img src="./assets/images/cafeterias/productos/producto_matcha.jpg" alt="Producto 2">
-        <p>Producto 2</p>
-      </div>
-      <div class="producto">
-        <img src="./assets/images/cafeterias/productos/producto_matcha.jpg" alt="Producto 3">
-        <p>Producto 3</p>
-      </div>
-      <div class="producto">
-        <img src="./assets/images/cafeterias/productos/producto_matcha.jpg" alt="Producto 4">
-        <p>Producto 4</p>
-        -->
   </div>
 
-
-
+  </div>
   <!-----------------VALORACIONES----------------->
 
-  <div class="contenedor-valoraciones">
+  <div class="valoraciones">
     <h3>Últimas valoraciones</h3>
+
+  <div class="contenedor-valoraciones">
+    <div class="valoracion" *ngFor="let v of datos!.valoraciones">
+      <h4>{{ v.titulo }} {{ v.cantidad }}⭐</h4>
+      <p>{{ v.descripcion }}</p>
+    </div>
   </div>
+  </div>
+
 
     <!-----------------MAPA----------------->
+<div class="ubicacion">
+  <h3>¡Estamos aquí!</h3>
+  <app-mapa-cafeteria></app-mapa-cafeteria>
+</div>
 
 
-    <!-----------------DETALLE CAFETERIA----------------->
+    <!-----------------NEWSLETTER----------------->
 
     <div class="newsletter_home">
-    <div class="newsletterTexto_home">
-      <div class="newsletterTextoTitulo_home">
-        <h6>Recibe promociones exclusivas, ventas privadas y novedades</h6>
+      <div class="newsletterImgContainer_home">
+        <img src="./assets/images/newsletter.jpg" alt="newsletter">
       </div>
-      <input placeholder="E-mail" class="newsletterTextoInput_home">
-      <button class="retoBoton_home newsletterTextoBoton_home">SUSCRIBIRME</button>
-      <p>Al suscribirte, confirmas que has leído la <b>Política de privacidad.</b></p>
+      <div class="newsletterTexto_home">
+        <div class="newsletterTextoTitulo_home">
+          <h6>Recibe promociones exclusivas, ventas privadas y novedades</h6>
+        </div>
+        <input placeholder="E-mail" class="newsletterTextoInput_home">
+        <button class="retoBoton_home newsletterTextoBoton_home">SUSCRIBIRME</button>
+        <p>Al suscribirte, confirmas que has leído la <b>Política de privacidad.</b></p>
+      </div>
     </div>
-  </div>
 
-
-    </div>
-  </div>
 </div>
+  <app-footer></app-footer>
+
+
+
+

@@ -31,15 +31,12 @@ public class CafeteriaService {
     private IValoracionRepository valoracionRepository;
 
     @Autowired
-<<<<<<< HEAD
+
     private ValoracionService valoracionService;
-=======
     private CafeteriaMapper cafeteriaMapper;
 
     @Autowired
     private ProductoMapper productoMapper;
->>>>>>> main
-
     public List<Cafeteria> obtenerCafeterias() {
         return cafeteriaRepository.findAll()
                 .stream()

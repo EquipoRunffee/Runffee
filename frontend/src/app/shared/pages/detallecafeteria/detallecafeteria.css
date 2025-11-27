@@ -1,5 +1,12 @@
 .detallecafeteria {
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: 2rem;
+  color: #2D2D2D;
+  font-family: 'Inter', sans-serif;
 }
 
 
@@ -8,38 +15,34 @@ h1, h3{
   color: #734B59;
   align-content: center;
 }
+h3{
+  margin-top: 4rem;
+  margin-bottom: 5rem;
+}
+
 /*----HEADER----*/
 
-.imagen_principal {
-  position: relative;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  overflow: hidden;
-}
-
 .imagen_principal img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  max-width: 1000px;
   object-fit: cover;
-  z-index: 0; /* Detrás del contenido */
 }
 
-/*----DETALLE CAFETERIA----*/
-.destacados{
+/*----DESCRIPCION CAFETERIA----*/
 
-
+.descripcion-cafeteria{
+  display: flex;
+  text-align: justify;
+  margin: 0 8rem;
+  min-width: 20rem;
+  max-width: 92rem;
 }
+
+/*----DESTACADOS----*/
 .productos-destacados {
   display: grid;
-  gap: 5rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 4rem;
+  grid-template-columns: repeat(4, 1fr);
   margin: auto;
   align-self: center;
   justify-items: center;
@@ -56,20 +59,59 @@ h1, h3{
 
 .producto p {
   margin-top: 10px;
-  font-weight: bold;
+  font-weight: bolder;
 }
-
-
-/*----DESTACADOS----*/
 
 
 /*----VALORACIONES----*/
 
+.contenedor-valoraciones {
+  width: 100%;
+  max-width: 1100px;
+  padding: 1.5rem;
+}
+
+.contenedor-valoraciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedor-valoraciones > div.valoracion {
+  width: 100%;
+}
+
+.valoracion {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.contenedor-valoraciones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* PC: 3x2 */
+  gap: 1.5rem;
+  text-align: justify;
+}
 
 /*----MAPA----*/
 
-/*----NEWSLETTER----*/
+.ubicacion {
+  width: 100%;
+}
 
+.ubicacion app-mapa-cafeteria {
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+
+/*----NEWSLETTER----*/
 .newsletter_home {
   display: flex;
   align-items: center;
@@ -140,4 +182,150 @@ h1, h3{
 
 .newsletterTexto_home p{
   font-size: 20px;
+}
+
+/*----RESPONSIVE----*/
+
+
+@media screen and (max-width: 1500px){
+
+  /* Productos: 2x2 */
+  .productos-destacados {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .newsletterTexto_home h6{
+    font-size: 30px;
+  }
+
+  .newsletterTextoInput_home{
+    padding: 1rem 2rem;
+    width: 75%;
+    font-size: 15px;
+  }
+
+  .newsletterTextoBoton_home{
+    width: 30%;
+    font-size: 15px;
+  }
+
+  .newsletterTexto_home p{
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1250px){
+
+  .newsletterTexto_home{
+    max-width: 450px;
+  }
+
+  .newsletterTexto_home h6{
+    font-size: 25px;
+  }
+
+  .newsletterTextoInput_home{
+    padding: 1rem 2rem;
+    width: 75%;
+    font-size: 15px;
+  }
+
+  .newsletterTextoBoton_home{
+    width: 30%;
+    font-size: 10px;
+  }
+
+  .newsletterTexto_home p{
+    font-size: 12.5px;
+  }
+}
+
+@media screen and (max-width: 1000px){
+
+  /* Valoraciones: 2x3 */
+  .contenedor-valoraciones {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .newsletter_home{
+    gap: 2.5rem;
+  }
+
+  .newsletterImgContainer_home{
+    height: auto;
+  }
+
+  .newsletterTexto_home{
+    max-width: 350px;
+  }
+
+  .newsletterTexto_home h6{
+    font-size: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .newsletterTextoInput_home{
+    font-size: 12.5px;
+  }
+
+  .newsletterTextoBoton_home{
+    width: 35%;
+    font-size: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .newsletterTexto_home p{
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 769px){
+
+  /* Productos: 4x1 (columna) */
+  .productos-destacados {
+    grid-template-columns: 1fr;
+  }
+
+  /* Valoraciones: 1x6 */
+  .contenedor-valoraciones {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter_home{
+    flex-direction: column;
+    height: 100%;
+    align-items: baseline;
+    padding: 2rem;
+  }
+
+  .newsletterImgContainer_home{
+    height: 50vh;
+  }
+
+  .newsletterTexto_home{
+    max-width: 100%;
+    width: 100%;
+    align-items: baseline;
+  }
+
+  .newsletterTextoTitulo_home{
+    text-align: left;
+  }
+
+  .newsletterTexto_home h6{
+    font-size: 15px;
+    margin-bottom: 3rem;
+  }
+
+  .newsletterTextoInput_home{
+    font-size: 12.5px;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    margin: 0;
+  }
+
+  .newsletterTextoBoton_home{
+    width: 100%;
+  }
 }

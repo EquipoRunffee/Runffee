@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {CafeteriaService} from '@core/services/cafeteria/cafeteriaService';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Cafeteria} from '@core/models/cafeteria';
-import {DatePipe, NgForOf} from '@angular/common';
-import {ValoracionCard} from '@shared/components/valoracion-card/valoracion-card';
+import {NgForOf} from '@angular/common';
+import {Footer} from '@shared/components/footer/footer';
+import {Navbar} from '@loged/components/navbar/navbar';
+import {MapaCafeteria} from '@shared/components/mapa-cafeteria/mapa-cafeteria';
 
 @Component({
   selector: 'app-detallecafeteria',
@@ -12,9 +12,10 @@ import {ValoracionCard} from '@shared/components/valoracion-card/valoracion-card
   templateUrl: './detallecafeteria.html',
   styleUrl: './detallecafeteria.css',
   imports: [
-    DatePipe,
     NgForOf,
-    ValoracionCard
+    Footer,
+    Navbar,
+    MapaCafeteria
   ]
 })
 export class Detallecafeteria implements OnInit {
