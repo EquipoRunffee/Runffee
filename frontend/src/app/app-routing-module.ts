@@ -12,6 +12,7 @@ import { Actividad } from "@loged/components/perfil/actividad/actividad";
 import {Detallecafeteria} from '@shared/pages/detallecafeteria/detallecafeteria';
 import {SeleccionProductos} from '@loged/pages/seleccion-productos/seleccion-productos';
 import {Pago} from '@loged/pages/pago/pago';
+import {Adminpage} from '@admin/adminpage/adminpage';
 
 const routes: Routes = [
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'actividad', component: Actividad },
   { path: 'cafeteria', component: CafeteriaCard },
   {path: 'detallecafeteria', component: Detallecafeteria},
+  {path: 'adminpage', component: Adminpage},
 
   //PAGINAS LOGED
   { path: 'app', component: HomeApp },
