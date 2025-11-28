@@ -1,9 +1,19 @@
 export class ProductoCarrito {
-  idCafeteria: number;
-  idReto: number | null;
+  id: number;
+  nombre: string;
+  imagen: string;
+  descripcion: string;
+  tipo: string;
+  precio: number;
+  cantidad: number;
 
-  constructor(idCafeteria: number, idReto: number | null) {
-    this.idCafeteria = idCafeteria;
-    this.idReto = idReto;
+  constructor(id: number, nombre: string, imagen: string, descripcion: string, tipo: string, precio: number, cantidad: number) {
+    this.id = id;
+    this.nombre = nombre;
+    this.imagen = imagen;
+    this.descripcion = descripcion;
+    this.tipo = tipo;
+    this.precio = precio;
+    this.cantidad = cantidad;
   }
 }

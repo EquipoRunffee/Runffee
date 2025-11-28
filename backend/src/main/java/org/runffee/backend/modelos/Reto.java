@@ -37,7 +37,7 @@ public class Reto {
     private String descripcion;
 
     @Column (name = "km")
-    private BigDecimal km;
+    private Double km;
 
     @Column (name = "tiempo")
     private Integer tiempo;

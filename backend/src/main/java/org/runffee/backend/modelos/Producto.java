@@ -34,7 +34,7 @@ public class Producto {
     private String imagen;
 
     @Column (name = "precio")
-    private BigDecimal precio;
+    private Double precio;
 
     @Column (name = "descripcion")
     private String descripcion;

@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 public class ProductoDTO {
     private String nombre;
     private String imagen;
-    private BigDecimal precio;
+    private Double precio;
     private String descripcion;
     private Boolean eliminado;
     private Cafeteria cafeteria;

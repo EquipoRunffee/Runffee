@@ -30,7 +30,7 @@ public class Pedido {
     private String cuponAplicado;
 
     @Column (name = "precio_total")
-    private BigDecimal precioTotal;
+    private Double precioTotal;
 
     @Column (name = "qr")
     private String qr;

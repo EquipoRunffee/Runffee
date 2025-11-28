@@ -11,10 +11,10 @@ export const PERFIL_ROUTES: Routes = [
             .then(m => m.Datos)
       },
       {
-        path: 'actividades',
+        path: 'entrenamientos',
         loadComponent: () =>
-          import('@loged/components/perfil/actividades/actividades')
-            .then(m => m.Actividades)
+          import('@loged/components/perfil/entrenamientos/entrenamientos')
+            .then(m => m.Entrenamientos)
       },
       {
         path: 'cupones',

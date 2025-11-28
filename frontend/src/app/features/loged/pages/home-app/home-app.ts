@@ -5,6 +5,8 @@ import {Footer} from '@shared/components/footer/footer';
 import {Navbar} from '@loged/components/navbar/navbar';
 import {RetoService} from '@core/services/reto/retoService';
 import {Reto} from '@core/models/reto';
+import {CarritoService} from '@core/services/carrito/carritoService';
+import {Carrito} from '@core/models/carrito';
 
 @Component({
   selector: 'app-home-app',
@@ -15,14 +17,15 @@ import {Reto} from '@core/models/reto';
 })
 export class HomeApp implements OnInit {
   mes = new Date().toLocaleString('es-ES', { month: 'long' });
-  selectedIndex: number | null = null;
+  selectedIndexReto: number | null = null;
   popUp: HTMLElement | null = null;
   @ViewChild(CafeteriaCard) contenedor!: CafeteriaCard;
   retos: Reto[] | null = null;
 
-  constructor(private retoService: RetoService ) {}
+  constructor(private retoService: RetoService, private carritoService: CarritoService ) {}
 
   ngOnInit() {
+
     this.retoService.getReto().subscribe({
       next: data => {
         this.retos = data;
@@ -33,13 +36,14 @@ export class HomeApp implements OnInit {
     })
   }
 
-  onSelected(i: number) {
-    if (this.selectedIndex === i) {
-      this.selectedIndex = null;
+  onSelectedReto(i: number) {
+    if (this.selectedIndexReto === i) {
+      this.selectedIndexReto = null;
     } else {
-      this.selectedIndex = i;
+      this.selectedIndexReto = i;
       this.contenedor.scrollTo();
     }
+    this.carritoService.setIdReto(this.selectedIndexReto)
   }
 
   actualizarPopUp(){
@@ -52,4 +56,5 @@ export class HomeApp implements OnInit {
       }
     }
   }
+
 }

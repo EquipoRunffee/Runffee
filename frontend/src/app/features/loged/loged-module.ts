@@ -11,9 +11,11 @@ import { SeleccionProductos } from './pages/seleccion-productos/seleccion-produc
 import { Cupon } from '@loged/components/cupon/cupon';
 import {Actividad} from '@loged/components/perfil/actividad/actividad';
 import { CardProducto } from './components/card-producto/card-producto';
+import { Pago } from './pages/pago/pago';
 
 @NgModule({
   declarations: [
+    Pago
   ],
   exports: [
     Header,

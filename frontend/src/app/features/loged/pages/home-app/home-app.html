@@ -17,7 +17,7 @@
         }
         @if(retos){
           @for (reto of retos; track reto.id)  {
-          <app-card-reto [selected]="selectedIndex === reto.id" (select)="onSelected(reto.id)" [data]="reto"></app-card-reto>
+          <app-card-reto [selected]="selectedIndexReto === reto.id" (select)="onSelectedReto(reto.id)" [data]="reto"></app-card-reto>
           }
         }
 

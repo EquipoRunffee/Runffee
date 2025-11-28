@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {EntrenamientoDetalles} from '@core/models/entrenamientoDetalles';
 import { EntrenamientoDetallesService } from '@core/services/entrenamiento/entrenamientoDetallesService';
@@ -11,32 +11,16 @@ import {CommonModule} from '@angular/common';
   standalone: true,
   imports: [CommonModule]
 })
-export class EntrenamientoCard implements OnInit {
+export class EntrenamientoCard{
 
-  entrenamientos: EntrenamientoDetalles[] = [];
-
-  constructor(
-    private router: Router,
-    private entrenamientoDetallesService: EntrenamientoDetallesService
-  ) {}
-
-  ngOnInit(): void {
-    this.cargarEntrenamientos();
-  }
+  constructor(private router: Router) {}
 
   mostrarActividad() {
     this.router.navigate(['app/perfil/actividad']);
   }
 
-  cargarEntrenamientos(): void {
-    this.entrenamientoDetallesService.getEntrenamientoDetalle().subscribe({
-      next: (data: any[]) => {
-        this.entrenamientos = data;
-        console.log('Datos Recibidos:', data);
-      },
-      error: (err) => {
-        console.error('Error al obtener cafeterías:', err);
-      }
-    });
-  }
+  @Input() nombre: string = '';
+  @Input() fecha_fin: string = '';
+  @Input() strava_km: number = 1;
+  @Input() objetivo_km: number = 1;
 }
