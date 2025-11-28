@@ -19,13 +19,24 @@
     <div class="cerrarCarrito">
       <img src="./assets/icon/icon_x.png" (click)="mostrarCarrito()">
     </div>
-    <img src="./assets/icon/icon_carrito.png">
-    <h3>Tu Pedido</h3>
-    <p>Cuando añadas productos de un establecimiento, aparecerán aquí.</p>
-    <div class="contenedorDescuento">
-      <img src="/assets/icon/icon_ayuda.png" alt="">
-      <p>Con ejercicio en nuestra seleccion de retos podras obtener cupones con grandes descuentos</p>
-    </div>
+
+    @if (carrito.productosCarrito.length > 0){
+      <div class="contenedor-productos-carrito">
+        @for (producto of carrito.productosCarrito; track $index){
+          <app-card-producto class="carrito-producto" [producto]="producto"  modo="carrito"></app-card-producto>
+        }
+      </div>
+      <button id="btn-realizar-pago" (click)="crearPedido()">Realizar pago</button>
+    } @else {
+      <img src="./assets/icon/icon_carrito.png">
+      <h3>Tu Pedido</h3>
+      <p>Cuando añadas productos de un establecimiento, aparecerán aquí.</p>
+      <div class="contenedorDescuento">
+        <img src="/assets/icon/icon_ayuda.png" alt="">
+        <p>Con ejercicio en nuestra seleccion de retos podras obtener cupones con grandes descuentos</p>
+      </div>
+    }
+
 
   </div>
 </div>

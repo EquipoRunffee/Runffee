@@ -15,6 +15,6 @@ public class ListaProductoDTO {
     private String nombre;
     private String imagen;
     private String descripcion;
-    private TipoProducto tipo;
+    private TipoProducto tipoProducto;
     private BigDecimal precio;
 }

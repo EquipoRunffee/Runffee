@@ -1,7 +1,8 @@
 export class EntrenamientoDetalles {
   constructor(
     public nombre: string = '',
-    public fecha: Date = new Date(),
-    public distancia: number = 1,
+    public fecha_fin: string = '',
+    public strava_km: number = 1,
+    public objetivo_km: number = 1,
   ) {}
 }

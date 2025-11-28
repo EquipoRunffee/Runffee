@@ -1,18 +1,38 @@
 package org.runffee.backend.servicios;
 
+import org.runffee.backend.DTO.CrearPedidoDTO;
 import org.runffee.backend.DTO.PedidoDTO;
-import org.runffee.backend.modelos.Pedido;
-import org.runffee.backend.repositorios.IPedidoRepository;
+import org.runffee.backend.DTO.ProductoCarritoDTO;
+import org.runffee.backend.modelos.*;
+import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PedidoService {
 
     @Autowired
     private IPedidoRepository pedidoRepository;
+
+    @Autowired
+    private IProductoRepository productoRepository;
+
+    @Autowired
+    private ILineaPedidoRepository lineaPedidoRepository;
+
+    @Autowired
+    private ICuponRepository cuponRepository;
+
+    @Autowired
+    private IRetoRepository reitoRepository;
+
+    @Autowired
+    private IEntrenamientoRepository entrenamientoRepository;
 
     /**
      * Función que devuelve todos los pedidos
@@ -58,6 +78,61 @@ public class PedidoService {
         if (pedido != null) {
             pedido.setEliminado(true);
         }
+    }
+
+    public ResponseEntity<?> crearPedidoCarrito(CrearPedidoDTO carrito, Usuario usuario) {
+
+        if(entrenamientoRepository.existenEntrenamientosPendientes(usuario.getId())){
+            return ResponseEntity.ok(Map.of("Forbidden", "Hay un entrenamiento pendiente."));
+        }
+
+        Entrenamiento entrenamiento = new Entrenamiento();
+        entrenamiento.setUsuario(usuario);
+        Pedido pedido = new Pedido();
+
+        if(carrito.getNombreCupon() != null && !carrito.getNombreCupon().isEmpty()){
+            pedido.setCuponAplicado(carrito.getNombreCupon());
+            Cupon cuponUsado = cuponRepository.findByNombre(carrito.getNombreCupon());
+            cuponUsado.setUsado(true);
+            cuponRepository.save(cuponUsado);
+        }
+
+        Double precioTotal = 0.0;
+
+        for (ProductoCarritoDTO producto : carrito.getProductosCarrito()){
+            precioTotal += productoRepository.findById(producto.getId()).get().getPrecio() * producto.getCantidad();
+        }
+
+        pedido.setPrecioTotal(precioTotal);
+        pedido.setEstado(EstadoPedido.PENDIENTE);
+        pedido.setEliminado(false);
+        pedidoRepository.save(pedido);
+
+        if(carrito.getIdReto() == null && carrito.getKm_objetivo() > 0 && carrito.getTiempo_objetivo() > 0){
+            entrenamiento.setKmObjetivo(carrito.getKm_objetivo());
+            entrenamiento.setTiempoObjetivo(carrito.getTiempo_objetivo());
+        } else if (carrito.getIdReto() != null) {
+            Reto reto = reitoRepository.findById(carrito.getIdReto()).get();
+            entrenamiento.setReto(reto);
+            entrenamiento.setKmObjetivo(reto.getKm());
+            entrenamiento.setTiempoObjetivo(reto.getTiempo());
+        }
+
+        entrenamiento.setPedido(pedido);
+        entrenamiento.setCompletado(false);
+        entrenamiento.setEliminado(false);
+        entrenamientoRepository.save(entrenamiento);
+
+        for (ProductoCarritoDTO producto : carrito.getProductosCarrito()){
+            LineaPedido linea = new LineaPedido();
+            linea.setProducto(productoRepository.findById(producto.getId()).get());
+            linea.setCantidadProducto(producto.getCantidad());
+            linea.setPedido(pedido);
+            linea.setEliminado(false);
+            lineaPedidoRepository.save(linea);
+        }
+
+        return ResponseEntity.ok("Pedido creado correctamente");
     }
 
 }

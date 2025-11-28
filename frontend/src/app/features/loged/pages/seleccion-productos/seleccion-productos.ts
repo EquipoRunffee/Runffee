@@ -8,6 +8,8 @@ import {CafeteriaService} from '@core/services/cafeteria/cafeteriaService';
 import {CafeteriaProductos} from '@core/models/cafeteria-productos';
 import {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
+import {Carrito} from '@core/models/carrito';
+import {CarritoService} from '@core/services/carrito/carritoService';
 
 @Component({
   selector: 'app-seleccion-productos',
@@ -19,7 +21,6 @@ import {AsyncPipe} from '@angular/common';
     Footer,
     RouterLink,
     CardProducto,
-    AsyncPipe
   ]
 })
 export class SeleccionProductos implements OnInit {
@@ -30,22 +31,20 @@ export class SeleccionProductos implements OnInit {
   constructor(private router: Router,
               private http: HttpClient,
               private route: ActivatedRoute
-              ,private cafeteriaService: CafeteriaService) {}
+              ,private cafeteriaService: CafeteriaService,
+              private carritoService: CarritoService) {}
 
   ngOnInit() {
     this.idCafeteria = this.route.snapshot.params['id'];
+    this.carritoService.setIdCafeteria(this.idCafeteria);
+
     this.cafeteriaService.getProductosCafeteria(this.idCafeteria).subscribe({
       next: data => {
         this.datos = data;
-        console.log(this.datos);
       },
       error: error => {
         console.log(error);
       }
     });
-  }
-
-  abrirCategoria(id: number): void {
-    this.categoriaAbierta = this.categoriaAbierta === id ? null : id;
   }
 }

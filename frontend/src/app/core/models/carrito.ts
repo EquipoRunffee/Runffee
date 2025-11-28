@@ -1,11 +1,21 @@
 import {ProductoCarrito} from '@core/models/producto-carrito';
+import {ProductoSeleccion} from '@core/models/producto-seleccion';
 
 export class Carrito {
-  idProducto: number;
-  productoCarrito: ProductoCarrito[];
+  idCafeteria: number;
+  idReto: number | null;
+  nombreCupon: string | null;
+  kmObjetivo: number | null;
+  tiempoObjetivo: number | null;
+  productosCarrito: ProductoCarrito[];
 
-  constructor(idProducto: number, productoCarrito: ProductoCarrito[]) {
-    this.idProducto = idProducto;
-    this.productoCarrito = productoCarrito;
+  constructor(idCafeteria: number, idReto: number | null, nombreCupon: string | null,
+              kmObjetivo:number | null, tiempoObjetivo:number | null, productos: ProductoCarrito[]) {
+    this.idCafeteria = idCafeteria;
+    this.idReto = idReto;
+    this.nombreCupon = nombreCupon;
+    this.kmObjetivo = kmObjetivo;
+    this.tiempoObjetivo = tiempoObjetivo;
+    this.productosCarrito = productos;
   }
 }
