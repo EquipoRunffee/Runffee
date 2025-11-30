@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {EntrenamientoCard} from '@shared/components/entrenamiento-card/entrenamiento-card';
 import {NgForOf} from '@angular/common';
 import {EntrenamientoDetalles} from '@core/models/entrenamientoDetalles';
@@ -15,7 +15,7 @@ export class Entrenamientos implements OnInit {
 
   entrenamientos: EntrenamientoDetalles[] = [];
 
-  constructor(private entrenamientoDetallesService: EntrenamientoDetallesService) {}
+  constructor(private entrenamientoDetallesService: EntrenamientoDetallesService, private router: Router, private rutaActiva: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.cargarEntrenamientos();
@@ -32,6 +32,10 @@ export class Entrenamientos implements OnInit {
         console.error('Error al obtener entrenamiento:', err);
       }
     });
+  }
+
+  irEntrenamiento(id: number) {
+    this.router.navigate(['entrenamiento', id], {relativeTo: this.rutaActiva });
   }
 
 }
