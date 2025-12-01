@@ -1,6 +1,7 @@
 package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.UsuarioDTO;
+import org.runffee.backend.config.SecurityConfig;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +39,16 @@ public class UsuarioService {
      * Función para crear un usuario
      * @param usuario
      */
+
+    @Autowired
+    public SecurityConfig security;
+
     public void crearUsario(UsuarioDTO usuario) {
         Usuario nuevoUsuario = new Usuario();
 
         nuevoUsuario.setNombre(usuario.getNombre());
         nuevoUsuario.setCorreo(usuario.getCorreo());
-        nuevoUsuario.setContrasena(usuario.getContrasena());
+        nuevoUsuario.setContrasena(security.passwordEncoder().encode(usuario.getContrasena()));
 
         usuarioRepository.save(nuevoUsuario);
     }

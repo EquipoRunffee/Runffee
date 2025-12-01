@@ -11,13 +11,13 @@ public interface ICuponRepository extends JpaRepository<Cupon, Integer> {
     Cupon findByNombre(String nombre);
 
     @Query(value = """
-        select c
+        select c.*
         from app.cupon c
         join app.entrenamiento e on e.id_cupon = c.id
         join app.usuario u on u.id = e.id_usuario
-        where u.id = :idUsuario;  
+        where u.id = :idUsuario
         """,
             nativeQuery = true)
-    List<Object[]> obtenerCuponPorUsuario(@Param("idUsuario") Integer idUsuario);
+    List<Cupon> obtenerCuponPorUsuario(@Param("idUsuario") Integer idUsuario);
 
 }
