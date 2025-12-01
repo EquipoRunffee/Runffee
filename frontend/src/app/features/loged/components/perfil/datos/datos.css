@@ -59,6 +59,26 @@ input{
   font-weight: 700;
 }
 
+.skeleton-inp{
+  width: 100%;
+  max-width: 600px;
+  height: 45px;
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 25%,
+    #f0f0f0 50%,
+    #e0e0e0 75%
+  );
+  animation: shimmer 1.5s infinite;
+  border-radius: 10px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+
 @media screen and (max-width: 500px){
   .nav-falso{
     display: flex;

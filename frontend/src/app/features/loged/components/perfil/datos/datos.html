@@ -3,40 +3,62 @@
     <p>Datos de usuario</p>
   </div>
 
-  @if (datosUsuario) {
     <div class="div-inputs">
       <div>
         <p>Nombre</p>
-        <input type="text" [value]="datosUsuario.nombre" disabled>
+        @if (datosCargados) {
+          <input type="text" [value]="datosUsuario.nombre" disabled>
+        } @else {
+          <div class="skeleton-inp"></div>
+        }
       </div>
 
       <div>
         <p>Apellidos</p>
-        <input type="text" [value]="datosUsuario.apellidos" disabled>
+        @if (datosCargados) {
+          <input type="text" [value]="datosUsuario.apellidos" disabled>
+        } @else {
+          <div class="skeleton-inp"></div>
+        }
       </div>
 
       <div>
         <p>Correo</p>
-        <input type="text" [value]="datosUsuario.correo" disabled>
+        @if (datosCargados) {
+          <input type="text" [value]="datosUsuario.correo" disabled>
+        } @else {
+          <div class="skeleton-inp"></div>
+        }
       </div>
 
       <div>
         <p>Ciudad</p>
-        <input type="text" [value]="datosUsuario.ciudad" disabled>
+        @if (datosCargados) {
+          <input type="text" [value]="datosUsuario.ciudad" disabled>
+        } @else {
+          <div class="skeleton-inp"></div>
+        }
       </div>
 
       <div>
         <p>País</p>
-        <input type="text" [value]="datosUsuario.pais" disabled>
+        @if (datosCargados) {
+          <input type="text" [value]="datosUsuario.pais" disabled>
+        } @else {
+          <div class="skeleton-inp"></div>
+        }
       </div>
 
       <div>
         <p>Sexo</p>
-        <input
-          type="text"
-          [value]="datosUsuario.sexo === 'F' ? 'Femenino' : 'Masculino'"
-          disabled>
+        @if (datosCargados) {
+          <input
+            type="text"
+            [value]="datosUsuario.sexo === 'F' ? 'Femenino' : 'Masculino'"
+            disabled>        }
+        @else {
+          <div class="skeleton-inp"></div>
+        }
       </div>
     </div>
-  }
 </div>

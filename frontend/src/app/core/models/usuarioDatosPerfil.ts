@@ -5,9 +5,10 @@ export class usuarioDatosPerfil {
   ciudad: string;
   pais: string;
   sexo: string;
+  imagen: string;
   totalEntrenamientos: number;
 
-  constructor(nombre: string, apellidos: string, correo: string, ciudad: string, pais: string, sexo: string, totalEntrenamientos: number) {
+  constructor(nombre: string, apellidos: string, correo: string, ciudad: string, pais: string, sexo: string, totalEntrenamientos: number, imagen: string) {
     this.nombre = nombre;
     this.apellidos = apellidos;
     this.correo = correo;
@@ -15,5 +16,6 @@ export class usuarioDatosPerfil {
     this.pais = pais;
     this.sexo = sexo;
     this.totalEntrenamientos = totalEntrenamientos;
+    this.imagen = imagen;
   }
 }
