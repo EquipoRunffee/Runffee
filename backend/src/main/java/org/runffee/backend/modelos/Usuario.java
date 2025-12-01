@@ -13,7 +13,7 @@ import java.time.Instant;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "usuario", catalog = "runffee", schema = "app")
+@Table(name = "usuario", catalog = "runffee_0tzu", schema = "app")
 
 //TERMINADA
 public class Usuario {

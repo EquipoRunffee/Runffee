@@ -74,12 +74,24 @@ public class AuthService {
 
         //Guardamos los datos del usuario
         usuario.setStravaAthleteId((Integer)atletaBody.get("id"));
-        usuario.setNombre(atletaBody.get("firstname").toString());
-        usuario.setApellidos(atletaBody.get("lastname").toString());
-        usuario.setCiudad(atletaBody.get("city").toString());
-        usuario.setPais(atletaBody.get("country").toString());
-        usuario.setSexo(atletaBody.get("sex").toString());
-        usuario.setImagen(atletaBody.get("profile").toString());
+        if(atletaBody.get("firstname") != null) {
+            usuario.setNombre(atletaBody.get("firstname").toString());
+        }
+        if(atletaBody.get("lastname") != null) {
+            usuario.setApellidos(atletaBody.get("lastname").toString());
+        }
+        if(atletaBody.get("city") != null) {
+            usuario.setCiudad(atletaBody.get("city").toString());
+        }
+        if(atletaBody.get("country") != null) {
+            usuario.setPais(atletaBody.get("country").toString());
+        }
+        if(atletaBody.get("sex") != null) {
+            usuario.setSexo(atletaBody.get("sex").toString());
+        }
+        if(atletaBody.get("profile") != null) {
+            usuario.setImagen(atletaBody.get("profile").toString());
+        }
 
         //Guardamos el usuario creado
         usuarioRepository.save(usuario);

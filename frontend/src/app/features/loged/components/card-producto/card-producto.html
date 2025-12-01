@@ -1,5 +1,5 @@
 <div class="card-producto" [ngClass]="modo">
-  <div class="div-imagen-producto"><img class="imagen-producto" src="https://5sentidos.es/wp-content/uploads/2023/05/Zumo-Vida-Naranja-Botella-1-Litro-1200x1200.jpg" alt="Imagen producto"></div>
+  <div class="div-imagen-producto"><img class="imagen-producto" [src]="producto.imagen" alt="Imagen producto"></div>
   <div class="datos-producto">
     <div class="div-nombre-precio">
       <p class="nombre-producto">{{producto.nombre}}</p>
@@ -15,6 +15,5 @@
         }
         <button class="btn-cantidad" (click) = "anadirCantidadProducto()">+</button>
       </div>
-
   </div>
 </div>

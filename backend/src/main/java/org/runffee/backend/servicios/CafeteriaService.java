@@ -31,8 +31,9 @@ public class CafeteriaService {
     private IValoracionRepository valoracionRepository;
 
     @Autowired
-
     private ValoracionService valoracionService;
+
+    @Autowired
     private CafeteriaMapper cafeteriaMapper;
 
     @Autowired
