@@ -13,7 +13,4 @@ export class ValoracionCard {
   @Input() titulo: string = '';
   @Input() descripcion: string = '';
   @Input() cantidad: number = 0;
-
-
-
 }
