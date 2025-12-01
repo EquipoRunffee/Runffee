@@ -5,6 +5,9 @@ import org.runffee.backend.modelos.Pedido;
 import org.runffee.backend.modelos.Usuario;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -13,8 +16,8 @@ import java.util.Date;
 @Data
 public class EntrenamientoDTO {
     private String nombre;
-    private Date fecha_inicio;
-    private Date fecha_fin;
+    private LocalDateTime fecha_inicio;
+    private LocalDateTime fecha_fin;
     private String url_mapa;
     private String descripcion;
     private Double strava_km;

@@ -8,6 +8,8 @@ import lombok.ToString;
 import org.springframework.context.annotation.Primary;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -15,7 +17,7 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "entrenamiento", catalog = "runffee", schema = "app")
+@Table(name = "entrenamiento", catalog = "runffee_0tzu", schema = "app")
 
 //TERMINADO
 public class Entrenamiento {
@@ -37,10 +39,10 @@ public class Entrenamiento {
     private String nombre;
 
     @Column (name = "fecha_inicio")
-    private Date fecha_inicio;
+    private LocalDateTime fecha_inicio;
 
     @Column (name = "fecha_fin")
-    private Date fecha_fin;
+    private LocalDateTime fecha_fin;
 
     @Column (name = "url_mapa")
     private String url_mapa;

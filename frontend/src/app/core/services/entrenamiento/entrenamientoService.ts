@@ -21,4 +21,9 @@ export class EntrenamientoService {
     let apiUrl= this.api + '/entrenamiento/detalles/{id}';
     return this.http.get<EntrenamientoDetalles>(apiUrl);
   }
+
+  getEntrenamientoPerfil(idEntrenamiento: number): Observable<any>{
+    let apiUrl= this.api + '/entrenamiento/perfil/' + idEntrenamiento;
+    return this.http.get<any>(apiUrl);
+  }
 }

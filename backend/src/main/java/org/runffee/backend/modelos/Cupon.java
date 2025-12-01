@@ -13,7 +13,7 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "cupon", catalog = "runffee", schema = "app")
+@Table(name = "cupon", catalog = "runffee_0tzu", schema = "app")
 
 
 //TERMINADO

@@ -15,7 +15,7 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "reto", catalog = "runffee", schema = "app")
+@Table(name = "reto", catalog = "runffee_0tzu", schema = "app")
 
 //TERMINADO
 public class Reto {

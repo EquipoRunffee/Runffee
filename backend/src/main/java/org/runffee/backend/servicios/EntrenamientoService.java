@@ -2,9 +2,13 @@ package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.EntrenamientoDTO;
 import org.runffee.backend.DTO.EntrenamientoDetalleDTO;
+import org.runffee.backend.DTO.EntrenamientoPerfilDTO;
 import org.runffee.backend.DTO.ValoracionDTO;
 import org.runffee.backend.modelos.Entrenamiento;
+import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.repositorios.ICuponRepository;
 import org.runffee.backend.repositorios.IEntrenamientoRepository;
+import org.runffee.backend.repositorios.ILineaPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +20,13 @@ public class EntrenamientoService {
 
     @Autowired
     private IEntrenamientoRepository entrenamientoRepository;
+
+    @Autowired
+    private ILineaPedidoRepository lineaPedidoRepository;
+    @Autowired
+    private LineaPedidoService lineaPedidoService;
+    @Autowired
+    private ICuponRepository cuponRepository;
 
     /**
      * Función que devuelve todos los entrenamientos
@@ -42,7 +53,6 @@ public class EntrenamientoService {
      * @return
      */
     public List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles(Integer idUsuario) {
-        System.out.println("Realizando Servicio");
         return entrenamientoRepository.obtenerEntrenamientoDetalles(idUsuario);
     }
 
@@ -76,5 +86,21 @@ public class EntrenamientoService {
         if (entrenamiento != null) {
             entrenamiento.setEliminado(true);
         }
+    }
+
+    public EntrenamientoPerfilDTO obtenerEntrenamientoPerfil(Integer idEntrenamiento, Usuario usuario) {
+
+        Entrenamiento entrenamiento = entrenamientoRepository.findById(idEntrenamiento).orElse(null);
+        if(entrenamiento != null){
+
+            EntrenamientoPerfilDTO entrenamientoPerfilDTO = entrenamientoRepository.obtenerEntrenamientoPerfil(idEntrenamiento, usuario.getId());
+            entrenamientoPerfilDTO.setPedido(entrenamiento.getPedido());
+            entrenamientoPerfilDTO.setLineasPedido(lineaPedidoRepository.findByPedido(entrenamiento.getPedido()));
+            if(entrenamiento.getPedido().getCuponAplicado() != null){
+                entrenamientoPerfilDTO.setCuponAplicado(cuponRepository.findByNombre(entrenamiento.getPedido().getCuponAplicado()));
+            }
+            return entrenamientoPerfilDTO;
+        }
+        return null;
     }
 }

@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "lineapedido", catalog = "runffee", schema = "app")
+@Table(name = "lineapedido", catalog = "runffee_0tzu", schema = "app")
 
 
 //TERMINADO

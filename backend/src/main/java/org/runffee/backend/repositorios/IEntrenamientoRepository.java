@@ -1,6 +1,7 @@
 package org.runffee.backend.repositorios;
 
 import org.runffee.backend.DTO.EntrenamientoDetalleDTO;
+import org.runffee.backend.DTO.EntrenamientoPerfilDTO;
 import org.runffee.backend.DTO.ValoracionDTO;
 import org.runffee.backend.modelos.Entrenamiento;
 import org.runffee.backend.modelos.Usuario;
@@ -16,12 +17,8 @@ public interface IEntrenamientoRepository extends JpaRepository<Entrenamiento, I
     Integer countByUsuarioId(Integer id);
 
     @Query(value = """
-    SELECT e.nombre as nombre, e.fecha_fin as fecha_fin, e.strava_km as distancia, e.km_objetivo as km_objetivo
-    FROM app.entrenamiento e
-    JOIN app.usuario u ON u.id = e.id_usuario
-    WHERE u.id = :idUsuario;
-        """,
-            nativeQuery = true)
+    SELECT e.id as id, e.nombre as nombre, e.fecha_fin as fecha_fin, e.strava_km as stravaKm, e.strava_tiempo as stravaTiempo, e.completado as completado FROM app.Entrenamiento e WHERE e.id_usuario = :idUsuario
+        """, nativeQuery = true)
     List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles(@Param("idUsuario") Integer idUsuario);
 
     List<Entrenamiento> findByUsuarioId(Integer id);
@@ -32,6 +29,8 @@ public interface IEntrenamientoRepository extends JpaRepository<Entrenamiento, I
     , nativeQuery = true)
     Boolean existenEntrenamientosPendientes(@Param("idUsuario") Integer idUsuario);
 
-
-
+    @Query("""
+        SELECT e.nombre, e.descripcion, e.completado, e.stravaKm, e.stravaTiempo, e.url_mapa
+        FROM Entrenamiento e WHERE e.id = :idEntrenamiento AND e.usuario.id = :idUsuario""")
+    EntrenamientoPerfilDTO obtenerEntrenamientoPerfil(@Param("idEntrenamiento") Integer idEntrenamiento, @Param("idUsuario") Integer idUsuario);
 }

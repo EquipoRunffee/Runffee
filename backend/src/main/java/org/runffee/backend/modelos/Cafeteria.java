@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Primary;
 @EqualsAndHashCode
 
 @Entity
-@Table(name = "cafeteria", catalog = "runffee", schema = "app")
+@Table(name = "cafeteria", catalog = "runffee_0tzu", schema = "app")
 
 //TERMINADO
 public class Cafeteria {

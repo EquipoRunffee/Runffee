@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Primary;
 @EqualsAndHashCode
 
 @Entity
-@Table(name = "prueba", catalog = "runffee", schema = "app")
+@Table(name = "prueba", catalog = "runffee_0tzu", schema = "app")
 public class Prueba {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
