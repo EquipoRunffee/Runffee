@@ -40,16 +40,10 @@
 
 .contenedor-cupones{
   display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 1rem;
+  width: 100%;
 }
 
-.disponible{
-  background: #E3FF68;
-}
-
-.usado{
-  background-color: var(--color-secundario-marron);
-}

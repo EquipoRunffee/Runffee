@@ -1,6 +1,7 @@
 package org.runffee.backend.servicios;
 
 import org.runffee.backend.DTO.UsuarioDTO;
+import org.runffee.backend.config.SecurityConfig;
 import org.runffee.backend.DTO.UsuarioDatosPerfilDTO;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IEntrenamientoRepository;
@@ -43,6 +44,10 @@ public class UsuarioService {
      * Función para crear un usuario
      * @param usuario
      */
+
+    @Autowired
+    public SecurityConfig security;
+
     public void crearUsario(UsuarioDTO usuario) {
         Usuario nuevoUsuario = new Usuario();
 
