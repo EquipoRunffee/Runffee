@@ -13,6 +13,11 @@ import {Detallecafeteria} from '@shared/pages/detallecafeteria/detallecafeteria'
 import {SeleccionProductos} from '@loged/pages/seleccion-productos/seleccion-productos';
 import {Pago} from '@loged/pages/pago/pago';
 import {Adminpage} from '@admin/adminpage/adminpage';
+import {Controlcafeteria} from '@admin/controlcafeteria/controlcafeteria';
+import {Controlusuario} from '@admin/controlusuario/controlusuario';
+import {Controlreto} from '@admin/controlreto/controlreto';
+import {Controlentrenamiento} from '@admin/controlentrenamiento/controlentrenamiento';
+import {Controlproducto} from '@admin/controlproducto/controlproducto';
 
 const routes: Routes = [
 
@@ -27,6 +32,12 @@ const routes: Routes = [
   { path: 'cafeteria', component: CafeteriaCard },
   {path: 'detallecafeteria', component: Detallecafeteria},
   {path: 'adminpage', component: Adminpage},
+  {path: 'controlcafeteria', component: Controlcafeteria},
+  {path: 'controlusuario', component: Controlusuario},
+  {path: 'controlreto', component: Controlreto},
+  {path: 'controlentrenamiento', component: Controlentrenamiento},
+  {path: 'controlproducto', component: Controlproducto},
+
 
   //PAGINAS LOGED
   { path: 'app', component: HomeApp },
