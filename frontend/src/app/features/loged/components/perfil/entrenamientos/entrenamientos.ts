@@ -7,7 +7,7 @@ import {EntrenamientoDetallesService} from '@core/services/entrenamiento/entrena
 
 @Component({
   selector: 'app-entrenamientos',
-  imports: [RouterModule, EntrenamientoCard, NgForOf],
+  imports: [RouterModule, EntrenamientoCard],
   templateUrl: './entrenamientos.html',
   styleUrls: ['./entrenamientos.css'],
 })

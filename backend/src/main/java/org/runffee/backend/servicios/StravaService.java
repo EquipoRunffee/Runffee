@@ -104,7 +104,7 @@ public class StravaService {
         Usuario usuario = usuarioService.obtenerUsuario(id);
         //Si la fecha de expiración está después de la fecha actual (es decir, aún está activo el token)
         // , pues salimos de la función porque está todo correcto
-        if(usuario.getExpiresat().isAfter(Instant.now())){
+        if(usuario.getStravaExpiresAt().isAfter(Instant.now())){
             return;
         }
 
@@ -118,7 +118,7 @@ public class StravaService {
         params.add("client_id", clientId);
         params.add("client_secret", clientSecret);
         params.add("grant_type", "refresh_token");
-        params.add("refresh_token", usuario.getRefreshtoken());
+        params.add("refresh_token", usuario.getStravaRefreshToken());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -127,11 +127,12 @@ public class StravaService {
         ResponseEntity<Map> response = restTemplate.postForEntity(url, request, Map.class);
 
         Map<String, Object> body = response.getBody();
+        System.out.println(body);
 
         //Actualizamos los campos del token en la bbdd
-        usuario.setAccesstoken((String) body.get("access_token"));
-        usuario.setRefreshtoken((String) body.get("refresh_token"));
-        usuario.setExpiresat(Instant.ofEpochSecond(((Number) body.get("expires_at")).longValue()));
+        usuario.setStravaAccessToken((String) body.get("access_token"));
+        usuario.setStravaRefreshToken((String) body.get("refresh_token"));
+        usuario.setStravaExpiresAt(Instant.ofEpochSecond(((Number) body.get("expires_at")).longValue()));
 
         usuarioRepository.save(usuario);
     }

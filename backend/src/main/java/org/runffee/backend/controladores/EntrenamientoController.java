@@ -128,4 +128,22 @@ public class EntrenamientoController {
 
         return null;
     }
+
+    @GetMapping("/finalizar/{idEntrenamiento}")
+    public ResponseEntity<?> finalizarEntrenamiento(@PathVariable Integer idEntrenamiento,  @RequestHeader(value = "Authorization", required = false) String authHeader) {
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+
+            return ResponseEntity.ok(entrenamientoService.completarEntrenamiento(idEntrenamiento, usuario));
+        }
+
+        return null;
+    }
 }
