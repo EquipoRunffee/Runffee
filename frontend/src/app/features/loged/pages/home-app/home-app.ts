@@ -6,14 +6,15 @@ import {Navbar} from '@loged/components/navbar/navbar';
 import {RetoService} from '@core/services/reto/retoService';
 import {Reto} from '@core/models/reto';
 import {CarritoService} from '@core/services/carrito/carritoService';
-import {Carrito} from '@core/models/carrito';
+import {NgClass} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-home-app',
   standalone: true,
   templateUrl: './home-app.html',
   styleUrls: ['./home-app.css'],
-  imports: [CafeteriaCard, CardReto, Footer, Navbar]
+  imports: [CafeteriaCard, CardReto, Footer, Navbar, FormsModule]
 })
 export class HomeApp implements OnInit {
   mes = new Date().toLocaleString('es-ES', { month: 'long' });
@@ -22,10 +23,12 @@ export class HomeApp implements OnInit {
   @ViewChild(CafeteriaCard) contenedor!: CafeteriaCard;
   retos: Reto[] | null = null;
 
+  kmObjetivo: string = "";
+  tiempoObjetivo: string = "";
+
   constructor(private retoService: RetoService, private carritoService: CarritoService ) {}
 
   ngOnInit() {
-
     this.retoService.getReto().subscribe({
       next: data => {
         this.retos = data;
@@ -57,4 +60,9 @@ export class HomeApp implements OnInit {
     }
   }
 
+  crearEntrenamiento(){
+    this.carritoService.setTiempoObjetivo(parseInt(this.tiempoObjetivo)*60);
+    this.carritoService.setKmObjetivo(parseInt(this.kmObjetivo));
+    this.carritoService.setIdReto(null);
+  }
 }

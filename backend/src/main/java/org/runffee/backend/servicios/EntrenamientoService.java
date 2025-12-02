@@ -102,13 +102,15 @@ public class EntrenamientoService {
 
         Entrenamiento entrenamiento = entrenamientoRepository.findById(idEntrenamiento).orElse(null);
         if(entrenamiento != null){
-
             EntrenamientoPerfilDTO entrenamientoPerfilDTO = entrenamientoRepository.obtenerEntrenamientoPerfil(idEntrenamiento, usuario.getId());
             entrenamientoPerfilDTO.setPedido(entrenamiento.getPedido());
             entrenamientoPerfilDTO.setLineasPedido(lineaPedidoRepository.findByPedido(entrenamiento.getPedido()));
             if(entrenamiento.getPedido().getCuponAplicado() != null){
                 entrenamientoPerfilDTO.setCuponAplicado(cuponRepository.findByNombre(entrenamiento.getPedido().getCuponAplicado()));
             }
+            entrenamientoPerfilDTO.setKmObjetivo(entrenamiento.getKmObjetivo());
+            entrenamientoPerfilDTO.setTiempoObjetivo(entrenamiento.getTiempoObjetivo());
+            entrenamientoPerfilDTO.setFechaPedido(entrenamiento.getFecha_inicio());
             return entrenamientoPerfilDTO;
         }
         return null;
@@ -134,12 +136,17 @@ public class EntrenamientoService {
                 if(ultimo==null){
                     return ResponseEntity.ok(Map.of("estado", "Error: no se encuentra el entrenamiento"));
                 }
+
+                if(entrenamientoRepository.existsEntrenamientoByIdStrava(((Number) ultimo.get("id")).intValue())){
+                    return ResponseEntity.ok(Map.of("estado", "Error: este entrenamiento ya está registrado"));
+                }
+
+                entrenamiento.setIdStrava(((Number) ultimo.get("id")).intValue());
                 entrenamiento.setNombre((String) ultimo.get("name"));
                 entrenamiento.setDescripcion((String) ultimo.get("timezone"));
-                entrenamiento.setIdStrava(((Number) ultimo.get("id")).intValue());
                 entrenamiento.setStravaKm(((Number) ultimo.get("distance")).doubleValue() / 1000.0);
-
-                entrenamiento.setStravaTiempo((Integer) ultimo.get("moving_time"));
+                entrenamiento.setFecha_fin(entrenamiento.getFecha_inicio().plusSeconds((Integer) ultimo.get("elapsed_time")));
+                entrenamiento.setStravaTiempo((Integer) ultimo.get("elapsed_time"));
 
                 Map<String, Object> mapa = (Map<String, Object>) ultimo.get("map");
 

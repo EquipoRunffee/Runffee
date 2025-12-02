@@ -34,8 +34,4 @@ export class Entrenamientos implements OnInit {
     });
   }
 
-  irEntrenamiento(id: number) {
-    this.router.navigate(['entrenamiento', id], {relativeTo: this.rutaActiva });
-  }
-
 }

@@ -65,10 +65,8 @@ public class CuponController {
 
     @GetMapping("/cuponesusuario")
     public ResponseEntity<?> obtenerCuponPorUsuario(@RequestHeader(value = "Authorization", required = false) String authHeader){
-        System.out.println("Realizando Petición");
         if(authHeader != null && authHeader.startsWith("Bearer ")){
             String token = authHeader.substring(7);
-            System.out.println("Token: " + token);
             Integer idUsuario = jwtService.obtenerIdUsuario(token);
             if(!jwtService.validarToken(token)){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)

@@ -1,9 +1,12 @@
-<app-header />
+<app-header id="contenedor-header"></app-header>
 
-<div class="container">
-  <app-navbarperfil></app-navbarperfil>
+<div class="container" [ngClass]="{ 'navbar-activo': !estadoNavbar }">
+  @if (estadoNavbar) {
+    <app-navbarperfil id="contenedor-navbarperfil" (toggleNavbar)="mostrarNavbar()"></app-navbarperfil>
+  }
 
-  <section class="content">
-    <router-outlet></router-outlet>
+  <section>
+    <button id="btn-mostrar-navbar" (click)="mostrarNavbar()"><img src="./assets/icon/icon-flecha-izquierda.png" alt=""></button>
+    <router-outlet id="contenedor-paginas"></router-outlet>
   </section>
 </div>

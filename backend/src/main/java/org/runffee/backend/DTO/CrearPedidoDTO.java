@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -14,7 +13,7 @@ public class CrearPedidoDTO {
     private Integer idCafeteria;
     private Integer idReto;
     private String nombreCupon;
-    private Integer tiempo_objetivo;
-    private Double km_objetivo;
+    private Integer tiempoObjetivo;
+    private Double kmObjetivo;
     private List<ProductoCarritoDTO> productosCarrito;
 }

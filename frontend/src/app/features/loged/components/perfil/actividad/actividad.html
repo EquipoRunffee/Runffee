@@ -2,25 +2,79 @@
   <h1 class="nav_false">Mis actividades</h1>
   <div class="main-content">
   <!-- Entrenamiento reciente -->
-    <h3>Entrenamiento Monte Gordo</h3>
-    <p>Villa Real de Santo Antonio, Portugal<br>19 Octubre 2025, 7:37</p>
-    <button class="objetivo">Objetivo alcanzado</button>
-    <div class="stats">
-      <div><strong>Distancia</strong><p>8,50 km</p></div>
-      <div><strong>Tiempo</strong><p>46:50</p></div>
-      <div><strong>Ritmo</strong><p>5:30/km</p></div>
-    </div>
-    <div class="mapa">
-      <img src="ruta_monte_gordo.png" alt="Mapa de la ruta" />
-    </div>
-    <div class="pedido">
-      <h4>Mi pedido</h4>
-      <p>Cafetería Santa Justa, Starbucks</p>
-      <ul>
-        <li>Colacao <span>2 × 1,20€</span></li>
-        <li>Sandwich mixto <span>2 × 4,20€</span></li>
-      </ul>
-      <p class="total">Total: 10,80€</p>
-    </div>
+    @if (datosCargados) {
+      <h3>{{datos.nombre}}</h3>
+      <div class="entrenamiento-detalles">
+        <p>{{transformarZona(datos.descripcion)}}</p>
+        <p>{{transformarFecha(datos.fechaPedido)}}</p>
+      </div>
+      @if(datos.pedido.estado == "CANCELADO"){
+        <button class="objetivo inalcanzado">Objetivo inalcanzado</button>
+      } @else {
+        <button class="objetivo alcanzado">Objetivo alcanzado</button>
+      }
+
+      <div class="contenedor-pedido-entrenamiento">
+        <div class="pedido">
+          @if (datos.pedido.estado == "APROBADO"){
+            <h3>¡TU PEDIDO TE ESTÁ ESPERANDO!</h3>
+            <p>Muestra este QR al dependiente cuando recogas tu pedido.</p>
+            <app-qr-pedido [idPedido]="datos.pedido.id"></app-qr-pedido>
+          }
+          <div class="pedido-nombre-estado">
+            <h4>Mi pedido</h4>
+            @if (datos.pedido.estado == "CANCELADO") {
+              <p class="pedido-estado cancelado">{{datos.pedido.estado.toLowerCase()}} y reembolsado</p>
+            } @else {
+              <p class="pedido-estado completado">{{datos.pedido.estado.toLowerCase()}}</p>
+            }
+          </div>
+
+          <p>{{datos.lineasPedido[0].producto.cafeteria.nombre}}</p>
+          <ul>
+            @for (lineaPedido of datos.lineasPedido; track lineaPedido.id) {
+              <li class="li-lineapedido">
+                <div class="lineapedido-div-imagen">
+                  <img [src]="lineaPedido.producto.imagen">
+                </div>
+                <div class="lineapedido-datos">
+                  <p class="lineapedido-nombre-producto">{{lineaPedido.producto.nombre}}</p>
+                  <div class="lineapedido-cantidad-precio">
+                    <p class="lineapedido-cantidad">Cant: {{lineaPedido.cantidadProducto}}</p>
+                    <p class="lineapedido-precio">{{lineaPedido.producto.precio | number:'1.2-2' }}€/u</p>
+                  </div>
+                </div>
+            }
+
+          </ul>
+          <p class="total">Total: <span>{{ datos.pedido.precioTotal | number:'1.2-2' }}€</span></p>
+          <div class="div-ubicacion-cafeteria">
+            <p>Ubicación de cafetería:</p>
+            <app-mapa-cafeteria [lat]="datos.lineasPedido[0].producto.cafeteria.lat" [lng]="datos.lineasPedido[0].producto.cafeteria.lng"></app-mapa-cafeteria>
+          </div>
+        </div>
+          <div class="contenedor-datos-entrenamiento">
+            <h4>Mi entrenamiento</h4>
+            <div class="stats">
+              <div class="stats-linea">
+                <div><strong>Distancia</strong><p>{{datos.stravaKm | number:'1.2-2' }} km</p></div>
+                <div><strong>Tiempo</strong><p>{{transformarAMinutos(datos.stravaTiempo)}} min</p></div>
+                <div><strong>Ritmo</strong><p>{{transformarARitmo(datos.stravaTiempo,datos.stravaKm)}} /km</p></div>
+              </div>
+              <div class="stats-linea">
+
+              </div>
+            </div>
+            <div class="mapa">
+              <app-mapa-entrenamiento [encodedPolyline]="datos.urlMapa"></app-mapa-entrenamiento>
+            </div>
+          </div>
+      </div>
+    } @else {
+      <div class="skeleton nombre"></div>
+      <div class="skeleton datos"></div>
+      <div class="skeleton pedido"></div>
+    }
+
   </div>
 </div>

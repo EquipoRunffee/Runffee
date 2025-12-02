@@ -87,4 +87,22 @@ export class CarritoService {
     this.carrito.idReto = idReto;
     this.actualizarCarrito();
   }
+
+  setKmObjetivo(kmObjetivo: number | null) {
+    this.carrito.kmObjetivo = kmObjetivo;
+    this.actualizarCarrito()
+  }
+
+  getKmObjetivo() {
+    return this.carrito.kmObjetivo;
+  }
+
+  setTiempoObjetivo(tiempoObjetivo: number) {
+    this.carrito.tiempoObjetivo = tiempoObjetivo;
+    this.actualizarCarrito();
+  }
+
+  getTiempoObjetivo() {
+    return this.carrito.tiempoObjetivo;
+  }
 }

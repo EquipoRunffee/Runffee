@@ -1,64 +1,62 @@
 <div id="contenedor">
-  <div class="nav-falso">
-    <p>Datos de usuario</p>
-  </div>
+  <h2 class="nav-falso">Mis datos</h2>
 
-    <div class="div-inputs">
-      <div>
-        <p>Nombre</p>
-        @if (datosCargados) {
-          <input type="text" [value]="datosUsuario.nombre" disabled>
-        } @else {
-          <div class="skeleton-inp"></div>
-        }
-      </div>
-
-      <div>
-        <p>Apellidos</p>
-        @if (datosCargados) {
-          <input type="text" [value]="datosUsuario.apellidos" disabled>
-        } @else {
-          <div class="skeleton-inp"></div>
-        }
-      </div>
-
-      <div>
-        <p>Correo</p>
-        @if (datosCargados) {
-          <input type="text" [value]="datosUsuario.correo" disabled>
-        } @else {
-          <div class="skeleton-inp"></div>
-        }
-      </div>
-
-      <div>
-        <p>Ciudad</p>
-        @if (datosCargados) {
-          <input type="text" [value]="datosUsuario.ciudad" disabled>
-        } @else {
-          <div class="skeleton-inp"></div>
-        }
-      </div>
-
-      <div>
-        <p>País</p>
-        @if (datosCargados) {
-          <input type="text" [value]="datosUsuario.pais" disabled>
-        } @else {
-          <div class="skeleton-inp"></div>
-        }
-      </div>
-
-      <div>
-        <p>Sexo</p>
-        @if (datosCargados) {
-          <input
-            type="text"
-            [value]="datosUsuario.sexo === 'F' ? 'Femenino' : 'Masculino'"
-            disabled>        }
-        @else {
-          <div class="skeleton-inp"></div>
-        }
-      </div>
+  <div class="div-inputs">
+    <div>
+      <p>Nombre</p>
+      @if (datosCargados) {
+        <input type="text" [value]="datosUsuario.nombre" disabled>
+      } @else {
+        <div class="skeleton-inp"></div>
+      }
     </div>
+
+    <div>
+      <p>Apellidos</p>
+      @if (datosCargados) {
+        <input type="text" [value]="datosUsuario.apellidos" disabled>
+      } @else {
+        <div class="skeleton-inp"></div>
+      }
+    </div>
+
+    <div>
+      <p>Correo</p>
+      @if (datosCargados) {
+        <input type="text" [value]="datosUsuario.correo" disabled>
+      } @else {
+        <div class="skeleton-inp"></div>
+      }
+    </div>
+
+    <div>
+      <p>Ciudad</p>
+      @if (datosCargados) {
+        <input type="text" [value]="datosUsuario.ciudad" disabled>
+      } @else {
+        <div class="skeleton-inp"></div>
+      }
+    </div>
+
+    <div>
+      <p>País</p>
+      @if (datosCargados) {
+        <input type="text" [value]="datosUsuario.pais" disabled>
+      } @else {
+        <div class="skeleton-inp"></div>
+      }
+    </div>
+
+    <div>
+      <p>Sexo</p>
+      @if (datosCargados) {
+        <input
+          type="text"
+          [value]="datosUsuario.sexo === 'F' ? 'Femenino' : 'Masculino'"
+          disabled>        }
+      @else {
+        <div class="skeleton-inp"></div>
+      }
+    </div>
+  </div>
 </div>

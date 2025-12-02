@@ -13,37 +13,13 @@ import {AuthService} from '@core/services/auth/auth-service';
 export class Navbarperfil {
 
   @Output() itemSelected = new EventEmitter<void>();
+  @Output() toggleNavbar = new EventEmitter<void>();
 
-  isMobile = false;
-  isNavbarOpen = false;
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {}
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {
-    this.checkScreenSize();
-  }
-
-  // Detectar tamaño de pantalla
-  @HostListener('window:resize')
-  checkScreenSize() {
-    this.isMobile = window.innerWidth <= 500;
-    if (!this.isMobile) {
-      this.isNavbarOpen = false;
-    }
-  }
-
-  // Toggle del menú en móvil
-  toggleNavbar() {
-    this.isNavbarOpen = !this.isNavbarOpen;
-  }
-
-  // Cerrar menú (cuando se selecciona un item)
-  closeNavbar() {
-    this.isNavbarOpen = false;
-  }
-
-  // Navegación relativa a /perfil
   navigate(route: string) {
     this.router.navigate([route], { relativeTo: this.activatedRoute });
-    this.closeNavbar();
+    if (window.innerWidth <= 500){this.toggleNavbar.emit();}
     this.itemSelected.emit();
   }
 

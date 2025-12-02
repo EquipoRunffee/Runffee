@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {EntrenamientoDetalles} from '@core/models/entrenamientoDetalles';
 import { EntrenamientoDetallesService } from '@core/services/entrenamiento/entrenamientoDetallesService';
 import {CommonModule} from '@angular/common';
@@ -16,10 +16,9 @@ export class EntrenamientoCard{
 
   @Input() datos: any;
 
-  constructor(private router: Router, private entrenamientoService: EntrenamientoService) { }
-
-  mostrarActividad() {
-    this.router.navigate(['app/perfil/actividad']);
+  constructor(private router: Router, private rutaActiva: ActivatedRoute, private entrenamientoService: EntrenamientoService) { }
+  irEntrenamiento(id: number) {
+    this.router.navigate(['entrenamiento', id], {relativeTo: this.rutaActiva });
   }
 
   finalizarEntrenamiento(idEntrenamiento: number):void {

@@ -1,9 +1,8 @@
 <div id="entrenamiento">
-  <h1 class="nav_false">Mis entrenamientos</h1>
+  <h2 class="nav-falso">Mis entrenamientos</h2>
   <div class="main-content">
     @for (entrenamiento of entrenamientos; track entrenamiento.id){
-      <app-entrenamiento-card [datos] = "entrenamiento"
-                              (click)="irEntrenamiento(entrenamiento.id)">
+      <app-entrenamiento-card [datos] = "entrenamiento">
       </app-entrenamiento-card>
     }
   </div>

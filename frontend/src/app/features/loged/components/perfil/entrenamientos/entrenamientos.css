@@ -5,8 +5,19 @@
   font-family: "Inter", sans-serif;
 }
 
-.nav_false{
-  display: none;
+:host{
+  width: 100%;
+}
+
+.entrenamientos{
+  width: 100%;
+}
+
+.nav-falso{
+  width: 100%;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
 }
 
 .main-content{
@@ -20,13 +31,6 @@
 }
 
 @media screen and (max-width: 500px){
-  .nav_false{
-    display: flex;
-    font-family: Montserrat, sans-serif;
-    color: #313132;
-    font-weight: normal;
-    justify-content: center;
-  }
   .main-content{
     display: grid;
     grid-template-columns: 6fr;

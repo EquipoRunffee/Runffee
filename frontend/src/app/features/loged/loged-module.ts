@@ -12,11 +12,11 @@ import { Cupon } from '@loged/components/cupon/cupon';
 import {Actividad} from '@loged/components/perfil/actividad/actividad';
 import { CardProducto } from './components/card-producto/card-producto';
 import { Pago } from './pages/pago/pago';
+import { MapaEntrenamiento } from './components/perfil/mapa-entrenamiento/mapa-entrenamiento';
+import { QrPedido } from './components/perfil/qr-pedido/qr-pedido';
 
 @NgModule({
-  declarations: [
-    Pago
-  ],
+  declarations: [],
   exports: [
     Header,
     Navbarperfil,
@@ -26,6 +26,9 @@ import { Pago } from './pages/pago/pago';
     Navbar,
     SeleccionProductos,
     CardProducto,
+    MapaEntrenamiento,
+    Pago,
+    QrPedido,
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,9 @@ import { Pago } from './pages/pago/pago';
     Navbar,
     SeleccionProductos,
     CardProducto,
+    MapaEntrenamiento,
+    Pago,
+    QrPedido,
   ]
 })
 export class LogedModule { }

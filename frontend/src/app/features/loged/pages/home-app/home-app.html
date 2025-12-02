@@ -40,11 +40,11 @@
       <h3>¿Cuál será tu objetivo?</h3>
       <div class="inputs">
         <p>KM.</p>
-        <input type="text" placeholder="10">
+        <input [(ngModel)]="kmObjetivo" type="text" placeholder="10">
         <p>TIEMPO MAX. (min)</p>
-        <input type="text" placeholder="20">
+        <input [(ngModel)]="tiempoObjetivo" type="text" placeholder="20">
       </div>
-      <button>Crear entrenamiento</button>
+      <button (click)="crearEntrenamiento()">Crear entrenamiento</button>
     </div>
   </div>
 </div>

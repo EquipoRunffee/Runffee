@@ -16,8 +16,13 @@ public interface IEntrenamientoRepository extends JpaRepository<Entrenamiento, I
     //Cuenta cuántos entrenamientos tiene el usuario con ese id
     Integer countByUsuarioId(Integer id);
 
+    Boolean existsEntrenamientoByIdStrava(Integer idStrava);
+
     @Query(value = """
-    SELECT e.id as id, e.nombre as nombre, e.fecha_fin as fecha_fin, e.strava_km as stravaKm, e.strava_tiempo as stravaTiempo, e.completado as completado FROM app.Entrenamiento e WHERE e.id_usuario = :idUsuario
+    SELECT e.id as id, e.nombre as nombre, e.fecha_fin as fecha_fin, e.strava_km as stravaKm, e.strava_tiempo as stravaTiempo, e.completado as completado 
+    FROM app.Entrenamiento e 
+    WHERE e.id_usuario = :idUsuario
+    ORDER BY e.id DESC
         """, nativeQuery = true)
     List<EntrenamientoDetalleDTO> obtenerEntrenamientoDetalles(@Param("idUsuario") Integer idUsuario);
 

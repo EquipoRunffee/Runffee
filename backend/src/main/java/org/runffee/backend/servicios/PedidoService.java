@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -108,19 +108,25 @@ public class PedidoService {
         pedido.setEliminado(false);
         pedidoRepository.save(pedido);
 
-        if(carrito.getIdReto() == null && carrito.getKm_objetivo() > 0 && carrito.getTiempo_objetivo() > 0){
-            entrenamiento.setKmObjetivo(carrito.getKm_objetivo());
-            entrenamiento.setTiempoObjetivo(carrito.getTiempo_objetivo());
+        System.out.println(carrito.getTiempoObjetivo());
+        System.out.println(carrito.getKmObjetivo());
+        if(carrito.getIdReto() == null && carrito.getKmObjetivo() != null && carrito.getTiempoObjetivo() != null &&
+                carrito.getKmObjetivo() > 0 && carrito.getTiempoObjetivo() > 0){
+            entrenamiento.setKmObjetivo(carrito.getKmObjetivo());
+            entrenamiento.setTiempoObjetivo(carrito.getTiempoObjetivo());
         } else if (carrito.getIdReto() != null) {
             Reto reto = reitoRepository.findById(carrito.getIdReto()).get();
             entrenamiento.setReto(reto);
             entrenamiento.setKmObjetivo(reto.getKm());
             entrenamiento.setTiempoObjetivo(reto.getTiempo());
+        } else{
+            return ResponseEntity.ok(Map.of("Forbidden", "No se pudo crear el objetivo."));
         }
 
         entrenamiento.setPedido(pedido);
         entrenamiento.setCompletado(false);
         entrenamiento.setEliminado(false);
+        entrenamiento.setFecha_inicio(LocalDateTime.now());
         entrenamientoRepository.save(entrenamiento);
 
         for (ProductoCarritoDTO producto : carrito.getProductosCarrito()){

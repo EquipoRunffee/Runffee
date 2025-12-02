@@ -1,12 +1,15 @@
 @if(datos.completado){
-  <div class="entrenamiento completado" (click)="mostrarActividad()">
-    <h3 class="nombre-entrenamiento">{{datos.nombre}}</h3>
-    <p>{{datos.fecha_fin}}</p>
-    <p class="km">{{datos.strava_km }} KM</p>
+  <div class="entrenamiento completado" (click)="irEntrenamiento(datos.id)">
+    <div class="div-nombre-entrenamiento">
+      <h3 class="nombre-entrenamiento">{{datos.nombre}}</h3>
+      <img class="flecha" src="./assets/icon/icon-flecha-derecha.png" alt=">">
+    </div>
+    <p class="fecha">{{datos.fecha_fin}}</p>
+    <p class="km">{{datos.stravaKm }} KM</p>
   </div>
 } @else {
   <div class="entrenamiento encurso">
     <h3 class="nombre-entrenamiento encurso">Entrenamiento en curso...</h3>
-    <button class="btn-finalizar-entrenamiento">Finalizar</button>
+    <button class="btn-finalizar-entrenamiento" (click)="finalizarEntrenamiento(datos.id)">Finalizar</button>
   </div>
 }

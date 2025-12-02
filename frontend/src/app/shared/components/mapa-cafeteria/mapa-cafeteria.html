@@ -8,13 +8,7 @@
 
     <map-marker
       #cafeteriaMarker="mapMarker"
-      [position]="markerPosition"
-      [title]="markerTitle"
-      (mapClick)="openInfo(cafeteriaMarker)">
+      [position]="markerPosition">
     </map-marker>
-
-    <map-info-window>
-      <div [innerHTML]="infoContent"></div>
-    </map-info-window>
   </google-map>
 </div>
