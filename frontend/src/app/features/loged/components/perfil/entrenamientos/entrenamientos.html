@@ -1,9 +1,16 @@
 <div id="entrenamiento">
   <h2 class="nav-falso">Mis entrenamientos</h2>
   <div class="main-content">
-    @for (entrenamiento of entrenamientos; track entrenamiento.id){
-      <app-entrenamiento-card [datos] = "entrenamiento">
-      </app-entrenamiento-card>
+    @if (entrenamientosCargados) {
+      @for (entrenamiento of entrenamientos; track entrenamiento.id){
+        <app-entrenamiento-card [datos] = "entrenamiento">
+        </app-entrenamiento-card>
+      }
+    } @else{
+      <div class="skeleton-entrenamiento"></div>
+      <div class="skeleton-entrenamiento"></div>
+      <div class="skeleton-entrenamiento"></div>
+      <div class="skeleton-entrenamiento"></div>
     }
   </div>
 </div>

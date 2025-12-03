@@ -58,6 +58,7 @@ input{
 .skeleton-inp{
   width: 100%;
   max-width: 600px;
+  min-width: 250px;
   height: 45px;
   background: linear-gradient(
     90deg,

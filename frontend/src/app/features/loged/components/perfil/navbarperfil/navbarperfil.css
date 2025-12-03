@@ -14,7 +14,7 @@
   justify-content: flex-start;
   gap: 1.5rem;
   max-height: 100dvh;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .sidebar{
