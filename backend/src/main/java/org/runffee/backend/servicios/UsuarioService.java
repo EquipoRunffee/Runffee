@@ -75,4 +75,8 @@ public class UsuarioService {
         return usuarioRepository.existsByStravaAthleteId(stravaAthleteid);
     }
 
+    public void save(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
 }

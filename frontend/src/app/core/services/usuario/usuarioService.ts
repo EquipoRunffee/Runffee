@@ -26,4 +26,9 @@ export class UsuarioService {
     let apiUrl= this.api + '/usuario/foto';
     return this.http.get<any>(apiUrl);
   }
+
+  setCambioContrasena(datos: Object): Observable<string> {
+    const apiUrl = this.api + '/usuario/cambiarContrasena';
+    return this.http.post(apiUrl, datos, { responseType: 'text' });
+  }
 }
