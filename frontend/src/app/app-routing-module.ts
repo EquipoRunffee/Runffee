@@ -31,12 +31,14 @@ const routes: Routes = [
   { path: 'actividad', component: Actividad },
   { path: 'cafeteria', component: CafeteriaCard },
   {path: 'detallecafeteria', component: Detallecafeteria},
-  {path: 'adminpage', component: Adminpage},
-  {path: 'controlcafeteria', component: Controlcafeteria},
-  {path: 'controlusuario', component: Controlusuario},
-  {path: 'controlreto', component: Controlreto},
-  {path: 'controlentrenamiento', component: Controlentrenamiento},
-  {path: 'controlproducto', component: Controlproducto},
+
+  //PAGINAS ADMIN
+  {path: 'admin/adminpage', component: Adminpage},
+  {path: 'admin/controlcafeteria', component: Controlcafeteria},
+  {path: 'admin/controlusuario', component: Controlusuario},
+  {path: 'admin/controlreto', component: Controlreto},
+  {path: 'admin/controlentrenamiento', component: Controlentrenamiento},
+  {path: 'admin/controlproducto', component: Controlproducto},
 
 
   //PAGINAS LOGED
