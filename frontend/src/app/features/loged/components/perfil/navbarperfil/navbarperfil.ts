@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {NgOptimizedImage} from '@angular/common';
+import {AuthService} from '@core/services/auth/auth-service';
 
 @Component({
   selector: 'app-navbarperfil',
@@ -12,37 +13,18 @@ import {NgOptimizedImage} from '@angular/common';
 export class Navbarperfil {
 
   @Output() itemSelected = new EventEmitter<void>();
+  @Output() toggleNavbar = new EventEmitter<void>();
 
-  isMobile = false;
-  isNavbarOpen = false;
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {}
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    this.checkScreenSize();
-  }
-
-  // Detectar tamaño de pantalla
-  @HostListener('window:resize')
-  checkScreenSize() {
-    this.isMobile = window.innerWidth <= 500;
-    if (!this.isMobile) {
-      this.isNavbarOpen = false;
-    }
-  }
-
-  // Toggle del menú en móvil
-  toggleNavbar() {
-    this.isNavbarOpen = !this.isNavbarOpen;
-  }
-
-  // Cerrar menú (cuando se selecciona un item)
-  closeNavbar() {
-    this.isNavbarOpen = false;
-  }
-
-  // Navegación relativa a /perfil
   navigate(route: string) {
     this.router.navigate([route], { relativeTo: this.activatedRoute });
-    this.closeNavbar();
+    if (window.innerWidth <= 500){this.toggleNavbar.emit();}
     this.itemSelected.emit();
+  }
+
+  cerrarSesion() {
+    this.authService.logout();
+    this.router.navigate(['home']);
   }
 }

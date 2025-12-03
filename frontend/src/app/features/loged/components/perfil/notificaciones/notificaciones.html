@@ -1,10 +1,10 @@
 <div class="main-content">
-  <h1 class="nav_false">Mis actividades</h1>
+  <h2 class="nav-falso">Mis notificaciones</h2>
 
   @for (grupo of notificaciones; track grupo.categoria) {
-    <h2>{{ grupo.categoria }}</h2>
+    <h3>{{ grupo.categoria }}</h3>
 
-    <ul>
+    <ul class="categorias">
       @for (item of grupo.items; track item.texto) {
         <li>
           {{ item.texto }}

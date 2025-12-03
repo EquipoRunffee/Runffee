@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {EntrenamientoDetalles} from '@core/models/entrenamientoDetalles';
 import { EntrenamientoDetallesService } from '@core/services/entrenamiento/entrenamientoDetallesService';
 import {CommonModule} from '@angular/common';
+import {EntrenamientoService} from '@core/services/entrenamiento/entrenamientoService';
 
 @Component({
   selector: 'app-entrenamiento-card',
@@ -13,14 +14,21 @@ import {CommonModule} from '@angular/common';
 })
 export class EntrenamientoCard{
 
-  constructor(private router: Router) {}
+  @Input() datos: any;
 
-  mostrarActividad() {
-    this.router.navigate(['app/perfil/actividad']);
+  constructor(private router: Router, private rutaActiva: ActivatedRoute, private entrenamientoService: EntrenamientoService) { }
+  irEntrenamiento(id: number) {
+    this.router.navigate(['entrenamiento', id], {relativeTo: this.rutaActiva });
   }
 
-  @Input() nombre: string = '';
-  @Input() fecha_fin: string = '';
-  @Input() strava_km: number = 1;
-  @Input() objetivo_km: number = 1;
+  finalizarEntrenamiento(idEntrenamiento: number):void {
+    this.entrenamientoService.finalizarEntrenamiento(idEntrenamiento).subscribe({
+      next: (result) => {
+        console.log(result);
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    })
+  }
 }

@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-pago',
-  standalone: false,
+  standalone: true,
   templateUrl: './pago.html',
   styleUrl: './pago.css',
 })

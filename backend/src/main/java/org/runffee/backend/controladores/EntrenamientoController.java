@@ -26,6 +26,12 @@ public class EntrenamientoController {
 
     @Autowired
     private EntrenamientoService entrenamientoService;
+    @Autowired
+    private JwtService  jwtService;
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
+    @Autowired
+    private StravaService stravaService;
 
     /***
      * API que devuelve una lista con todos los entrenamientos
@@ -52,10 +58,8 @@ public class EntrenamientoController {
      */
     @GetMapping("/detalles")
     public ResponseEntity<?> obtenerEntrenamientoDetalles(@RequestHeader(value = "Authorization", required = false) String authHeader){
-        System.out.println("Realizando Petición");
         if(authHeader != null && authHeader.startsWith("Bearer ")){
             String token = authHeader.substring(7);
-            System.out.println("Token: " + token);
             Integer idUsuario = jwtService.obtenerIdUsuario(token);
             if(!jwtService.validarToken(token)){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
@@ -83,13 +87,6 @@ public class EntrenamientoController {
     public void eliminarEntrenamiento(@PathVariable Integer id){
         entrenamientoService.eliminarEntrenamiento(id);
     }
-
-    @Autowired
-    private JwtService  jwtService;
-    @Autowired
-    private IUsuarioRepository usuarioRepository;
-    @Autowired
-    private StravaService stravaService;
 
     @GetMapping("/atleta")
     public Object obtenerEntrenamientosAtleta(@RequestHeader(value = "Authorization", required = false) String authHeader){
@@ -124,6 +121,24 @@ public class EntrenamientoController {
             }
 
             return ResponseEntity.ok(entrenamientoService.obtenerEntrenamientoPerfil(idEntrenamiento, usuario));
+        }
+
+        return null;
+    }
+
+    @GetMapping("/finalizar/{idEntrenamiento}")
+    public ResponseEntity<?> finalizarEntrenamiento(@PathVariable Integer idEntrenamiento,  @RequestHeader(value = "Authorization", required = false) String authHeader) {
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+
+            return ResponseEntity.ok(entrenamientoService.completarEntrenamiento(idEntrenamiento, usuario));
         }
 
         return null;

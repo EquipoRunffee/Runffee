@@ -1,10 +1,7 @@
-:host{
-  border-radius: 10px;
-  font-family: "Inter", sans-serif;
-  color: #2D2D2D;
+.cupon{
+  width: 500px;
+  background-color: #E3FF68;
   padding: 1rem 2rem;
-}
-
-.codigo{
-  font-weight: 900;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }

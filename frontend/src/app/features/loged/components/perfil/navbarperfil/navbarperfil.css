@@ -1,10 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #navbarperfil{
-  color: #2D2D2D;
+  padding: 1.5rem;
+  color: var(--color-secundario-negro);
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1.5rem;
 }
 
 .sidebar{
-  margin: 1.5rem;
-  transition: transform 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1.5rem;
 }
 
 .sidebar h1{
@@ -16,10 +33,16 @@
 
 .sidebar ul{
   padding: 0;
-  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .sidebar ul li{
+  width: 100%;
   list-style: none;
   font-family: Inter, sans-serif;
   font-size: 1rem;
@@ -27,11 +50,13 @@
   align-items: center;
   justify-content: start;
   gap: 1rem;
-  line-height: 2.5rem;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
 }
 
 .sidebar li:hover {
   background-color: rgba(201, 232, 248, 0.3);
+  border-radius: 10px;
 }
 
 .sidebar li.active {
@@ -65,30 +90,32 @@
   z-index: 998;
 }
 
+.enlace{
+  font-family: Montserrat, sans-serif;
+  font-size: large;
+  cursor: pointer;
+}
+
+a.enlace{
+  text-decoration: none;
+  color: var(--color-secundario-negro);
+}
+
+a.enlace.inicio{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: x-large;
+}
+
+.icon-flecha{
+  height: 20px;
+}
+
 @media screen and (max-width: 500px){
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 70%;
-    max-width: 260px;
-    height: 100%;
-    background: white;
-    z-index: 999;
-    transform: translateX(-100%);
-    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .overlay + .container .content {
-    filter: brightness(0.8);
-    transition: filter 0.3s ease;
+  .nav-falso{
+    display: flex;
   }
 }

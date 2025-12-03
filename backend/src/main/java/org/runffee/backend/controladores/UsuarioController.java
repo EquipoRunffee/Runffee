@@ -4,15 +4,12 @@ import org.runffee.backend.DTO.UsuarioDTO;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.runffee.backend.servicios.JwtService;
-import org.runffee.backend.servicios.UsuarioDatosPerfilService;
 import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,8 +23,6 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
-    @Autowired
-    private UsuarioDatosPerfilService usuarioDatosPerfilService;
     @Autowired
     private JwtService jwtService;
     @Autowired
@@ -96,7 +91,7 @@ public class UsuarioController {
                         .body(Map.of("error", "Token expirado"));
             }
 
-            return usuarioDatosPerfilService.obtenerDatosPerfil(idUsuario);
+            return usuarioService.obtenerDatosPerfil(idUsuario);
         }
 
         return null;

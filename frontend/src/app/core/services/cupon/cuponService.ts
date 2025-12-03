@@ -12,7 +12,7 @@ export class CuponService {
 
   getCupon(): Observable<Cupon[]> {
     const api = environment.apiUrl;
-    let apiUrl= api + '/cupon';
+    let apiUrl= api + '/cupon/cuponesusuario';
     return this.http.get<Cupon[]>(apiUrl);
   }
 }

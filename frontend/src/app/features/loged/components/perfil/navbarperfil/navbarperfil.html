@@ -1,21 +1,15 @@
 <div id="navbarperfil">
   <!-- Barra de navegación lateral -->
-  <aside class="sidebar" [class.open]="isMobile && isNavbarOpen">
-    <!-- Botón hamburguesa solo en móvil -->
-    @if (isMobile) {
-      <button class="hamburger" (click)="toggleNavbar()">☰</button>
-    }
-
-    <!-- Overlay semitransparente -->
-    @if (isMobile && isNavbarOpen) {
-      <div class="overlay" (click)="closeNavbar()"></div>
-    }
-
+  <aside class="sidebar" >
+    <a class="enlace inicio" [routerLink]="['/app']">
+      <img class="icon-flecha" src="./assets/icon/icon-flecha-izquierda.png" alt="">
+      <p>Inicio</p>
+    </a>
     <h1>Cuenta</h1>
     <ul>
       <li (click)="navigate('datos')" routerLinkActive="active">
         <img class="icono" src="./assets/icon/icon_usuario.png" alt="icono_usuario" height="48" width="48">
-        Datos de usuario
+        Mis datos
       </li>
       <li (click)="navigate('entrenamientos')" routerLinkActive="active">
         <img class="icono" src="./assets/icon/icon_running.png" alt="icono_running" height="50" width="50">
@@ -27,11 +21,11 @@
       </li>
       <li (click)="navigate('contrasena')" routerLinkActive="active">
         <img class="icono" src="./assets/icon/icon_candado.png" alt="icono_candado" height="32" width="32">
-        Contraseña
+        Cambiar contraseña
       </li>
       <li (click)="navigate('notificaciones')" routerLinkActive="active">
         <img class="icono" src="./assets/icon/icon_campana.png" alt="icono_campana" height="48" width="48">
-        Notificaciones
+        Mis notificaciones
       </li>
     </ul>
 
@@ -46,5 +40,6 @@
         Ayuda
       </li>
     </ul>
+    <h3 class="enlace" (click)="cerrarSesion()">Cerrar sesión</h3>
   </aside>
 </div>

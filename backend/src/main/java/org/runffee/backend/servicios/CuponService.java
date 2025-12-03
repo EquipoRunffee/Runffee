@@ -60,7 +60,7 @@ public class CuponService {
         }
     }
 
-    public List<Object[]> obtenerCuponPorUsuario(Integer idUsuario) {
+    public List<Cupon> obtenerCuponPorUsuario(Integer idUsuario) {
         System.out.println("Realizando Servicio");
         return cuponRepository.obtenerCuponPorUsuario(idUsuario);
     }

@@ -1,16 +1,35 @@
 <div class="contenedor">
-  <div class="nav-falso">
-    <img src="" alt="<">
-    <p>Mis cupones</p>
-  </div>
+  <h2 class="nav-falso">Mis cupones</h2>
+
   <div class="opciones">
-    <button class="disponible-activo">Disponibles</button>
-    <button class="usados-activo">Usados/Caducados</button>
+    <button class="disponible-activo" (click)="cambiarEstado(true)">Disponibles</button>
+    <button class="usados-activo" (click)="cambiarEstado(false)">Usados/Caducados</button>
   </div>
+
   <div class="contenedor-cupones">
-    <app-cupon class="usado"></app-cupon>
-    <app-cupon class="disponible"></app-cupon>
-    <app-cupon class="disponible"></app-cupon>
-    <app-cupon class="disponible"></app-cupon>
+  @if(activo){
+    @for(cupon of cuponesActivos; track $index){
+      <app-cupon
+        [nombre]="cupon.nombre"
+        [fechaCaducidad]="cupon.fechaCaducidad"
+        [imagen]="cupon.imagen"
+        [porcentaje]="cupon.porcentaje"
+        [descripcion]="cupon.descripcion"
+        [usado]="cupon.usado">
+      </app-cupon>
+    }
+
+  }@else{
+    @for(cupon of cuponesCaducados; track $index){
+      <app-cupon
+                 [nombre]="cupon.nombre"
+                 [fechaCaducidad]="cupon.fechaCaducidad"
+                 [imagen]="cupon.imagen"
+                 [porcentaje]="cupon.porcentaje"
+                 [descripcion]="cupon.descripcion"
+                 [usado]="cupon.usado">
+      </app-cupon>
+    }
+  }
   </div>
 </div>
