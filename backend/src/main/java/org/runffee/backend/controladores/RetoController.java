@@ -12,7 +12,8 @@ import java.util.List;
 @RequestMapping("/reto")
 @CrossOrigin(origins = {
         "http://localhost:4200",
-        "https://www.anderolivos.com"
+        "https://www.anderolivos.com",
+        "https://anderolivos.com"
 })
 public class RetoController {
 
