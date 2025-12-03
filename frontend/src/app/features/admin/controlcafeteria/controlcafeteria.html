@@ -1,15 +1,127 @@
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panel de Cafeterías</title>
-</head>
-<body>
 <h1>Gestión de Cafeterías</h1>
-<div class="btn-container">
-  <a class="action-btn" href="#">Crear</a>
-  <a class="action-btn" href="#">Modificar</a>
-  <a class="action-btn" href="#">Eliminar</a>
+
+<!-- CREAR -->
+<div class="contenedor-formulario">
+  <h2>Crear Cafetería</h2>
+
+  <div class="grupo-formulario">
+    <label>Nombre</label>
+    <input type="text">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Descripción</label>
+    <input type="text">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Latitud</label>
+    <input type="number" step="0.000001">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Longitud</label>
+    <input type="number" step="0.000001">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>URL Imagen</label>
+    <input type="text">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Tipo de Cafetería</label>
+    <select>
+      <option value="BAR">BAR</option>
+      <option value="CAFETERIA">CAFETERÍA</option>
+      <option value="RESTAURANTE">RESTAURANTE</option>
+    </select>
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Eliminado</label>
+    <select>
+      <option value="false">No</option>
+      <option value="true">Sí</option>
+    </select>
+  </div>
+
+  <button>Crear</button>
 </div>
-</body>
-</html>
+
+
+
+<!-- MODIFICAR -->
+<div class="contenedor-formulario">
+  <h2>Modificar Cafetería</h2>
+
+  <!-- Buscar por ID -->
+  <div class="grupo-formulario">
+    <label>ID Cafetería</label>
+    <input type="text">
+  </div>
+
+  <!-- Botón para cargar datos -->
+  <button>Cargar datos</button>
+
+  <hr style="margin: 20px 0; border-color: #555;">
+
+  <!-- Campos que se rellenarán tras cargar -->
+  <div class="grupo-formulario">
+    <label>Nuevo Nombre</label>
+    <input type="text">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Nueva Descripción</label>
+    <input type="text">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Nueva Latitud</label>
+    <input type="number" step="0.000001">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Nueva Longitud</label>
+    <input type="number" step="0.000001">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Nueva URL Imagen</label>
+    <input type="text">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Nuevo Tipo de Cafetería</label>
+    <select>
+      <option value="CAFETERÍA">CAFETERÍA</option>
+      <option value="BRUNCH">BRUNCH</option>
+      <option value="TEASHOP">TEASHOP</option>
+    </select>
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Eliminado</label>
+    <select>
+      <option value="false">No</option>
+      <option value="true">Sí</option>
+    </select>
+  </div>
+
+  <button>Modificar</button>
+</div>
+
+
+
+<!-- ELIMINAR -->
+<div class="contenedor-formulario">
+  <h2>Eliminar Cafetería</h2>
+
+  <div class="grupo-formulario">
+    <label>ID Cafetería</label>
+    <input type="text">
+  </div>
+
+  <button>Eliminar</button>
+</div>
