@@ -1,1 +1,25 @@
-<p>contrasena works!</p>
+<div class="contrasena">
+
+  <div class="contrasena_contenido">
+    <label>Contraseña Actual</label>
+    <input type="password" [(ngModel)]="contrasenaVieja">
+  </div>
+
+  <div class="contrasena_contenido">
+    <label>Nueva Contraseña</label>
+    <input type="password" [(ngModel)]="contrasenaNueva">
+  </div>
+
+  <div class="contrasena_contenido">
+    <label>Repetir Contraseña</label>
+    <input type="password" [(ngModel)]="contrasenaRepetir">
+  </div>
+
+  <div class="contrasena_boton">
+    <button (click)="actualizar()">Actualizar</button>
+  </div>
+
+  <div *ngIf="mostrarExito" style="color: green;">{{ mensajeExito }}</div>
+  <div *ngIf="mostrarError" style="color: red;">{{ mensajeError }}</div>
+
+</div>

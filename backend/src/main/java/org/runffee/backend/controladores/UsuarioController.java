@@ -1,5 +1,6 @@
 package org.runffee.backend.controladores;
 
+import org.runffee.backend.DTO.CambiarContrasenaDTO;
 import org.runffee.backend.DTO.UsuarioDTO;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.repositorios.IUsuarioRepository;
@@ -8,6 +9,8 @@ import org.runffee.backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +31,8 @@ public class UsuarioController {
     private JwtService jwtService;
     @Autowired
     private IUsuarioRepository usuarioRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     /**
@@ -114,7 +119,30 @@ public class UsuarioController {
             return ResponseEntity.ok(Map.of("url", usuario.getImagen()));
 
         }
-
         return null;
     }
+
+    @PostMapping("/cambiarContrasena")
+    public ResponseEntity<?> cambiarContrasena(
+        @RequestHeader("Authorization") String authHeader,
+        @RequestBody CambiarContrasenaDTO cambiarContrasena) {
+
+        String token = authHeader.replace("Bearer ", "");
+        Integer idUsuario = jwtService.obtenerIdUsuario(token);
+
+        Usuario usuario = usuarioService.obtenerUsuario(idUsuario);
+        if (usuario == null) {
+            return ResponseEntity.status(404).body("Usuario no encontrado");
+        }
+
+        if (!passwordEncoder.matches(cambiarContrasena.getContrasenaVieja(), usuario.getContrasena())) {
+            return ResponseEntity.status(400).body("Contraseña actual incorrecta");
+        }
+
+        usuario.setContrasena(passwordEncoder.encode(cambiarContrasena.getContrasenaNueva()));
+        usuarioService.save(usuario);
+
+        return ResponseEntity.ok("Contraseña cambiada correctamente");
+    }
+
 }

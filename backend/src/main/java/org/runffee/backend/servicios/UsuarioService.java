@@ -18,7 +18,7 @@ public class UsuarioService {
     private IUsuarioRepository usuarioRepository;
 
     @Autowired
-    private IEntrenamientoRepository  entrenamientoRepository;
+    private IEntrenamientoRepository entrenamientoRepository;
 
     /**
      * Función que devuelve todos los usuarios
@@ -53,7 +53,7 @@ public class UsuarioService {
 
         nuevoUsuario.setNombre(usuario.getNombre());
         nuevoUsuario.setCorreo(usuario.getCorreo());
-        nuevoUsuario.setContrasena(usuario.getContrasena());
+        nuevoUsuario.setContrasena(security.passwordEncoder().encode(usuario.getContrasena()));
 
         usuarioRepository.save(nuevoUsuario);
     }
@@ -78,6 +78,10 @@ public class UsuarioService {
 
     public boolean existeStravaAthleteId (Integer stravaAthleteid) {
         return usuarioRepository.existsByStravaAthleteId(stravaAthleteid);
+    }
+
+    public void save(Usuario usuario) {
+        usuarioRepository.save(usuario);
     }
 
     public UsuarioDatosPerfilDTO obtenerDatosPerfil(Integer usuarioId) {
