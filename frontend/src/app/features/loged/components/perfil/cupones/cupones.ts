@@ -17,6 +17,7 @@ export class Cupones implements OnInit {
   cuponesActivos: Cupon[] = [];
   cuponesCaducados: Cupon[] = [];
   activo = true;
+  cuponesCargados:boolean = false;
 
   constructor(private cuponService: CuponService) {}
 
@@ -27,6 +28,7 @@ export class Cupones implements OnInit {
   cargarCupones(): void {
       this.cuponService.getCupon().subscribe({
         next: (data: any) => {
+          this.cuponesCargados = true;
           this.cupones = data;
           for (let cupon of this.cupones) {
             let fechaCaducidad = new Date(cupon.fechaCaducidad);

@@ -105,7 +105,7 @@ public class EntrenamientoController {
             return stravaService.obtenerEntrenamientosAtleta(usuario.getStravaAccessToken());
         }
 
-        return null;
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "No hay token"));
     }
 
     @GetMapping("/perfil/{idEntrenamiento}")
@@ -124,7 +124,7 @@ public class EntrenamientoController {
             return ResponseEntity.ok(entrenamientoService.obtenerEntrenamientoPerfil(idEntrenamiento, usuario));
         }
 
-        return null;
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "No hay token"));
     }
 
     @GetMapping("/finalizar/{idEntrenamiento}")
@@ -142,6 +142,24 @@ public class EntrenamientoController {
             return ResponseEntity.ok(entrenamientoService.completarEntrenamiento(idEntrenamiento, usuario));
         }
 
-        return null;
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "No hay token"));
+    }
+
+    @GetMapping("/ultimo")
+    public ResponseEntity<?> obtenerUltimoEntrenamiento(@RequestHeader(value = "Authorization", required = false) String authHeader) {
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+
+            return ResponseEntity.ok(entrenamientoService.obtenerUltimoEntrenamiento(usuario));
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "No hay token"));
     }
 }

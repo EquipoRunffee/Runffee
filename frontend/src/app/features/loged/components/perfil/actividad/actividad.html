@@ -62,7 +62,8 @@
                 <div><strong>Ritmo</strong><p>{{transformarARitmo(datos.stravaTiempo,datos.stravaKm)}} /km</p></div>
               </div>
               <div class="stats-linea">
-
+                <div><strong>Distancia objetivo</strong><p>{{datos.kmObjetivo | number:'1.2-2' }} km</p></div>
+                <div><strong>Tiempo objetivo</strong><p>{{transformarAMinutos(datos.tiempoObjetivo)}} min</p></div>
               </div>
             </div>
             <div class="mapa">

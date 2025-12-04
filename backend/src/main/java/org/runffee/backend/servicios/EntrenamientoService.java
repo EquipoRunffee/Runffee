@@ -167,4 +167,8 @@ public class EntrenamientoService {
         return ResponseEntity.ok(Map.of("completado", entrenamiento.getCompletado(), "estadoPedido", entrenamiento.getPedido().getEstado()));
 
     }
+
+    public EntrenamientoDetalleDTO obtenerUltimoEntrenamiento(Usuario usuario) {
+        return entrenamientoRepository.obtenerEntrenamientoDetalles(usuario.getId()).getFirst();
+    }
 }

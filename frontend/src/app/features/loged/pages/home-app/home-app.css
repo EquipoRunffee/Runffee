@@ -20,6 +20,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 3rem;
+  padding: 1rem;
 }
 
 .cabecera-entrenamiento img{
@@ -28,6 +29,11 @@
   left: 0;
   width: 100%;
   z-index: -1;
+  filter: opacity(0.7) blur(1px)
+}
+
+.enlace-nodecoration{
+  text-decoration: none;
 }
 
 .ultimo-entrenamiento{

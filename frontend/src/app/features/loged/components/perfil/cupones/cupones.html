@@ -7,29 +7,47 @@
   </div>
 
   <div class="contenedor-cupones">
-  @if(activo){
-    @for(cupon of cuponesActivos; track $index){
-      <app-cupon
-        [nombre]="cupon.nombre"
-        [fechaCaducidad]="cupon.fechaCaducidad"
-        [imagen]="cupon.imagen"
-        [porcentaje]="cupon.porcentaje"
-        [descripcion]="cupon.descripcion"
-        [usado]="cupon.usado">
-      </app-cupon>
-    }
 
-  }@else{
-    @for(cupon of cuponesCaducados; track $index){
-      <app-cupon
-                 [nombre]="cupon.nombre"
-                 [fechaCaducidad]="cupon.fechaCaducidad"
-                 [imagen]="cupon.imagen"
-                 [porcentaje]="cupon.porcentaje"
-                 [descripcion]="cupon.descripcion"
-                 [usado]="cupon.usado">
-      </app-cupon>
+    @if (cuponesCargados) {
+      @if(activo){
+        @if (cuponesActivos.length == 0) {
+          <p class="empty">No tienes ningún cupón activo</p>
+        } @else {
+          @for(cupon of cuponesActivos; track $index){
+            <app-cupon
+              [nombre]="cupon.nombre"
+              [fechaCaducidad]="cupon.fechaCaducidad"
+              [imagen]="cupon.imagen"
+              [porcentaje]="cupon.porcentaje"
+              [descripcion]="cupon.descripcion"
+              [usado]="cupon.usado">
+            </app-cupon>
+          }
+        }
+
+
+      }@else{
+
+        @if (cuponesCaducados.length == 0) {
+          <p class="empty">No tienes ningún cupón usado/caducado</p>
+        } @else {
+          @for(cupon of cuponesCaducados; track $index){
+            <app-cupon
+              [nombre]="cupon.nombre"
+              [fechaCaducidad]="cupon.fechaCaducidad"
+              [imagen]="cupon.imagen"
+              [porcentaje]="cupon.porcentaje"
+              [descripcion]="cupon.descripcion"
+              [usado]="cupon.usado">
+            </app-cupon>
+          }
+        }
+      }
+
+    } @else {
+      <div class="skeleton-cupon"></div>
+      <div class="skeleton-cupon"></div>
+      <div class="skeleton-cupon"></div>
     }
-  }
   </div>
 </div>

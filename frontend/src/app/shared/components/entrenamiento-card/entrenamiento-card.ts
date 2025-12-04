@@ -24,6 +24,7 @@ export class EntrenamientoCard{
   finalizarEntrenamiento(idEntrenamiento: number):void {
     this.entrenamientoService.finalizarEntrenamiento(idEntrenamiento).subscribe({
       next: (result) => {
+        window.location.reload()
         console.log(result);
       },
       error: (error) => {

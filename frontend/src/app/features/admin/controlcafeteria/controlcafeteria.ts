@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './controlcafeteria.html',
   styleUrl: './controlcafeteria.css',
 })
-export class Controlcafeteria {
-
-}
+export class Controlcafeteria {}

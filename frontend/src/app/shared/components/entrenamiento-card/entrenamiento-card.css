@@ -34,7 +34,9 @@
 }
 
 .nombre-entrenamiento{
+  color: var(--color-primario-marron);
   font-family: Montserrat, sans-serif;
+  font-size: x-large;
 }
 
 .fecha{
