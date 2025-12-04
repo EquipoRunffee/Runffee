@@ -4,6 +4,7 @@ import org.runffee.backend.DTO.UsuarioDTO;
 import org.runffee.backend.config.SecurityConfig;
 import org.runffee.backend.DTO.UsuarioDatosPerfilDTO;
 import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.repositorios.IEntrenamientoRepository;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class UsuarioService {
     private IUsuarioRepository usuarioRepository;
 
     @Autowired
-    private IEntrenamientoRepository  entrenamientoRepository;
+    private IEntrenamientoRepository entrenamientoRepository;
 
     /**
      * Función que devuelve todos los usuarios
