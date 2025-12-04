@@ -81,26 +81,28 @@ export class Controlproducto {
   //FUNCIÓN PARA CARGAR EL PRODUCTO A MODIFICAR
   cargarDatos() {
 
-    console.log(this.modificarId);
-
-    if (!this.modificarId) {
-      alert('Introduce un ID válido');
-      return;
+    if (!this.modificarId || isNaN(this.modificarId)) {
+      return alert('Introduce un ID de producto válido');
     }
 
-    this.adminService.obtenerProducto(this.modificarId).subscribe(producto => {
+    this.adminService.obtenerProducto(this.modificarId).subscribe(
+      (producto: any) => {
 
-      this.nuevoNombre = producto.nombre;
-      this.nuevoTipoProducto = producto.tipoProducto;
-      this.nuevaImagen = producto.imagen;
-      this.nuevoPrecio = producto.precio;
-      this.nuevaDescripcion = producto.descripcion;
-      this.nuevoEliminado = producto.eliminado ? 'true' : 'false';
-      this.nuevoIdCafeteria = producto.idCafeteria;
+        this.nuevoNombre = producto.nombre;
+        this.nuevoTipoProducto = producto.tipoProducto;
+        this.nuevaImagen = producto.imagen;
+        this.nuevoPrecio = producto.precio;
+        this.nuevaDescripcion = producto.descripcion;
+        this.nuevoEliminado = producto.eliminado ? 'true' : 'false';
+        this.nuevoIdCafeteria = producto.idCafeteria;
 
-    }, () => {
-      alert('No se pudo cargar el producto');
-    });
+        console.log('Producto cargado correctamente:', producto);
+      },
+      err => {
+        console.error('Error al cargar producto', err);
+        alert('Error al cargar producto. Revisa la consola.');
+      }
+    );
   }
 
   //FUNCIÓN PARA MODIFICAR
@@ -114,7 +116,7 @@ export class Controlproducto {
       imagen: this.nuevaImagen.trim(),
       precio: Number(this.nuevoPrecio) || 0,
       descripcion: this.nuevaDescripcion.trim(),
-      eliminado: this.nuevoEliminado === 'true',
+      eliminado: this.nuevoEliminado === 'false',
       idCafeteria: Number(this.nuevoIdCafeteria)
     };
 
