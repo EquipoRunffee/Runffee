@@ -97,7 +97,7 @@ export class CarritoService {
     return this.carrito.kmObjetivo;
   }
 
-  setTiempoObjetivo(tiempoObjetivo: number) {
+  setTiempoObjetivo(tiempoObjetivo: number | null) {
     this.carrito.tiempoObjetivo = tiempoObjetivo;
     this.actualizarCarrito();
   }

@@ -31,7 +31,7 @@
           <!-- Segundo bucle para obtener los valores de la cafeteria -->
           @for (cafeteria of tipo.value; track cafeteria.id) {
             <div>
-              <div class="CafeteriaCard_unica" [routerLink] = "['/app/seleccion-productos/', cafeteria.id]">
+              <div class="CafeteriaCard_unica" (click)="irACafeteria(cafeteria.id)">
                 <div class="div-imagen-CafeteriaCard">
                   <img [src]="cafeteria.imagen">
                 </div>

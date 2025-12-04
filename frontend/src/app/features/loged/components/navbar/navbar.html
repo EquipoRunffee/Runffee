@@ -1,6 +1,6 @@
 <div class="navbar-loged">
     @if (!urlFotoUsuario){
-      <div class="skeleton-circular"></div>
+      <div class="skeleton-circular" [routerLink]="['/app/perfil']"></div>
     } @else {
       <a [routerLink]="['/app/perfil']" id="a-perfil">
         <img [src] = [urlFotoUsuario] alt="Perfil usuario">
