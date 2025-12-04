@@ -1,8 +1,56 @@
 .contrasena {
-  text-align: center;
   margin: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .contrasena_contenido{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  max-width: 300px;
+  width: 100%;
+}
 
+label{
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+input{
+  background-color: rgb(253, 234, 227, 0.51);
+  border: none;
+  padding: 0.8rem;
+  border-radius: 10px;
+  font-size: large;
+  width: 100%;
+  color: #8C8C8C;
+  margin-bottom: 1.5rem;
+}
+
+input:focus{
+  outline: none;
+}
+
+button{
+  background-color: #E3FF68;
+  border: none;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  align-content: center;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+@media(max-width: 500px){
+  button{
+    max-width: 300px;
+    width: 100%;
+  }
 }

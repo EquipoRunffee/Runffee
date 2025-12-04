@@ -5,8 +5,8 @@
   </div>
 
   <div class="opciones">
-    <button class="disponible-activo" (click)="cambiarEstado(true)">Disponibles</button>
-    <button class="usados-activo" (click)="cambiarEstado(false)">Usados/Caducados</button>
+    <button class="disponible-activo" [ngClass]="{'seleccionado': activo}"  (click)="cambiarEstado(true)">Disponibles</button>
+    <button class="usados-activo" [ngClass]="{'seleccionado': !activo}" (click)="cambiarEstado(false)">Usados/Caducados</button>
   </div>
 
   <div class="contenedor-cupones">
