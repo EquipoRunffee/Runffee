@@ -19,7 +19,8 @@
           @if (datos.pedido.estado == "APROBADO"){
             <h3>¡TU PEDIDO TE ESTÁ ESPERANDO!</h3>
             <p>Muestra este QR al dependiente cuando recogas tu pedido.</p>
-            <app-qr-pedido [idPedido]="datos.pedido.id"></app-qr-pedido>
+            <app-qr-pedido (deslizado)="confirmarRecogida()" [idPedido]="datos.pedido.id"></app-qr-pedido>
+
           }
           <div class="pedido-nombre-estado">
             <h4>Mi pedido</h4>

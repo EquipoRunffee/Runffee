@@ -1,1 +1,12 @@
 <qrcode [qrdata]="qrData" [width]="300"></qrcode>
+<div class="slider" #slider>
+  <div
+    class="slider-handle"
+    #handle
+    (mousedown)="startDrag($event)"
+  >
+    ➤
+  </div>
+
+  <span class="slider-text">Desliza para confirmar</span>
+</div>

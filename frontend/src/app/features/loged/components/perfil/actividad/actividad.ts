@@ -5,6 +5,7 @@ import {MapaEntrenamiento} from '@loged/components/perfil/mapa-entrenamiento/map
 import {DecimalPipe} from '@angular/common';
 import {MapaCafeteria} from '@shared/components/mapa-cafeteria/mapa-cafeteria';
 import {QrPedido} from '@loged/components/perfil/qr-pedido/qr-pedido';
+import {PedidoService} from '@core/services/pedido/pedidoService';
 
 @Component({
   selector: 'app-actividad',
@@ -18,7 +19,7 @@ export class Actividad {
   datos: any;
   datosCargados: boolean = false;
 
-  constructor(private router: Router, private rutaActiva: ActivatedRoute, private entrenamientoService: EntrenamientoService) {
+  constructor(private router: Router, private rutaActiva: ActivatedRoute, private entrenamientoService: EntrenamientoService, private pedidoService: PedidoService) {
 
     this.idEntrenamiento = this.rutaActiva.snapshot.params['idEntrenamiento'];
     entrenamientoService.getEntrenamientoPerfil(this.idEntrenamiento).subscribe({
@@ -87,4 +88,16 @@ export class Actividad {
     return resultado;
   }
 
+  confirmarRecogida(){
+    if(this.datos.pedido.id != null){
+      this.pedidoService.entregarPedido(this.datos.pedido.id).subscribe({
+        next: (data: any) => {
+            window.location.reload();
+        },
+        error: (error: any) => {
+          console.log(error);
+        }
+      })
+    }
+  }
 }
