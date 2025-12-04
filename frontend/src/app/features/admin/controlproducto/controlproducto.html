@@ -6,30 +6,48 @@
 
   <div class="grupo-formulario">
     <label>Nombre</label>
-    <input type="text">
+    <input type="text" [(ngModel)]="crearNombre">
   </div>
 
   <div class="grupo-formulario">
     <label>Tipo</label>
-    <input type="text">
+    <select [(ngModel)]="crearTipoProducto">
+      <option value="BebidaCaliente">Bebida Caliente</option>
+      <option value="BebidaFria">Bebida Fría</option>
+      <option value="Sandwich">Sandwich</option>
+      <option value="Pastel">Pastel</option>
+    </select>
   </div>
 
   <div class="grupo-formulario">
     <label>URL Imagen</label>
-    <input type="text">
+    <input type="text" [(ngModel)]="crearImagen">
   </div>
 
   <div class="grupo-formulario">
     <label>Precio</label>
-    <input type="number" step="0.01">
+    <input type="number" step="0.01" [(ngModel)]="crearPrecio">
   </div>
 
   <div class="grupo-formulario">
     <label>Descripción</label>
-    <input type="text">
+    <input type="text" [(ngModel)]="crearDescripcion">
   </div>
 
-  <button>Crear</button>
+  <div class="grupo-formulario">
+    <label>Cafetería</label>
+    <input type="number" [(ngModel)]="crearIdCafeteria" placeholder="Introduce el ID de la cafetería">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Eliminado</label>
+    <select [(ngModel)]="crearEliminado">
+      <option value="false">No</option>
+      <option value="true">Sí</option>
+    </select>
+  </div>
+
+  <button (click)="crearProducto()">Crear</button>
 </div>
 
 
@@ -41,41 +59,59 @@
   <!-- Buscar por ID -->
   <div class="grupo-formulario">
     <label>ID Producto</label>
-    <input type="text">
+    <input type="number" [(ngModel)]="modificarId">
   </div>
 
   <!-- Botón para cargar datos -->
-  <button>Cargar datos</button>
+  <button (click)="cargarDatos()">Cargar datos</button>
 
   <hr style="margin: 20px 0; border-color: #555;">
 
   <!-- Campos que se rellenarán tras cargar -->
   <div class="grupo-formulario">
     <label>Nuevo Nombre</label>
-    <input type="text">
+    <input type="text" [(ngModel)]="nuevoNombre">
   </div>
 
   <div class="grupo-formulario">
     <label>Nuevo Tipo</label>
-    <input type="text">
+    <select [(ngModel)]="nuevoTipoProducto">
+      <option value="BebidaCaliente">Bebida Caliente</option>
+      <option value="BebidaFria">Bebida Fría</option>
+      <option value="Sandwich">Sandwich</option>
+      <option value="Pastel">Pastel</option>
+    </select>
   </div>
 
   <div class="grupo-formulario">
     <label>Nueva URL Imagen</label>
-    <input type="text">
+    <input type="text" [(ngModel)]="nuevaImagen">
   </div>
 
   <div class="grupo-formulario">
     <label>Nuevo Precio</label>
-    <input type="number" step="0.01">
+    <input type="number" step="0.01" [(ngModel)]="nuevoPrecio">
   </div>
 
   <div class="grupo-formulario">
     <label>Nueva Descripción</label>
-    <input type="text">
+    <input type="text" [(ngModel)]="nuevaDescripcion">
   </div>
 
-  <button>Modificar</button>
+  <div class="grupo-formulario">
+    <label>Cafetería</label>
+    <input type="number" [(ngModel)]="crearIdCafeteria" placeholder="Introduce el ID de la cafetería">
+  </div>
+
+  <div class="grupo-formulario">
+    <label>Eliminado</label>
+    <select [(ngModel)]="nuevoEliminado">
+      <option value="false">No</option>
+      <option value="true">Sí</option>
+    </select>
+  </div>
+
+  <button (click)="modificarProducto()">Modificar</button>
 </div>
 
 
@@ -86,8 +122,8 @@
 
   <div class="grupo-formulario">
     <label>ID Producto</label>
-    <input type="text">
+    <input type="number" [(ngModel)]="eliminarId">
   </div>
 
-  <button>Eliminar</button>
+  <button (click)="eliminarProducto()">Eliminar</button>
 </div>

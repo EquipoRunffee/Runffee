@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-controlcafeteria',
-  standalone: false,
+  standalone: true,
   templateUrl: './controlcafeteria.html',
   styleUrl: './controlcafeteria.css',
 })
