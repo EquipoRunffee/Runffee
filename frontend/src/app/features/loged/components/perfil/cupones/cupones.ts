@@ -46,6 +46,5 @@ export class Cupones implements OnInit {
 
   cambiarEstado(nuevoEstado: boolean): void{
     this.activo = nuevoEstado;
-    console.log('Nuevo estado:', this.activo);
   }
 }

@@ -4,7 +4,6 @@ import org.runffee.backend.DTO.UsuarioDTO;
 import org.runffee.backend.config.SecurityConfig;
 import org.runffee.backend.DTO.UsuarioDatosPerfilDTO;
 import org.runffee.backend.modelos.Usuario;
-import org.runffee.backend.repositorios.IEntrenamientoRepository;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,7 +52,7 @@ public class UsuarioService {
 
         nuevoUsuario.setNombre(usuario.getNombre());
         nuevoUsuario.setCorreo(usuario.getCorreo());
-        nuevoUsuario.setContrasena(usuario.getContrasena());
+        nuevoUsuario.setContrasena(security.passwordEncoder().encode(usuario.getContrasena()));
 
         usuarioRepository.save(nuevoUsuario);
     }
@@ -78,6 +77,10 @@ public class UsuarioService {
 
     public boolean existeStravaAthleteId (Integer stravaAthleteid) {
         return usuarioRepository.existsByStravaAthleteId(stravaAthleteid);
+    }
+
+    public void save(Usuario usuario) {
+        usuarioRepository.save(usuario);
     }
 
     public UsuarioDatosPerfilDTO obtenerDatosPerfil(Integer usuarioId) {
