@@ -22,7 +22,11 @@ public class AdminController {
 
     @Autowired
     private AdminCrearModificarProductoService adminProductoService;
+
+    @Autowired
     private AdminCrearModificarCafeteriaService adminCafeteriaService;
+
+    @Autowired
     private AdminCrearModificarRetoService adminRetoService;
 
     /***
@@ -69,18 +73,34 @@ public class AdminController {
      * @param id
      */
 
-    @GetMapping("/cafeteria/modificar/{id}")
+    @GetMapping("/cafeteria/obtener/{id}")
     public AdminCrearModificarCafeteriaDTO obtenerCafeteria(@PathVariable int id){
         return adminCafeteriaService.obtenerCafeteria(id);
     }
 
     /***
-     * API para crear un nuevo producto
+     * API para crear una nueva cafeteria
      * @param cafeteria
      */
-    @PostMapping("/producto/crear")
+    @PostMapping("/cafeteria/crear")
     public void crearCafeteria(@RequestBody AdminCrearModificarCafeteriaDTO cafeteria){
         adminCafeteriaService.crearCafeteria(cafeteria);
+    }
+
+    /***
+     * API para modificar una cafeteria
+     * @param id
+     * @param dto
+     */
+    @PutMapping("/cafeteria/modificar/{id}")
+    public void modificarCafeteria(@PathVariable int id, @RequestBody AdminCrearModificarCafeteriaDTO dto) {
+        adminCafeteriaService.modificarCafeteria(id, dto);
+    }
+
+
+    @DeleteMapping("/cafeteria/eliminar/{id}")
+    public void eliminarCafeteria(@PathVariable Integer id){
+        adminCafeteriaService.eliminarCafeteria(id);
     }
 
 

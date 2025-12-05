@@ -21,12 +21,12 @@
     &quot;assignee&quot;: &quot;valenro04&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/EquipoRunffee/Runffee.git",
-    "accountId": "25d439b0-ef89-4e0c-897b-9c60ec4d46ec"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/EquipoRunffee/Runffee.git&quot;,
+    &quot;accountId&quot;: &quot;25d439b0-ef89-4e0c-897b-9c60ec4d46ec&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -38,10 +38,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "ValentinRoldan",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/valentin/Desktop/Runffee/backend",
+    "last_opened_file_path": "/home/daw/Escritorio/Runffee/frontend",
     "nodejs_package_manager_path": "npm",
     "ts.external.directory.path": "/snap/webstorm/549/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
@@ -64,6 +65,7 @@
       <updated>1764340426014</updated>
       <workItem from="1764340427617" duration="209000" />
       <workItem from="1764943651737" duration="160000" />
+      <workItem from="1764958061148" duration="20000" />
     </task>
     <servers />
   </component>

@@ -20,15 +20,20 @@ public class AdminCrearModificarCafeteriaService {
      */
 
     public AdminCrearModificarCafeteriaDTO obtenerCafeteria(int id) {
+
+        Cafeteria cafeteria = cafeteriaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cafeteria no encontrada"));
+
         AdminCrearModificarCafeteriaDTO adminCrearModificarCafeteriaDTO = new AdminCrearModificarCafeteriaDTO();
 
-        adminCrearModificarCafeteriaDTO.setNombre(obtenerCafeteria(id).getNombre());
-        adminCrearModificarCafeteriaDTO.setDescripcion(obtenerCafeteria(id).getDescripcion());
-        adminCrearModificarCafeteriaDTO.setLat(obtenerCafeteria(id).getLat());
-        adminCrearModificarCafeteriaDTO.setLng(obtenerCafeteria(id).getLng());
-        adminCrearModificarCafeteriaDTO.setImagen(obtenerCafeteria(id).getImagen());
-        adminCrearModificarCafeteriaDTO.setTipoCafeteria(obtenerCafeteria(id).getTipoCafeteria());
-        adminCrearModificarCafeteriaDTO.setEliminado(obtenerCafeteria(id).getEliminado());
+
+        adminCrearModificarCafeteriaDTO.setNombre(cafeteria.getNombre());
+        adminCrearModificarCafeteriaDTO.setDescripcion(cafeteria.getDescripcion());
+        adminCrearModificarCafeteriaDTO.setLat(cafeteria.getLat());
+        adminCrearModificarCafeteriaDTO.setLng(cafeteria.getLng());
+        adminCrearModificarCafeteriaDTO.setImagen(cafeteria.getImagen());
+        adminCrearModificarCafeteriaDTO.setTipoCafeteria(cafeteria.getTipoCafeteria());
+        adminCrearModificarCafeteriaDTO.setEliminado(cafeteria.getEliminado());
 
         return adminCrearModificarCafeteriaDTO;
     }
@@ -55,18 +60,42 @@ public class AdminCrearModificarCafeteriaService {
     }
 
 
-
-
     /**
      * Función para modificar una cafeteria
      * @param id
      * @param dto
      */
 
+    public void modificarCafeteria (int id, AdminCrearModificarCafeteriaDTO dto) {
+        Cafeteria cafeteria = cafeteriaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cafeteria no encontrada"));
+
+        cafeteria.setNombre(dto.getNombre());
+        cafeteria.setDescripcion(dto.getDescripcion());
+        cafeteria.setLat(dto.getLat());
+        cafeteria.setLng(dto.getLng());
+        cafeteria.setImagen(dto.getImagen());
+        cafeteria.setTipoCafeteria(dto.getTipoCafeteria());
+
+        cafeteriaRepository.save(cafeteria);
+    }
+
+
+
     /**
      * Función para eliminar una cafeteria por id
      * @param id
      */
+
+    public void eliminarCafeteria (int id){
+        Cafeteria cafeteria = cafeteriaRepository.findById(id).orElse(null);
+        if (cafeteria != null){
+            cafeteria.setEliminado(true);
+            cafeteriaRepository.save(cafeteria);
+        }
+    }
+
+
 
 
 
