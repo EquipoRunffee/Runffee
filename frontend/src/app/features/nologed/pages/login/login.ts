@@ -19,23 +19,45 @@ export class Login {
     contrasena: ''
   };
 
+  mostrarMensajesEstado:boolean = false;
+  textoMensajes:string = "";
+  mostrarLoader: boolean = false;
+
   constructor(private router: Router, private stravaService: StravaService, private authService: AuthService) {
   }
 
   login() {
     console.log('Credenciales: ', this.usuario);
 
-    document.getElementById("span-iniciar")!.style.display = 'none';
-    document.getElementById("div-iniciando-sesion")!.style.display = 'flex';
+    this.authService.login({correo: this.usuario.correo, contrasena: this.usuario.contrasena})
+      .subscribe({
+        next: () => {
+          this.mostrarLoader = true;
+          // Login exitoso: navegar a la app
+          setTimeout(() => {
+            this.router.navigate(['/app']);
+          },2000);
+        },
+        error: (err) => {
+          console.log(err); // Ver lo que envía el backend
+          this.mostrarLoader = false;
+          // Mensaje por defecto
+          let mensaje = "";
 
-    this.authService.login({correo: this.usuario.correo, contrasena: this.usuario.contrasena}).subscribe({
-      next: (res) => {
-        this.router.navigate(['/app']);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+          // Capturar errores por status
+          if (err.status === 500) {
+            mensaje = "El usuario no existe";
+          } else if (err.status === 401 || err.status === 403) {
+            mensaje = "Correo o contraseña incorrecto";
+          } else {
+            mensaje = "Ha ocurrido un error inesperado.";
+          }
+
+          // Mostrar mensaje usando tu función
+          this.mostrarMensajes(mensaje);
+
+        }
+      });
   }
 
   /*
@@ -51,5 +73,13 @@ export class Login {
 
   conectarConStrava() {
     this.stravaService.conexionStrava();
+  }
+
+  mostrarMensajes(mensaje: string):void{
+    this.mostrarMensajesEstado = true;
+    this.textoMensajes = mensaje;
+    setTimeout(() => {
+      this.mostrarMensajesEstado = false;
+    }, 3000)
   }
 }
