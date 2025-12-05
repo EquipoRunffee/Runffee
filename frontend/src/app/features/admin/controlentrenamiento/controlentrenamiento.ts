@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-controlentrenamiento',
-  standalone: false,
+  standalone: true,
   templateUrl: './controlentrenamiento.html',
   styleUrl: './controlentrenamiento.css',
 })

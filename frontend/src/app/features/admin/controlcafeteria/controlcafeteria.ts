@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-controlcafeteria',
-  standalone: false,
+  standalone: true,
   templateUrl: './controlcafeteria.html',
   styleUrl: './controlcafeteria.css',
 })

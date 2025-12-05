@@ -22,7 +22,7 @@ public class ProductoController {
     private ProductoService productoService;
 
     /***
-     * API para devuelve una lista de todos los productos
+     * API que devuelve una lista de todos los productos
      * @return
      */
     @GetMapping
