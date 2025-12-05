@@ -39,9 +39,9 @@ public class AdminController {
      * @param id
      * @return
      */
-    @GetMapping("/producto/modificar/{id}")
-    public Producto obtenerProducto(@PathVariable int id){
-        return adminProductoService.obtenerProducto(id);
+    @GetMapping("/producto/obtener/{id}")
+    public AdminCrearModificarProductoDTO obtenerProducto(@PathVariable int id){
+        return adminProductoService.obtenerProductoDTO(id);
     }
 
     /***

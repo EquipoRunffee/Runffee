@@ -15,24 +15,24 @@ import {FormsModule} from '@angular/forms';
 export class Controlproducto {
 
   //CAMPOS - CREAR PRODUCTO
-  crearNombre = '';
-  crearTipoProducto = '';
-  crearImagen = '';
-  crearPrecio: number | null = null;
   crearDescripcion = '';
   crearEliminado = 'false';
   crearIdCafeteria: number | null = null;
+  crearImagen = '';
+  crearNombre = '';
+  crearPrecio: number | null = null;
+  crearTipoProducto = '';
 
   //CAMPOS - MODIFICAR PRODUCTO
   modificarId: number | null = null;
 
-  nuevoNombre = '';
-  nuevoTipoProducto = '';
-  nuevaImagen = '';
-  nuevoPrecio: number | null = null;
   nuevaDescripcion = '';
   nuevoEliminado = 'false';
   nuevoIdCafeteria: number | null = null;
+  nuevaImagen = '';
+  nuevoNombre = '';
+  nuevoPrecio: number | null = null;
+  nuevoTipoProducto = '';
 
   //CAMPO - ELIMINAR PRODUCTO
   eliminarId: number | null = null;
@@ -47,13 +47,13 @@ export class Controlproducto {
       return alert('Introduce un ID de cafetería válido');
 
     const dto: adminProducto = new adminProducto(
-      this.crearNombre.trim(),
-      this.crearTipoProducto.trim(),
-      this.crearImagen.trim(),
-      Number(this.crearPrecio) || 0,
       this.crearDescripcion.trim(),
       this.crearEliminado === 'true',
-      Number(this.crearIdCafeteria)
+      Number(this.crearIdCafeteria),
+      this.crearImagen.trim(),
+      this.crearNombre.trim(),
+      Number(this.crearPrecio) || 0,
+      this.crearTipoProducto.trim()
     );
 
     this.adminService.crearProducto(dto).subscribe(
@@ -69,13 +69,13 @@ export class Controlproducto {
   }
 
   limpiarCrear() {
-    this.crearNombre = '';
-    this.crearTipoProducto = '';
-    this.crearImagen = '';
-    this.crearPrecio = null;
     this.crearDescripcion = '';
     this.crearEliminado = 'false';
     this.crearIdCafeteria = null;
+    this.crearImagen = '';
+    this.crearNombre = '';
+    this.crearPrecio = null;
+    this.crearTipoProducto = '';
   }
 
   //FUNCIÓN PARA CARGAR EL PRODUCTO A MODIFICAR
@@ -88,13 +88,13 @@ export class Controlproducto {
     this.adminService.obtenerProducto(this.modificarId).subscribe(
       (producto: any) => {
 
-        this.nuevoNombre = producto.nombre;
-        this.nuevoTipoProducto = producto.tipoProducto;
-        this.nuevaImagen = producto.imagen;
-        this.nuevoPrecio = producto.precio;
         this.nuevaDescripcion = producto.descripcion;
         this.nuevoEliminado = producto.eliminado ? 'true' : 'false';
         this.nuevoIdCafeteria = producto.idCafeteria;
+        this.nuevaImagen = producto.imagen;
+        this.nuevoNombre = producto.nombre;
+        this.nuevoPrecio = producto.precio;
+        this.nuevoTipoProducto = producto.tipoProducto;
 
         console.log('Producto cargado correctamente:', producto);
       },
@@ -111,13 +111,13 @@ export class Controlproducto {
     if (!this.nuevoIdCafeteria || isNaN(this.nuevoIdCafeteria)) return alert('Introduce un ID de cafetería válido');
 
     const dto = {
-      nombre: this.nuevoNombre.trim(),
-      tipoProducto: this.nuevoTipoProducto.trim(),
-      imagen: this.nuevaImagen.trim(),
-      precio: Number(this.nuevoPrecio) || 0,
       descripcion: this.nuevaDescripcion.trim(),
       eliminado: this.nuevoEliminado === 'false',
-      idCafeteria: Number(this.nuevoIdCafeteria)
+      idCafeteria: Number(this.nuevoIdCafeteria),
+      imagen: this.nuevaImagen.trim(),
+      nombre: this.nuevoNombre.trim(),
+      precio: Number(this.nuevoPrecio) || 0,
+      tipoProducto: this.nuevoTipoProducto.trim(),
     };
 
     this.adminService.modificarProducto(this.modificarId, dto).subscribe(
