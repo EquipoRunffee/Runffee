@@ -2,7 +2,9 @@ package org.runffee.backend.controladores;
 
 import org.runffee.backend.DTO.AdminCrearModificarProductoDTO;
 import org.runffee.backend.modelos.Producto;
+import org.runffee.backend.servicios.AdminCrearModificarCafeteriaService;
 import org.runffee.backend.servicios.AdminCrearModificarProductoService;
+import org.runffee.backend.servicios.AdminCrearModificarRetoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,8 @@ public class AdminController {
 
     @Autowired
     private AdminCrearModificarProductoService adminProductoService;
+    private AdminCrearModificarCafeteriaService adminCafeteriaService;
+    private AdminCrearModificarRetoService adminRetoService;
 
     /***
      * API para crear un nuevo producto
@@ -55,3 +59,14 @@ public class AdminController {
         adminProductoService.eliminarProducto(id);
     }
 }
+
+    /***
+     * API para eliminar un reto por su id
+     * @param id
+     */
+
+
+    /***
+     * API para eliminar una cafeteria por su id
+     * @param id
+     */
