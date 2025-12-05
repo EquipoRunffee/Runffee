@@ -70,12 +70,18 @@ export class SeleccionProductos implements OnInit {
     this.tipos = Array.from(tiposUnicos);
   }
 
-  get datosFiltrados(){
-    if (!this.encontrarProducto) {
-      return this.productos;
+  get datosFiltrados() {
+    let filtrados = this.productos;
+
+    if (this.tipoSeleccionado !== 'Todos') {
+      filtrados = filtrados.filter(p => p.tipoProducto === this.tipoSeleccionado);
     }
 
-    let busqueda = this.encontrarProducto.toLowerCase();
-    return this.productos.filter(prod => prod.nombre.toLowerCase().startsWith(busqueda));
+    if (this.encontrarProducto) {
+      const busqueda = this.encontrarProducto.toLowerCase();
+      filtrados = filtrados.filter(p => p.nombre.toLowerCase().startsWith(busqueda));
+    }
+
+    return filtrados;
   }
 }

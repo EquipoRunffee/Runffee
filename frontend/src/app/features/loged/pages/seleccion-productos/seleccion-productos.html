@@ -50,18 +50,10 @@
       </div>
     </div>
 
-    @if (!isLoaded) {
-      <div class="contenedor-skeletons">
-
-      </div>
-    }
       <!-- Contenedor de productos filtrados -->
     <div class="contenedor-productos">
       @for (producto of datosFiltrados; track producto.id) {
         <app-card-producto [producto]="producto"></app-card-producto>
-      }
-      @empty {
-        <p>No hay productos que mostrar.</p>
       }
     </div>
   </div>
