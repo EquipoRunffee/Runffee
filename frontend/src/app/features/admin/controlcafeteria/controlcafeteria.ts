@@ -8,21 +8,7 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: './controlcafeteria.html',
   styleUrl: './controlcafeteria.css',
 })
-export class Controlcafeteria implements OnInit {
+export class Controlcafeteria{
 
-    datos:any = null;
-    constructor(private cafeteriaService: CafeteriaService,http: HttpClient) {}
-
-    ngOnInit() {
-      this.cafeteriaService.getCafeteriaPorId(1).subscribe({
-        next: data => {
-          console.log(data);
-          this.datos = data;
-        },
-        error: error => {
-          console.log(error);
-        }
-      })
-    }
 
 }

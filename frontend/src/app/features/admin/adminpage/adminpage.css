@@ -19,8 +19,7 @@
 /* Estilos de tarjeta comunes */
 .card{
   writing-mode: vertical-lr;
-  flex:1 1 0; /* crece y ocupa el espacio disponible */
-
+  flex:1 1 0;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -39,9 +38,9 @@
 .card h2{
   margin:0 0 8px;
   font-weight:bold;
-  font-size: 2rem;
+  font-size: 3rem;
   font-family: 'Inter', sans-serif;
-  text-shadow: #2D2D2D 1px 1px 1px;
+  text-shadow: #2D2D2D 1px 1px 5px;
 }
 .card p{
   margin:0 0 14px;
