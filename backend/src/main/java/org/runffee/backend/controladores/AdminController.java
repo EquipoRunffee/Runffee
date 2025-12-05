@@ -1,7 +1,11 @@
 package org.runffee.backend.controladores;
 
+import org.runffee.backend.DTO.AdminCrearModificarCafeteriaDTO;
 import org.runffee.backend.DTO.AdminCrearModificarProductoDTO;
+import org.runffee.backend.DTO.AdminCrearModificarRetoDTO;
+
 import org.runffee.backend.modelos.Producto;
+
 import org.runffee.backend.servicios.AdminCrearModificarCafeteriaService;
 import org.runffee.backend.servicios.AdminCrearModificarProductoService;
 import org.runffee.backend.servicios.AdminCrearModificarRetoService;
@@ -58,15 +62,36 @@ public class AdminController {
     public void eliminarProducto(@PathVariable Integer id){
         adminProductoService.eliminarProducto(id);
     }
+
+
+    /***
+     * API que devuelve la cafeteria por su id
+     * @param id
+     */
+
+    @GetMapping("/cafeteria/modificar/{id}")
+    public AdminCrearModificarCafeteriaDTO obtenerCafeteria(@PathVariable int id){
+        return adminCafeteriaService.obtenerCafeteria(id);
+    }
+
+    /***
+     * API para crear un nuevo producto
+     * @param cafeteria
+     */
+    @PostMapping("/producto/crear")
+    public void crearCafeteria(@RequestBody AdminCrearModificarCafeteriaDTO cafeteria){
+        adminCafeteriaService.crearCafeteria(cafeteria);
+    }
+
+
+    /***
+     * API que devuelve el reto por su id
+     * @param id
+     */
+
+    @GetMapping("/reto/modificar/{id}")
+    public AdminCrearModificarRetoDTO obtenerReto(@PathVariable int id){
+        return adminRetoService.obtenerReto(id);
+    }
+
 }
-
-    /***
-     * API para eliminar un reto por su id
-     * @param id
-     */
-
-
-    /***
-     * API para eliminar una cafeteria por su id
-     * @param id
-     */
