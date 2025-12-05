@@ -32,6 +32,7 @@ export class SeleccionProductos implements OnInit {
   productosFiltrados: ProductoSeleccion[] = [];
   tipos: string[] = [];
   tipoSeleccionado: string = 'Todos';
+  encontrarProducto: string = '';
 
 
   constructor(private router: Router,
@@ -66,5 +67,14 @@ export class SeleccionProductos implements OnInit {
     });
 
     this.tipos = Array.from(tiposUnicos);
+  }
+
+  get datosFiltrados(){
+    if (!this.encontrarProducto) {
+      return this.productos;
+    }
+
+    let busqueda = this.encontrarProducto.toLowerCase();
+    return this.productos.filter(prod => prod.nombre.toLowerCase().includes(busqueda));
   }
 }

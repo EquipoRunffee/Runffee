@@ -113,15 +113,17 @@
 .filtro-select label {
   margin-bottom: 6px;
   font-weight: 600;
-  color: #333;
 }
 
 .filtro-select select {
   padding: 8px 10px;
   border-radius: 8px;
   font-size: 14px;
-  background: #fefefe;
   cursor: pointer;
+}
+
+.filtro-select select:focus{
+  outline: none;
 }
 
 .producto-card {

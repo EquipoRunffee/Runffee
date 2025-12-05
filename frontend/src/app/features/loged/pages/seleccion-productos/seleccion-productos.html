@@ -12,7 +12,7 @@
     <div class="div-buscador-filtro">
       <div id="buscador">
         <img src="./assets/icon/icon-lupa.png" alt="Lupa">
-        <input type="text" placeholder="Buscar...">
+        <input type="text" placeholder="Buscar..." [(ngModel)]="encontrarProducto">
       </div>
 
       <!-- Filtro por tipo de producto -->
@@ -27,10 +27,11 @@
     </div>
       <!-- Contenedor de productos filtrados -->
     <div class="contenedor-productos">
-      @for (producto of datos?.productos; track producto.id) {
-        @if (tipoSeleccionado === 'Todos' || producto.tipoProducto === tipoSeleccionado) {
-          <app-card-producto [producto]="producto"></app-card-producto>
-        }
+      @for (producto of datosFiltrados; track producto.id) {
+        <app-card-producto [producto]="producto"></app-card-producto>
+      }
+      @empty {
+        <p>No hay productos que mostrar.</p>
       }
     </div>
 
