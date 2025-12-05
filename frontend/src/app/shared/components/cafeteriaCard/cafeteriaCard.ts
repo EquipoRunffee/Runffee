@@ -10,7 +10,7 @@ import {CarritoService} from '@core/services/carrito/carritoService';
   templateUrl: './cafeteriaCard.html',
   styleUrl: './cafeteriaCard.css',
   standalone: true,
-  imports: [CommonModule, RouterLink]
+  imports: [CommonModule]
 })
 
 export class CafeteriaCard implements OnInit{
