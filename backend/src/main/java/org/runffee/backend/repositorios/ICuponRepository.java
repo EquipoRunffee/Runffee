@@ -10,6 +10,8 @@ import java.util.List;
 public interface ICuponRepository extends JpaRepository<Cupon, Integer> {
     Cupon findByNombre(String nombre);
 
+    boolean existsByNombre(String nombre);
+
     @Query(value = """
         select c.*
         from app.cupon c

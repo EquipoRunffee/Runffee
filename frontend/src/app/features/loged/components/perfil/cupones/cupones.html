@@ -9,37 +9,14 @@
   <div class="contenedor-cupones">
 
     @if (cuponesCargados) {
-      @if(activo){
-        @if (cuponesActivos.length == 0) {
-          <p class="empty">No tienes ningún cupón activo</p>
-        } @else {
-          @for(cupon of cuponesActivos; track $index){
-            <app-cupon
-              [nombre]="cupon.nombre"
-              [fechaCaducidad]="cupon.fechaCaducidad"
-              [imagen]="cupon.imagen"
-              [porcentaje]="cupon.porcentaje"
-              [descripcion]="cupon.descripcion"
-              [usado]="cupon.usado">
-            </app-cupon>
+      @for (cupon of cupones; track cupon.id) {
+        @if(activo){
+          @if (!cupon.usado) {
+            <app-cupon [datos]="cupon"></app-cupon>
           }
-        }
-
-
-      }@else{
-
-        @if (cuponesCaducados.length == 0) {
-          <p class="empty">No tienes ningún cupón usado/caducado</p>
         } @else {
-          @for(cupon of cuponesCaducados; track $index){
-            <app-cupon
-              [nombre]="cupon.nombre"
-              [fechaCaducidad]="cupon.fechaCaducidad"
-              [imagen]="cupon.imagen"
-              [porcentaje]="cupon.porcentaje"
-              [descripcion]="cupon.descripcion"
-              [usado]="cupon.usado">
-            </app-cupon>
+          @if (cupon.usado) {
+            <app-cupon [datos]="cupon"></app-cupon>
           }
         }
       }

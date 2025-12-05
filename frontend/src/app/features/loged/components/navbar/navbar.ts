@@ -38,7 +38,7 @@ export class Navbar implements OnInit {
     })
   }
 
-  crearPedido(){
+  crearPedido() {
     this.pedidoService.crearPedido(this.carrito).subscribe({
       next: data => {
         console.log(data);

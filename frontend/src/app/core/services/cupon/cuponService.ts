@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Cupon} from '@core/models/cupon';
+import {Cupon} from '@core/models/any';
 import {environment} from '../../../../environments/environment';
 
 @Injectable({
@@ -10,9 +10,9 @@ import {environment} from '../../../../environments/environment';
 export class CuponService {
   constructor(private http: HttpClient) { }
 
-  getCupon(): Observable<Cupon[]> {
+  getCupon(): Observable<any> {
     const api = environment.apiUrl;
     let apiUrl= api + '/cupon/cuponesusuario';
-    return this.http.get<Cupon[]>(apiUrl);
+    return this.http.get<any>(apiUrl);
   }
 }

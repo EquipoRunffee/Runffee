@@ -4,6 +4,7 @@ import org.runffee.backend.DTO.EntrenamientoDTO;
 import org.runffee.backend.DTO.EntrenamientoDetalleDTO;
 import org.runffee.backend.DTO.EntrenamientoPerfilDTO;
 import org.runffee.backend.DTO.ValoracionDTO;
+import org.runffee.backend.modelos.Cupon;
 import org.runffee.backend.modelos.Entrenamiento;
 import org.runffee.backend.modelos.EstadoPedido;
 import org.runffee.backend.modelos.Usuario;
@@ -32,7 +33,8 @@ public class EntrenamientoService {
     private LineaPedidoService lineaPedidoService;
     @Autowired
     private ICuponRepository cuponRepository;
-
+    @Autowired
+    private CuponService cuponService;
     @Autowired
     private StravaService stravaService;
     @Autowired
@@ -154,10 +156,14 @@ public class EntrenamientoService {
 
                 entrenamiento.setUrl_mapa(summaryPolyline);
 
-                if(entrenamiento.getStravaKm() < entrenamiento.getKmObjetivo() || entrenamiento.getStravaTiempo() > entrenamiento.getTiempoObjetivo()){
+                if(entrenamiento.getStravaKm() >= entrenamiento.getKmObjetivo() &&
+                        entrenamiento.getStravaTiempo() <= entrenamiento.getTiempoObjetivo()){
                     entrenamiento.getPedido().setEstado(EstadoPedido.CANCELADO);
                 } else {
                     entrenamiento.getPedido().setEstado(EstadoPedido.APROBADO);
+                    Cupon cupon = cuponService.cuponRandom();
+                    entrenamiento.setCupon(cupon);
+                    cuponRepository.save(cupon);
                 }
                 iPedidoRepository.save(entrenamiento.getPedido());
                 entrenamientoRepository.save(entrenamiento);

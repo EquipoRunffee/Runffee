@@ -1,5 +1,38 @@
- <div class="cupon" >
-    <h3>{{porcentaje}}% {{descripcion}}</h3>
-    <p>{{fechaCaducidad | date:'dd/MM/yyyy'}}</p>
-    <h1>{{nombre}}</h1>
-  </div>
+@if(datos!=null){
+  @if (datos.tipo == "PRODUCTO") {
+    <div class="cupon regalo" >
+      <div class="div-regalo-imagen-descripcion">
+        <div class="div-imagen-regalo">
+          <img [src]="datos.imagen" alt="">
+        </div>
+        <div class="descripcion-validez">
+          <p>{{datos.descripcion}}</p>
+          <p class="validez-cupon">Válido hasta {{datos.fechaCaducidad | date:'dd/MM/yyyy'}}</p>
+        </div>
+      </div>
+      <div class="div-nombre-cupon">
+        <p class="nombre-cupon">{{datos.nombre}}</p>
+        <button class="btn-copiar" (click)="copiarAlPortapapeles(datos.nombre)">
+          <img src="./assets/icon/icon_copiar.png" alt="">
+          @if (copiadoEstado) {
+            <p class="texto-copiado">¡Código copiado!</p>
+          }
+        </button>
+      </div>
+    </div>
+  } @else {
+    <div class="cupon" >
+      <p>{{datos.porcentaje}}% {{datos.descripcion}}</p>
+      <p class="validez-cupon">Válido hasta {{datos.fechaCaducidad | date:'dd/MM/yyyy'}}</p>
+      <div class="div-nombre-cupon">
+        <p class="nombre-cupon">{{datos.nombre}}</p>
+        <button class="btn-copiar" (click)="copiarAlPortapapeles(datos.nombre)">
+          <img src="./assets/icon/icon_copiar.png" alt="">
+          @if (copiadoEstado) {
+            <p class="texto-copiado">¡Código copiado!</p>
+          }
+        </button>
+      </div>
+    </div>
+  }
+}
