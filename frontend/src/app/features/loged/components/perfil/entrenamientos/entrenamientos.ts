@@ -14,6 +14,7 @@ import {EntrenamientoDetallesService} from '@core/services/entrenamiento/entrena
 export class Entrenamientos implements OnInit {
 
   entrenamientos: EntrenamientoDetalles[] = [];
+  entrenamientosCargados: boolean = false;
 
   constructor(private entrenamientoDetallesService: EntrenamientoDetallesService, private router: Router, private rutaActiva: ActivatedRoute) { }
 
@@ -26,7 +27,7 @@ export class Entrenamientos implements OnInit {
       next: (data: any) => {
         // Cargamos datos
         this.entrenamientos = data;
-        console.log('Datos Recibidos:', data);
+        this.entrenamientosCargados = true;
       },
       error: (err) => {
         console.error('Error al obtener entrenamiento:', err);

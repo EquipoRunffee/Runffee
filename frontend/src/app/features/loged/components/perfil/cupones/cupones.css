@@ -55,3 +55,19 @@
   width: 100%;
 }
 
+.disponible-activo,
+.usados-activo {
+  background-color: lightgray;
+  color: black;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: none;
+}
+
+.disponible-activo.seleccionado {
+  background-color: var(--color-fosforito);
+}
+
+.usados-activo.seleccionado {
+  background-color: var(--color-secundario-rosa);
+}

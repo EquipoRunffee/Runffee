@@ -22,6 +22,9 @@ export class HomeApp implements OnInit {
   popUp: HTMLElement | null = null;
   @ViewChild(CafeteriaCard) contenedor!: CafeteriaCard;
   retos: Reto[] | null = null;
+  mostrarMensajesEstado:boolean = false;
+  mostrarPopUpCrearObjetivo: boolean = false;
+  textoMensajes:string = "";
 
   kmObjetivo: string = "";
   tiempoObjetivo: string = "";
@@ -45,24 +48,35 @@ export class HomeApp implements OnInit {
     } else {
       this.selectedIndexReto = i;
       this.contenedor.scrollTo();
+      this.mostrarMensajes("¡Yuhh! Reto seleccionado. Vamos a elegir la cafetería.");
+      this.carritoService.setKmObjetivo(null);
+      this.carritoService.setTiempoObjetivo(null);
     }
     this.carritoService.setIdReto(this.selectedIndexReto)
   }
 
   actualizarPopUp(){
-    this.popUp = document.getElementById("popup-objetivo");
-    if(this.popUp){
-      if(this.popUp.style.display === 'flex'){
-        this.popUp.style.display = 'none';
-      } else {
-        this.popUp.style.display = 'flex';
-      }
-    }
+    this.mostrarPopUpCrearObjetivo = !this.mostrarPopUpCrearObjetivo;
   }
 
   crearEntrenamiento(){
-    this.carritoService.setTiempoObjetivo(parseInt(this.tiempoObjetivo)*60);
-    this.carritoService.setKmObjetivo(parseInt(this.kmObjetivo));
-    this.carritoService.setIdReto(null);
+    if(this.tiempoObjetivo == null || this.tiempoObjetivo == "" || this.kmObjetivo == null || this.tiempoObjetivo == "" || parseFloat(this.kmObjetivo) < 1){
+      this.mostrarMensajes("No se puede crear este entrenamiento. Prueba con otros datos")
+    } else {
+      this.carritoService.setTiempoObjetivo(parseInt(this.tiempoObjetivo)*60);
+      this.carritoService.setKmObjetivo(parseFloat(this.kmObjetivo));
+      this.carritoService.setIdReto(null);
+      this.mostrarMensajes("¡Yuhh! Objetivo creado. Vamos a elegir la cafetería.");
+      this.contenedor.scrollTo();
+      this.actualizarPopUp()
+    }
+  }
+
+  mostrarMensajes(mensaje: string):void{
+      this.mostrarMensajesEstado = true;
+      this.textoMensajes = mensaje;
+      setTimeout(() => {
+        this.mostrarMensajesEstado = false;
+      }, 3000)
   }
 }

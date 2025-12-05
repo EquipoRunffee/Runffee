@@ -15,10 +15,12 @@
 .card-producto{
   height: 100%;
   width: 100%;
+  min-width: 320px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  gap: 1rem;
   padding: 1rem;
   border-bottom: 1px solid whitesmoke;
   overflow: hidden;
@@ -26,10 +28,6 @@
 
 .card-producto:hover{
   border-radius: 10px;
-}
-
-.card-producto.productos {
-
 }
 
 .card-producto.carrito {
@@ -56,6 +54,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1rem;
+  text-align: start;
 }
 
 .nombre-producto{
@@ -63,7 +62,7 @@
   font-weight: 600;
   font-size: x-large;
   font-family: "Montserrat", sans-serif;
-  width: 180px;
+  width: 120px;
   max-width: 180px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -126,4 +125,13 @@
 
 .btn-cantidad:hover{
   background-color: #e1e1e1;
+}
+
+@media screen and (max-width: 400px){
+  .div-imagen-producto{
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    min-height: 50px;
+  }
 }

@@ -21,7 +21,7 @@ public class JwtService {
 
     @Value("${jwt.secret-key}")
     private String jwtSecretKey;
-    private final long jwtExpirationMs = 30 * 60 * 1000;
+    private final long jwtExpirationMs = 3 *60 * 60 * 1000;
     @Autowired
     private IUsuarioRepository usuarioRepository;
 

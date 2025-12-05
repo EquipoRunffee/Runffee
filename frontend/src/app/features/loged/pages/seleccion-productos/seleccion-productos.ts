@@ -6,10 +6,10 @@ import {Footer} from '@shared/components/footer/footer';
 import {CardProducto} from '@loged/components/card-producto/card-producto';
 import {CafeteriaService} from '@core/services/cafeteria/cafeteriaService';
 import {CafeteriaProductos} from '@core/models/cafeteria-productos';
-import {Observable} from 'rxjs';
-import {AsyncPipe} from '@angular/common';
-import {Carrito} from '@core/models/carrito';
 import {CarritoService} from '@core/services/carrito/carritoService';
+import { CommonModule } from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {ProductoSeleccion} from '@core/models/producto-seleccion';
 
 @Component({
   selector: 'app-seleccion-productos',
@@ -21,12 +21,18 @@ import {CarritoService} from '@core/services/carrito/carritoService';
     Footer,
     RouterLink,
     CardProducto,
+    CommonModule,
+    FormsModule,
   ]
 })
 export class SeleccionProductos implements OnInit {
   idCafeteria!: number;
-  categoriaAbierta: number | null = null;
   datos: CafeteriaProductos | null = null;
+  productos: ProductoSeleccion[] = [];
+  productosFiltrados: ProductoSeleccion[] = [];
+  tipos: string[] = [];
+  tipoSeleccionado: string = 'Todos';
+
 
   constructor(private router: Router,
               private http: HttpClient,
@@ -41,10 +47,24 @@ export class SeleccionProductos implements OnInit {
     this.cafeteriaService.getProductosCafeteria(this.idCafeteria).subscribe({
       next: data => {
         this.datos = data;
+        this.productos = data.productos;
+        this.productosFiltrados = data.productos;
+        this.obtenerTipos();
+        console.log(this.productos);
       },
       error: error => {
         console.log(error);
       }
     });
+  }
+
+  obtenerTipos() {
+    const tiposUnicos = new Set<string>();
+
+    this.productos.forEach(producto => {
+      tiposUnicos.add(producto.tipoProducto);
+    });
+
+    this.tipos = Array.from(tiposUnicos);
   }
 }

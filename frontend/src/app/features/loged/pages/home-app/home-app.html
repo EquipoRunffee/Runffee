@@ -25,26 +25,34 @@
     </div>
   </div>
 
-  <app-cafeteriaCard #contenedorCafeterias></app-cafeteriaCard>
+  <app-cafeteriaCard #contenedorCafeterias (mostrarMensaje)="mostrarMensajes($event)"></app-cafeteriaCard>
   <app-footer></app-footer>
   <button id="btn-crear-objetivo" title="Crear objetivo" (click)="actualizarPopUp()">+</button>
 </div>
 
-<div id="popup-objetivo">
-  <div class="contenedor-popup">
-    <button (click)="actualizarPopUp()" id="btn-cerrar-popup">x</button>
-    <div class="div-popup-img">
-      <img src="./assets/images/img_objetivo.png" alt="">
-    </div>
-    <div class="div-form-objetivo">
-      <h3>¿Cuál será tu objetivo?</h3>
-      <div class="inputs">
-        <p>KM.</p>
-        <input [(ngModel)]="kmObjetivo" type="text" placeholder="10">
-        <p>TIEMPO MAX. (min)</p>
-        <input [(ngModel)]="tiempoObjetivo" type="text" placeholder="20">
+@if (mostrarPopUpCrearObjetivo) {
+  <div id="popup-objetivo">
+    <div class="contenedor-popup">
+      <button (click)="actualizarPopUp()" id="btn-cerrar-popup">x</button>
+      <div class="div-popup-img">
+        <img src="./assets/images/img_objetivo.png" alt="">
       </div>
-      <button (click)="crearEntrenamiento()">Crear entrenamiento</button>
+      <div class="div-form-objetivo">
+        <h3>¿Cuál será tu objetivo?</h3>
+        <div class="inputs">
+          <p>KM.</p>
+          <input [(ngModel)]="kmObjetivo" type="text" placeholder="10">
+          <p>TIEMPO MAX. (min)</p>
+          <input [(ngModel)]="tiempoObjetivo" type="text" placeholder="20">
+        </div>
+        <button (click)="crearEntrenamiento()">Crear entrenamiento</button>
+      </div>
     </div>
   </div>
-</div>
+}
+
+@if (mostrarMensajesEstado) {
+  <div id="mensajes-popup">
+    <p>{{textoMensajes}}</p>
+  </div>
+}

@@ -6,5 +6,4 @@ public enum EstadoPedido {
     APROBADO,
     CANCELADO,
     ENTREGADO
-
 }

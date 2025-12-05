@@ -13,6 +13,8 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 1.5rem;
+  max-height: 100dvh;
+  overflow: auto;
 }
 
 .sidebar{

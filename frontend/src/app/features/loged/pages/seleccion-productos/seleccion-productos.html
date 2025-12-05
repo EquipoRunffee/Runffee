@@ -6,6 +6,7 @@
       <img [src] = [datos.imagen] alt="Imagen de Cafeteria">
     }
   </div>
+
   <div class="main">
     <h3 id="h3-nombre-cafeteria">{{datos?.nombre}}</h3>
     <div class="div-buscador-filtro">
@@ -13,15 +14,26 @@
         <img src="./assets/icon/icon-lupa.png" alt="Lupa">
         <input type="text" placeholder="Buscar...">
       </div>
-      <div>
-        Filtros
+
+      <!-- Filtro por tipo de producto -->
+      <div class="filtro-select">
+        <select class="filtro-contenido" [(ngModel)]="tipoSeleccionado">
+          <option value="Todos">Todos</option>
+          @for (tipo of tipos; track tipo) {
+            <option [value]="tipo">{{ tipo.replace("Bebida", "Bebida ") }}</option>
+          }
+        </select>
       </div>
     </div>
+      <!-- Contenedor de productos filtrados -->
     <div class="contenedor-productos">
       @for (producto of datos?.productos; track producto.id) {
-        <app-card-producto [producto]="producto"></app-card-producto>
+        @if (tipoSeleccionado === 'Todos' || producto.tipoProducto === tipoSeleccionado) {
+          <app-card-producto [producto]="producto"></app-card-producto>
+        }
       }
     </div>
+
   </div>
 </div>
 <app-footer></app-footer>
