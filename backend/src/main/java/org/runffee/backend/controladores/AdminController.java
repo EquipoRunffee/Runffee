@@ -60,13 +60,3 @@ public class AdminController {
     }
 }
 
-    /***
-     * API para eliminar un reto por su id
-     * @param id
-     */
-
-
-    /***
-     * API para eliminar una cafeteria por su id
-     * @param id
-     */
