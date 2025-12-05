@@ -22,9 +22,35 @@ public class AdminCrearModificarProductoService {
      * @param id
      * @return
      */
-    public Producto obtenerProducto(int id) {
-        return productoRepository.findById(id).orElse(null);
+    public AdminCrearModificarProductoDTO obtenerProductoDTO(int id) {
+
+        Producto producto = productoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        AdminCrearModificarProductoDTO dto = new AdminCrearModificarProductoDTO();
+
+        dto.setDescripcion(producto.getDescripcion());
+        dto.setEliminado(producto.getEliminado());
+        dto.setImagen(producto.getImagen());
+        dto.setNombre(producto.getNombre());
+        dto.setPrecio(producto.getPrecio());
+        dto.setTipoProducto(producto.getTipoProducto());
+
+        if (producto.getCafeteria() != null) {
+            Cafeteria cafeteria = cafeteriaRepository.findById(producto.getCafeteria().getId())
+                    .orElse(null);
+            if (cafeteria != null) {
+                dto.setIdCafeteria(cafeteria.getId());
+            } else {
+                dto.setIdCafeteria(null);
+            }
+        } else {
+            dto.setIdCafeteria(null);
+        }
+
+        return dto;
     }
+
 
     /**
      * Función para crear un producto
@@ -35,13 +61,13 @@ public class AdminCrearModificarProductoService {
         if (cafeteria != null) {
             Producto nuevoProducto = new Producto();
 
-            nuevoProducto.setNombre(producto.getNombre());
-            nuevoProducto.setTipoProducto(producto.getTipoProducto());
-            nuevoProducto.setImagen(producto.getImagen());
-            nuevoProducto.setPrecio(producto.getPrecio());
             nuevoProducto.setDescripcion(producto.getDescripcion());
-            nuevoProducto.setCafeteria(cafeteria);
             nuevoProducto.setEliminado(producto.getEliminado());
+            nuevoProducto.setCafeteria(cafeteria);
+            nuevoProducto.setImagen(producto.getImagen());
+            nuevoProducto.setNombre(producto.getNombre());
+            nuevoProducto.setPrecio(producto.getPrecio());
+            nuevoProducto.setTipoProducto(producto.getTipoProducto());
 
             productoRepository.save(nuevoProducto);
         }
@@ -58,13 +84,13 @@ public class AdminCrearModificarProductoService {
             Producto producto = productoRepository.findById(id)
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
-            producto.setNombre(dto.getNombre());
-            producto.setTipoProducto(dto.getTipoProducto());
-            producto.setImagen(dto.getImagen());
-            producto.setPrecio(dto.getPrecio());
             producto.setDescripcion(dto.getDescripcion());
             producto.setEliminado(dto.getEliminado());
             producto.setCafeteria(cafeteria);
+            producto.setImagen(dto.getImagen());
+            producto.setNombre(dto.getNombre());
+            producto.setPrecio(dto.getPrecio());
+            producto.setTipoProducto(dto.getTipoProducto());
 
             productoRepository.save(producto);
         }

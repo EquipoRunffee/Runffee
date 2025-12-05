@@ -13,13 +13,12 @@ export class AdminService {
   api = environment.apiUrl;
 
   crearProducto(producto: adminProducto): Observable<void> {
-    console.log(producto);
     const url = `${this.api}/admin/producto/crear`;
     return this.http.post<void>(url, producto);
   }
 
   obtenerProducto(id: number): Observable<adminProducto> {
-    const url = `${this.api}/admin/producto/modificar/${id}`;
+    const url = `${this.api}/admin/producto/obtener/${id}`;
     return this.http.get<adminProducto>(url);
   }
 
