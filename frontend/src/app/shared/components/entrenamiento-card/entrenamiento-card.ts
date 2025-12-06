@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EntrenamientoDetalles} from '@core/models/entrenamientoDetalles';
 import { EntrenamientoDetallesService } from '@core/services/entrenamiento/entrenamientoDetallesService';
@@ -15,6 +15,7 @@ import {EntrenamientoService} from '@core/services/entrenamiento/entrenamientoSe
 export class EntrenamientoCard{
 
   @Input() datos: any;
+  @Output() cuponGenerado = new EventEmitter();
 
   constructor(private router: Router, private rutaActiva: ActivatedRoute, private entrenamientoService: EntrenamientoService) { }
   irEntrenamiento(id: number) {
@@ -24,8 +25,10 @@ export class EntrenamientoCard{
   finalizarEntrenamiento(idEntrenamiento: number):void {
     this.entrenamientoService.finalizarEntrenamiento(idEntrenamiento).subscribe({
       next: (result) => {
-        window.location.reload()
         console.log(result);
+        if(result.body != null && result.body.cuponObtenido != null){
+          this.cuponGenerado.emit();
+        }
       },
       error: (error) => {
         console.error(error);

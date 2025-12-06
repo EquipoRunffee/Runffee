@@ -3,7 +3,7 @@
   <div class="main-content">
     @if (entrenamientosCargados) {
       @for (entrenamiento of entrenamientos; track entrenamiento.id){
-        <app-entrenamiento-card [datos] = "entrenamiento">
+        <app-entrenamiento-card (cuponGenerado)="cuponGeneradoEntrenamiento()" [datos] = "entrenamiento">
         </app-entrenamiento-card>
       }
     } @else{
@@ -14,3 +14,9 @@
     }
   </div>
 </div>
+
+@if (mostrarMensajesEstado) {
+  <div id="mensajes-popup">
+    <p>{{textoMensajes}}</p>
+  </div>
+}

@@ -13,6 +13,8 @@ import org.runffee.backend.repositorios.IEntrenamientoRepository;
 import org.runffee.backend.repositorios.ILineaPedidoRepository;
 import org.runffee.backend.repositorios.IPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -122,9 +124,9 @@ public class EntrenamientoService {
 
         stravaService.validarRenovarToken(usuario.getId());
 
-        Entrenamiento entrenamiento = entrenamientoRepository.findById(idEntrenamiento).get();
+        Entrenamiento entrenamiento = entrenamientoRepository.findById(idEntrenamiento).orElse(null);
 
-        if(!entrenamiento.getCompletado() && !entrenamiento.getEliminado()){
+        if(entrenamiento != null && !entrenamiento.getCompletado() && !entrenamiento.getEliminado()){
             entrenamiento.setCompletado(true);
             Object respuesta = stravaService.obtenerEntrenamientosAtleta(usuario.getStravaAccessToken());
 
@@ -136,11 +138,11 @@ public class EntrenamientoService {
                         .orElse(null);
 
                 if(ultimo==null){
-                    return ResponseEntity.ok(Map.of("estado", "Error: no se encuentra el entrenamiento"));
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("estado", "Error: no se encuentra el entrenamiento"));
                 }
 
                 if(entrenamientoRepository.existsEntrenamientoByIdStrava(((Number) ultimo.get("id")).intValue())){
-                    return ResponseEntity.ok(Map.of("estado", "Error: este entrenamiento ya está registrado"));
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("estado", "Error: este entrenamiento ya está registrado"));
                 }
 
                 entrenamiento.setIdStrava(((Number) ultimo.get("id")).intValue());
@@ -170,7 +172,7 @@ public class EntrenamientoService {
             }
         }
 
-        return ResponseEntity.ok(Map.of("completado", entrenamiento.getCompletado(), "estadoPedido", entrenamiento.getPedido().getEstado()));
+        return ResponseEntity.ok(Map.of("completado", entrenamiento.getCompletado(), "estadoPedido", entrenamiento.getPedido().getEstado(), "cuponObtenido", entrenamiento.getCupon() ));
 
     }
 

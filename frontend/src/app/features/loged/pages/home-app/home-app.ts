@@ -96,4 +96,11 @@ export class HomeApp implements OnInit {
       }
     })
   }
+
+  cuponGeneradoEntrenamiento():void{
+      this.mostrarMensajes("¡Reto cumplido! Has obtenido un cupón");
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+  }
 }

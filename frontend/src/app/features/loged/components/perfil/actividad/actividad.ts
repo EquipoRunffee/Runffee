@@ -18,13 +18,13 @@ export class Actividad {
   idEntrenamiento: number;
   datos: any;
   datosCargados: boolean = false;
+  popUpValoracionEstado:boolean = true;
 
   constructor(private router: Router, private rutaActiva: ActivatedRoute, private entrenamientoService: EntrenamientoService, private pedidoService: PedidoService) {
 
     this.idEntrenamiento = this.rutaActiva.snapshot.params['idEntrenamiento'];
     entrenamientoService.getEntrenamientoPerfil(this.idEntrenamiento).subscribe({
       next: (data: any) => {
-        console.log(data);
         this.datosCargados = true;
         this.datos = data;
       },
@@ -92,12 +92,16 @@ export class Actividad {
     if(this.datos.pedido.id != null){
       this.pedidoService.entregarPedido(this.datos.pedido.id).subscribe({
         next: (data: any) => {
-            window.location.reload();
+            this.popUpValoracion();
         },
         error: (error: any) => {
           console.log(error);
         }
       })
     }
+  }
+
+  popUpValoracion(){
+    this.popUpValoracionEstado = true;
   }
 }

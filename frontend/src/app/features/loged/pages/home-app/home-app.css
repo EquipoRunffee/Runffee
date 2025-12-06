@@ -212,6 +212,21 @@ h3{
   border-radius: 10px;
 }
 
+.skeleton-ultimo-entrenamiento{
+  width: 300px;
+  min-width: 300px;
+  height: 180px;
+  min-height: 180px ;
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 25%,
+    #f0f0f0 50%,
+    #e0e0e0 75%
+  );
+  animation: shimmer 1.5s infinite;
+  border-radius: 10px;
+}
+
 @keyframes shimmer {
   0% { background-position: -200px 0; }
   100% { background-position: 200px 0; }

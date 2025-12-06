@@ -147,7 +147,6 @@ public class PedidoService {
         if (pedido == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Forbidden", "No se encontro el pedido."));
         }
-
         pedido.setEstado(EstadoPedido.ENTREGADO);
         pedidoRepository.save(pedido);
         return ResponseEntity.ok(Map.of("estado", EstadoPedido.ENTREGADO));

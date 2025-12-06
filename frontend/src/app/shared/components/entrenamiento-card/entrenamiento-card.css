@@ -29,7 +29,7 @@
 }
 
 .entrenamiento.encurso{
-  background-color: var(--color-fosforito);
+  background-color: var(--color-primario-marron);
   justify-content: space-between;
 }
 
@@ -54,6 +54,7 @@
 
 .nombre-entrenamiento.encurso{
   font-size: x-large;
+  color: white;
 }
 
 .div-nombre-entrenamiento{
@@ -69,8 +70,8 @@
   align-self: flex-end;
   border: none;
   border-radius: 10px;
-  background-color: var(--color-secundario-negro);
-  color: var(--color-fosforito);
+  background-color: var(--color-secundario-rosa);
+  color: white;
   font-size: large;
   font-weight: bold;
   padding: 0.5rem 1rem;

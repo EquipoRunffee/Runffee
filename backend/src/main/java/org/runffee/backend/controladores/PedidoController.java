@@ -100,7 +100,7 @@ public class PedidoController {
                         .body(Map.of("error", "Token expirado"));
             }
 
-            return ResponseEntity.ok(pedidoService.entregarPedido(idPedido,usuario));
+            return pedidoService.entregarPedido(idPedido,usuario);
         }
 
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "No hay token"));

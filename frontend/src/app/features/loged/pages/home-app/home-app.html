@@ -8,8 +8,10 @@
           <app-entrenamiento-card [datos]="datosUltimoEntrenamiento"></app-entrenamiento-card>
         </a>
       } @else {
-        <app-entrenamiento-card [datos]="datosUltimoEntrenamiento"></app-entrenamiento-card>
+        <app-entrenamiento-card (cuponGenerado)="cuponGeneradoEntrenamiento()" [datos]="datosUltimoEntrenamiento"></app-entrenamiento-card>
       }
+    } @else {
+      <div class="skeleton-ultimo-entrenamiento"></div>
     }
   </div>
   <div class="contenedor-retos">

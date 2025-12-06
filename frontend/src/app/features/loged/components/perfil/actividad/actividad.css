@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
 :host{
@@ -292,4 +293,56 @@ h4{
 @keyframes shimmer {
   0% { background-position: -200px 0; }
   100% { background-position: 200px 0; }
+}
+
+#contenedor-valoracion{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: rgba(80, 80, 80, 0.24);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#div-valoracion{
+  max-width: 700px;
+  margin: 3rem 1rem;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: large;
+}
+#div-valoracion h2{
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  max-width: 400px;
+}
+
+#div-valoracion h2 span{
+  color: var(--color-primario-marron);
+}
+
+.btn-valoracion{
+  width: 100%;
+  background-color: var(--color-primario-marron);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  font-size: large;
+  cursor: pointer;
+}
+
+.btn-valoracion:hover{
+  background-color: #684451;
 }
