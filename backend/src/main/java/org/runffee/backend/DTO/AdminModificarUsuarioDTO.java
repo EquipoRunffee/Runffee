@@ -11,6 +11,6 @@ import org.runffee.backend.modelos.UsuarioRole;
 public class AdminModificarUsuarioDTO {
     private String correo;
     private String contrasena;
-    private UsuarioRole usuario;
+    private UsuarioRole rol;
     private Boolean eliminado;
 }
