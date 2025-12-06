@@ -16,12 +16,12 @@
 
   <div class="grupo-formulario">
     <label>Latitud</label>
-    <input type="number" step="0.000001" [(ngModel)]="crearLatitud">
+    <input type="number" step="0.000001" [(ngModel)]="crearLat">
   </div>
 
   <div class="grupo-formulario">
     <label>Longitud</label>
-    <input type="number" step="0.000001" [(ngModel)]="crearLongitud">
+    <input type="number" step="0.000001" [(ngModel)]="crearLng">
   </div>
 
   <div class="grupo-formulario">
@@ -46,7 +46,7 @@
     </select>
   </div>
 
-  <button (click)="crearProducto()">Crear</button>
+  <button type="button" (click)="crearCafeteria()">Crear</button>
 </div>
 
 
@@ -62,7 +62,7 @@
   </div>
 
   <!-- Botón para cargar datos -->
-  <button (click)="cargarDatos()">Cargar datos</button>
+  <button type="button" (click)="cargarDatos()">Cargar datos</button>
 
   <hr style="margin: 20px 0; border-color: #555;">
 
@@ -79,12 +79,12 @@
 
   <div class="grupo-formulario">
     <label>Nueva Latitud</label>
-    <input type="number" step="0.000001" [(ngModel)]="nuevaLatitud">
+    <input type="number" step="0.000001" [(ngModel)]="nuevaLat">
   </div>
 
   <div class="grupo-formulario">
     <label>Nueva Longitud</label>
-    <input type="number" step="0.000001" [(ngModel)]="nuevaLongitud">
+    <input type="number" step="0.000001" [(ngModel)]="nuevaLng">
   </div>
 
   <div class="grupo-formulario">
@@ -95,13 +95,13 @@
   <div class="grupo-formulario">
     <label>Nuevo Tipo de Cafetería</label>
     <select [(ngModel)]="nuevoTipoCafeteria">
-      <option value="CAFETERÍA">CAFETERÍA</option>
+      <option value="CAFETERIA">CAFETERÍA</option>
       <option value="BRUNCH">BRUNCH</option>
       <option value="TEASHOP">TEASHOP</option>
     </select>
   </div>
 
-  <button (click)="modificarProducto()">Modificar</button>
+  <button type="button" (click)="modificarCafeteria()">Modificar</button>
 </div>
 
 
@@ -112,8 +112,8 @@
 
   <div class="grupo-formulario">
     <label>ID Cafetería</label>
-    <input type="numer" [(ngModel)]="eliminarId">
+    <input type="number" [(ngModel)]="eliminarId">
   </div>
 
-  <button (click)="eliminarProducto()">Eliminar</button>
+  <button type="button" (click)="eliminarCafeteria()">Eliminar</button>
 </div>
