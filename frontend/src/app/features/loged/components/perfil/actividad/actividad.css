@@ -319,7 +319,7 @@ h4{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   font-size: large;
 }
 #div-valoracion h2{
@@ -330,6 +330,24 @@ h4{
 
 #div-valoracion h2 span{
   color: var(--color-primario-marron);
+}
+
+.div-preguntas{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.pregunta-respuesta{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .btn-valoracion{
@@ -345,4 +363,15 @@ h4{
 
 .btn-valoracion:hover{
   background-color: #684451;
+}
+
+#contenedor-valoracion input,textarea{
+  border: 1px solid #bfbfbf;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--color-secundario-negro);
+  width: 100%;
+  font-size: large;
+  resize: none;
 }

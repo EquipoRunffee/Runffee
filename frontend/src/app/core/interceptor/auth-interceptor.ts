@@ -21,14 +21,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError(error => {
-
-      // ✔ Si el error es de tipo 400–499 → redirigir al login
-      if (error.status >= 400 && error.status < 500) {
-        console.warn('Error 4xx detectado. Redirigiendo al login...', error);
+      router.navigate(['/login']);
+      return throwError(() => {
+        error;
         router.navigate(['/login']);
-      }
-
-      return throwError(() => error);
+      });
     })
   );
 };

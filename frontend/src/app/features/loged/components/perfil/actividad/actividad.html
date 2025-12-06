@@ -85,18 +85,18 @@
   @if (popUpValoracionEstado) {
     <div id="contenedor-valoracion">
       <div id="div-valoracion">
-        <h2>Cuéntanos como fue tu experiencia en <span>{{datos.lineasPedido[0].producto.cafeteria.nombre}}</span></h2>
+        <h2>Cuéntanos cómo fue tu experiencia en <span>{{datos.lineasPedido[0].producto.cafeteria.nombre}}</span></h2>
         <div class="div-preguntas">
           <div class="pregunta-respuesta">
             <p>¿Qué opinas de la cafetería?</p>
-            <input type="text" placeholder="Los camareros fueron muy amables">
+            <input type="text" placeholder="¡Todo delicioso!">
           </div>
           <div class="pregunta-respuesta">
             <p>Cuéntanos como te fue en el entrenamiento y en la cafetería:</p>
-            <textarea name="" cols="30" rows="7"></textarea>
+            <textarea cols="30" rows="7" placeholder="Fue un entrenamiento muy duro pero al llegar a la cafetería..."></textarea>
           </div>
           <div class="pregunta-respuesta">
-            <p>¿Qué puntuación le das del 1 al 5?</p>
+            <p>Puntuación cafetería (1-5)</p>
             <input type="number">
           </div>
         </div>
