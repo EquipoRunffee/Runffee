@@ -38,7 +38,7 @@ export class CardProducto implements OnInit {
       cantidad: 1,
       imagen: this.producto.imagen,
       descripcion: this.producto.descripcion,
-      tipo: this.producto.tipo
+      tipoProducto: this.producto.tipoProducto,
     });
   }
 

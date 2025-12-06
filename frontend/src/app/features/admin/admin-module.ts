@@ -7,21 +7,35 @@ import { Controlreto } from './controlreto/controlreto';
 import { Controlentrenamiento } from './controlentrenamiento/controlentrenamiento';
 import { Controlproducto } from './controlproducto/controlproducto';
 import {RouterLink} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
+
+  ],
+  imports: [
     Adminpage,
     Controlcafeteria,
     Controlusuario,
     Controlreto,
     Controlentrenamiento,
-    Controlproducto
-  ],
-  imports: [
+    Controlproducto,
     CommonModule,
-    RouterLink
+    RouterLink,
+    FormsModule
+  ],
+  exports: [
+    Adminpage,
+    Controlcafeteria,
+    Controlusuario,
+    Controlreto,
+    Controlentrenamiento,
+    Controlproducto,
+    CommonModule,
+    RouterLink,
+    FormsModule
   ]
 })
 export class AdminModule { }

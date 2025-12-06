@@ -12,6 +12,7 @@ import org.runffee.backend.modelos.*;
 import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -97,5 +98,10 @@ public class CafeteriaService {
         CafeteriaProductosDTO cafeteria =  cafeteriaMapper.toDTO(cafeteriaRepository.obtenerCafeteriaProductos(idCafeteria));
         cafeteria.setProductos(productoMapper.ProductoToListDTO(productoRepository.obtenerListaProductosCafeteria(idCafeteria)));
         return cafeteria;
+    }
+
+    public void eliminarCafeteria(@PathVariable Integer id){
+
+
     }
 }

@@ -1,35 +1,25 @@
-:root{
-  --gap: 12px;
-  --radius: 12px;
-  --shadow: 0 8px 18px rgba(0,0,0,0.12);
-  --card-padding: 20px;
-  --font : "Inter", sans-serif;
-}
-
 
 .titulo{
   text-align: center;
   background-color: white;
-  padding: 5vh
+  padding: 5vh;
+  color: #2D2D2D;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Contenedor que siempre ocupa la pantalla */
 .cards{
   display:flex;
-  gap:var(--gap);
   height:100vh; /* ocupa la altura de la pantalla */
   width:100vw; /* ocupa el ancho de la pantalla */
-  padding:var(--gap);
   align-items:stretch;
 }
 
 
 /* Estilos de tarjeta comunes */
 .card{
-  flex:1 1 0; /* crece y ocupa el espacio disponible */
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:var(--card-padding);
+  writing-mode: vertical-lr;
+  flex:1 1 0;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -40,34 +30,59 @@
   transition:transform .28s ease, box-shadow .28s ease;
   user-select:none;
 }
-.card:focus-within, .card:hover{transform:translateY(-6px); box-shadow:0 18px 30px rgba(2,6,23,0.35);}
+.card:focus-within, .card:hover{
+  transform:translateY(-6px); box-shadow:0 18px 30px rgba(2,6,23,0.35);
+}
 
 
-.card h2{margin:0 0 8px;font-size:1.25rem}
-.card p{margin:0 0 14px;opacity:.95}
-.card .cta{appearance:none;border:0;padding:8px 14px;border-radius:10px;background:rgba(255,255,255,0.12);color:inherit;cursor:pointer}
-.card .cta:focus{outline:2px solid rgba(255,255,255,0.18)}
+.card h2{
+  margin:0 0 8px;
+  font-weight:bold;
+  font-size: 4rem;
+  font-family: 'Inter', sans-serif;
+  text-shadow: #2D2D2D 1px 1px 5px;
+}
+.card p{
+  margin:0 0 14px;
+  opacity:.95
+}
+.card .cta{
+  appearance:none;
+  border:0;padding:8px 14px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.12);
+  color:inherit;
+  cursor:pointer
+}
+.card .cta:focus{
+  outline:2px solid rgba(255,255,255,0.18)
+}
 
 
-.c1,.c2,.c3,.c4,.c5{background:linear-gradient(135deg,#C9E8F8,#E3FF68);}
+.c1,.c2,.c3,.c4,.c5{
+  background:linear-gradient(135deg,#C9E8F8,#E3FF68);
+}
 
 
 
-/* Responsividad: en pantallas pequeñas apilamos verticalmente y cada tarjeta ocupa 1/5 de la altura (de forma que el conjunto sigue ocupando la pantalla) */
+
 @media (max-width:599px){
   .cards{flex-direction:column}
-  .card{width:100%; height:calc((100vh - (var(--gap) * 6)) / 5); /* restamos padding/gaps */}
+  .card{
+    width:100%;
+    writing-mode: horizontal-tb;
+  }
 }
 
 
-/* En pantallas medias y grandes, las tarjetas van en fila y cada una ocupa 1/5 del ancho */
+
 @media (min-width:600px){
   .cards{flex-direction:row}
-  .card{height:100%; width:calc((100vw - (var(--gap) * 6)) / 5);} /* restamos padding/gaps */
+
 }
 
 
-/* Accesibilidad: texto legible en tamaños reducidos */
+
 @media (max-width:420px){
   .card h2{font-size:1rem}
   .card p{font-size:.85rem}
