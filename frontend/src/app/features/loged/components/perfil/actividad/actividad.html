@@ -89,19 +89,24 @@
         <div class="div-preguntas">
           <div class="pregunta-respuesta">
             <p>¿Qué opinas de la cafetería?</p>
-            <input type="text" placeholder="¡Todo delicioso!">
+            <input [(ngModel)]="tituloValoracion" type="text" placeholder="¡Todo delicioso!">
           </div>
           <div class="pregunta-respuesta">
             <p>Cuéntanos como te fue en el entrenamiento y en la cafetería:</p>
-            <textarea cols="30" rows="7" placeholder="Fue un entrenamiento muy duro pero al llegar a la cafetería..."></textarea>
+            <textarea [(ngModel)]="descripcionValoracion" cols="30" rows="7" placeholder="Fue un entrenamiento muy duro pero al llegar a la cafetería..."></textarea>
           </div>
           <div class="pregunta-respuesta">
-            <p>Puntuación cafetería (1-5)</p>
-            <input type="number">
+            <p>Puntuación cafetería</p>
+            <app-valoracion-rating (cambioValor)="setPuntuacionValoracion($event)"></app-valoracion-rating>
           </div>
         </div>
-        <button class="btn-valoracion">Enviar valoracion</button>
+        <button class="btn-valoracion" (click)="enviarValoracion()">Enviar valoracion</button>
       </div>
     </div>
   }
+}
+@if (mostrarMensajesEstado) {
+  <div id="mensajes-popup">
+    <p>{{textoMensajes}}</p>
+  </div>
 }

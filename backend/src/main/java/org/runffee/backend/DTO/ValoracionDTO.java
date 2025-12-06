@@ -20,7 +20,4 @@ public class ValoracionDTO {
     private String descripcion;
     private Boolean eliminado;
     private String nombreCafeteria;
-
-
-
 }
