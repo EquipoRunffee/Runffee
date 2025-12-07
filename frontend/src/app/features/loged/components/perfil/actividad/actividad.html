@@ -19,7 +19,8 @@
           @if (datos.pedido.estado == "APROBADO"){
             <h3>¡TU PEDIDO TE ESTÁ ESPERANDO!</h3>
             <p>Muestra este QR al dependiente cuando recogas tu pedido.</p>
-            <app-qr-pedido [idPedido]="datos.pedido.id"></app-qr-pedido>
+            <app-qr-pedido (deslizado)="confirmarRecogida()" [idPedido]="datos.pedido.id"></app-qr-pedido>
+
           }
           <div class="pedido-nombre-estado">
             <h4>Mi pedido</h4>
@@ -62,7 +63,8 @@
                 <div><strong>Ritmo</strong><p>{{transformarARitmo(datos.stravaTiempo,datos.stravaKm)}} /km</p></div>
               </div>
               <div class="stats-linea">
-
+                <div><strong>Distancia objetivo</strong><p>{{datos.kmObjetivo | number:'1.2-2' }} km</p></div>
+                <div><strong>Tiempo objetivo</strong><p>{{transformarAMinutos(datos.tiempoObjetivo)}} min</p></div>
               </div>
             </div>
             <div class="mapa">
@@ -78,3 +80,33 @@
 
   </div>
 </div>
+
+@if (datosCargados) {
+  @if (popUpValoracionEstado) {
+    <div id="contenedor-valoracion">
+      <div id="div-valoracion">
+        <h2>Cuéntanos cómo fue tu experiencia en <span>{{datos.lineasPedido[0].producto.cafeteria.nombre}}</span></h2>
+        <div class="div-preguntas">
+          <div class="pregunta-respuesta">
+            <p>¿Qué opinas de la cafetería?</p>
+            <input [(ngModel)]="tituloValoracion" type="text" placeholder="¡Todo delicioso!">
+          </div>
+          <div class="pregunta-respuesta">
+            <p>Cuéntanos como te fue en el entrenamiento y en la cafetería:</p>
+            <textarea [(ngModel)]="descripcionValoracion" cols="30" rows="7" placeholder="Fue un entrenamiento muy duro pero al llegar a la cafetería..."></textarea>
+          </div>
+          <div class="pregunta-respuesta">
+            <p>Puntuación cafetería</p>
+            <app-valoracion-rating (cambioValor)="setPuntuacionValoracion($event)"></app-valoracion-rating>
+          </div>
+        </div>
+        <button class="btn-valoracion" (click)="enviarValoracion()">Enviar valoracion</button>
+      </div>
+    </div>
+  }
+}
+@if (mostrarMensajesEstado) {
+  <div id="mensajes-popup">
+    <p>{{textoMensajes}}</p>
+  </div>
+}

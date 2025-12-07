@@ -31,4 +31,9 @@ export class EntrenamientoService {
     let apiUrl =  this.api + '/entrenamiento/finalizar/' + idEntrenamiento;
     return this.http.get<any>(apiUrl);
   }
+
+  obtenerUltimoEntrenamiento(): Observable<EntrenamientoDetalles> {
+    let apiUrl= this.api + '/entrenamiento/ultimo';
+    return this.http.get<EntrenamientoDetalles>(apiUrl);
+  }
 }

@@ -1,41 +1,45 @@
 <div class="contenedor">
-  <div class="pago">
-    <div class="pago_intro">
-      <img src="./assets/icon/icon_tarjeta_verde.png" alt="tarjeta">
-    </div>
-
-    <div class="pago_titulo">
-      <h1>Platafora de Pago</h1>
-      <h3>Introduce tus datos para confirmar compra</h3>
-    </div>
-
-    <div class="pago_rellenar">
-      <div class="pago_rellenar_largo">
-        <label>Nombre de la tarjeta</label>
-        <input type="text" required>
-      </div>
-
-      <div class="pago_rellenar_corto">
-        <label>Fecha de Vencimiento</label>
-        <input type="month" name="fecha" required>
-      </div>
-
-      <div class="pago_rellenar_largo">
-        <label>Número de tarjeta</label>
-        <input type="text" (input)="verificarNumeroTarjeta($event)" required>
-      </div>
-
-      <div class="pago_rellenar_corto">
-        <label>CVV</label>
-        <input type="password" (input)="verificarCVV($event)" required>
+  <div class="resumen-pedido">
+    <h2>Resumen del pedido</h2>
+    <div class="product">
+      <img src="https://via.placeholder.com/50" alt="Gourmet Coffee Beans">
+      <div>
+        <p>Gourmet Coffee Beans</p>
+        <span>Premium quality, ethically sourced.</span>
       </div>
     </div>
-
-    <div class="pago_boton">
-      <button (click)="verpopUp()">Confirmar Compra</button>
+    <div class="totales">
+      <p>Subtotal <span>20.00€</span></p>
+      <p>Descuento <span> 5%</span></p>
+      <hr>
+      <p class="total">Total <span>18.90€</span></p>
     </div>
   </div>
+  <div class="anadir-descuento">
+    <h3>Añadir descuento</h3>
+    <p>Introduce el código de tu cupón:</p>
+    <input type="text" placeholder="CPN-XXXXXX">
+    <button>Aplicar</button>
+  </div>
+
+  <!-- Payment Method -->
+  <div class="payment">
+    <h2>Método de pago</h2>
+    <input type="text" placeholder="Nombre y apellidos">
+    <input type="text" placeholder="0000 0000 0000 0000">
+    <div class="row">
+      <select>
+        <option value="">MM</option>
+      </select>
+      <select>
+        <option value="">YYYY</option>
+      </select>
+      <input type="text" placeholder="CVV">
+    </div>
+    <button>Pagar</button>
+  </div>
 </div>
+
 
 <div id="popUp">
   <div class="popUp_contenido">

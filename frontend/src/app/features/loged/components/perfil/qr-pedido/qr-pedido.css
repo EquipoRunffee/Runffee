@@ -1,4 +1,44 @@
-:root{
+:host{
   width: 100%;
   max-width: 300px;
+  margin-bottom: 2rem;
+  align-self: center;
+}
+
+.slider {
+  width: 300px;
+  height: 55px;
+  background: var(--color-secundario-negro);
+  border-radius: 30px;
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+}
+
+.slider-handle {
+  width: 55px;
+  height: 55px;
+  background: var(--color-fosforito );
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: white;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
+
+.slider-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: var(--color-secundario-blanco);
+  font-size: 15px;
+  pointer-events: none;
 }

@@ -1,10 +1,18 @@
 <div id="contenedor-padre">
   <app-navbar></app-navbar>
   <div class="cabecera-entrenamiento">
-    <img src="./assets/images/fondoverde_repeat.png" alt="fondo verde logo runffee">
-    <div class="ultimo-entrenamiento">
-      <h3>Entrenamiento Monte Gord...</h3>
-    </div>
+    <img src="./assets/images/fondoblanco_repeat.png" alt="fondo verde logo runffee">
+    @if (datosUltimoEntrenamiento!=null) {
+      @if (datosUltimoEntrenamiento.completado){
+        <a class="enlace-nodecoration" [routerLink]="['perfil/entrenamientos/entrenamiento/', datosUltimoEntrenamiento.id]">
+          <app-entrenamiento-card [datos]="datosUltimoEntrenamiento"></app-entrenamiento-card>
+        </a>
+      } @else {
+        <app-entrenamiento-card (cuponGenerado)="cuponGeneradoEntrenamiento()" [datos]="datosUltimoEntrenamiento"></app-entrenamiento-card>
+      }
+    } @else {
+      <div class="skeleton-ultimo-entrenamiento"></div>
+    }
   </div>
   <div class="contenedor-retos">
     <h3>Nuestros retos de {{ mes }}</h3>

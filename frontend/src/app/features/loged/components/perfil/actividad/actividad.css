@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
 :host{
@@ -64,10 +65,11 @@
 }
 
 .stats-linea{
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 0.5rem;
 }
 
@@ -291,4 +293,108 @@ h4{
 @keyframes shimmer {
   0% { background-position: -200px 0; }
   100% { background-position: 200px 0; }
+}
+
+#contenedor-valoracion{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: rgba(80, 80, 80, 0.24);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#div-valoracion{
+  max-width: 700px;
+  margin: 3rem 1rem;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: large;
+}
+#div-valoracion h2{
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  max-width: 400px;
+}
+
+#div-valoracion h2 span{
+  color: var(--color-primario-marron);
+}
+
+.div-preguntas{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.pregunta-respuesta{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.btn-valoracion{
+  width: 100%;
+  background-color: var(--color-primario-marron);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  font-size: large;
+  cursor: pointer;
+}
+
+.btn-valoracion:hover{
+  background-color: #684451;
+}
+
+#contenedor-valoracion input,textarea{
+  border: 1px solid #bfbfbf;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--color-secundario-negro);
+  width: 100%;
+  font-size: large;
+  resize: none;
+  outline: none;
+}
+
+#mensajes-popup{
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#mensajes-popup>p{
+  padding: 2rem;
+  min-width: 200px;
+  max-width: 400px;
+  background-color: var(--color-fosforito);
+  color: var(--color-secundario-negro);
+  border-radius: 10px;
+  margin: 1rem;
 }

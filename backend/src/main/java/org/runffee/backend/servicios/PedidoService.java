@@ -6,6 +6,7 @@ import org.runffee.backend.DTO.ProductoCarritoDTO;
 import org.runffee.backend.modelos.*;
 import org.runffee.backend.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -141,4 +142,13 @@ public class PedidoService {
         return ResponseEntity.ok("Pedido creado correctamente");
     }
 
+    public ResponseEntity<?> entregarPedido(Integer idPedido, Usuario usuario) {
+        Pedido pedido = pedidoRepository.findById(idPedido).orElse(null);
+        if (pedido == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Forbidden", "No se encontro el pedido."));
+        }
+        pedido.setEstado(EstadoPedido.ENTREGADO);
+        pedidoRepository.save(pedido);
+        return ResponseEntity.ok(Map.of("estado", EstadoPedido.ENTREGADO));
+    }
 }

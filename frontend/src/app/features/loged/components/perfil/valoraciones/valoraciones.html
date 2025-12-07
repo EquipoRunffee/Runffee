@@ -2,12 +2,25 @@
 
 <div class="contenedor-valoraciones">
   <div class="contenedor-valoraciones">
-    <app-valoracion-card *ngFor="let valoracion of valoraciones"
-                         [nombreCafeteria]="valoracion.nombreCafeteria"
-                         [titulo]="valoracion.titulo"
-                         [descripcion]="valoracion.descripcion"
-                         [cantidad]="valoracion.cantidad">
-    </app-valoracion-card>
+
+    @if (valoracionesCargadas) {
+      @if (valoraciones.length == 0) {
+        <p class="empty">Aún no has puesto ninguna valoración..</p>
+      } @else {
+        <app-valoracion-card *ngFor="let valoracion of valoraciones"
+                             [nombreCafeteria]="valoracion.nombreCafeteria"
+                             [titulo]="valoracion.titulo"
+                             [descripcion]="valoracion.descripcion"
+                             [cantidad]="valoracion.cantidad">
+        </app-valoracion-card>
+      }
+    } @else {
+      <div class="skeleton-valoraciones"></div>
+      <div class="skeleton-valoraciones"></div>
+      <div class="skeleton-valoraciones"></div>
+    }
+
+
   </div>
 </div>
 

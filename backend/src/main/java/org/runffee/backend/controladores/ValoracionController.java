@@ -1,6 +1,7 @@
 package org.runffee.backend.controladores;
 
 import org.runffee.backend.DTO.ValoracionDTO;
+import org.runffee.backend.DTO.ValoracionEnviarDTO;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.modelos.Valoracion;
 import org.runffee.backend.repositorios.IUsuarioRepository;
@@ -26,6 +27,8 @@ public class ValoracionController {
 
     @Autowired
     private ValoracionService valoracionService;
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
 
     /**
      * API que devuelve una lista con todas las valoraciones
@@ -84,5 +87,23 @@ public class ValoracionController {
     @DeleteMapping("/eliminar/{id}")
     public void eliminarValoracion(@PathVariable Integer id){
         valoracionService.eliminarValoracion(id);
+    }
+
+    @PostMapping("/enviar")
+    public ResponseEntity<?> enviarValoracion(@RequestBody ValoracionEnviarDTO valoracion, @RequestHeader(value = "Authorization", required = false) String authHeader){
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+
+            return valoracionService.enviarValoracion(valoracion);
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "No hay token"));
     }
 }

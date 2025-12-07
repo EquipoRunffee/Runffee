@@ -9,10 +9,19 @@ import {CommonModule} from '@angular/common';
   imports: [CommonModule]
 })
 export class Cupon {
-  @Input() nombre: string = '';
-  @Input() fechaCaducidad: Date = new Date();
-  @Input() imagen: string = '';
-  @Input() porcentaje: number = 0;
-  @Input() descripcion: string = '';
-  @Input() usado: boolean = false;
+  @Input() datos: any;
+  copiadoEstado: boolean = false;
+
+  copiarAlPortapapeles(cuponNombre: string) {
+    navigator.clipboard.writeText(cuponNombre)
+      .then(() => {
+        this.copiadoEstado = true;
+        setTimeout(() => {
+          this.copiadoEstado = false;
+        }, 1500);
+      })
+      .catch(err => {
+        console.error('Error al copiar al portapapeles:', err);
+      });
+  }
 }

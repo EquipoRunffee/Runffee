@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LogedModule} from '@loged/loged-module';
 import {RouterOutlet} from '@angular/router';
 import {NgClass} from '@angular/common';
@@ -14,10 +14,16 @@ import {NgClass} from '@angular/common';
   ],
   standalone: true
 })
-export class Perfil {
-  estadoNavbar: boolean = true;
+export class Perfil implements OnInit {
+  estadoNavbar: boolean = false;
 
-  mostrarNavbar(){
-    this.estadoNavbar = !this.estadoNavbar;
+  ngOnInit() {
+    if (window.innerWidth > 500){this.estadoNavbar = true;}
+  }
+
+  toggleNavbar(){
+    if (window.innerWidth > 500){this.estadoNavbar = true;} else {
+      this.estadoNavbar = !this.estadoNavbar;
+    }
   }
 }

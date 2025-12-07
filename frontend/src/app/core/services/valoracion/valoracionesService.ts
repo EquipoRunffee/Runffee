@@ -15,4 +15,9 @@ export class ValoracionService {
     let apiUrl= this.api + '/valoracion/valoracionesusuario';
     return this.http.get<Valoraciones[]>(apiUrl);
   }
+
+  enviarValoracion(datos: any): Observable<any>{
+    let apiUrl= this.api + '/valoracion/enviar';
+    return this.http.post<any>(apiUrl, datos);
+  }
 }

@@ -8,13 +8,16 @@ import {Reto} from '@core/models/reto';
 import {CarritoService} from '@core/services/carrito/carritoService';
 import {NgClass} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {EntrenamientoCard} from '@shared/components/entrenamiento-card/entrenamiento-card';
+import {EntrenamientoService} from '@core/services/entrenamiento/entrenamientoService';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-home-app',
   standalone: true,
   templateUrl: './home-app.html',
   styleUrls: ['./home-app.css'],
-  imports: [CafeteriaCard, CardReto, Footer, Navbar, FormsModule]
+  imports: [CafeteriaCard, CardReto, Footer, Navbar, FormsModule, EntrenamientoCard, RouterLink]
 })
 export class HomeApp implements OnInit {
   mes = new Date().toLocaleString('es-ES', { month: 'long' });
@@ -25,13 +28,15 @@ export class HomeApp implements OnInit {
   mostrarMensajesEstado:boolean = false;
   mostrarPopUpCrearObjetivo: boolean = false;
   textoMensajes:string = "";
+  datosUltimoEntrenamiento:any;
 
   kmObjetivo: string = "";
   tiempoObjetivo: string = "";
 
-  constructor(private retoService: RetoService, private carritoService: CarritoService ) {}
+  constructor(private retoService: RetoService, private carritoService: CarritoService, private entrenamientoService: EntrenamientoService) {}
 
   ngOnInit() {
+    this.obtenerUltimoEntrenamiento();
     this.retoService.getReto().subscribe({
       next: data => {
         this.retos = data;
@@ -78,5 +83,24 @@ export class HomeApp implements OnInit {
       setTimeout(() => {
         this.mostrarMensajesEstado = false;
       }, 3000)
+  }
+
+  obtenerUltimoEntrenamiento():void{
+    this.entrenamientoService.obtenerUltimoEntrenamiento().subscribe({
+      next: data => {
+        console.log(data);
+        this.datosUltimoEntrenamiento = data;
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
+  }
+
+  cuponGeneradoEntrenamiento():void{
+      this.mostrarMensajes("¡Reto cumplido! Has obtenido un cupón");
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
   }
 }

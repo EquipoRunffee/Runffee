@@ -1,0 +1,13 @@
+<div class="contenedor-valoracion">
+  @for (estrella of estrellas; track $index) {
+    <div
+      class="estrella"
+      (mousemove)="actualizarHover($event, $index)"
+      (mouseleave)="hover = 0"
+      (click)="establecerValor($event, $index)"
+    >
+      <div class="estrella-fondo">★</div>
+      <div class="estrella-delantera" [ngStyle]="{'width.%': obtenerRelleno($index)}">★</div>
+    </div>
+  }
+</div>

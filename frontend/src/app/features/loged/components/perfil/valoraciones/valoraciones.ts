@@ -13,6 +13,7 @@ import {Valoraciones} from '@core/models/valoraciones';
 })
 export class ValoracionesComponent implements OnInit {
   valoraciones: Valoraciones[] = [];
+  valoracionesCargadas:boolean = false;
 
   constructor(private valoracionService: ValoracionService) {}
 
@@ -23,9 +24,8 @@ export class ValoracionesComponent implements OnInit {
   cargarValoraciones(): void {
     this.valoracionService.getValoracion().subscribe({
       next: (data: any) => {
-        // Cargamos datos
+        this.valoracionesCargadas = true;
         this.valoraciones = data;
-        console.log('Datos Recibidos:', data);
       },
       error: (err) => {
         console.error('Error al obtener valoraciones:', err);

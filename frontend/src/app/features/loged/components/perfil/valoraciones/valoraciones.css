@@ -25,3 +25,28 @@
   gap: 1rem;
   width: 100%;
 }
+
+.empty{
+  width: 100%;
+  text-align: center;
+}
+
+.skeleton-valoraciones{
+  width: 100%;
+  min-width: 300px;
+  height: 120px;
+  min-height: 120px;
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 25%,
+    #f0f0f0 50%,
+    #e0e0e0 75%
+  );
+  animation: shimmer 1.5s infinite;
+  border-radius: 10px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}

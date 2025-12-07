@@ -1,7 +1,117 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .cupon{
-  width: 500px;
+  max-width: 390px;
+  min-height: 205px;
   background-color: #E3FF68;
   padding: 1rem 2rem;
   border-radius: 10px;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cupon.regalo{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.div-regalo-imagen-descripcion{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.div-imagen-regalo{
+  width: 70px;
+  min-width: 70px;
+  height: 95px;
+  min-height: 95px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-imagen-regalo img{
+  width: 100%;
+}
+
+.descripcion-validez{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.validez-cupon{
+  font-size: small;
+}
+
+.nombre-cupon{
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.div-nombre-cupon{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btn-copiar{
+  border: none;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.btn-copiar:hover{
+  background-color: rgba(103, 103, 103, 0.16);
+}
+
+.texto-copiado{
+  position: absolute;
+  top: 50px;
+  right: -40px;
+  width: 120px;
+  background-color: rgba(103, 103, 103, 0.74);
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: small;
+  padding: 0.25rem;
+}
+
+.p-porcentaje{
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.porcentaje{
+  font-size: xx-large;
+}
+
+@media screen and (max-width: 500px) {
+  :host{
+    width: 100%;
+  }
 }

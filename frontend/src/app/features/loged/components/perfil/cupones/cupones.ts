@@ -12,11 +12,10 @@ import {CommonModule} from '@angular/common';
   standalone: true,
 })
 export class Cupones implements OnInit {
-  cupones: Cupon[] = [];
+  cupones: any;
   ahora = new Date();
-  cuponesActivos: Cupon[] = [];
-  cuponesCaducados: Cupon[] = [];
   activo = true;
+  cuponesCargados:boolean = false;
 
   constructor(private cuponService: CuponService) {}
 
@@ -27,15 +26,8 @@ export class Cupones implements OnInit {
   cargarCupones(): void {
       this.cuponService.getCupon().subscribe({
         next: (data: any) => {
+          this.cuponesCargados = true;
           this.cupones = data;
-          for (let cupon of this.cupones) {
-            let fechaCaducidad = new Date(cupon.fechaCaducidad);
-            if (!cupon.usado && fechaCaducidad > this.ahora) {
-              this.cuponesActivos.push(cupon);
-            }else{
-              this.cuponesCaducados.push(cupon);
-            }
-          }
           console.log('Datos Recibidos:', data);
         },
         error: (error: any) => {
