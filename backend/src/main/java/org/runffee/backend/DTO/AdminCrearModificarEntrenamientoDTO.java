@@ -11,8 +11,8 @@ public class AdminCrearModificarEntrenamientoDTO {
     private String nombre;
     private LocalDateTime fecha_inicio;
     private LocalDateTime fecha_fin;
-    private Double km_objetivo;
-    private Integer tiempo_objetivo;
+    private Double kmObjetivo;
+    private Integer tiempoObjetivo;
     private Boolean completado;
     private Boolean eliminado;
 

@@ -10,6 +10,6 @@ public class AdminCrearModificarRetoDTO {
     private String nombre;
     private String descripcion;
     private Date fecha_inicio;
-    private Date fecha_caducidad;
+    private Date fecha_fin;
     private Boolean eliminado;
 }

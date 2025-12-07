@@ -1,12 +1,14 @@
 package org.runffee.backend.controladores;
 
 import org.runffee.backend.DTO.AdminCrearModificarCafeteriaDTO;
+import org.runffee.backend.DTO.AdminCrearModificarEntrenamientoDTO;
 import org.runffee.backend.DTO.AdminCrearModificarProductoDTO;
 import org.runffee.backend.DTO.AdminCrearModificarRetoDTO;
 
 import org.runffee.backend.modelos.Producto;
 
 import org.runffee.backend.servicios.AdminCrearModificarCafeteriaService;
+import org.runffee.backend.servicios.AdminCrearModificarEntrenamientoService;
 import org.runffee.backend.servicios.AdminCrearModificarProductoService;
 import org.runffee.backend.servicios.AdminCrearModificarRetoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class AdminController {
 
     @Autowired
     private AdminCrearModificarRetoService adminRetoService;
+
+    @Autowired
+    private AdminCrearModificarEntrenamientoService adminEntrenamientoService;
 
     /***
      * API para crear un nuevo producto
@@ -97,6 +102,10 @@ public class AdminController {
         adminCafeteriaService.modificarCafeteria(id, dto);
     }
 
+    /***
+     * API para eliminar una cafeteria por su id
+     * @param id
+     */
 
     @DeleteMapping("/cafeteria/eliminar/{id}")
     public void eliminarCafeteria(@PathVariable Integer id){
@@ -109,9 +118,59 @@ public class AdminController {
      * @param id
      */
 
-    @GetMapping("/reto/modificar/{id}")
+    @GetMapping("/reto/obtener/{id}")
     public AdminCrearModificarRetoDTO obtenerReto(@PathVariable int id){
         return adminRetoService.obtenerReto(id);
+    }
+
+
+
+    /***
+     * API para crear un nuevo reto
+     * @param reto
+     */
+    @PostMapping("/reto/crear")
+    public void crearReto(@RequestBody AdminCrearModificarRetoDTO reto){
+        adminRetoService.crearReto(reto);
+    }
+
+    /***
+     * API para modificar un reto
+     * @param id
+     * @param dto
+     */
+    @PutMapping("/reto/modificar/{id}")
+    public void modificarReto(@PathVariable int id, @RequestBody AdminCrearModificarRetoDTO dto){
+        adminRetoService.modificarReto(id, dto);
+    }
+
+    /***
+     * API para eliminar un reto por su id
+     * @param id
+     */
+    @DeleteMapping("/reto/eliminar/{id}")
+    public void eliminarReto(@PathVariable Integer id){
+        adminRetoService.eliminarReto(id);
+    }
+
+
+    /***
+     * API que devuelve un entrenamiento por id
+     * @param id
+     */
+    @GetMapping("/entrenamiento/obtener/{id}")
+    public AdminCrearModificarEntrenamientoDTO obtenerEntrenamiento(@PathVariable int id){
+        return adminEntrenamientoService.obtenerEntrenamiento(id);
+    }
+
+    /***
+     * API para modificar un entrenamiento
+     * @param id
+     * @param dto
+     */
+    @PutMapping("/entrenamiento/modificar/{id}")
+    public void modificarEntrenamiento(@PathVariable int id, @RequestBody AdminCrearModificarEntrenamientoDTO dto){
+        adminEntrenamientoService.modificarEntrenamiento(id, dto);
     }
 
 }
