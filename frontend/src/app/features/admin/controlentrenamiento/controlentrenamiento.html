@@ -7,42 +7,42 @@
   <!-- Buscar por ID -->
   <div class="grupo-formulario">
     <label>ID Entrenamiento</label>
-    <input type="text">
+    <input type="text" name="id_entrenamiento" [(ngModel)]="modificarId">
   </div>
 
   <!-- Botón para cargar datos -->
-  <button>Cargar datos</button>
+  <button type="button" (click)="cargarDatos()">Cargar datos</button>
 
   <hr style="margin: 20px 0; border-color: #555;">
   <!-- Campos que se rellenarán tras cargar -->
   <div class="grupo-formulario">
     <label>Nuevo Nombre</label>
-    <input type="text">
+    <input type="text" [(ngModel)]="nuevoNombre">
   </div>
 
   <div class="grupo-formulario">
     <label>Nueva Fecha Inicio</label>
-    <input type="datetime-local">
+    <input type="datetime-local" [(ngModel)]="nuevaFechaInicio">
   </div>
 
   <div class="grupo-formulario">
     <label>Nueva Fecha Fin</label>
-    <input type="datetime-local">
+    <input type="datetime-local" [(ngModel)]="nuevaFechaFin">
   </div>
 
   <div class="grupo-formulario">
     <label>Kilómetros Objetivo</label>
-    <input type="number" step="0.01">
+    <input type="number" step="0.01" [(ngModel)]="nuevoKmObjetivo">
   </div>
 
   <div class="grupo-formulario">
     <label>Tiempo Objetivo (minutos)</label>
-    <input type="number">
+    <input type="number" [(ngModel)]="nuevoTiempoObjetivo">
   </div>
 
   <div class="grupo-formulario">
     <label>Estado</label>
-    <select>
+    <select [(ngModel)]="nuevoCompletado">
       <option value="false">Pendiente</option>
       <option value="true">Completado</option>
     </select>
@@ -50,11 +50,11 @@
 
   <div class="grupo-formulario">
     <label>Eliminado</label>
-    <select>
+    <select [(ngModel)]="nuevoEliminado">
       <option value="false">NO</option>
       <option value="true">SÍ</option>
     </select>
   </div>
 
-  <button>Modificar</button>
+  <button type="button" (click)="modificarEntrenamiento()">Modificar</button>
 </div>

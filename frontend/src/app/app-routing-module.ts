@@ -6,7 +6,8 @@ import {Register} from '@nologed/pages/register/register';
 import {Callback} from '@nologed/pages/callback/callback';
 import {Cafeterias} from '@nologed/pages/cafeterias/cafeterias';
 import { HomeApp } from "@loged/pages/home-app/home-app";
-//import {authGuardGuard} from '@core/guard/auth-guard-guard';
+import { adminGuard } from '@core/guards/admin/admin-guard';
+//import {authGuardGuard} from '@core/guards/auth-guards-guards';
 import {CafeteriaCard} from '@shared/components/cafeteriaCard/cafeteriaCard';
 import { Actividad } from "@loged/components/perfil/actividad/actividad";
 import {Detallecafeteria} from '@shared/pages/detallecafeteria/detallecafeteria';
@@ -33,12 +34,12 @@ const routes: Routes = [
   {path: 'detallecafeteria', component: Detallecafeteria},
 
   //PAGINAS ADMIN
-  {path: 'admin/adminpage', component: Adminpage},
-  {path: 'admin/controlcafeteria', component: Controlcafeteria},
-  {path: 'admin/controlusuario', component: Controlusuario},
-  {path: 'admin/controlreto', component: Controlreto},
-  {path: 'admin/controlentrenamiento', component: Controlentrenamiento},
-  {path: 'admin/controlproducto', component: Controlproducto},
+  {path: 'admin/adminpage', component: Adminpage, canActivate: [adminGuard]},
+  {path: 'admin/controlcafeteria', component: Controlcafeteria, canActivate: [adminGuard]},
+  {path: 'admin/controlusuario', component: Controlusuario, canActivate: [adminGuard]},
+  {path: 'admin/controlreto', component: Controlreto, canActivate: [adminGuard]},
+  {path: 'admin/controlentrenamiento', component: Controlentrenamiento, canActivate: [adminGuard]},
+  {path: 'admin/controlproducto', component: Controlproducto, canActivate: [adminGuard]},
 
 
   //PAGINAS LOGED

@@ -5,8 +5,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.antlr.v4.runtime.misc.NotNull;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.Instant;
+import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,7 +22,7 @@ import java.time.Instant;
 @Table(name = "usuario", catalog = "runffee_0tzu", schema = "app")
 
 //TERMINADA
-public class Usuario {
+public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id")
@@ -28,7 +34,7 @@ public class Usuario {
     @Column (name = "apellidos")
     private String apellidos;
 
-    @Column (name = "correo")
+    @Column (name = "correo", unique = true)
     private String correo;
 
     @Column (name = "contrasena")
@@ -56,7 +62,7 @@ public class Usuario {
     @Column(name = "strava_athleteid")
     private Integer stravaAthleteId;
 
-    @Column(name = "strava_accesstoken")
+    @Column(name = "strava_accesstoken", unique = true)
     private String stravaAccessToken;
 
     @Column(name = "strava_refreshtoken")
@@ -73,4 +79,39 @@ public class Usuario {
 
     @Column (name = "expiresat")
     private Instant expiresat;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return contrasena;
+    }
+
+    @Override
+    public String getUsername() {
+        return correo;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

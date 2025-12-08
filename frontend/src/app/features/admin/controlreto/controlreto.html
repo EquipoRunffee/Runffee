@@ -6,33 +6,33 @@
 
   <div class="grupo-formulario">
     <label>Nombre</label>
-    <input type="text" name="nombre">
+    <input type="text" name="nombre" [(ngModel)]="crearNombre">
   </div>
 
   <div class="grupo-formulario">
     <label>Descripción</label>
-    <input type="text" name="descripcion">
+    <input type="text" name="descripcion" [(ngModel)]="crearDescripcion">
   </div>
 
   <div class="grupo-formulario">
     <label>Fecha de Inicio</label>
-    <input type="date" name="fecha_inicio">
+    <input type="date" name="fecha_inicio" [(ngModel)]="crearFechaInicio">
   </div>
 
   <div class="grupo-formulario">
     <label>Fecha de Caducidad</label>
-    <input type="date" name="fecha_caducidad">
+    <input type="date" name="fecha_caducidad" [(ngModel)]="crearFechaFin">
   </div>
 
   <div class="grupo-formulario">
     <label>Eliminado</label>
-    <select name="eliminado">
+    <select [(ngModel)]="crearEliminado" name="eliminado">
       <option value="false">No</option>
       <option value="true">Sí</option>
     </select>
   </div>
 
-  <button>Crear</button>
+  <button type="button" (click)="crearReto()">Crear</button>
 </div>
 
 <!-- MODIFICAR -->
@@ -42,35 +42,35 @@
   <!-- Buscar por ID -->
   <div class="grupo-formulario">
     <label>ID del Reto</label>
-    <input type="text" name="id_reto">
+    <input type="text" name="id_reto" [(ngModel)]="modificarId">
   </div>
 
-  <button>Cargar datos</button>
+  <button type="button" (click)="cargarDatos()">Cargar datos</button>
 
   <hr style="margin: 20px 0; border-color: #555;">
 
   <!-- Campos que se rellenarán tras cargar -->
   <div class="grupo-formulario">
     <label>Nuevo Nombre</label>
-    <input type="text" name="nuevo_nombre">
+    <input type="text" name="nuevo_nombre" [(ngModel)]="nuevoNombre">
   </div>
 
   <div class="grupo-formulario">
     <label>Nueva Descripción</label>
-    <input type="text" name="nueva_descripcion">
+    <input type="text" name="nueva_descripcion" [(ngModel)]="nuevaDescripcion">
   </div>
 
   <div class="grupo-formulario">
     <label>Nueva Fecha de Inicio</label>
-    <input type="date" name="nueva_fecha_inicio">
+    <input type="date" name="nueva_fecha_inicio" [(ngModel)]="nuevaFechaInicio">
   </div>
 
   <div class="grupo-formulario">
     <label>Nueva Fecha de Caducidad</label>
-    <input type="date" name="nueva_fecha_caducidad">
+    <input type="date" name="nueva_fecha_caducidad" [(ngModel)]="nuevaFechaFin">
   </div>
 
-  <button>Modificar</button>
+  <button type="button" (click)="modificarReto()">Modificar</button>
 </div>
 
 <!-- ELIMINAR -->
@@ -79,8 +79,8 @@
 
   <div class="grupo-formulario">
     <label>ID del Reto</label>
-    <input type="text" name="id_reto_eliminar">
+    <input type="text" name="id_reto_eliminar" [(ngModel)]="eliminarId">
   </div>
 
-  <button>Eliminar</button>
+  <button type="button" (click)="eliminarReto()">Eliminar</button>
 </div>
