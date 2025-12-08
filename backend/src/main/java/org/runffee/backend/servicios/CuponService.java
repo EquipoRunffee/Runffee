@@ -5,12 +5,11 @@ import org.runffee.backend.modelos.Cupon;
 import org.runffee.backend.modelos.TipoCupon;
 import org.runffee.backend.repositorios.ICuponRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CuponService {
@@ -119,8 +118,31 @@ public class CuponService {
         return randomCupon;
     }
 
-    private String generarNombreAleatorio() {
+    public String generarNombreAleatorio() {
         return "CPN-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
     }
 
+    public ResponseEntity<?> obtenerCuponCarrito(Integer idUsuario, String nombreCupon){
+        Cupon cupon = cuponRepository.obtenerCuponCarrito(idUsuario, nombreCupon);
+
+        if(cupon != null){
+            if (cupon.getEliminado()){
+                return ResponseEntity.ok("El cupón fue eliminado.");
+            }
+
+            if (cupon.getUsado()){
+                return ResponseEntity.ok("El cupón fue usado.");
+            }
+
+            if (cupon.getFechaCaducidad().before(new Date())){
+                cupon.setUsado(true);
+                cuponRepository.save(cupon);
+                return ResponseEntity.ok("El cupón fue usado.");
+            }
+
+            return ResponseEntity.ok(cupon);
+        }
+
+        return ResponseEntity.ok("No existe el cupón.");
+    }
 }

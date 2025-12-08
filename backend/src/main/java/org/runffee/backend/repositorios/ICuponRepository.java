@@ -22,4 +22,12 @@ public interface ICuponRepository extends JpaRepository<Cupon, Integer> {
             nativeQuery = true)
     List<Cupon> obtenerCuponPorUsuario(@Param("idUsuario") Integer idUsuario);
 
+    @Query(value = """
+    select c.*
+        from app.cupon c
+        join app.entrenamiento e on e.id_cupon = c.id
+        join app.usuario u on u.id = e.id_usuario
+        where u.id = :idUsuario AND c.nombre = :nombreCupon
+    """, nativeQuery = true)
+    Cupon obtenerCuponCarrito(@Param("idUsuario") Integer idUsuario, @Param("nombreCupon") String nombreCupon);
 }

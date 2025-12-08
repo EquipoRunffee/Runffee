@@ -28,7 +28,7 @@ public interface IValoracionRepository extends JpaRepository<Valoracion, Integer
     BigDecimal obtenerMediaValoracionCafeteria(@Param("cafeteriaId") Integer cafeteriaId);
 
     @Query(value = """
-    SELECT v.titulo as titulo, v.cantidad as cantidad, v.descripcion as descripcion ,v.eliminado  as eliminado, c.nombre as nombreCafeteria
+    SELECT DISTINCT v.titulo as titulo, v.cantidad as cantidad, v.descripcion as descripcion ,v.eliminado  as eliminado, c.nombre as nombreCafeteria
     FROM app.valoracion v   
     JOIN app.pedido pe ON pe.id_valoracion = v.id
     JOIN app.entrenamiento en ON en.id_pedido = pe.id
