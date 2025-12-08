@@ -34,7 +34,7 @@ public class Usuario implements UserDetails {
     @Column (name = "apellidos")
     private String apellidos;
 
-    @Column (name = "correo")
+    @Column (name = "correo", unique = true)
     private String correo;
 
     @Column (name = "contrasena")
@@ -62,7 +62,7 @@ public class Usuario implements UserDetails {
     @Column(name = "strava_athleteid")
     private Integer stravaAthleteId;
 
-    @Column(name = "strava_accesstoken")
+    @Column(name = "strava_accesstoken", unique = true)
     private String stravaAccessToken;
 
     @Column(name = "strava_refreshtoken")
