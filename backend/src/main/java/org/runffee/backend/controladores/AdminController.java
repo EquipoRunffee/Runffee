@@ -4,13 +4,15 @@ import org.runffee.backend.DTO.AdminCrearModificarCafeteriaDTO;
 import org.runffee.backend.DTO.AdminCrearModificarEntrenamientoDTO;
 import org.runffee.backend.DTO.AdminCrearModificarProductoDTO;
 import org.runffee.backend.DTO.AdminCrearModificarRetoDTO;
-
 import org.runffee.backend.modelos.Producto;
-
 import org.runffee.backend.servicios.AdminCrearModificarCafeteriaService;
 import org.runffee.backend.servicios.AdminCrearModificarEntrenamientoService;
 import org.runffee.backend.servicios.AdminCrearModificarProductoService;
 import org.runffee.backend.servicios.AdminCrearModificarRetoService;
+import org.runffee.backend.DTO.AdminModificarUsuarioDTO;
+import org.runffee.backend.modelos.Producto;
+import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,15 +26,17 @@ public class AdminController {
 
     @Autowired
     private AdminCrearModificarProductoService adminProductoService;
-
     @Autowired
     private AdminCrearModificarCafeteriaService adminCafeteriaService;
-
     @Autowired
     private AdminCrearModificarRetoService adminRetoService;
-
+    @Autowired
+    private AdminModificarUsuarioService adminModificarUsuarioService;
     @Autowired
     private AdminCrearModificarEntrenamientoService adminEntrenamientoService;
+
+
+    //GESTIÓN - PRODUCTOS
 
     /***
      * API para crear un nuevo producto
@@ -72,6 +76,8 @@ public class AdminController {
         adminProductoService.eliminarProducto(id);
     }
 
+
+    //GESTIÓN - CAFETERÍAS
 
     /***
      * API que devuelve la cafeteria por su id
@@ -113,6 +119,8 @@ public class AdminController {
     }
 
 
+    //GESTIÓN - RETOS
+
     /***
      * API que devuelve el reto por su id
      * @param id
@@ -122,8 +130,6 @@ public class AdminController {
     public AdminCrearModificarRetoDTO obtenerReto(@PathVariable int id){
         return adminRetoService.obtenerReto(id);
     }
-
-
 
     /***
      * API para crear un nuevo reto
@@ -154,6 +160,8 @@ public class AdminController {
     }
 
 
+    //GESTIÓN - ENTRENAMIENTOS
+
     /***
      * API que devuelve un entrenamiento por id
      * @param id
@@ -173,4 +181,36 @@ public class AdminController {
         adminEntrenamientoService.modificarEntrenamiento(id, dto);
     }
 
+
+    //GESTIÓN - USUARIOS
+
+    /**
+     * API que devuelve el usuario por su id
+     * @param id
+     * @return
+     */
+    @GetMapping("/usuario/obtener/{id}")
+    public AdminModificarUsuarioDTO obtenerUsuarioPorId(@PathVariable int id) {
+        return adminModificarUsuarioService.obtenerUsuario(id);
+    }
+
+    /**
+     * API para modificar un usuario por su id
+     * @param id
+     * @param dto
+     */
+    @PutMapping("/usuario/modificar/{id}")
+    public void modificarUsuario(@PathVariable int id, @RequestBody AdminModificarUsuarioDTO dto) {
+        adminModificarUsuarioService.modificarUsuario(id, dto);
+    }
+
+    /**
+     * API para eliminar un usuario por su id
+     * @param id
+     */
+    @DeleteMapping("/usuario/eliminar/{id}")
+    public void eliminarUsuario(@PathVariable Integer id){
+        adminModificarUsuarioService.eliminarUsuario(id);
+    }
 }
+

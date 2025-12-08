@@ -42,7 +42,7 @@ public class AuthService {
         usuario.setContrasena(passwordEncoder.encode(contrasena));
 
         //Creamos el token interno
-        String accessToken = jwtService.genenrarToken(usuario.getId(), usuario.getCorreo());
+        String accessToken = jwtService.generarToken(usuario.getId(), usuario.getCorreo(), usuario.getRole().name());
         String refreshToken = UUID.randomUUID().toString();
         Instant expiresAt = Instant.now().plus(15, ChronoUnit.DAYS);
 
@@ -100,6 +100,7 @@ public class AuthService {
         respuesta.put("message", "Usuario registrado correctamente");
         respuesta.put("accessToken", accessToken);
         respuesta.put("refreshToken", refreshToken);
+        respuesta.put("role", usuario.getRole().name());
         respuesta.put("expiresAt", expiresAt);
         return respuesta;
     }
@@ -112,7 +113,7 @@ public class AuthService {
             throw new RuntimeException("Correo o contraseña incorrectos.");
         }
 
-        String accessToken = jwtService.genenrarToken(usuario.getId(), usuario.getCorreo());
+        String accessToken = jwtService.generarToken(usuario.getId(), usuario.getCorreo(), usuario.getRole().name());
         String refreshToken = UUID.randomUUID().toString();
 
         usuario.setAccesstoken(accessToken);
@@ -124,6 +125,7 @@ public class AuthService {
         respuesta.put("message", "Login exitoso");
         respuesta.put("accessToken", accessToken);
         respuesta.put("refreshToken", refreshToken);
+        respuesta.put("role", usuario.getRole().name());
         return respuesta;
     }
 }
