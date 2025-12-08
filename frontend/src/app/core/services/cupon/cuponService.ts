@@ -15,4 +15,10 @@ export class CuponService {
     let apiUrl= api + '/cupon/cuponesusuario';
     return this.http.get<any>(apiUrl);
   }
+
+  getCuponCarrito(nombreCupon: string): Observable<any>{
+    const api = environment.apiUrl;
+    let apiUrl= api + '/cupon/cuponcarrito/' + nombreCupon;
+    return this.http.get<any>(apiUrl);
+  }
 }

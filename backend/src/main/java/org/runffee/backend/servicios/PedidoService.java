@@ -84,7 +84,7 @@ public class PedidoService {
     public ResponseEntity<?> crearPedidoCarrito(CrearPedidoDTO carrito, Usuario usuario) {
 
         if(entrenamientoRepository.existenEntrenamientosPendientes(usuario.getId())){
-            return ResponseEntity.ok(Map.of("Forbidden", "Hay un entrenamiento pendiente."));
+            return ResponseEntity.ok(Map.of("status", "forbidden","texto", "Tienes un entrenamiento pendiente..."));
         }
 
         Entrenamiento entrenamiento = new Entrenamiento();
@@ -104,13 +104,22 @@ public class PedidoService {
             precioTotal += productoRepository.findById(producto.getId()).get().getPrecio() * producto.getCantidad();
         }
 
+        if (carrito.getNombreCupon() != null){
+            Cupon cupon = cuponRepository.findByNombre(carrito.getNombreCupon());
+            if(cupon != null){
+                cupon.setUsado(true);
+                cuponRepository.save(cupon);
+                pedido.setCuponAplicado(cupon.getNombre());
+            } else {
+                return ResponseEntity.ok(Map.of("status", "forbidden","texto", "Hubo un problema creando el pedido...."));
+            }
+        }
+
         pedido.setPrecioTotal(precioTotal);
         pedido.setEstado(EstadoPedido.PENDIENTE);
         pedido.setEliminado(false);
         pedidoRepository.save(pedido);
 
-        System.out.println(carrito.getTiempoObjetivo());
-        System.out.println(carrito.getKmObjetivo());
         if(carrito.getIdReto() == null && carrito.getKmObjetivo() != null && carrito.getTiempoObjetivo() != null &&
                 carrito.getKmObjetivo() > 0 && carrito.getTiempoObjetivo() > 0){
             entrenamiento.setKmObjetivo(carrito.getKmObjetivo());
@@ -121,7 +130,7 @@ public class PedidoService {
             entrenamiento.setKmObjetivo(reto.getKm());
             entrenamiento.setTiempoObjetivo(reto.getTiempo());
         } else{
-            return ResponseEntity.ok(Map.of("Forbidden", "No se pudo crear el objetivo."));
+            return ResponseEntity.ok(Map.of("status", "forbidden","texto", "No se pudo crear el objetivo."));
         }
 
         entrenamiento.setPedido(pedido);
@@ -139,13 +148,13 @@ public class PedidoService {
             lineaPedidoRepository.save(linea);
         }
 
-        return ResponseEntity.ok("Pedido creado correctamente");
+        return ResponseEntity.ok(Map.of("status", "done","texto", "Pedido creado correctamente"));
     }
 
     public ResponseEntity<?> entregarPedido(Integer idPedido, Usuario usuario) {
         Pedido pedido = pedidoRepository.findById(idPedido).orElse(null);
         if (pedido == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Forbidden", "No se encontro el pedido."));
+            return ResponseEntity.ok(Map.of("status", "forbidden","texto", "No se encontro el pedido."));
         }
         pedido.setEstado(EstadoPedido.ENTREGADO);
         pedidoRepository.save(pedido);

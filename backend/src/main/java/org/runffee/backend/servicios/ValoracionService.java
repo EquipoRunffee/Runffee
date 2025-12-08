@@ -85,9 +85,9 @@ public class ValoracionService {
     }
 
     public List<ValoracionDTO> obtenerValoracionEntrenamiento(Integer idUsuario) {
-        System.out.println("Realizando Servicio");
-            return valoracionRepository.obtenerValoracionEntrenamiento(idUsuario);
-        }
+        System.out.println(valoracionRepository.obtenerValoracionEntrenamiento(idUsuario));
+        return valoracionRepository.obtenerValoracionEntrenamiento(idUsuario);
+    }
 
     public ResponseEntity<?> enviarValoracion(ValoracionEnviarDTO valoracion) {
 

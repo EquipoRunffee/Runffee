@@ -7,7 +7,7 @@ import {Valoraciones} from '@core/models/valoraciones';
 
 @Component({
   selector: 'app-valoraciones',
-  imports: [RouterModule, ValoracionCard, NgForOf],
+  imports: [RouterModule, ValoracionCard],
   templateUrl: './valoraciones.html',
   styleUrls: ['./valoraciones.css'],
 })

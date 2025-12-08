@@ -105,4 +105,9 @@ export class CarritoService {
   getTiempoObjetivo() {
     return this.carrito.tiempoObjetivo;
   }
+
+  setNombreCupon(nombreCupon: string | null) {
+    this.carrito.nombreCupon = nombreCupon;
+    this.actualizarCarrito();
+  }
 }

@@ -5,6 +5,7 @@ import org.runffee.backend.modelos.Cupon;
 import org.runffee.backend.servicios.CuponService;
 import org.runffee.backend.servicios.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -75,6 +76,20 @@ public class CuponController {
             }
             return ResponseEntity.ok(cuponService.obtenerCuponPorUsuario(idUsuario));
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No existe token");
+    }
+
+    @GetMapping("/cuponcarrito/{nombreCupon}")
+    public ResponseEntity<?> obtenerCuponCarrito(@RequestHeader(value = "Authorization", required = false) String authHeader, @PathVariable String nombreCupon){
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+            return cuponService.obtenerCuponCarrito(idUsuario, nombreCupon);
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No existe token");
     }
 }
