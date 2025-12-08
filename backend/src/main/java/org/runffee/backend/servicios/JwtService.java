@@ -25,10 +25,11 @@ public class JwtService {
     @Autowired
     private IUsuarioRepository usuarioRepository;
 
-    public String genenrarToken(Integer id, String correo){
+    public String generarToken(Integer id, String correo, String role){
         return Jwts.builder()
                 .setSubject(String.valueOf(id))
                 .claim("correo", correo)
+                .claim("role", role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(Keys.hmacShaKeyFor(jwtSecretKey.getBytes(StandardCharsets.UTF_8)))
@@ -37,7 +38,10 @@ public class JwtService {
 
     public Boolean validarToken(String token){
         try{
-            Jwts.parserBuilder().setSigningKey(jwtSecretKey.getBytes()).build().parseClaimsJws(token);
+            Jwts.parserBuilder()
+                    .setSigningKey(jwtSecretKey.getBytes())
+                    .build()
+                    .parseClaimsJws(token);
             return true;
         } catch (Exception e){
             return false;
@@ -62,7 +66,7 @@ public class JwtService {
         }
 
         // Generar nuevo access token
-        String nuevoAccessToken = genenrarToken(usuario.getId(), usuario.getCorreo());
+        String nuevoAccessToken = generarToken(usuario.getId(), usuario.getCorreo(), usuario.getRole().name());
 
         // Guardar el nuevo token en la base de datos
         usuario.setAccesstoken(nuevoAccessToken);
