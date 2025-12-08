@@ -1,6 +1,7 @@
 package org.runffee.backend.servicios;
 
 import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.modelos.UsuarioRole;
 import org.runffee.backend.repositorios.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -30,16 +31,18 @@ public class AuthService {
     public Map<String, Object> registrarUsuario(String correo, String contrasena, String stravaAccessToken) {
 
         //Obtenemos el usuario por su token
-        Usuario usuario = usuarioRepository.findByStravaAccessToken(stravaAccessToken);
+        Usuario usuario = usuarioRepository.findByStravaAccessToken(stravaAccessToken)
+                .orElseThrow(() -> new RuntimeException("No existe un usuario asociado a este token de Strava"));
 
         //Si el usuario obtenido ya tiene un correo significa que ya estaba registrado
         if (usuario.getCorreo() != null) {
             throw new RuntimeException("El correo ya está registrado");
         }
 
-        //Guardamos el correo y contraseña del usuario
+        //Guardamos el correo, contraseña y rol del usuario
         usuario.setCorreo(correo);
         usuario.setContrasena(passwordEncoder.encode(contrasena));
+        usuario.setRole(UsuarioRole.CLIENTE);
 
         //Creamos el token interno
         String accessToken = jwtService.generarToken(usuario.getId(), usuario.getCorreo(), usuario.getRole().name());
@@ -111,6 +114,10 @@ public class AuthService {
 
         if(!passwordEncoder.matches(password, usuario.getContrasena())) {
             throw new RuntimeException("Correo o contraseña incorrectos.");
+        }
+
+        if (usuario.getRole() == null) {
+            throw new RuntimeException("El usuario no tiene un rol asignado.");
         }
 
         String accessToken = jwtService.generarToken(usuario.getId(), usuario.getCorreo(), usuario.getRole().name());

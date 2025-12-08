@@ -21,7 +21,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     Optional<Usuario> findByStravaAthleteId(Integer stravaAthleteid);
 
     Optional<Usuario> findByCorreo(String correo);
-    Usuario findByStravaAccessToken(String stravaAccessToken);
+    Optional<Usuario> findByStravaAccessToken(String stravaAccessToken);
 
     @Query(value = "select u from Usuario u where u.refreshtoken = :refreshToken")
     Usuario obtenerUsuarioByRefreshToken(@Param("refreshToken") String refreshToken);
