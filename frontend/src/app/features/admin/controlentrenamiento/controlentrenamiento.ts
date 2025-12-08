@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { AdminService } from '@core/services/admin/adminService';
 import { adminEntrenamiento } from '@core/models/adminEntrenamiento';
@@ -23,13 +23,26 @@ export class Controlentrenamiento {
   nuevoCompletado = 'false';
   nuevoEliminado = 'false';
 
+// POPUP
+  mostrarPopUp = signal(false);
+  textoPopUp = signal('');
 
   constructor(private adminService: AdminService) {}
+
+  // FUNCION PARA MOSTRAR MENSAJES EN POPUP
+  mostrarMensaje(mensaje: string) {
+    this.textoPopUp.set(mensaje);
+    this.mostrarPopUp.set(true);
+
+    setTimeout(() => {
+      this.mostrarPopUp.set(false);
+    }, 3000);
+  }
 
 // CARGAR DATOS
   cargarDatos() {
     if (!this.modificarId || isNaN(this.modificarId)) {
-      alert('Introduce un ID de entrenamiento válido');
+      this.mostrarMensaje('Introduce un ID de entrenamiento válido');
       return;
     }
 
@@ -45,7 +58,7 @@ export class Controlentrenamiento {
       },
       err => {
         console.error('Error al cargar entrenamiento', err);
-        alert('Error al cargar entrenamiento. Revisa la consola.');
+        this.mostrarMensaje('Error al cargar entrenamiento. Revisa la consola.');
       }
     );
 
@@ -54,7 +67,7 @@ export class Controlentrenamiento {
 // MODIFICAR ENTRENAMIENTO
   modificarEntrenamiento() {
     if (!this.modificarId || isNaN(this.modificarId)) {
-      alert('Introduce un ID de entrenamiento válido');
+      this.mostrarMensaje('Introduce un ID de entrenamiento válido');
       return;
     }
 
@@ -69,10 +82,10 @@ export class Controlentrenamiento {
     );
 
     this.adminService.modificarEntrenamiento(this.modificarId, dto).subscribe(
-      () => alert('Entrenamiento modificado correctamente'),
+      () => this.mostrarMensaje('Entrenamiento modificado correctamente'),
       err => {
         console.error('Error modificando entrenamiento', err);
-        alert('Error modificando entrenamiento. Revisa la consola.');
+        this.mostrarMensaje('Error modificando entrenamiento. Revisa la consola.');
       }
     );
 

@@ -117,3 +117,10 @@
 
   <button type="button" (click)="eliminarCafeteria()">Eliminar</button>
 </div>
+
+<!-- POPUP DE MENSAJES -->
+@if (mostrarPopUp()) {
+  <div id="mensajes-popup">
+    <p>{{ textoPopUp() }}</p>
+  </div>
+}

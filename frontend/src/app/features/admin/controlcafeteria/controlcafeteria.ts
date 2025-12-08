@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {AdminService} from '@core/services/admin/adminService';
 import {adminCafeteria} from '@core/models/adminCafeteria';
@@ -37,7 +37,22 @@ export class Controlcafeteria{
   // CAMPO - ELIMINAR CAFETERÍA
   eliminarId: number | null = null;
 
+  // POPUP
+  mostrarPopUp = signal(false);
+  textoPopUp = signal('');
+
   constructor(private adminService: AdminService) {}
+
+
+  // FUNCION PARA MOSTRAR MENSAJES EN POPUP
+  mostrarMensaje(mensaje: string) {
+    this.textoPopUp.set(mensaje);
+    this.mostrarPopUp.set(true);
+
+    setTimeout(() => {
+      this.mostrarPopUp.set(false);
+    }, 3000);
+  }
 
   //FUNCIÓN PARA CREAR CAFETERIA
   crearCafeteria() {
@@ -85,7 +100,7 @@ export class Controlcafeteria{
   cargarDatos() {
 
     if (!this.modificarId || isNaN(this.modificarId)) {
-      return alert('Introduce un ID válido');
+      return this.mostrarMensaje('Introduce un ID válido');
     }
 
     this.adminService.obtenerCafeteria(this.modificarId).subscribe(
@@ -103,7 +118,7 @@ export class Controlcafeteria{
       },
       err => {
         console.error('Error al cargar cafetería', err);
-        alert('Error al cargar cafetería. Revisa la consola.');
+        this.mostrarMensaje('Error al cargar cafetería. Revisa la consola.');
       }
     );
   }
@@ -113,13 +128,13 @@ export class Controlcafeteria{
   modificarCafeteria() {
 
     if (!this.modificarId || isNaN(this.modificarId))
-      return alert('Introduce un ID válido');
+      return this.mostrarMensaje('Introduce un ID válido');
 
     if (this.nuevaLat === null || isNaN(this.nuevaLat))
-      return alert('Introduce una latitud válida');
+      return this.mostrarMensaje('Introduce una latitud válida');
 
     if (this.nuevaLng === null || isNaN(this.nuevaLng))
-      return alert('Introduce una longitud válida');
+      return this.mostrarMensaje('Introduce una longitud válida');
 
     const cafeteria = {
       nombre: this.nuevoNombre.trim(),
@@ -132,10 +147,10 @@ export class Controlcafeteria{
     };
 
     this.adminService.modificarCafeteria(this.modificarId, cafeteria).subscribe(
-      () => alert('Cafetería modificada correctamente'),
+      () => this.mostrarMensaje('Cafetería modificada correctamente'),
       err => {
         console.error('Error modificando cafetería', err);
-        alert('Error modificando cafetería. Revisa la consola.');
+        this.mostrarMensaje('Error modificando cafetería. Revisa la consola.');
       }
     );
   }
@@ -145,17 +160,18 @@ export class Controlcafeteria{
   eliminarCafeteria() {
 
     if (!this.eliminarId) {
-      return alert('Introduce un ID válido');
+      this.mostrarMensaje('Introduce un ID válido');
+      return;
     }
 
     this.adminService.eliminarCafeteria(this.eliminarId).subscribe(
       () => {
-        alert('Cafetería eliminada correctamente');
+        this.mostrarMensaje('Cafetería eliminada correctamente');
         this.eliminarId = null;
       },
       err => {
         console.error('Error eliminando cafetería', err);
-        alert('Error al eliminar la cafetería');
+        this.mostrarMensaje('Error al eliminar la cafetería');
       }
     );
   }
