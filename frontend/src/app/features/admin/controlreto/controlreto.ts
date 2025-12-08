@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ]
 })
-class Controlreto {
+export class Controlreto {
 
 // CAMPOS - CREAR RETO
   crearNombre = '';
@@ -150,5 +150,3 @@ class Controlreto {
 
   }
 }
-
-export default Controlreto
