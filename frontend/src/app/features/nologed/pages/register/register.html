@@ -93,5 +93,16 @@
     <!--</form>-->
   </form>
 </div>
+
+<div id="otpModal" class="modal" [class.show]="mostrarOtpModal">
+  <div class="modal-content">
+    <span class="close" (click)="cerrarModal()">&times;</span>
+    <h3>Verifica tu cuenta</h3>
+    <p>Introduce el código que enviamos a tu correo {{usuario.correo}}</p>
+    <input type="text" [(ngModel)]="otp" placeholder="Código OTP" maxlength="6">
+    <button (click)="verificarOtp()">Verificar</button>
+    <p *ngIf="mensajeOtp" [ngClass]="{'error': errorOtp, 'success': !errorOtp}">{{mensajeOtp}}</p>
+  </div>
+</div>
 </body>
 </html>

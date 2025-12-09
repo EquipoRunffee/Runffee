@@ -66,4 +66,34 @@ public class CorreoService {
             throw ex;
         }
     }
+
+    public void verificacion(CorreoDTO correo, String otp) throws IOException {
+        Email from = new Email("runffee@gmail.com");
+        String subject = "Verifica tu cuenta en Runffee";
+        Email to = new Email(correo.getCorreo());
+
+        ClassPathResource resource = new ClassPathResource("templates/confirmacionCorreo.html");
+        String html;
+        try (InputStream inputStream = resource.getInputStream()) {
+            html = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        }
+
+        html = html.replace("{{nombre}}", correo.getNombre());
+        html = html.replace("{{otp}}", otp);
+
+        Content content = new Content("text/html", html);
+        Mail mail = new Mail(from, subject, to, content);
+
+        SendGrid sg = new SendGrid(apiKey);
+        Request request = new Request();
+
+        try {
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+            Response response = sg.api(request);
+        } catch (IOException ex) {
+            throw ex;
+        }
+    }
 }
