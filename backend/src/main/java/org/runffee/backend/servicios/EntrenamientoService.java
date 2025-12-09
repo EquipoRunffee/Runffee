@@ -4,6 +4,7 @@ import org.runffee.backend.DTO.EntrenamientoDTO;
 import org.runffee.backend.DTO.EntrenamientoDetalleDTO;
 import org.runffee.backend.DTO.EntrenamientoPerfilDTO;
 import org.runffee.backend.DTO.ValoracionDTO;
+import org.runffee.backend.modelos.Cupon;
 import org.runffee.backend.modelos.Entrenamiento;
 import org.runffee.backend.modelos.EstadoPedido;
 import org.runffee.backend.modelos.Usuario;
@@ -12,6 +13,8 @@ import org.runffee.backend.repositorios.IEntrenamientoRepository;
 import org.runffee.backend.repositorios.ILineaPedidoRepository;
 import org.runffee.backend.repositorios.IPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +35,8 @@ public class EntrenamientoService {
     private LineaPedidoService lineaPedidoService;
     @Autowired
     private ICuponRepository cuponRepository;
-
+    @Autowired
+    private CuponService cuponService;
     @Autowired
     private StravaService stravaService;
     @Autowired
@@ -120,9 +124,9 @@ public class EntrenamientoService {
 
         stravaService.validarRenovarToken(usuario.getId());
 
-        Entrenamiento entrenamiento = entrenamientoRepository.findById(idEntrenamiento).get();
+        Entrenamiento entrenamiento = entrenamientoRepository.findById(idEntrenamiento).orElse(null);
 
-        if(!entrenamiento.getCompletado() && !entrenamiento.getEliminado()){
+        if(entrenamiento != null && !entrenamiento.getCompletado() && !entrenamiento.getEliminado()){
             entrenamiento.setCompletado(true);
             Object respuesta = stravaService.obtenerEntrenamientosAtleta(usuario.getStravaAccessToken());
 
@@ -134,11 +138,11 @@ public class EntrenamientoService {
                         .orElse(null);
 
                 if(ultimo==null){
-                    return ResponseEntity.ok(Map.of("estado", "Error: no se encuentra el entrenamiento"));
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("estado", "Error: no se encuentra el entrenamiento"));
                 }
 
                 if(entrenamientoRepository.existsEntrenamientoByIdStrava(((Number) ultimo.get("id")).intValue())){
-                    return ResponseEntity.ok(Map.of("estado", "Error: este entrenamiento ya está registrado"));
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("estado", "Error: este entrenamiento ya está registrado"));
                 }
 
                 entrenamiento.setIdStrava(((Number) ultimo.get("id")).intValue());
@@ -154,17 +158,25 @@ public class EntrenamientoService {
 
                 entrenamiento.setUrl_mapa(summaryPolyline);
 
-                if(entrenamiento.getStravaKm() < entrenamiento.getKmObjetivo() || entrenamiento.getStravaTiempo() > entrenamiento.getTiempoObjetivo()){
+                if(entrenamiento.getStravaKm() >= entrenamiento.getKmObjetivo() &&
+                        entrenamiento.getStravaTiempo() <= entrenamiento.getTiempoObjetivo()){
                     entrenamiento.getPedido().setEstado(EstadoPedido.CANCELADO);
                 } else {
                     entrenamiento.getPedido().setEstado(EstadoPedido.APROBADO);
+                    Cupon cupon = cuponService.cuponRandom();
+                    entrenamiento.setCupon(cupon);
+                    cuponRepository.save(cupon);
                 }
                 iPedidoRepository.save(entrenamiento.getPedido());
                 entrenamientoRepository.save(entrenamiento);
             }
         }
 
-        return ResponseEntity.ok(Map.of("completado", entrenamiento.getCompletado(), "estadoPedido", entrenamiento.getPedido().getEstado()));
+        return ResponseEntity.ok(Map.of("completado", entrenamiento.getCompletado(), "estadoPedido", entrenamiento.getPedido().getEstado(), "cuponObtenido", entrenamiento.getCupon() ));
 
+    }
+
+    public EntrenamientoDetalleDTO obtenerUltimoEntrenamiento(Usuario usuario) {
+        return entrenamientoRepository.obtenerEntrenamientoDetalles(usuario.getId()).getFirst();
     }
 }

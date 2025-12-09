@@ -4,7 +4,7 @@ import lombok.Data;
 import org.runffee.backend.modelos.TipoProducto;
 
 /**
- * DTO con todos los datos del producto
+ * DTO con datos para poder crear / modificar o eliminar un producto
  */
 @Data
 public class AdminCrearModificarProductoDTO {

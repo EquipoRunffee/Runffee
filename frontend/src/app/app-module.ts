@@ -43,7 +43,7 @@ import { EntrenamientoCard } from './shared/components/entrenamiento-card/entren
     CafeteriaCard,
     CardReto,
     ValoracionCard,
-    EntrenamientoCard
+    EntrenamientoCard,
   ],
   exports: [
     Footer,

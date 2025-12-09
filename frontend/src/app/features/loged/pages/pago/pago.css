@@ -1,161 +1,245 @@
-.contenedor {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #E3FF68;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-.pago,
-.popUp_contenido{
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-  padding: 1rem 2rem;
-  max-width: 500px;
-  width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  border-radius: 1rem;
-  background-color: white;
-  margin: 2rem;
-}
-
-.pago_intro img{
-  width: 25px;
-  height: auto;
-}
-
-.pago_titulo h1,
-.popUp_contenido h1{
+h1,h2,h3{
   font-family: "Montserrat", sans-serif;
-  font-size: 25px;
-}
-
-.pago_titulo h3,
-.popUp_contenido h3{
-  font-family: "Inter", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-
-.pago_rellenar{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  text-align: start;
-}
-
-.pago_rellenar_largo,
-.pago_rellenar_corto{
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.pago_rellenar_largo label,
-.pago_rellenar_corto label{
-  font-family: "Inter", sans-serif;
-  font-size: 12.5px;
-  margin-bottom: 0.5rem;
 }
 
 input{
-  border-radius: 5px;
-  border: 1px solid gray;
-  padding: 0.35rem 0.5rem;
-  font-size: 15px;
-}
-
-input:focus {
-  border-color: gray;
-  outline: none;
-}
-
-.pago_rellenar_largo input{
-  width: 225px;
-}
-
-.pago_rellenar_corto input{
-  width: 125px;
-}
-
-.pago_boton button,
-.popUp_boton button{
-  font-family: "Inter", sans-serif;
-  font-size: 12.5px;
-  border: none;
+  border: 1px solid whitesmoke;
   border-radius: 10px;
-  background-color: #E3FF68;
-  padding: 0.5rem 1rem;
+  padding: 15px;
+  width: 100%;
+}
+
+button{
+  font-size: large;
+  width: 100%;
+  border: none;
+  padding: 0.75rem;
+  background-color: var(--color-secundario-negro);
+  color: var(--color-fosforito);
+  border-radius: 10px;
+  font-weight: 700;
   cursor: pointer;
 }
 
-#popUp{
+button:hover{
+  background-color: #3A3A3A;
+}
+
+.contenedor{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1200px;
+  justify-self: center;
+  margin: 1rem;
+}
+
+.volver{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-secundario-negro);
+  justify-self: flex-start;
+}
+
+.volver>img{
+  width: 7px;
+}
+
+.resumen-pedido,.anadir-descuento, .metodo-pago{
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid whitesmoke;
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--color-fosforito);
+}
+
+.resumen-pedido{
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.producto{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: rgba(241, 255, 190, 0.83);
+}
+
+.producto>div{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.producto-regalo{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: rgba(241, 255, 190, 0.83);
+}
+
+.regalo-img{
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.regalo-img img{
+  width: auto;
+  height: 100%;
+}
+
+.nombre-producto{
+  font-size: large;
+  font-weight: 500;
+}
+
+.precio-producto{
+  font-size: large;
+  font-weight: 700;
+}
+
+.anadir-descuento{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.mensaje-cupon-aplicado{
+  background-color: rgba(241, 255, 190, 0.83);
+  padding: 1rem;
+  width: 100%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.metodo-pago{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.datos-tarjeta{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.totales{
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.totales span{
+  font-weight: bold;
+  font-size: large;
+}
+
+.total{
+  font-weight: 800;
+  font-size: large;
+}
+
+.total span{
+  font-size: xx-large;
+  font-weight: 900;
+}
+
+#popup{
   position: fixed;
   top: 0;
-  right: 0;
-  z-index: 100;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   width: 100%;
-  height: 100svh;
-  display: none;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.popup-contenedor{
+  width: 100%;
+  max-width: 500px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(89, 89, 89, 0.58);
+  gap: 1rem;
+  padding: 2rem;
+  margin: 1rem;
 }
 
-.popUp_contenido{
+.popup-logo{
+  width: 150px;
+}
+
+
+
+#mensajes-popup{
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
-.popUp_contenido h3{
-  margin: 0;
-}
-
-.popUp_contenido img{
-  width: 250px;
-}
-
-@media (max-width: 500px){
-  .pago_titulo h1,
-  .popUp_contenido h1{
-    font-size: 20px;
-  }
-
-  .pago_titulo h3,
-  .popUp_contenido h3{
-    font-size: 10px;
-    margin-bottom: 1rem;
-  }
-
-  .pago_rellenar{
-    gap: 0.5rem;
-  }
-
-  input{
-    font-size: 10px;
-  }
-
-  .pago_rellenar_largo input{
-    width: 100%;
-  }
-
-  .pago_rellenar_corto input{
-    width: 100%;
-  }
-
-  .pago_rellenar_largo label,
-  .pago_rellenar_corto label{
-    font-size: 7.5px;
-  }
-
-  .popUp_contenido{
-    max-width: 300px;
-    width: 100%;
-  }
-
-  .popUp_contenido img{
-    width: 150px;
-  }
+#mensajes-popup>p{
+  padding: 2rem;
+  min-width: 200px;
+  max-width: 400px;
+  color: var(--color-fosforito);
+  background-color: var(--color-secundario-negro);
+  border-radius: 10px;
+  margin: 1rem;
 }

@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import { AdminService } from "@core/services/admin/adminService";
 import {adminProducto} from '@core/models/adminProducto';
 import {FormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-controlproducto',
@@ -9,7 +10,8 @@ import {FormsModule} from '@angular/forms';
   templateUrl: './controlproducto.html',
   styleUrl: './controlproducto.css',
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink
   ]
 })
 export class Controlproducto {
@@ -37,14 +39,28 @@ export class Controlproducto {
   //CAMPO - ELIMINAR PRODUCTO
   eliminarId: number | null = null;
 
+  // POPUP
+  mostrarPopUp = signal(false);
+  textoPopUp = signal('');
+
   constructor(private adminService: AdminService) {}
+
+  // FUNCION PARA MOSTRAR MENSAJES EN POPUP
+  mostrarMensaje(mensaje: string) {
+    this.textoPopUp.set(mensaje);
+    this.mostrarPopUp.set(true);
+
+    setTimeout(() => {
+      this.mostrarPopUp.set(false);
+    }, 3000);
+  }
 
   //FUNCIÓN PARA CREAR PRODUCTO
   crearProducto() {
-    if (!this.crearNombre.trim()) return alert('Introduce un nombre válido');
-    if (!this.crearTipoProducto.trim()) return alert('Introduce un tipo de producto válido');
+    if (!this.crearNombre.trim()) return this.mostrarMensaje('Introduce un nombre válido');
+    if (!this.crearTipoProducto.trim()) return this.mostrarMensaje('Introduce un tipo de producto válido');
     if (!this.crearIdCafeteria || isNaN(this.crearIdCafeteria))
-      return alert('Introduce un ID de cafetería válido');
+      return this.mostrarMensaje('Introduce un ID de cafetería válido');
 
     const dto: adminProducto = new adminProducto(
       this.crearDescripcion.trim(),
@@ -58,12 +74,12 @@ export class Controlproducto {
 
     this.adminService.crearProducto(dto).subscribe(
       () => {
-        alert('Producto creado correctamente');
+        this.mostrarMensaje('Producto creado correctamente');
         this.limpiarCrear();
       },
       err => {
         console.error('Error al crear producto', err);
-        alert('Error al crear producto. Revisa la consola.');
+        this.mostrarMensaje('Error al crear producto. Revisa la consola.');
       }
     );
   }
@@ -82,7 +98,7 @@ export class Controlproducto {
   cargarDatos() {
 
     if (!this.modificarId || isNaN(this.modificarId)) {
-      return alert('Introduce un ID de producto válido');
+      return this.mostrarMensaje('Introduce un ID de producto válido');
     }
 
     this.adminService.obtenerProducto(this.modificarId).subscribe(
@@ -100,15 +116,15 @@ export class Controlproducto {
       },
       err => {
         console.error('Error al cargar producto', err);
-        alert('Error al cargar producto. Revisa la consola.');
+        this.mostrarMensaje('Error al cargar producto. Revisa la consola.');
       }
     );
   }
 
   //FUNCIÓN PARA MODIFICAR
   modificarProducto() {
-    if (!this.modificarId || isNaN(this.modificarId)) return alert('Introduce un ID de producto válido');
-    if (!this.nuevoIdCafeteria || isNaN(this.nuevoIdCafeteria)) return alert('Introduce un ID de cafetería válido');
+    if (!this.modificarId || isNaN(this.modificarId)) return this.mostrarMensaje('Introduce un ID de producto válido');
+    if (!this.nuevoIdCafeteria || isNaN(this.nuevoIdCafeteria)) return this.mostrarMensaje('Introduce un ID de cafetería válido');
 
     const dto = {
       descripcion: this.nuevaDescripcion.trim(),
@@ -121,10 +137,10 @@ export class Controlproducto {
     };
 
     this.adminService.modificarProducto(this.modificarId, dto).subscribe(
-      () => alert('Producto modificado correctamente'),
+      () => this.mostrarMensaje('Producto modificado correctamente'),
       err => {
         console.error('Error modificando producto', err);
-        alert('Error modificando producto. Revisa la consola.');
+        this.mostrarMensaje('Error modificando producto. Revisa la consola.');
       }
     );
   }
@@ -133,15 +149,15 @@ export class Controlproducto {
   eliminarProducto() {
 
     if (!this.eliminarId) {
-      alert('Introduce un ID válido');
+      this.mostrarMensaje('Introduce un ID válido');
       return;
     }
 
     this.adminService.eliminarProducto(this.eliminarId).subscribe(() => {
-      alert('Producto eliminado correctamente');
+      this.mostrarMensaje('Producto eliminado correctamente');
       this.eliminarId = null;
     }, () => {
-      alert('Error al eliminar el producto');
+      this.mostrarMensaje('Error al eliminar el producto');
     });
   }
 }

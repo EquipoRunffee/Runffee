@@ -85,8 +85,24 @@ public class PedidoController {
 
             return pedidoService.crearPedidoCarrito(carrito, usuario);
         }
-
         return null;
     }
 
+    @GetMapping("/entregar/{idPedido}")
+    public ResponseEntity<?> entregarPedido(@PathVariable Integer idPedido, @RequestHeader(value = "Authorization", required = false) String authHeader){
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+
+            return pedidoService.entregarPedido(idPedido,usuario);
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "No hay token"));
+    }
 }

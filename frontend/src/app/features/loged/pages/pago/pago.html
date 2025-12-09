@@ -1,49 +1,76 @@
 <div class="contenedor">
-  <div class="pago">
-    <div class="pago_intro">
-      <img src="./assets/icon/icon_tarjeta_verde.png" alt="tarjeta">
-    </div>
-
-    <div class="pago_titulo">
-      <h1>Platafora de Pago</h1>
-      <h3>Introduce tus datos para confirmar compra</h3>
-    </div>
-
-    <div class="pago_rellenar">
-      <div class="pago_rellenar_largo">
-        <label>Nombre de la tarjeta</label>
-        <input type="text" required>
+  <a [routerLink]="['/app/home']" class="volver">
+    <img src="./assets/icon/icon-flecha-izquierda.png" alt="">
+    <span>Volver</span>
+  </a>
+  <div class="resumen-pedido">
+    <h2>Resumen del pedido</h2>
+      @for (producto of productos; track producto.id) {
+        <div class="producto">
+          <div>
+            <p class="nombre-producto">{{producto.nombre}}</p>
+            <p class="precio-producto">{{producto.precio | number:'1.2-2'}}€</p>
+          </div>
+            <p>Cant: {{producto.cantidad}} </p>
+        </div>
+    }
+    @if (regalo != null) {
+      <div class="producto-regalo">
+        <div class="regalo-img">
+          <img [src]="regalo.imagen" alt="{{regalo.nombre}}">
+        </div>
+        <p class="nombre-regalo">Gratis</p>
       </div>
+    }
+    <div class="totales">
+      <p class="subtotal">Subtotal: <span>{{calcularSubtotal() | number:'1.2-2'}}€</span></p>
+      @if (cuponAplicadoEstado) {
 
-      <div class="pago_rellenar_corto">
-        <label>Fecha de Vencimiento</label>
-        <input type="month" name="fecha" required>
-      </div>
-
-      <div class="pago_rellenar_largo">
-        <label>Número de tarjeta</label>
-        <input type="text" (input)="verificarNumeroTarjeta($event)" required>
-      </div>
-
-      <div class="pago_rellenar_corto">
-        <label>CVV</label>
-        <input type="password" (input)="verificarCVV($event)" required>
-      </div>
+      } @else {
+        <p class="descuento">Descuento: <span>{{descuentoAplicado}}%</span></p>
+      }
+      <p class="total">TOTAL: <span>{{calcularTotal()}}€</span></p>
     </div>
+  </div>
+  <div class="anadir-descuento">
+    <h3>Añadir descuento</h3>
+    @if (mensajeCuponAplicadoEstado) {
+      <p>{{nombreCupon}}</p>
+      <p class="mensaje-cupon-aplicado">{{mensajeCuponAplicado}}</p>
+      <button (click)="eliminarCupon()">Eliminar cupón</button>
+    } @else {
+      <p>Introduce el código de tu cupón:</p>
+      <input [(ngModel)]="nombreCupon" type="text" placeholder="CPN-XXXXXX">
+      <button (click)="consultarCupon()">Aplicar</button>
+    }
+  </div>
 
-    <div class="pago_boton">
-      <button (click)="verpopUp()">Confirmar Compra</button>
+  <div class="metodo-pago">
+    <h2>Método de pago</h2>
+    <input type="text" placeholder="NOMBRE Y APELLIDOS DEL TITULAR">
+    <input type="text" placeholder="0000 0000 0000 0000" (input)="verificarNumeroTarjeta($event)">
+    <div class="datos-tarjeta">
+      <input type="text" placeholder="MM" (input)="validarMes($event)">
+      <input type="text" placeholder="YYYY" (input)="validarAno($event)">
+      <input type="text" placeholder="CVV" (input)="verificarCVV($event)">
     </div>
+    <button (click)="realizarPago()">Pagar</button>
   </div>
 </div>
 
-<div id="popUp">
-  <div class="popUp_contenido">
-    <h1>Pago Confirmado</h1>
-    <h3>Gracias por su compra</h3>
-    <img src="./assets/images/logo/LOGO_VERDE.png" alt="logo">
-    <div class="popUp_boton" (click)="router.navigate(['/home'])">
-      <button>Volver</button>
+@if (popUpConfirmacionEstado) {
+  <div id="popup">
+    <div class="popup-contenedor">
+      <h1>Pago Confirmado</h1>
+      <h3>Gracias por su compra</h3>
+      <img class="popup-logo" src="./assets/images/logo/LOGO_VERDE.png" alt="logo">
+      <button (click)="router.navigate(['app/home'])">Volver</button>
     </div>
   </div>
-</div>
+}
+
+@if (mostrarMensajesEstado) {
+  <div id="mensajes-popup">
+    <p>{{textoMensajes}}</p>
+  </div>
+}

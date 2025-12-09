@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {UsuarioService} from '@core/services/usuario/usuarioService';
 import {CarritoService} from '@core/services/carrito/carritoService';
 import {Carrito} from '@core/models/carrito';
@@ -23,7 +23,7 @@ export class Navbar implements OnInit {
     this.muestraCarrito = !this.muestraCarrito;
   }
 
-  constructor(private usuarioService: UsuarioService, private carritoService: CarritoService, private pedidoService: PedidoService) {
+  constructor(private usuarioService: UsuarioService, private carritoService: CarritoService, private pedidoService: PedidoService, private router: Router) {
     this.carrito = carritoService.getCarrito();
   }
 
@@ -38,14 +38,7 @@ export class Navbar implements OnInit {
     })
   }
 
-  crearPedido(){
-    this.pedidoService.crearPedido(this.carrito).subscribe({
-      next: data => {
-        console.log(data);
-      },
-      error: error => {
-        console.log(error);
-      }
-    })
+  irAPago():void {
+    this.router.navigate(['app/pago']);
   }
 }

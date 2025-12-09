@@ -15,6 +15,8 @@ export class Entrenamientos implements OnInit {
 
   entrenamientos: EntrenamientoDetalles[] = [];
   entrenamientosCargados: boolean = false;
+  mostrarMensajesEstado:boolean = false;
+  textoMensajes:string = "";
 
   constructor(private entrenamientoDetallesService: EntrenamientoDetallesService, private router: Router, private rutaActiva: ActivatedRoute) { }
 
@@ -35,4 +37,18 @@ export class Entrenamientos implements OnInit {
     });
   }
 
+  mostrarMensajes(mensaje: string):void{
+    this.mostrarMensajesEstado = true;
+    this.textoMensajes = mensaje;
+    setTimeout(() => {
+      this.mostrarMensajesEstado = false;
+    }, 3000)
+  }
+
+  cuponGeneradoEntrenamiento():void{
+      this.mostrarMensajes("¡Reto cumplido! Has obtenido un cupón");
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+  }
 }

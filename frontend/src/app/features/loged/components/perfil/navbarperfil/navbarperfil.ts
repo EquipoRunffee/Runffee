@@ -19,8 +19,9 @@ export class Navbarperfil {
 
   navigate(route: string) {
     this.router.navigate([route], { relativeTo: this.activatedRoute });
-    if (window.innerWidth <= 500){this.toggleNavbar.emit();}
-    this.itemSelected.emit();
+    if (window.innerWidth <= 500){
+      this.toggleNavbar.emit();}
+      this.itemSelected.emit();
   }
 
   cerrarSesion() {

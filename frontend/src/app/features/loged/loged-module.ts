@@ -14,6 +14,7 @@ import { CardProducto } from './components/card-producto/card-producto';
 import { Pago } from './pages/pago/pago';
 import { MapaEntrenamiento } from './components/perfil/mapa-entrenamiento/mapa-entrenamiento';
 import { QrPedido } from './components/perfil/qr-pedido/qr-pedido';
+import { ValoracionRating } from './components/valoracion-rating/valoracion-rating';
 
 @NgModule({
   declarations: [],
@@ -29,6 +30,7 @@ import { QrPedido } from './components/perfil/qr-pedido/qr-pedido';
     MapaEntrenamiento,
     Pago,
     QrPedido,
+    ValoracionRating,
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { QrPedido } from './components/perfil/qr-pedido/qr-pedido';
     MapaEntrenamiento,
     Pago,
     QrPedido,
+    ValoracionRating
   ]
 })
 export class LogedModule { }

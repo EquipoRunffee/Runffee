@@ -2,11 +2,11 @@
 
 <div class="container" [ngClass]="{ 'navbar-activo': !estadoNavbar }">
   @if (estadoNavbar) {
-    <app-navbarperfil id="contenedor-navbarperfil" (toggleNavbar)="mostrarNavbar()"></app-navbarperfil>
+    <app-navbarperfil id="contenedor-navbarperfil" (toggleNavbar)="toggleNavbar()"></app-navbarperfil>
   }
 
   <section>
-    <button id="btn-mostrar-navbar" (click)="mostrarNavbar()"><img src="./assets/icon/icon-flecha-izquierda.png" alt=""></button>
+    <button id="btn-mostrar-navbar" (click)="toggleNavbar()"><img src="./assets/icon/icon-flecha-izquierda.png" alt=""></button>
     <router-outlet id="contenedor-paginas"></router-outlet>
   </section>
 </div>

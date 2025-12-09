@@ -10,24 +10,32 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   api = environment.apiUrl;
 
-  login(credentials:{correo:string, contrasena:string}) {
-    console.log("Realizando login...")
-    return this.http.post<any>( this.api + "/auth/login", credentials)
+  login(credentials: { correo: string; contrasena: string }) {
+    console.log("Realizando login...");
+    return this.http.post<any>(this.api + "/auth/login", credentials)
       .pipe(
-        tap(respuesta=>{
+        tap(respuesta => {
           localStorage.setItem("accessToken", respuesta.accessToken);
           localStorage.setItem("refreshToken", respuesta.refreshToken);
+          localStorage.setItem("user", JSON.stringify({
+            role: respuesta.role,
+            email: credentials.correo
+          }));
         })
       );
   }
 
-  registrar(credentials:{correo:string, contrasena:string, stravaAccessToken: string|null}) {
-    console.log("Registrando usuario...")
+  registrar(credentials: { correo: string; contrasena: string; stravaAccessToken: string | null }) {
+    console.log("Registrando usuario...");
     return this.http.post<any>(this.api + "/auth/registrar", credentials)
       .pipe(
-        tap(respuesta=>{
+        tap(respuesta => {
           localStorage.setItem("accessToken", respuesta.accessToken);
           localStorage.setItem("refreshToken", respuesta.refreshToken);
+          localStorage.setItem("user", JSON.stringify({
+            role: respuesta.role,
+            email: credentials.correo
+          }));
         })
       );
   }
@@ -43,31 +51,41 @@ export class AuthService {
     );
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
+    localStorage.removeItem("user");
   }
 
-  isLogged():boolean{
+  isLogged(): boolean {
     const accessToken = localStorage.getItem("accessToken");
     return !!accessToken;
   }
 
-  getAccessToken(){
+  getAccessToken() {
     return localStorage.getItem("accessToken");
   }
 
-  setAccessToken(accessToken: string){
+  setAccessToken(accessToken: string) {
     localStorage.setItem("accessToken", accessToken);
   }
 
-  getRefreshToken(){
+  getRefreshToken() {
     return localStorage.getItem("refreshToken");
   }
 
-  setRefreshToken(refreshToken: string){
+  setRefreshToken(refreshToken: string) {
     localStorage.setItem("refreshToken", refreshToken);
   }
 
+  getUserRole(): string | null {
+    const user = localStorage.getItem("user");
+    if (!user) return null;
+    const userObj = JSON.parse(user);
+    return userObj.role;
+  }
 
+  isAdmin(): boolean {
+    return this.getUserRole() === 'ADMIN';
+  }
 }

@@ -1,3 +1,9 @@
+<a [routerLink]="['/admin/adminpage']" class="volver-atras">
+  <img src="./assets/icon/icon-flecha-izquierda.png" alt="">
+  Volver al panel
+</a>
+
+
 <h1>Control de Productos</h1>
 
 <!-- CREAR -->
@@ -119,3 +125,11 @@
 
   <button (click)="eliminarProducto()">Eliminar</button>
 </div>
+
+
+<!-- POPUP DE MENSAJES -->
+@if (mostrarPopUp()) {
+  <div id="mensajes-popup">
+    <p>{{ textoPopUp() }}</p>
+  </div>
+}

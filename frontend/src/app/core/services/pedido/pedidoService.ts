@@ -20,4 +20,9 @@ export class PedidoService {
     let apiUrl= this.api + '/pedido/crearpedido';
     return this.http.post<any>(apiUrl, carrito);
   }
+
+  entregarPedido(idPedido: number): Observable<any> {
+    let apiUrl= this.api + `/pedido/entregar/${idPedido}`;
+    return this.http.get<any>(apiUrl);
+  }
 }
