@@ -28,6 +28,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private IUsuarioRepository usuarioRepository;
 
+    // Evitar que el filtro se aplique a rutas públicas
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getServletPath();
+        return path.startsWith("/auth/") ||
+                path.startsWith("/strava/");
+    }
+
     private String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
@@ -50,6 +58,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 Usuario usuario = userDetailsService.loadUserById(id);
 
                 if (usuario != null) {
+
                     if (usuario.getAccesstoken() == null ||
                             !usuario.getAccesstoken().equals(jwt)) {
                         filterChain.doFilter(request, response);
@@ -62,6 +71,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     null,
                                     usuario.getAuthorities()
                             );
+
                     auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(auth);
                 }
