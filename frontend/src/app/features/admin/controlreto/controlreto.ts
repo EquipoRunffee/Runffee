@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import { AdminService } from '@core/services/admin/adminService';
 import { adminReto } from '@core/models/adminReto';
 import { FormsModule } from '@angular/forms';
@@ -34,12 +34,28 @@ export class Controlreto {
 // CAMPO - ELIMINAR RETO
   eliminarId: number | null = null;
 
+
+  // POPUP
+  mostrarPopUp = signal(false);
+  textoPopUp = signal('');
+
   constructor(private adminService: AdminService) {}
+
+  // FUNCION PARA MOSTRAR MENSAJES EN POPUP
+  mostrarMensaje(mensaje: string) {
+    this.textoPopUp.set(mensaje);
+    this.mostrarPopUp.set(true);
+
+    setTimeout(() => {
+      this.mostrarPopUp.set(false);
+    }, 3000);
+  }
+
 
 // CREAR RETO
   crearReto() {
-    if (!this.crearNombre.trim()) return alert('Introduce un nombre válido');
-    if (!this.crearDescripcion.trim()) return alert('Introduce una descripción válida');
+    if (!this.crearNombre.trim()) return this.mostrarMensaje('Introduce un nombre válido');
+    if (!this.crearDescripcion.trim()) return this.mostrarMensaje('Introduce una descripción válida');
 
     const dto: adminReto = new adminReto(
       this.crearNombre.trim(),
@@ -51,12 +67,12 @@ export class Controlreto {
 
     this.adminService.crearReto(dto).subscribe(
       () => {
-        alert('Reto creado correctamente');
+        this.mostrarMensaje('Reto creado correctamente');
         this.limpiarCrear();
       },
       err => {
         console.error('Error al crear reto', err);
-        alert('Error al crear reto. Revisa la consola.');
+        this.mostrarMensaje('Error al crear reto. Revisa la consola.');
       }
     );
 
@@ -73,7 +89,7 @@ export class Controlreto {
   // CARGAR RETO
   cargarDatos() {
     if (!this.modificarId || isNaN(this.modificarId)) {
-      return alert('Introduce un ID válido');
+      return this.mostrarMensaje('Introduce un ID válido');
     }
 
     this.adminService.obtenerReto(this.modificarId).subscribe(
@@ -88,7 +104,7 @@ export class Controlreto {
       },
       err => {
         console.error('Error al cargar reto', err);
-        alert('Error al cargar reto. Revisa la consola.');
+        this.mostrarMensaje('Error al cargar reto. Revisa la consola.');
       }
     );
 
@@ -96,11 +112,11 @@ export class Controlreto {
 
   // MODIFICAR RETO
   modificarReto() {
-    if (!this.modificarId || isNaN(this.modificarId)) return alert('Introduce un ID válido');
-    if (!this.nuevoNombre.trim()) return alert('Introduce un nombre válido');
-    if (!this.nuevaDescripcion.trim()) return alert('Introduce una descripción válida');
-    if (!this.nuevaFechaInicio) return alert('Introduce una fecha de inicio válida');
-    if (!this.nuevaFechaFin) return alert('Introduce una fecha de caducidad válida');
+    if (!this.modificarId || isNaN(this.modificarId)) return this.mostrarMensaje('Introduce un ID válido');
+    if (!this.nuevoNombre.trim()) return this.mostrarMensaje('Introduce un nombre válido');
+    if (!this.nuevaDescripcion.trim()) return this.mostrarMensaje('Introduce una descripción válida');
+    if (!this.nuevaFechaInicio) return this.mostrarMensaje('Introduce una fecha de inicio válida');
+    if (!this.nuevaFechaFin) return this.mostrarMensaje('Introduce una fecha de caducidad válida');
 
     const dto: adminReto = new adminReto(
       this.nuevoNombre.trim(),
@@ -111,10 +127,10 @@ export class Controlreto {
     );
 
     this.adminService.modificarReto(this.modificarId, dto).subscribe(
-      () => alert('Reto modificado correctamente'),
+      () => this.mostrarMensaje('Reto modificado correctamente'),
       err => {
         console.error('Error modificando reto', err);
-        alert('Error modificando reto. Revisa la consola.');
+        this.mostrarMensaje('Error modificando reto. Revisa la consola.');
       }
     );
 
@@ -123,14 +139,14 @@ export class Controlreto {
   // ELIMINAR RETO
   eliminarReto() {
     if (!this.eliminarId) {
-      alert('Introduce un ID válido');
+      this.mostrarMensaje('Introduce un ID válido');
       return;
     }
     this.adminService.eliminarReto(this.eliminarId).subscribe(() => {
-        alert('Reto eliminado correctamente');
+      this.mostrarMensaje('Reto eliminado correctamente');
         this.eliminarId = null;
       }, () => {
-        alert('Error al eliminar reto. Revisa la consola.');
+      this.mostrarMensaje('Error al eliminar reto. Revisa la consola.');
       }
     );
 
