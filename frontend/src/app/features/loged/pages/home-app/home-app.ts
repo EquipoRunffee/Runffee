@@ -39,6 +39,7 @@ export class HomeApp implements OnInit {
     this.obtenerUltimoEntrenamiento();
     this.retoService.getReto().subscribe({
       next: data => {
+        console.log(data);
         this.retos = data;
       },
       error: err => {

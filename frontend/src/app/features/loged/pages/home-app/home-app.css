@@ -32,6 +32,12 @@
   filter: opacity(0.7) blur(1px)
 }
 
+.titulo-cabecera{
+  text-align: center;
+  color: var(--color-secundario-negro);
+  font-family: "Montserrat", sans-serif;
+}
+
 .enlace-nodecoration{
   text-decoration: none;
 }

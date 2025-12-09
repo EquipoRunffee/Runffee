@@ -2,11 +2,18 @@ package org.runffee.backend.controladores;
 
 import org.runffee.backend.DTO.RetoDTO;
 import org.runffee.backend.modelos.Reto;
+import org.runffee.backend.modelos.Usuario;
+import org.runffee.backend.repositorios.IUsuarioRepository;
+import org.runffee.backend.servicios.AuthService;
+import org.runffee.backend.servicios.JwtService;
 import org.runffee.backend.servicios.RetoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/reto")
@@ -20,13 +27,32 @@ public class RetoController {
     @Autowired
     private RetoService retoService;
 
+    @Autowired
+    private JwtService jwtService;
+
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
+
     /***
      * API que devuelve una lista con todos los retos
      * @return
      */
     @GetMapping
-    public List<Reto> obtenerRetos() {
-        return retoService.obtenerRetos();
+    public ResponseEntity<?> obtenerRetos(@RequestHeader(value = "Authorization", required = false) String authHeader) {
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            Integer idUsuario = jwtService.obtenerIdUsuario(token);
+            Usuario usuario = usuarioRepository.findById(idUsuario).get();
+
+            if(!jwtService.validarToken(token)){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Token expirado"));
+            }
+
+            return retoService.obtenerRetosDisponiblesUsuario(usuario);
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "No hay token"));
     }
 
     /***

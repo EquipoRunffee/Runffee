@@ -177,6 +177,11 @@ public class EntrenamientoService {
     }
 
     public EntrenamientoDetalleDTO obtenerUltimoEntrenamiento(Usuario usuario) {
-        return entrenamientoRepository.obtenerEntrenamientoDetalles(usuario.getId()).getFirst();
+        List<EntrenamientoDetalleDTO> entrenamientos = entrenamientoRepository.obtenerEntrenamientoDetalles(usuario.getId());
+        if (entrenamientos.isEmpty()) {
+            return null;
+        }
+
+        return entrenamientos.getLast();
     }
 }
