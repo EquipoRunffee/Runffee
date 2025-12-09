@@ -91,7 +91,7 @@ export class Register {
           this.errorOtp = false;
           setTimeout(() => {
             this.mostrarOtpModal = false;
-            this.router.navigate(['/app']);
+            this.router.navigate(['/login']);
           }, 1500);
         },
         error: (err) => {
