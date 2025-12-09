@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { AdminService } from '@core/services/admin/adminService';
 import { adminEntrenamiento } from '@core/models/adminEntrenamiento';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-controlentrenamiento',
   standalone: true,
   templateUrl: './controlentrenamiento.html',
   styleUrl: './controlentrenamiento.css',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
 })
 export class Controlentrenamiento {
 

@@ -3,32 +3,34 @@
   <h1>
     PANEL DE CONTROL DE ADMINISTRADOR
   </h1>
-
-  <p></p>
+  <div class="enlaces">
+    <a [routerLink]="['/app/home']">Ir a la app</a>
+    <a (click)="cerrarSesion()">Cerrar sesión</a>
+  </div>
 </header>
 <main class="cards" role="list" aria-label="Conjunto de 5 tarjetas que ocupan la pantalla">
   <section class="card c1" role="listitem" tabindex="0" [routerLink]="['/admin/controlcafeteria']">
-    <h2>Cafeterías</h2>
+    <h2>CAFETERÍAS</h2>
   </section>
 
 
   <section class="card c2" role="listitem" tabindex="0" [routerLink]="['/admin/controlproducto']">
-    <h2>Productos</h2>
+    <h2>PRODUCTOS</h2>
   </section>
 
 
   <section class="card c3" role="listitem" tabindex="0" [routerLink]="['/admin/controlreto']">
-    <h2>Retos</h2>
+    <h2>RETOS</h2>
   </section>
 
 
   <section class="card c4" role="listitem" tabindex="0" [routerLink]="['/admin/controlentrenamiento']">
-    <h2>Entrenamientos</h2>
+    <h2>ENTRENAMIENTOS</h2>
   </section>
 
 
   <section class="card c5" role="listitem" tabindex="0" [routerLink]="['/admin/controlusuario']">
-    <h2>Usuarios</h2>
+    <h2>USUARIOS</h2>
   </section>
 </main>
 </body>

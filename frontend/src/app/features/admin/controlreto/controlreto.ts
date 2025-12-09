@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AdminService } from '@core/services/admin/adminService';
 import { adminReto } from '@core/models/adminReto';
 import { FormsModule } from '@angular/forms';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-controlreto',
@@ -9,7 +10,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './controlreto.html',
   styleUrl: './controlreto.css',
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink
   ]
 })
 export class Controlreto {

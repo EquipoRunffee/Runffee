@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {AuthService} from '@core/services/auth/auth-service';
 
 @Component({
   selector: 'app-adminpage',
@@ -11,5 +12,10 @@ import {RouterLink} from '@angular/router';
   ]
 })
 export class Adminpage {
+  constructor(private router: Router, private authService: AuthService) { }
 
+  cerrarSesion(){
+      this.authService.logout();
+      this.router.navigate(['login']);
+    }
 }

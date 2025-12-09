@@ -11,10 +11,11 @@ body{
 }
 
 .contenedor-form{
+  width: 100%;
   max-width: 25rem;
   border-radius: 1rem;
-  margin: auto;
-  padding: 2rem 4rem;
+  margin: 1rem;
+  padding: 4rem 2rem;
   background: rgb(255, 255, 255, 0.6);
   display: flex;
   justify-content: center;

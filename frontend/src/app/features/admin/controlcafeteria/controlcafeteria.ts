@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {AdminService} from '@core/services/admin/adminService';
 import {adminCafeteria} from '@core/models/adminCafeteria';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-controlcafeteria',
@@ -9,7 +10,8 @@ import {adminCafeteria} from '@core/models/adminCafeteria';
   templateUrl: './controlcafeteria.html',
   styleUrl: './controlcafeteria.css',
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink
   ]
 
 })

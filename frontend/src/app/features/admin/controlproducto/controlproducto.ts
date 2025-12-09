@@ -2,6 +2,7 @@ import {Component, signal} from '@angular/core';
 import { AdminService } from "@core/services/admin/adminService";
 import {adminProducto} from '@core/models/adminProducto';
 import {FormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-controlproducto',
@@ -9,7 +10,8 @@ import {FormsModule} from '@angular/forms';
   templateUrl: './controlproducto.html',
   styleUrl: './controlproducto.css',
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink
   ]
 })
 export class Controlproducto {

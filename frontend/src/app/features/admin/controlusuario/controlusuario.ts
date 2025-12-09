@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AdminService } from "@core/services/admin/adminService";
 import {adminUsuario} from '@core/models/adminUsuario';
+import {RouterLink} from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,7 @@ import {adminUsuario} from '@core/models/adminUsuario';
   standalone: true,
   templateUrl: './controlusuario.html',
   styleUrls: ['./controlusuario.css'],
-  imports: [FormsModule]
+  imports: [FormsModule, RouterLink]
 })
 export class Controlusuario {
 
