@@ -39,7 +39,18 @@
         <img class="icono" src="./assets/icon/icon_ayuda.png" alt="icono_interrogacion" height="48" width="48">
         Ayuda
       </li>
+      @if (usuarioAdmin) {
+        <li (click)="irPanelAdmin()" routerLinkActive="active">
+          <img class="icono" src="./assets/icon/icon_admin.png" alt="icono_interrogacion" height="48" width="48">
+          Panel de administración
+        </li>
+      }
     </ul>
-    <h3 class="enlace" (click)="cerrarSesion()">Cerrar sesión</h3>
+    <ul>
+      <li (click)="cerrarSesion()">
+        <img class="icono" src="./assets/icon/icon_logout.png" alt="icono_estrella" height="48" width="48">
+        Cerrar sesión
+      </li>
+    </ul>
   </aside>
 </div>

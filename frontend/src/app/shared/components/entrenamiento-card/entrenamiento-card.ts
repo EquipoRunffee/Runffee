@@ -16,6 +16,7 @@ export class EntrenamientoCard{
 
   @Input() datos: any;
   @Output() cuponGenerado = new EventEmitter();
+  @Output() errores = new EventEmitter<string>();
 
   constructor(private router: Router, private rutaActiva: ActivatedRoute, private entrenamientoService: EntrenamientoService) { }
   irEntrenamiento(id: number) {
@@ -25,13 +26,16 @@ export class EntrenamientoCard{
   finalizarEntrenamiento(idEntrenamiento: number):void {
     this.entrenamientoService.finalizarEntrenamiento(idEntrenamiento).subscribe({
       next: (result) => {
-        console.log(result);
-        if(result.body != null && result.body.cuponObtenido != null){
-          this.cuponGenerado.emit();
+        if (result.finalizado) {
+          if(result.body != null && result.body.cuponObtenido != null){
+            this.cuponGenerado.emit();
+          }
+        } else {
+          this.errores.emit(result.body.mensaje);
         }
       },
       error: (error) => {
-        console.error(error);
+        console.log(error);
       }
     })
   }

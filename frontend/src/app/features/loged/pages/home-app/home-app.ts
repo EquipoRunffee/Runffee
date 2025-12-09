@@ -88,7 +88,6 @@ export class HomeApp implements OnInit {
   obtenerUltimoEntrenamiento():void{
     this.entrenamientoService.obtenerUltimoEntrenamiento().subscribe({
       next: data => {
-        console.log(data);
         this.datosUltimoEntrenamiento = data;
       },
       error: err => {
