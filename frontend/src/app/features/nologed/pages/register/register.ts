@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormsModule} from '@angular/forms';
 import {AuthService} from '@core/services/auth/auth-service';
 import {Router} from '@angular/router';
+import {CommonModule, NgClass} from '@angular/common';
 
 
 @Component({
@@ -9,11 +10,16 @@ import {Router} from '@angular/router';
   templateUrl: './register.html',
   styleUrl: './register.css',
   standalone: true,
-  imports: [FormsModule]
+  imports: [FormsModule, NgClass, CommonModule]
 })
 export class Register {
   usuario = { correo: '', password: '', repeatpassword: '' };
   visible = false;
+
+  mostrarOtpModal = false;
+  otp = '';
+  mensajeOtp = '';
+  errorOtp = false;
 
   correoError = '';
   passwordError = '';
@@ -59,15 +65,40 @@ export class Register {
         {correo: this.usuario.correo, contrasena: this.usuario.password, stravaAccessToken: localStorage.getItem("stravaAccessToken")})
         .subscribe({
           next: (res) => {
-            this.router.navigate(['/app']);
+            this.mostrarOtpModal = true;
           },
           error: (err) => {
             console.log(err);
+            this.correoError = 'El correo ya está registrado';
           }
         });
     } else {
       console.log("No se encuentra el token de Strava...");
     }
+  }
+
+  cerrarModal() {
+    this.mostrarOtpModal = false;
+    this.otp = '';
+    this.mensajeOtp = '';
+  }
+
+  verificarOtp() {
+    this.authService.verificarOtp({ correo: this.usuario.correo, otp: this.otp })
+      .subscribe({
+        next: (res: any) => {
+          this.mensajeOtp = res.mensaje;
+          this.errorOtp = false;
+          setTimeout(() => {
+            this.mostrarOtpModal = false;
+            this.router.navigate(['/app']);
+          }, 1500);
+        },
+        error: (err) => {
+          this.mensajeOtp = err.error || 'OTP incorrecto';
+          this.errorOtp = true;
+        }
+      });
   }
 }
 

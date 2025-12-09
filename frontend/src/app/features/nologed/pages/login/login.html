@@ -40,11 +40,14 @@
 
       <!-- Botón de incio de sesión -->
       <button class="btn-inciar-sesion" type="submit">
-        <span id="span-iniciar">Iniciar</span>
-        <div id="div-iniciando-sesion">
-          <span class="loader"></span>
-          Iniciando
-        </div>
+        @if(!mostrarLoader){
+          <span id="span-iniciar">Iniciar</span>
+        }@else if(mostrarLoader){
+          <div class="div-iniciando-sesion">
+            <span class="loader"></span>
+            Iniciando
+          </div>
+        }
       </button>
 
       <!-- Botón de registro con StravaService -->
@@ -54,5 +57,11 @@
       </button>
     </form>
   </div>
+
+  @if (mostrarMensajesEstado) {
+    <div id="mensajes-popup">
+      <p>{{textoMensajes}}</p>
+    </div>
+  }
 </body>
 </html>

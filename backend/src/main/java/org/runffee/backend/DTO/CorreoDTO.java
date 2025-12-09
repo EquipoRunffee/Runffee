@@ -1,5 +1,6 @@
 package org.runffee.backend.DTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data

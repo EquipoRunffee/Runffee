@@ -1,18 +1,42 @@
 <app-navbar></app-navbar>
 <div id="contenedor-cafeteria-productos">
   <a id="volver" routerLink='/app'><img class="flecha" src="./assets/icon/icon-flecha-izquierda.png" alt=""> Volver</a>
-  <div class="div-imagen-cafeteria">
-    @if (datos){
-      <img [src] = [datos.imagen] alt="Imagen de Cafeteria">
-    }
-  </div>
+
+  @if (!isLoaded) {
+    <div class="contenedor-skeletons">
+      <div>
+        <div class="skeleton skeletonfoto"></div>
+      </div>
+      <div>
+        <div class="skeleton skeletonnombre"></div>
+      </div>
+      <div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+    </div>
+  }
+
+  @if(isLoaded){
+    <div class="div-imagen-cafeteria">
+      @if (datos){
+        <img [src] = [datos.imagen] alt="Imagen de Cafeteria">
+      }
+    </div>
 
   <div class="main">
     <h3 id="h3-nombre-cafeteria">{{datos?.nombre}}</h3>
     <div class="div-buscador-filtro">
       <div id="buscador">
         <img src="./assets/icon/icon-lupa.png" alt="Lupa">
-        <input type="text" placeholder="Buscar...">
+        <input type="text" placeholder="Buscar..." [(ngModel)]="encontrarProducto">
       </div>
 
       <!-- Filtro por tipo de producto -->
@@ -25,15 +49,15 @@
         </select>
       </div>
     </div>
+
       <!-- Contenedor de productos filtrados -->
     <div class="contenedor-productos">
-      @for (producto of datos?.productos; track producto.id) {
-        @if (tipoSeleccionado === 'Todos' || producto.tipoProducto === tipoSeleccionado) {
-          <app-card-producto [producto]="producto"></app-card-producto>
-        }
+      @for (producto of datosFiltrados; track producto.id) {
+        <app-card-producto [producto]="producto"></app-card-producto>
       }
     </div>
-
   </div>
+  }
 </div>
+
 <app-footer></app-footer>

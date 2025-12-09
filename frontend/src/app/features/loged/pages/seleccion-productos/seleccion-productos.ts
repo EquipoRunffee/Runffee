@@ -32,7 +32,8 @@ export class SeleccionProductos implements OnInit {
   productosFiltrados: ProductoSeleccion[] = [];
   tipos: string[] = [];
   tipoSeleccionado: string = 'Todos';
-
+  encontrarProducto: string = '';
+  isLoaded: boolean = false;
 
   constructor(private router: Router,
               private http: HttpClient,
@@ -50,6 +51,7 @@ export class SeleccionProductos implements OnInit {
         this.productos = data.productos;
         this.productosFiltrados = data.productos;
         this.obtenerTipos();
+        this.isLoaded = true;
         console.log(this.productos);
       },
       error: error => {
@@ -66,5 +68,20 @@ export class SeleccionProductos implements OnInit {
     });
 
     this.tipos = Array.from(tiposUnicos);
+  }
+
+  get datosFiltrados() {
+    let filtrados = this.productos;
+
+    if (this.tipoSeleccionado !== 'Todos') {
+      filtrados = filtrados.filter(p => p.tipoProducto === this.tipoSeleccionado);
+    }
+
+    if (this.encontrarProducto) {
+      const busqueda = this.encontrarProducto.toLowerCase();
+      filtrados = filtrados.filter(p => p.nombre.toLowerCase().startsWith(busqueda));
+    }
+
+    return filtrados;
   }
 }

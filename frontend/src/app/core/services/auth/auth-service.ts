@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {tap} from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 
 @Injectable({
@@ -30,6 +30,10 @@ export class AuthService {
           localStorage.setItem("refreshToken", respuesta.refreshToken);
         })
       );
+  }
+
+  verificarOtp(datos: { correo: string, otp: string }): Observable<any> {
+    return this.http.post<any>(this.api + "/auth/verificar-otp", datos);
   }
 
   renovarToken(refreshToken: string) {

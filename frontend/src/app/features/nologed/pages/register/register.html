@@ -6,7 +6,8 @@
 
 <body>
 <!--------------FONDO---------------->
-<img src="./assets/images/register_background_desktop.jpg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+<img src="./assets/images/register_background_desktop.jpg"
+     style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
 
 <div class="contenedor-form">
 
@@ -28,8 +29,8 @@
       required
     >
 
-    <!-- email not already in bbdd -->
-    <div id="emailError" class="error">{{correoError}}</div>
+    <!-- email no esta todavia en la base de datos -->
+    <div id="emailError" class="error">{{ correoError }}</div>
 
     <!-- Contraseña -->
     <div class="input-password">
@@ -44,53 +45,64 @@
       >
       <span class="eyeicon" (click)="ver()">
         <img [src]="visible ? './assets/icon/icon_ver.png' : './assets/icon/icon_ver_no.png'"
-        alt="ver"
-        class="eye-img"
+             alt="ver"
+             class="eye-img"
         >
       </span>
     </div>
 
     <!-- contrasena >= 8caracteres -->
-    <div id="passwordError" class="error">{{passwordError}}</div>
+    <div id="passwordError" class="error">{{ passwordError }}</div>
 
     <!-- Repetir contraseña -->
 
     <div class="input-password">
-    <input
-      type="password"
-      name="repeatpassword"
-      [(ngModel)]="usuario.repeatpassword"
-      placeholder="Repetir contraseña"
-      required
-    >
+      <input
+        type="password"
+        name="repeatpassword"
+        [(ngModel)]="usuario.repeatpassword"
+        placeholder="Repetir contraseña"
+        required
+      >
 
     </div>
 
     <!-- contrasena == repeatcontrasena -->
-    <div id="repeatPasswordError" class="error">{{repeatPasswordError}}</div>
+    <div id="repeatPasswordError" class="error">{{ repeatPasswordError }}</div>
 
-  <!-- Lo que he visto en el video -->
-  <!--<div class="form-group" [class.has-error]="email.invalid" && email.touched">
-  <label for="email" class="control-label">Email</label>
-  <input id="email" required [email]="employee.email!==''" name="email" #email="ngModel" [(ngModel)]="employee.email"
-         type="text" class="form-control">
-  <span class="help-block" *ngIf="email.errors?.required && email.touched">
-        Email is required
-      </span>
-  <span class="help-block" *ngIf="email.errors?.email && email.touched">
-        Email is invalid
-      </span>
-</div>
-hasta aqui lo que he visto en el video -->
+    <!-- Lo que he visto en el video -->
+    <!--<div class="form-group" [class.has-error]="email.invalid" && email.touched">
+    <label for="email" class="control-label">Email</label>
+    <input id="email" required [email]="employee.email!==''" name="email" #email="ngModel" [(ngModel)]="employee.email"
+           type="text" class="form-control">
+    <span class="help-block" *ngIf="email.errors?.required && email.touched">
+          Email is required
+        </span>
+    <span class="help-block" *ngIf="email.errors?.email && email.touched">
+          Email is invalid
+        </span>
+  </div>
+  hasta aqui lo que he visto en el video -->
 
-<!-- Botón crear cuenta -->
+    <!-- Botón crear cuenta -->
 
     <button class="btn-registro" (click)="registrarUsuario()">
-        Crear cuenta
+      Crear cuenta
     </button>
 
-  <!--</form>-->
+    <!--</form>-->
   </form>
+</div>
+
+<div id="otpModal" class="modal" [class.show]="mostrarOtpModal">
+  <div class="modal-content">
+    <span class="close" (click)="cerrarModal()">&times;</span>
+    <h3>Verifica tu cuenta</h3>
+    <p>Introduce el código que enviamos a tu correo {{usuario.correo}}</p>
+    <input type="text" [(ngModel)]="otp" placeholder="Código OTP" maxlength="6">
+    <button (click)="verificarOtp()">Verificar</button>
+    <p *ngIf="mensajeOtp" [ngClass]="{'error': errorOtp, 'success': !errorOtp}">{{mensajeOtp}}</p>
+  </div>
 </div>
 </body>
 </html>

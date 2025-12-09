@@ -7,6 +7,7 @@ import org.springframework.http.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -108,9 +109,14 @@ public class AuthService {
 
         Usuario usuario = usuarioRepository.findByCorreo(correo).orElseThrow(() -> new RuntimeException("Correo o contraseña incorrectos."));
 
-        if(!passwordEncoder.matches(password, usuario.getContrasena())) {
-            throw new RuntimeException("Correo o contraseña incorrectos.");
+        if (usuario == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "El usuario no existe");
         }
+
+        if (!passwordEncoder.matches(password, usuario.getContrasena())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Correo o contraseña incorrectos.");
+        }
+
 
         String accessToken = jwtService.genenrarToken(usuario.getId(), usuario.getCorreo());
         String refreshToken = UUID.randomUUID().toString();
