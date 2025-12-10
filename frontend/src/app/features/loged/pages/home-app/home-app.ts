@@ -28,6 +28,8 @@ export class HomeApp implements OnInit {
   mostrarMensajesEstado:boolean = false;
   mostrarPopUpCrearObjetivo: boolean = false;
   textoMensajes:string = "";
+
+  datosUltimoEntrenamientoCargado: boolean = false;
   datosUltimoEntrenamiento:any;
 
   kmObjetivo: string = "";
@@ -89,6 +91,7 @@ export class HomeApp implements OnInit {
   obtenerUltimoEntrenamiento():void{
     this.entrenamientoService.obtenerUltimoEntrenamiento().subscribe({
       next: data => {
+        this.datosUltimoEntrenamientoCargado = true;
         this.datosUltimoEntrenamiento = data;
       },
       error: err => {

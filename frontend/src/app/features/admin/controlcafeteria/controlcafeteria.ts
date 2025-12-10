@@ -59,10 +59,10 @@ export class Controlcafeteria{
   //FUNCIÓN PARA CREAR CAFETERIA
   crearCafeteria() {
 
-    if (!this.crearNombre.trim()) return alert('Introduce un nombre válido');
-    if (!this.crearTipoCafeteria.trim()) return alert('Introduce un tipo de cafetería válido');
-    if (this.crearLat === null || isNaN(this.crearLat)) return alert('Introduce una latitud válida');
-    if (this.crearLng === null || isNaN(this.crearLng)) return alert('Introduce una longitud válida');
+    if (!this.crearNombre.trim()) return this.mostrarMensaje('Introduce un nombre válido');
+    if (!this.crearTipoCafeteria.trim()) return this.mostrarMensaje('Introduce un tipo de cafetería válido');
+    if (this.crearLat === null || isNaN(this.crearLat)) return this.mostrarMensaje('Introduce una latitud válida');
+    if (this.crearLng === null || isNaN(this.crearLng)) return this.mostrarMensaje('Introduce una longitud válida');
 
     const dto: adminCafeteria = new adminCafeteria(
       this.crearNombre.trim(),
@@ -76,12 +76,12 @@ export class Controlcafeteria{
 
     this.adminService.crearCafeteria(dto).subscribe(
       () => {
-        alert('Cafetería creada correctamente');
+        this.mostrarMensaje('Cafetería creada correctamente');
         this.limpiarCrear();
       },
       err => {
         console.error('Error al crear cafetería', err);
-        alert('Error al crear cafetería. Revisa la consola.');
+        this.mostrarMensaje('Error al crear cafetería. Revisa la consola.');
       }
     );
   }

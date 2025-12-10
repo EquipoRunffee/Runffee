@@ -6,10 +6,11 @@
         <img [src] = [urlFotoUsuario] alt="Perfil usuario">
       </a>
     }
-  <a title="Perfil" class="btn-nav" [routerLink]="['/app']"><img src="./assets/images/logo/LOGO_VERDE.png" alt=""></a>
+  <a title="Perfil" class="btn-nav" [routerLink]="['/app']"><img src="./assets/images/logo/LOGO_OSCURO.png" alt=""></a>
   <div>
     <button class="btn-nav"  id="btn-carrito">
       <img src="./assets/icon/icon_carrito.png" alt="Carrito" (click)="mostrarCarrito()">
+      <div id="cantidad-productos-carrito"><p>{{ totalProductos }}</p></div>
     </button>
   </div>
 </div>

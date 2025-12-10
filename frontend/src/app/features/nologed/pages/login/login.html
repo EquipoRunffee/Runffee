@@ -1,16 +1,10 @@
-<html lang="es">
-<head>
-  <title>Log in</title>
-  <link rel="stylesheet" href="login.css"/>
-</head>
-
-<body>
-<!-- Imagen fondo -->
-  <img src="./assets/images/login_background_desktop.jpg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+ <img src="./assets/images/login_background_desktop.jpg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
 
   <div class="contenedor-form">
+    <a class="volver-atras" [routerLink]="['/home']"><img src="./assets/icon/icon-flecha-izquierda.png" alt="Volver">Volver</a>
+
     <!-- Encabezado Formulario -->
-    <img class="logo" src="./assets/images/logo/LOGO_OSCURO.png" style="height: 4rem;">
+    <img class="logo" src="./assets/images/logo/LOGO_OSCURO.png" style="height: 6rem;">
     <h2>Inicio Sesión</h2>
 
     <!-- Formulario Inicio Sesión -->
@@ -33,16 +27,11 @@
 
       >
 
-      <!-- Sección contraseña olvidada -->
-      <a href="/recuperar-contraseña" style="text-decoration: none; color: rgba(0,0,0,0.7); font-size: 0.75rem; margin: 0.75rem;">
-        ¿Has olvidado la contraseña?
-      </a>
-
       <!-- Botón de incio de sesión -->
       <button class="btn-inciar-sesion" type="submit">
         @if(!mostrarLoader){
           <span id="span-iniciar">Iniciar</span>
-        }@else if(mostrarLoader){
+        }@else {
           <div class="div-iniciando-sesion">
             <span class="loader"></span>
             Iniciando
@@ -63,5 +52,3 @@
       <p>{{textoMensajes}}</p>
     </div>
   }
-</body>
-</html>

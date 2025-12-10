@@ -24,9 +24,18 @@ export class Home implements OnInit, OnDestroy {
   private intervaloId: any;
 
   ngOnInit(): void {
-    this.intervaloId = setInterval(() => {
+    this.cambiarConIntervalo();
+  }
+
+  cambiarConIntervalo(): void {
+    const esUltimo = this.indiceActual === this.productos.length - 1;
+
+    const duracion = esUltimo ? 1900 : 800;
+
+    this.intervaloId = setTimeout(() => {
       this.indiceActual = (this.indiceActual + 1) % this.productos.length;
-    }, 800);
+      this.cambiarConIntervalo();
+    }, duracion);
   }
 
   ngOnDestroy(): void {

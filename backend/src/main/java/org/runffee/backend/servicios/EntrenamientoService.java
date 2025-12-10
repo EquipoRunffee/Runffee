@@ -182,6 +182,6 @@ public class EntrenamientoService {
             return null;
         }
 
-        return entrenamientos.getLast();
+        return entrenamientos.getFirst();
     }
 }

@@ -50,6 +50,12 @@ h3{
   width: 100%;
 }
 
+.requisitos-reto p span{
+  font-size: x-large;
+  color: var(--color-fosforito);
+  font-weight: 700;
+}
+
 .btn-realizar{
   background-color: var(--color-fosforito);
   color: var(--color-secundario-negro);
