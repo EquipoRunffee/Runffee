@@ -15,6 +15,7 @@ import {CommonModule, NgClass} from '@angular/common';
 export class Register {
   usuario = { correo: '', password: '', repeatpassword: '' };
   visible = false;
+  formularioValido: boolean = false;
 
   mostrarOtpModal = false;
   otp = '';
@@ -39,28 +40,20 @@ export class Register {
    this.correoError = 'El correo ya está registrado.';
  }
 
-
-
- register() {
-    // Limpiar mensajes previos (excepto si ya se mostró un error de correo)
-   this.passwordError = ''; this.repeatPasswordError = '';
-   let valid = true;
-   // Validación 1: Contraseña de mínimo 8 caracteres
-   if (this.usuario.password.length < 8)
-   { this.passwordError = 'La contraseña debe tener al menos 8 caracteres';
-     valid = false;
-   }
-   // Validación 2: Contraseñas coinciden
-   if (this.usuario.password !== this.usuario.repeatpassword)
-   { this.repeatPasswordError = 'Las contraseñas no coinciden';
-     valid = false;
-   }
-   if (valid){ console.log('Credenciales: ', this.usuario);
-   }
-  }
-
   registrarUsuario(){
-    if(localStorage.getItem("stravaAccessToken")){
+    this.passwordError = ''; this.repeatPasswordError = '';
+    // Validación 1: Contraseña de mínimo 8 caracteres
+    if (this.usuario.password.length < 6)
+    { this.passwordError = 'La contraseña debe tener al menos 6 caracteres';}
+    // Validación 2: Contraseñas coinciden
+    if (this.usuario.password !== this.usuario.repeatpassword)
+    { this.repeatPasswordError = 'Las contraseñas no coinciden';}
+
+    if(this.usuario.password.length >= 6 && this.usuario.password == this.usuario.repeatpassword){
+      this.formularioValido = true;
+    }
+
+    if(localStorage.getItem("stravaAccessToken") && this.formularioValido){
       this.authService.registrar(
         {correo: this.usuario.correo, contrasena: this.usuario.password, stravaAccessToken: localStorage.getItem("stravaAccessToken")})
         .subscribe({
@@ -77,12 +70,6 @@ export class Register {
     }
   }
 
-  cerrarModal() {
-    this.mostrarOtpModal = false;
-    this.otp = '';
-    this.mensajeOtp = '';
-  }
-
   verificarOtp() {
     this.authService.verificarOtp({ correo: this.usuario.correo, otp: this.otp })
       .subscribe({
@@ -91,7 +78,7 @@ export class Register {
           this.errorOtp = false;
           setTimeout(() => {
             this.mostrarOtpModal = false;
-            this.router.navigate(['/app']);
+            this.router.navigate(['/login']);
           }, 1500);
         },
         error: (err) => {
@@ -101,21 +88,3 @@ export class Register {
       });
   }
 }
-
-//apuntes jose
-//this.path.register(datos).suscribe({ (el suscribe es xq estamos esperando una respuesta)
-//  next: () => {
-//    this.mensaje = 'Registro completado correctamente';
-//    setTimeout
-//  }
-//})
-
-
-//login.ts
-
-//this.path.login(datos).suscribe({ (el suscribe es xq estamos esperando una respuesta)
-//  next: resp => {
-//    localStorage.seyItem('token', resp.token);
-//    localStorage.setItem('nombre',resp.nombre);
-//    this.router.navigate(['/cafeterias']);
-//  }

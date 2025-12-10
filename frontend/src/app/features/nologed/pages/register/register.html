@@ -1,10 +1,3 @@
-<html lang="es">
-<head>
-  <title>Register</title>
-  <link rel="stylesheet" href="register.css"/>
-</head>
-
-<body>
 <!--------------FONDO---------------->
 <img src="./assets/images/register_background_desktop.jpg"
      style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
@@ -17,7 +10,7 @@
   <p>Ya tenemos tus datos de Strava. Indica el correo y la contraseña con la que accederas a tu cuenta de Runffee.</p>
 
   <!-- Formulario Registro -->
-  <form class="formulario" #registerForm="ngForm" (ngSubmit)="register()">
+  <form class="formulario" #registerForm="ngForm">
 
     <!-- Correo -->
 
@@ -70,22 +63,6 @@
     <!-- contrasena == repeatcontrasena -->
     <div id="repeatPasswordError" class="error">{{ repeatPasswordError }}</div>
 
-    <!-- Lo que he visto en el video -->
-    <!--<div class="form-group" [class.has-error]="email.invalid" && email.touched">
-    <label for="email" class="control-label">Email</label>
-    <input id="email" required [email]="employee.email!==''" name="email" #email="ngModel" [(ngModel)]="employee.email"
-           type="text" class="form-control">
-    <span class="help-block" *ngIf="email.errors?.required && email.touched">
-          Email is required
-        </span>
-    <span class="help-block" *ngIf="email.errors?.email && email.touched">
-          Email is invalid
-        </span>
-  </div>
-  hasta aqui lo que he visto en el video -->
-
-    <!-- Botón crear cuenta -->
-
     <button class="btn-registro" (click)="registrarUsuario()">
       Crear cuenta
     </button>
@@ -94,15 +71,15 @@
   </form>
 </div>
 
-<div id="otpModal" class="modal" [class.show]="mostrarOtpModal">
-  <div class="modal-content">
-    <span class="close" (click)="cerrarModal()">&times;</span>
-    <h3>Verifica tu cuenta</h3>
-    <p>Introduce el código que enviamos a tu correo {{usuario.correo}}</p>
-    <input type="text" [(ngModel)]="otp" placeholder="Código OTP" maxlength="6">
-    <button (click)="verificarOtp()">Verificar</button>
-    <p *ngIf="mensajeOtp" [ngClass]="{'error': errorOtp, 'success': !errorOtp}">{{mensajeOtp}}</p>
-  </div>
-</div>
-</body>
-</html>
+
+  @if (mostrarOtpModal) {
+    <div id="otpModal" class="modal">
+      <div class="modal-content">
+        <h3>Verifica tu cuenta</h3>
+        <p>Introduce el código que enviamos a tu correo {{usuario.correo}}</p>
+        <input type="text" [(ngModel)]="otp" placeholder="Código OTP" maxlength="6">
+        <button (click)="verificarOtp()">Verificar</button>
+        <p *ngIf="mensajeOtp" [ngClass]="{'error': errorOtp, 'success': !errorOtp}">{{mensajeOtp}}</p>
+      </div>
+    </div>
+  }
