@@ -1,5 +1,6 @@
 package org.runffee.backend.servicios;
 
+import org.runffee.backend.DTO.CorreoDTO;
 import org.runffee.backend.modelos.Usuario;
 import org.runffee.backend.modelos.UsuarioRole;
 import org.runffee.backend.repositorios.IUsuarioRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
@@ -24,12 +26,14 @@ public class AuthService {
     private IUsuarioRepository usuarioRepository;
     @Autowired
     private JwtService jwtService;
+    @Autowired
+    private CorreoService correoService;
 
 
     private final RestTemplate restTemplate = new RestTemplate();
 
 
-    public Map<String, Object> registrarUsuario(String correo, String contrasena, String stravaAccessToken) {
+    public Map<String, Object> registrarUsuario(String correo, String contrasena, String stravaAccessToken) throws IOException {
 
         //Obtenemos el usuario por su token
         Usuario usuario = usuarioRepository.findByStravaAccessToken(stravaAccessToken)
@@ -99,6 +103,11 @@ public class AuthService {
 
         //Guardamos el usuario creado
         usuarioRepository.save(usuario);
+
+        CorreoDTO correoBienvenida = new CorreoDTO();
+        correoBienvenida.setCorreo(usuario.getCorreo());
+        correoBienvenida.setNombre(usuario.getNombre());
+        correoService.bienvenida(correoBienvenida);
 
         Map<String, Object> respuesta = new HashMap<>();
         respuesta.put("message", "Usuario registrado correctamente");
