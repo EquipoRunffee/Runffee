@@ -52,8 +52,12 @@
 
       <!-- Contenedor de productos filtrados -->
     <div class="contenedor-productos">
-      @for (producto of datosFiltrados; track producto.id) {
-        <app-card-producto [producto]="producto"></app-card-producto>
+      @if (datosFiltrados.length == 0) {
+        <div class="div-sinproductos">Vaya... no encontramos ningún producto :(</div>
+      } @else {
+        @for (producto of datosFiltrados; track producto.id) {
+          <app-card-producto [producto]="producto"></app-card-producto>
+        }
       }
     </div>
   </div>

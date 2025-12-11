@@ -51,7 +51,7 @@ public class CafeteriaService {
     }
 
     public List<CafeteriaDetalleDTO> obtenerCafeteriaDetalles() {
-        return cafeteriaRepository.findAll().stream()
+        return cafeteriaRepository.findAll().stream().filter(cafeteria -> !cafeteria.getEliminado())
                 .map(cafeteria -> new CafeteriaDetalleDTO
                         (cafeteria.getId(),cafeteria.getNombre(), cafeteria.getImagen(), cafeteria.getTipoCafeteria(),
                                 valoracionService.obtenerMediaValoracionCafeteria(cafeteria.getId())))

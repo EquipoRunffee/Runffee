@@ -5,6 +5,7 @@ import {NgForOf} from '@angular/common';
 import {Footer} from '@shared/components/footer/footer';
 import {Navbar} from '@loged/components/navbar/navbar';
 import {MapaCafeteria} from '@shared/components/mapa-cafeteria/mapa-cafeteria';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-detallecafeteria',
@@ -20,10 +21,13 @@ import {MapaCafeteria} from '@shared/components/mapa-cafeteria/mapa-cafeteria';
 })
 export class Detallecafeteria implements OnInit {
   datos:any = null;
-  constructor(private cafeteriaService: CafeteriaService,http: HttpClient) {}
+  idCafeteria:any;
+  constructor(private cafeteriaService: CafeteriaService,http: HttpClient, private route: ActivatedRoute, private router: Router) {}
 
     ngOnInit() {
-      this.cafeteriaService.traerCafeteriaPorId(1).subscribe({
+      this.idCafeteria = this.route.snapshot.params['id'];
+
+      this.cafeteriaService.traerCafeteriaPorId(this.idCafeteria).subscribe({
         next: data => {
           console.log(data);
           this.datos = data;

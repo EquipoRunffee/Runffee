@@ -18,6 +18,8 @@ export class Navbar implements OnInit {
   muestraCarrito: boolean = false;
   urlFotoUsuario: string | null = null;
   carrito: Carrito;
+  totalProductos: number = 0;
+
 
   mostrarCarrito() {
     this.muestraCarrito = !this.muestraCarrito;
@@ -29,13 +31,15 @@ export class Navbar implements OnInit {
 
   ngOnInit() {
     this.usuarioService.getFotoUsuario().subscribe({
-      next: data => {
-        this.urlFotoUsuario = data.url;
-      },
-      error: error => {
-        console.log(error);
-      }
-    })
+      next: data => this.urlFotoUsuario = data.url,
+      error: error => console.log(error)
+    });
+
+    this.carritoService.carrito$.subscribe(carrito => {
+      this.carrito = carrito;
+      this.totalProductos = carrito.productosCarrito
+        .reduce((acc, p) => acc + p.cantidad, 0);
+    });
   }
 
   irAPago():void {

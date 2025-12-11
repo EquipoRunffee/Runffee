@@ -30,6 +30,7 @@ public interface IValoracionRepository extends JpaRepository<Valoracion, Integer
     @Query(value = """
     SELECT DISTINCT v.titulo as titulo, v.cantidad as cantidad, v.descripcion as descripcion ,v.eliminado  as eliminado, c.nombre as nombreCafeteria
     FROM app.valoracion v   
+    JOIN app.pedido pe ON pe.id_valoracion = v.id
     JOIN app.entrenamiento en ON en.id_pedido = pe.id
     JOIN app.usuario u ON u.id = en.id_usuario
     JOIN app.lineapedido l ON l.id_pedido = pe.id

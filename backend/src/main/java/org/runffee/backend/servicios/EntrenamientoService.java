@@ -138,11 +138,11 @@ public class EntrenamientoService {
                         .orElse(null);
 
                 if(ultimo==null){
-                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("estado", "Error: no se encuentra el entrenamiento"));
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("finalizado", false, "mensaje", "No se encuentra el entrenamiento"));
                 }
 
                 if(entrenamientoRepository.existsEntrenamientoByIdStrava(((Number) ultimo.get("id")).intValue())){
-                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("estado", "Error: este entrenamiento ya está registrado"));
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("finalizado", false, "mensaje", "Vaya... no encontramos ningún entrenamiento disponible"));
                 }
 
                 entrenamiento.setIdStrava(((Number) ultimo.get("id")).intValue());
@@ -172,11 +172,16 @@ public class EntrenamientoService {
             }
         }
 
-        return ResponseEntity.ok(Map.of("completado", entrenamiento.getCompletado(), "estadoPedido", entrenamiento.getPedido().getEstado(), "cuponObtenido", entrenamiento.getCupon() ));
+        return ResponseEntity.ok(Map.of("finalizado", true , "estadoPedido", entrenamiento.getPedido().getEstado(), "cuponObtenido", entrenamiento.getCupon() ));
 
     }
 
     public EntrenamientoDetalleDTO obtenerUltimoEntrenamiento(Usuario usuario) {
-        return entrenamientoRepository.obtenerEntrenamientoDetalles(usuario.getId()).getFirst();
+        List<EntrenamientoDetalleDTO> entrenamientos = entrenamientoRepository.obtenerEntrenamientoDetalles(usuario.getId());
+        if (entrenamientos.isEmpty()) {
+            return null;
+        }
+
+        return entrenamientos.getFirst();
     }
 }

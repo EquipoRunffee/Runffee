@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {StravaService} from '@core/services/strava/stravaService';
 import {AuthService} from '@core/services/auth/auth-service';
 
@@ -9,7 +9,8 @@ import {AuthService} from '@core/services/auth/auth-service';
   templateUrl: './login.html',
   styleUrl: './login.css',
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink
   ]
 })
 export class Login {
@@ -27,16 +28,11 @@ export class Login {
   }
 
   login() {
-    console.log('Credenciales: ', this.usuario);
-
+    this.mostrarLoader = true;
     this.authService.login({correo: this.usuario.correo, contrasena: this.usuario.contrasena})
       .subscribe({
         next: () => {
-          this.mostrarLoader = true;
-          // Login exitoso: navegar a la app
-          setTimeout(() => {
-            this.router.navigate(['/app']);
-          },2000);
+          this.router.navigate(['/app']);
         },
         error: (err) => {
           console.log(err); // Ver lo que envía el backend

@@ -31,7 +31,6 @@ const routes: Routes = [
   {path: 'register', component: Register},
   { path: 'actividad', component: Actividad },
   { path: 'cafeteria', component: CafeteriaCard },
-  {path: 'detallecafeteria', component: Detallecafeteria},
 
   //PAGINAS ADMIN
   {path: 'admin/adminpage', component: Adminpage, canActivate: [adminGuard]},
@@ -47,6 +46,8 @@ const routes: Routes = [
   { path: 'app/home', component: HomeApp },
   { path: 'app/seleccion-productos/:id', component: SeleccionProductos },
   { path: 'app/pago', component: Pago },
+  {path: 'app/detallecafeteria/:id', component: Detallecafeteria},
+
   {
     path: 'app',
     loadChildren: () =>

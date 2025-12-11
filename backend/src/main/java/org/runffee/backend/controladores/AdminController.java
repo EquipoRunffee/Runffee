@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/admin")
 @CrossOrigin(origins = {
         "http://localhost:4200",
-        "https://www.anderolivos.com"
+        "https://www.anderolivos.com",
+        "https://anderolivos.com"
 })
 public class AdminController {
 

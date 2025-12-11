@@ -1,13 +1,27 @@
-div{
-  font-family: "Inter", sans-serif
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+:host{
+  width: 100%;
 }
 
 .contrasena {
-  margin: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+}
+
+.nav-falso{
+  width: 100%;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
 }
 
 .contrasena_contenido{
@@ -20,7 +34,7 @@ div{
 
 label{
   font-size: 15px;
-  font-family: "Inter", sans-serif;
+  font-family: Montserrat, sans-serif;
   margin-bottom: 0.5rem;
   font-weight: 700;
 }

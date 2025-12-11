@@ -40,8 +40,6 @@ public class AuthController {
     @PostMapping("/registrar")
     public ResponseEntity<?> registrarUsuario(@RequestBody Map<String, String> request) {
 
-        System.out.println(request);
-
         String correo = request.get("correo");
         String contrasena = request.get("contrasena");
         String stravaAccessToken = request.get("stravaAccessToken");
@@ -89,7 +87,7 @@ public class AuthController {
     }
 
     @PostMapping("/verificar-otp")
-    public ResponseEntity<?> verificarOtp(@RequestBody Map<String, String> request) {
+    public ResponseEntity<?> verificarOtp(@RequestBody Map<String, String> request) throws IOException {
         String correo = request.get("correo");
         String otp = request.get("otp");
 

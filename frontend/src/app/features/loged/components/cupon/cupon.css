@@ -26,6 +26,10 @@
   gap: 1rem;
 }
 
+.usado{
+  background-color: var(--color-secundario-rosa);
+}
+
 .div-regalo-imagen-descripcion{
   display: flex;
   flex-direction: row;

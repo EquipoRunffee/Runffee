@@ -17,6 +17,7 @@
 .footer_content{
   max-width: 1800px;
   margin: 0 auto;
+  padding: 2rem;
 }
 
 .footer_inicio{
@@ -34,7 +35,7 @@
 }
 
 .footer_final{
-  text-align: start;
+  text-align: center;
   padding: 1px;
 
 }

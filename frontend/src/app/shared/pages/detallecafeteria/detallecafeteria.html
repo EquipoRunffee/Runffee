@@ -19,15 +19,14 @@
     <h3>Los más pedidos</h3>
 
     <div class="productos-destacados">
+      @for (producto of datos.productos; track $index) {
 
-      <div class="producto" *ngFor="let p of datos!.productos">
-        <!-----------------con el || se mete una imagen por defecto en caso de que no tenga imagen dicho producto----------------->
-        <img [src]="p.imagen || './assets/images/cafeterias/productos/producto_matcha.jpg'">
-
-        <p>{{p.nombre_producto}}</p>
-      </div>
-  </div>
-
+        <div class="producto-item">
+          <img src="{{producto.imagen_producto}}" alt="imagen">
+          <p>{{ producto.nombre_producto }}</p>
+        </div>
+      }
+    </div>
   </div>
   <!-----------------VALORACIONES----------------->
 

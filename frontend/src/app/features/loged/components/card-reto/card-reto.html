@@ -3,8 +3,8 @@
   <div>
     <p>{{ data.descripcion }}</p>
     <div class="requisitos-reto">
-      <p>{{ data.km }} km</p>
-      <p>{{ data.tiempo }} min</p>
+      <p><span>{{ data.km }}</span> km</p>
+      <p><span>{{ data.tiempo }}</span> min</p>
     </div>
     <button (click)="onSelect()" [class.active]="selected" class="btn-realizar">
       @if (selected){
