@@ -33,15 +33,19 @@ public class AuthService {
     private final RestTemplate restTemplate = new RestTemplate();
 
 
-    public Map<String, Object> registrarUsuario(String correo, String contrasena, String stravaAccessToken) throws IOException {
+    public ResponseEntity<?> registrarUsuario(String correo, String contrasena, String stravaAccessToken) throws IOException {
 
         //Obtenemos el usuario por su token
-        Usuario usuario = usuarioRepository.findByStravaAccessToken(stravaAccessToken)
-                .orElseThrow(() -> new RuntimeException("No existe un usuario asociado a este token de Strava"));
+        Usuario usuario = usuarioRepository.findByStravaAccessToken(stravaAccessToken).orElse(null);
+
+        if (usuario == null){
+            return ResponseEntity.ok("No existe un usuario asociado a este token de Strava");
+        }
+
 
         //Si el usuario obtenido ya tiene un correo significa que ya estaba registrado
         if (usuario.getCorreo() != null) {
-            throw new RuntimeException("El correo ya está registrado");
+            return ResponseEntity.ok("El correo ya está registrado. Prueba con otro.");
         }
 
         //Guardamos el correo, contraseña y rol del usuario
@@ -115,7 +119,7 @@ public class AuthService {
         respuesta.put("refreshToken", refreshToken);
         respuesta.put("role", usuario.getRole().name());
         respuesta.put("expiresAt", expiresAt);
-        return respuesta;
+        return ResponseEntity.ok(respuesta);
     }
 
     public Map<String, Object> login(String correo, String password) {
